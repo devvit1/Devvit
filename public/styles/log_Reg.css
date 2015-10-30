@@ -1,0 +1,16 @@
+.loginPage{
+height: 100%;
+width: 100%;
+}
+
+.loginContainer{
+margin: 0 auto;
+}
+
+.loginContainer input{
+margin: 10px;
+}
+
+.registerContainer input{
+margin: 10px;
+}
