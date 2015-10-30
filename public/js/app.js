@@ -1,4 +1,4 @@
-var app = angular.module('devvit', ['ui-router']);
+var app = angular.module('devvit', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home/web')
