@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Devvit</title>
 
 </head>
 <body>
+<a ui-ref="devvit.web"><button>webpage</button></a>
+<ui-view></ui-view>
 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+<script src="/js/app.js"></script>
+
+
+<!--        Controllers         -->
+
+<script src="js/profile/controllers/basicInfoCtrl.js"></script>
+  <script src="js/profile/controllers/pendingCtrl.js"></script>
+   <script src="js/profile/controllers/pastPostsCtrl.js"></script>
+  <script src="js/profile/controllers/groupsCtrl.js"></script>
+  <script src="js/profile/controllers/messageCtrl.js"></script>
+  <script src="js/main/controllers/homeCtrl.js"></script>
+ <!--<script src="/js/login/controllers/log_RegCtrl.js"></script>-->
+  
+  
+<!--        Services         -->  
+  
+   <script src="js/profile/services/basicInfoService.js"></script>
+ 	  <script src="/js/profile/services/pendingService.js"></script>
+  	<script src="/js/profile/services/pastPostsService.js"></script>
+  	<script src="/js/profile/services/groupsService.js"></script>
+  	<script src="/js/profile/services/messageService.js"></script>
+  	<script src="/js/main/services/homeService.js"></script>
+  	<!--<script src="/js/login/services/log_RegService.js"></script>-->
+    
+    
 </body>
 </html>
