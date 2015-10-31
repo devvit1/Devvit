@@ -1,0 +1,11 @@
+.navTab{
+	display:flex;
+	width:150px;
+	height:30px;
+	background:lightgray;
+	justify-content: center;
+	align-items: center;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	margin:0 3px;
+}

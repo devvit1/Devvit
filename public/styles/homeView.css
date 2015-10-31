@@ -1,0 +1,39 @@
+header{
+	display:flex;
+	align-items: flex-end;
+	height:200px;
+	width:100%;
+	background:#f5f5f5;
+	flex-direction: row;
+	position:relative;
+}
+
+nav{
+	display:flex;
+	flex-direction: row;
+	margin-left:15%;
+}
+.profileDirective{
+	position:absolute;
+	top:0;
+	right:0;
+	width:300px;
+	height:50px;
+	border-bottom: 1px solid gray;
+	border-left:1px solid gray;
+	border-bottom-left-radius: 8px;
+}
+.mainBody{
+	display:flex;
+	flex-direction: row;
+	width:100%;
+	display:float;
+}
+.mainASide{
+	flex:1;
+	width:20%;
+	background:#e4e4e4;
+}
+.mainProjectView{
+	flex:4;
+}
