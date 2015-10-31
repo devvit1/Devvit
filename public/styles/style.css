@@ -9,3 +9,7 @@
 	border-top-right-radius: 8px;
 	margin:0 3px;
 }
+
+.activeNavTab{
+	background: #FC9A24;
+}

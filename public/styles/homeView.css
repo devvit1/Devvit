@@ -14,6 +14,7 @@ nav{
 	margin-left:15%;
 }
 .profileDirective{
+	display: flex;
 	position:absolute;
 	top:0;
 	right:0;
@@ -22,6 +23,9 @@ nav{
 	border-bottom: 1px solid gray;
 	border-left:1px solid gray;
 	border-bottom-left-radius: 8px;
+	/*justify-content: center;*/
+	align-items: center;
+	
 }
 .mainBody{
 	display:flex;
@@ -36,4 +40,8 @@ nav{
 }
 .mainProjectView{
 	flex:4;
+}
+.username{
+	color:#336699;
+	font-size: 19px;
 }
