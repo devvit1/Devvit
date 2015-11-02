@@ -21,14 +21,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 			templateUrl:'../templates/profile.html',
 			controller: 'profileCtrl'
 		})
-			.state('profile.login', {
-				url:'/login',
-				templateUrl: '../templates/loginPage.html',
-				controller: 'log_RegCtrl'
-			})
-			.state('profile.register', {
-				url:'/register',
-				templateUrl: '../templates/registerPage.html',
+			.state('profile.login-register', {
+				url:'/login-register',
+				templateUrl: '../templates/log_Reg.html',
 				controller: 'log_RegCtrl'
 			})
 			.state('profile.about', {

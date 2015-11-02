@@ -1,16 +1,64 @@
-.loginPage{
-height: 100%;
-width: 100%;
+h2 {
+  text-align: center;
+padding: 20px;
 }
+
+.log_RegPage{
+  height: 300px;}
 
 .loginContainer{
-margin: 0 auto;
+  float: right;
+margin: 10px;
+margin-right: 20px;
 }
 
-.loginContainer input{
-margin: 10px;
+.registerContainer{width: 50%;
+align-self: center;
+height: 100%;
 }
 
-.registerContainer input{
-margin: 10px;
+.registerContainerWithButton{}
+
+.registerContentContainer{
+display: flex;
+
+/* justify-content: center; */
+margin: 15px;
+height: 80%;}
+
+.log_RegfirstColumn{
+	margin: 0 auto;
+align-self: center;}
+
+.log_RegfirstName{
+	margin-left: 39px;}
+
+.log_Regusername{
+	margin: 20px 0px;
+
+}
+
+.log_Regpassword{
+	margin-left: 3px;
+}
+
+.log_RegsecondColumn{
+	margin: 0 auto;
+align-self: center;}
+
+.log_ReglastName{
+	margin-left: 77px;}
+
+.log_Regemail{
+	margin: 20px 0px;
+margin-left: 67px;}
+
+.log_RegverifyPassword{
+
+}
+
+.log_RegsubmitButton{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }
