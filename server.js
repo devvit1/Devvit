@@ -6,6 +6,8 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
+var ProjectController = require('./controllers/projectController');
+var UserController = require('./controllers/userController');
 
 
 var app = express();
@@ -22,8 +24,20 @@ app.use(cors());
 // app.use(passport.initialize());
 // app.use(passport.session());
 
+
 //ProjectController
+// app.get(        '/projects',       ProjectController.findAll);
+// app.get(        '/projects/:id',   ProjectController.find);
+// app.post(       '/projects',       ProjectController.createProj);
+// app.put(        '/projects/:id',   ProjectController.apply);
+// app.delete(     '/projects/:id',   ProjectController.destroy);
+
 //UserController
+app.get(        '/user/:id',       UserController.read);
+app.post(       '/user',           UserController.create);
+app.put(        '/user/:id',       UserController.userUpdate);
+app.delete(     '/user/:id',       UserController.destroy);
+
 
 
 var mongoURI = 'mongodb://localhost:27017/devvit';

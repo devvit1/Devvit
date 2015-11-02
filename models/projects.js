@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var ProjectsSchema = new mongoose.Schema({
-	name: { type: String, required: true }
-	description: { type: String required: true },
+	name: { type: String, required: true },
+	description: { type: String, required: true },
 	type: { type: String, required: true },
 	subType: String,
 	appliedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
