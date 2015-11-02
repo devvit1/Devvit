@@ -37,7 +37,7 @@ module.exports = {
 
 
 	},
-	delete: function(req, res) {
+	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params._id, function(err, result) {
 			if (err) return res.status(500).send(err);
 				res.json(result);
