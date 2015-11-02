@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='devvit'>
 <head>
 	<title>Devvit</title>
 
 </head>
+<link rel="stylesheet" href="styles/reset.css">
+<link rel="stylesheet" href="styles/homeView.css">
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/profileView.css">
+
+
 <body>
-<a ui-ref="devvit.web"><button>webpage</button></a>
+
 <ui-view></ui-view>
 
 
@@ -18,10 +24,13 @@
 
 
 <!--        Controllers         -->
-
+<script src="js/main/controllers/homeCtrl.js"></script>
+<script src="js/main/controllers/projectViewCtrl.js"></script>
+<script src="js/profile/controllers/createCtrl.js"></script>
+<script src="js/profile/controllers/profileCtrl.js"></script>
 <script src="js/profile/controllers/basicInfoCtrl.js"></script>
   <script src="js/profile/controllers/pendingCtrl.js"></script>
-   <script src="js/profile/controllers/pastPostsCtrl.js"></script>
+   <script src="js/profile/controllers/activeCtrl.js"></script>
   <script src="js/profile/controllers/groupsCtrl.js"></script>
   <script src="js/profile/controllers/messageCtrl.js"></script>
   <script src="js/main/controllers/homeCtrl.js"></script>
@@ -29,10 +38,11 @@
   
   
 <!--        Services         -->  
-  
+  <script src="/js/profile/services/profileService.js"></script>
    <script src="js/profile/services/basicInfoService.js"></script>
+   <script src="js/profile/services/createService.js"></script>   
  	  <script src="/js/profile/services/pendingService.js"></script>
-  	<script src="/js/profile/services/pastPostsService.js"></script>
+  	<script src="/js/profile/services/activeService.js"></script>
   	<script src="/js/profile/services/groupsService.js"></script>
   	<script src="/js/profile/services/messageService.js"></script>
   	<script src="/js/main/services/homeService.js"></script>

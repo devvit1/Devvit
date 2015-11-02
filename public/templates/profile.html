@@ -1,0 +1,28 @@
+<header>
+	<nav>
+		<a ui-sref="profile.about"><div ng-class="{activeNavTab: isActive('/profile/about/')}" class="navTab aboutTab">PROFILE</div></a>
+		<a ui-sref="profile.active"><div ng-class="{activeNavTab: isActive('/profile/active/')}" class = "navTab activeTab">ACTIVE</div></a>
+		<a ui-sref="profile.pending"><div ng-class="{activeNavTab: isActive('/profile/pending/')}" class = "navTab pendingTab">PENDING </div></a>
+		<a ui-sref="profile.groups"><div ng-class="{activeNavTab: isActive('/profile/groups/')}" class = "navTab groupsTab">GROUPS</div></a>
+		<a ui-sref="profile.messages"><div ng-class="{activeNavTab: isActive('/profile/messages/')}" class = "navTab messagesTab">MESSAGES</div></a>
+		
+	</nav>
+	<div class="profileDirective">
+		<a ui-sref="profile" class="username">{{profile.basicInfo.username}}</a>
+	</div>
+	<a ui-sref='profile.createProject'>
+		<div class="createPostButton">
+		+ <br> Project
+	</div></a>
+</header>
+<div class="profileBody">
+	<div class="profileASide">
+		<div class="requests" ng-repeat = "request in profile.requests">
+			{{request.name}}
+			
+		</div>
+	</div>
+	<div class="profileContentView">
+		<ui-view></ui-view>
+	</div>
+</div>
