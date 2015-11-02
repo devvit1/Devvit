@@ -1,8 +1,8 @@
-var app = angular.module('devvit', ['ui-router']);
+var app = angular.module('devvit', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home/web')
-	
+
 	$stateProvider
 		.state('devvit', {
 			url: '/home',
@@ -15,5 +15,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('profile', {
 			url:'/profile/:user_id',
 			templateUrl:'../templates/profile.html'
+		})
+		.state('register', {
+			url:'/register',
+			templateUrl: '../templates/registerPage.html'
 		})
 })

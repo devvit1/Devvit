@@ -1,14 +1,12 @@
-angular.module('devvit').service('loginService', function($http){
-
-this.getUser = function(value){
-  return value;
-}
+angular.module('devvit').service('log_RegService', function($http){
 
 
-  // this.postInput = function(){
-  //         return $http({
-  //             method: 'POST',
-  //             url: '/register',
-  //           });
+  this.login = function(user){
+      console.log(user);
+              // return $http.post('/api/Users', newUser)
+  }
 
+  this.createNewUser = function(newUser){
+    console.log(newUser);
+  }
 })

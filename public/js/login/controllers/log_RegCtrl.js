@@ -1,9 +1,12 @@
-angular.module('devvit').controller('loginCtrl', function($scope, loginService){
-$scope.getUser = function(){
-  log_RegService.getUser().then(function(value){
-    $scope.value = value;
-    console.log(value);
-  })
-}
+angular.module('devvit').controller('log_RegCtrl', function($scope, log_RegService){
+
+  $scope.login = function(user){
+    log_RegService.login(user)
+
+  }
+
+  $scope.createNewUser = function (newUser){
+    log_RegService.createNewUser(newUser)
+  }
 
 })
