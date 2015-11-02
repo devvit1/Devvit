@@ -7,7 +7,8 @@ var UserSchema = new mongoose.Schema({
 		userName: { type: String, required: true },
 		location: { type: String, required: true },
 		email: { type: String, required: true },
-		gitHubUrl: String
+		gitHubUrl: String,
+		linkedinUrl: String
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects'}],
 	activeGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects'}],
