@@ -7,13 +7,20 @@
 		<a ui-sref="profile.messages"><div ng-class="{activeNavTab: isActive('/profile/messages/')}" class = "navTab messagesTab">MESSAGES</div></a>
 		
 	</nav>
-<div class="profileDirective">
-	<a ui-sref="profile" class="username">Username</a>
-</div>
+	<div class="profileDirective">
+		<a ui-sref="profile" class="username">{{profile.basicInfo.username}}</a>
+	</div>
+	<a ui-sref='profile.createProject'>
+		<div class="createPostButton">
+		+ <br> Project
+	</div></a>
 </header>
 <div class="profileBody">
 	<div class="profileASide">
-asdf
+		<div class="requests" ng-repeat = "request in profile.requests">
+			{{request.name}}
+			
+		</div>
 	</div>
 	<div class="profileContentView">
 		<ui-view></ui-view>
