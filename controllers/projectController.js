@@ -1,5 +1,5 @@
-var Projects = require('models/projects')
-var Users = require('models/users')
+var Projects = require('../models/projects')
+var Users = require('../models/users')
 
 module.exports = {
 	createProj: function(req, res) {
