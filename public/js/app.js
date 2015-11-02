@@ -1,8 +1,9 @@
 var app = angular.module('devvit', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
+
 	$urlRouterProvider.otherwise('/home/projects')
-	
+
 	$stateProvider
 		.state('devvit', {
 			url: '/home',
@@ -12,15 +13,19 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('devvit.projects', {
 				url: '/projects',
 				templateUrl:'../templates/projectView.html',
-				controller: 'projectViewCtrl'		
-			})
-		
-			
+				controller: 'projectViewCtrl'
+		})
+
 		.state('profile', {
 			url:'/profile',
 			templateUrl:'../templates/profile.html',
 			controller: 'profileCtrl'
 		})
+			.state('profile.login-register', {
+				url:'/login-register',
+				templateUrl: '../templates/log_Reg.html',
+				controller: 'log_RegCtrl'
+			})
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',
@@ -50,5 +55,5 @@ app.config(function($stateProvider, $urlRouterProvider){
 				url:'/createProject/:user_id',
 				templateUrl:'../templates/createProject.html',
 				controller: 'createCtrl'
-			})													
+			})
 })
