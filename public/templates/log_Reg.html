@@ -1,0 +1,33 @@
+<div class="log_RegPage">
+
+        <div class="loginContainer">
+
+        Username:    <input type="text" name="name" value="" ng-model="user.username">
+        Password:    <input type="text" name="name" value="" ng-model="user.password">
+                     <input type="button" name="name" value="Login" ng-click="login(user)">
+
+
+        </div>
+        <div class="registerContainer">
+          <h2>Register </h2>
+              <div class="registerContainerWithButton">
+                
+                <div class="registerContentContainer">
+                    <div class="log_RegfirstColumn">
+                        <div class="log_RegfirstName">First:<input type="text" name="name" value="" ng-model="user.firstname"></div>
+                        <div class="log_Regusername">Username:  <input type="text" name="name" value="" ng-model="user.username"></div>
+                        <div class="log_Regpassword">Password:  <input type="text" name="name" value="" ng-model="user.password"></div>
+                    </div>
+                    <div class="log_RegsecondColumn">
+                        <div class="log_ReglastName">Last: <input type="text" name="name" value="" ng-model="user.lastname"> </div>
+                        <div class="log_Regemail">Email:  <input type="text" name="name" value="" ng-model="user.email"></div>
+                        <div class="log_RegverifyPassword">Verify Password:  <input type="text" name="name" value="" ng-model="user.verifyPassword"></div>
+                    </div>
+                </div>
+                    <div class="log_RegsubmitButton">
+                        <input type="button" name="name" value="submit" ng-click="createNewUser(user)">
+                    </div>
+              </div>
+
+        </div>
+</div>
