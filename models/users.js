@@ -17,10 +17,10 @@ var UsersSchema = new mongoose.Schema({
 	pastGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	messages: [
 		{ message: String,
-		  fromUser: {type: mongoose.Schema.Types.ObjectId}
-		  }
-		],
-	createdAt: Date
+		  fromUser: {type: mongoose.Schema.Types.ObjectId},
+		  time: {}
+		}],
+	createdAt: {type: Date, default:Date.now}
 })
 
 module.exports = mongoose.model('Users', UsersSchema)

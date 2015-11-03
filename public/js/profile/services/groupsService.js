@@ -1,12 +1,16 @@
-angular.module('devvit').service('groupsService', function($http){
+angular.module('devvit').service('groupsService', function($http, $rootScope){
+
+	this.getGroups = function (active_user_id){
+		return $http({
+			method:'get',
+			url: '/active/'+ active_user_id
+		}).then(function(res){return res.data})
+	};
 	
-	var url = 'https://devvit.firebaseio.com'
-
-
-	this.getGroups = function (user_id){
-		$http({
-			method:'GET',
-			url: url + '/profiles/' + user_id + '/groups'
+	this.findProject = function(project_id){
+		return $http({
+			method:'get',
+			url: '/projects/' + project_id
 		})
 	}
 	

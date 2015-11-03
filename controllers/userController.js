@@ -51,6 +51,13 @@ module.exports = {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
+  },
+  
+  getActive: function(req, res){
+    Users.findById(req.params.id, function(err, result) {
+      if (err) return res.status(500).send("not dvfound");
+      res.json(result);
+    })
   }
   
 

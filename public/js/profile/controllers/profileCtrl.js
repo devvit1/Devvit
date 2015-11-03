@@ -4,7 +4,7 @@ angular.module('devvit').controller('profileCtrl', function($scope, $location, $
 	};
 	
 	$rootScope.profile = {
-		_id: 'K248bYkMsiHp96ORIOd',
+		_id: "56380ba0090eed93c9b456a3",
 		basicInfo:{
 			name:{
 				first:"jacob",
@@ -13,8 +13,8 @@ angular.module('devvit').controller('profileCtrl', function($scope, $location, $
 			username:"kingPlebeian"
 		},
 		pendingReq:[2],
-		requests:[{name:"johnny"}],
-		groups:['references']
+		requests:[],
+		groups:[]
 	};
 	
 	$scope.getProfile = function(data){
