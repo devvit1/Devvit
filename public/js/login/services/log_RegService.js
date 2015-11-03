@@ -2,8 +2,7 @@ angular.module('devvit').service('log_RegService', function($http){
 
 
   this.login = function(user){
-      console.log(user);
-              // return $http.post('/api/Users', newUser)
+      
   }
 
   this.createNewUser = function(newUser){
@@ -12,7 +11,8 @@ angular.module('devvit').service('log_RegService', function($http){
               firstName: newUser.firstname,
               lastName: newUser.lastname,
               userName: newUser.username,
-              email: newUser.email
+              email: newUser.email,
+              password: newUser.password
             }
     }
 
