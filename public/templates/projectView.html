@@ -1,1 +1,26 @@
 
+<<<<<<< Updated upstream
+=======
+<div class="filter">
+    Filter: <input type="text" ng-model="projectFilter.Title"/>
+</div></br>
+
+<div class= "one" ng-repeat="person in people | filter:projectFilter">
+     ProjectName:{{person.Title | uppercase }}</br>
+    
+    CreatedBy:{{person.userCreated}}
+     
+<p>Location:{{person.Location}}  <!--&ndash;{{ person.Date | date:'longDate' }}--> </p>
+<p>{{ clock  | date:'medium'}} <button class="apply" ng-click="apply">Apply</button></p>
+<!--<button class="apply" ng-click="apply">Apply</button>-->
+
+    <!--<p>The time is {{ time }}</p>-->
+    <time am-time-ago="time"></time>
+    <time>{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</time>
+
+    
+    
+</div>
+
+
+>>>>>>> Stashed changes

@@ -15,3 +15,25 @@
 	background: #149290;
 	color:white;
 }
+
+.one{
+    margin-left:20px;
+    margin-bottom:10px;
+    margin-top: 10px;
+    border: 2px solid gray;
+    padding-left:30px;
+    padding-bottom:10px;
+    padding-top:10px;
+    border-width: thin;
+    
+}
+.filter{
+    margin-top:20px;
+}
+.apply {
+    background-color: black;
+    color:white;
+    margin-left:750px;
+    margin-bottom: 30px;
+}
+
