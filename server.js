@@ -22,9 +22,22 @@ app.use(cors());
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-//ProjectController
-//UserController
+var UserController = require('./controllers/userController');
+var ProjectController = require('./controllers/projectController');
 
+//ProjectController
+// app.get(        '/projects',       ProjectController.findAll);
+// app.get(        '/projects/:id',   ProjectController.find);
+// app.post(       '/projects',       ProjectController.createProj);
+// app.put(        '/projects/:id',   ProjectController.apply);
+// app.delete(     '/projects/:id',   ProjectController.destroy);
+
+//UserController
+app.get(        '/user/:id',       UserController.read);
+// app.get(        '/user',           UserController.readAll);
+app.post(       '/user',           UserController.create);
+app.put(        '/user/:id',       UserController.userUpdate);
+app.delete(     '/user/:id',       UserController.destroy);
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
 var port = 8080;
