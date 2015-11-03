@@ -20,7 +20,6 @@ var UsersSchema = new mongoose.Schema({
 		  fromUser: {type: mongoose.Schema.Types.ObjectId}
 		  }
 		],
-	password: String,
 	createdAt: Date
 })
 
