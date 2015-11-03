@@ -19,23 +19,42 @@ module.exports = {
 	},
 
 	apply: function (req, res){
-		Users.findByIdAndUpdate(req.body.active_user_id, {$push:{pendingApprovals: req.body.project_id}}, function(err, result) {
-			if (err) {return res.status(500).send(err)}
-			else{
-				Projects.findByIdAndUpdate(req.body.project_id, {$addToSet:{appliedTo: req.body.active_user_id}}, function(err, result) {
-					if (err) {return res.status(500).send(err)}
-					else{	
-						for (var admin in req.body.admins) {
-							Users.findByIdAndUpdate(req.body.admins[admin], {$push:{messages: {message:req.body.message, fromUser: req.body.active_user_id}}}, function(err, result) {
+		Projects.findById(req.body.project_id, function(err, project){
+			if (err){return res.status(500).send(err)}
+			else {
+				if (project.appliedTo.indexOf(req.body.active_user_id) === -1 && project.members.indexOf(req.body.active_user_id)) {
+					Users.findByIdAndUpdate(
+						req.body.active_user_id, 
+						{$push:{pendingApprovals: req.body.project_id}},
+						{upsert:true}, 
+						function(err, result) {
+						if (err) {return res.status(500).send(err)}
+						else{
+							Projects.findByIdAndUpdate(
+								req.body.project_id, 
+								{$push:{appliedTo: req.body.active_user_id}}, 
+								{upsert:true}, 
+								function(err, result) {
 								if (err) {return res.status(500).send(err)}
-								else{
-									res.json(result);
+								else{	
+									for (var admin in req.body.admins) {
+										Users.findByIdAndUpdate(
+											req.body.admins[admin], 
+											{$push:{messages: {message:req.body.message, fromUser: req.body.active_user_id}}}, 
+											function(err, result) {
+											if (err) {return res.status(500).send(err)}
+											else{
+												res.json(result);
+											}
+									})}
 								}
-						})}
-					}
-				})				
-			}
-		})
+							})				
+						}
+					})
+				}//if not found
+				else{return res.send("user already exists")}
+			}//else
+		})//findfunction
 	},
 	
 	accept: function(req, res){
