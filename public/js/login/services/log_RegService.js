@@ -15,7 +15,7 @@ angular.module('devvit').service('log_RegService', function($http){
               email: newUser.email
             }
     }
-    
+
     return $http ({
       method: 'POST',
       url: '/user',
