@@ -3,15 +3,22 @@ var Users = require('../models/users')
 
 module.exports = {
 	createProj: function(req, res) {
-		Projects.create(req.body, function(err, result) {
+		Projects.create(req.body, function(err, project) {
 			if (err) {
 				return res.status(500).send(err)}
 			else{
-				Projects.findByIdAndUpdate(result._id, {$push:{admins: req.body.active_user_id}}, function(err, result) {
+				Projects.findByIdAndUpdate(project._id, {$push:{admins: req.body.active_user_id}}, function(err, result) {
 					if (err) {
 						return res.status(500).send(err)}
 					else{
-						res.json(result);
+						Users.findByIdAndUpdate(req.body.active_user_id, 
+						{$push:{activeGroups: project._id}}, 
+						function(err, result) {
+							if (err) {return res.status(500).send(err)}
+							else{
+								res.json(result);
+							}
+						})
 					}
 				})
 			};
@@ -97,6 +104,9 @@ module.exports = {
 					res.json(found);
 				}
 		})
+	},
+	groupMessage: function(req, res){
+		
 	}
 	
 }

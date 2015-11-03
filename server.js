@@ -41,6 +41,7 @@ app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
 app.put(        '/user/:id',       UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
+app.get(        '/active/:id',     UserController.getActive)
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
 var port = 8080;
