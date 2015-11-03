@@ -22,11 +22,11 @@ module.exports = {
 		Users.findByIdAndUpdate(req.body.active_user_id, {$push:{pendingApprovals: req.body.project_id}}, function(err, result) {
 			if (err) {return res.status(500).send(err)}
 			else{
-				Projects.findByIdAndUpdate(req.body.project_id, {$push:{appliedTo: req.body.active_user_id}}, function(err, result) {
+				Projects.findByIdAndUpdate(req.body.project_id, {$addToSet:{appliedTo: req.body.active_user_id}}, function(err, result) {
 					if (err) {return res.status(500).send(err)}
 					else{	
 						for (var admin in req.body.admins) {
-							Users.findByIdAndUpdate(req.body.admins[admin], {$push:{messages: req.body.message}}, function(err, result) {
+							Users.findByIdAndUpdate(req.body.admins[admin], {$push:{messages: {message:req.body.message, fromUser: req.body.active_user_id}}}, function(err, result) {
 								if (err) {return res.status(500).send(err)}
 								else{
 									res.json(result);
