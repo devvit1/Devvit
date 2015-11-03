@@ -26,6 +26,9 @@
                     <div class="log_RegsubmitButton">
                         <input class="log_RegButton" type="button" tabindex=1 value="Submit" ng-click="createNewUser(user)">
                     </div>
+                    <div class="errorMessage" ng-show="error">username or email already exists</div>
+                    <div class="successMessage" ng-show="success">Success!</div>
+
               </div>
 
         </div>

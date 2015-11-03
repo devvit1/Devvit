@@ -21,7 +21,10 @@ angular.module('devvit').service('log_RegService', function($http){
       url: '/user',
       data: User
     }).then(function(res) {
+        return res;
       console.log('Success');
-    })
+  }, function(err){
+      return err;
+  })
   }
 })
