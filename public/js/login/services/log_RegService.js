@@ -7,6 +7,21 @@ angular.module('devvit').service('log_RegService', function($http){
   }
 
   this.createNewUser = function(newUser){
-    console.log(newUser);
+    var User = {
+          basicInfo:{
+              firstName: newUser.firstname,
+              lastName: newUser.lastname,
+              userName: newUser.username,
+              email: newUser.email
+            }
+    }
+    
+    return $http ({
+      method: 'POST',
+      url: '/user',
+      data: User
+    }).then(function(res) {
+      console.log('Success');
+    })
   }
 })
