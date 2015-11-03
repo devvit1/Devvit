@@ -34,6 +34,7 @@ var ProjectController = require('./controllers/projectController');
 
 //UserController
 app.get(        '/user/:id',       UserController.read);
+// app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
 app.put(        '/user/:id',       UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
