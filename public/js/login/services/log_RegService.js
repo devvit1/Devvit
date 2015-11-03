@@ -12,7 +12,8 @@ angular.module('devvit').service('log_RegService', function($http){
               firstName: newUser.firstname,
               lastName: newUser.lastname,
               userName: newUser.username,
-              email: newUser.email
+              email: newUser.email,
+              password: newUser.password
             }
     }
 
