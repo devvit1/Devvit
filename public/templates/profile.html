@@ -5,11 +5,14 @@
 		<a ui-sref="profile.pending"><div ng-class="{activeNavTab: isActive('/profile/pending/')}" class = "navTab pendingTab">PENDING </div></a>
 		<a ui-sref="profile.groups"><div ng-class="{activeNavTab: isActive('/profile/groups/')}" class = "navTab groupsTab">GROUPS</div></a>
 		<a ui-sref="profile.messages"><div ng-class="{activeNavTab: isActive('/profile/messages/')}" class = "navTab messagesTab">MESSAGES</div></a>
-		
+
 	</nav>
 	<div class="profileDirective">
 		<a ui-sref="profile" class="username">{{profile.basicInfo.username}}</a>
 	</div>
+	<!-- this is a random link just to navagate back to home page easier during development-->
+		<a ui-sref="devvit" class="username">home link</a>
+		
 	<a ui-sref='profile.createProject'>
 		<div class="createPostButton">
 		+ <br> Project
@@ -19,7 +22,7 @@
 	<div class="profileASide">
 		<div class="requests" ng-repeat = "request in profile.requests">
 			{{request.name}}
-			
+
 		</div>
 	</div>
 	<div class="profileContentView">

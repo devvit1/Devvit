@@ -7,25 +7,27 @@ module.exports = {
 			if (err) {
 				return res.status(500).send(err)}
 			else{
-				res.json(result);
-			}
-		});
-
+				Projects.findByIdAndUpdate(result._id, {$push:{admins: req.body.active_user_id}}, function(err, result) {
+					if (err) {
+						return res.status(500).send(err)}
+					else{
+						res.json(result);
+					}
+				})
+			};
+		})
 	},
 
 	apply: function (req, res){
-		Users.findByIdAndUpdate(req.user._id, {$push:{pendingApprovals: req.body._id}}, function(err, result) {
-			if (err) {
-				return res.status(500).send(err)}
+		Users.findByIdAndUpdate(req.body.active_user_id, {$push:{pendingApprovals: req.body.project_id}}, function(err, result) {
+			if (err) {return res.status(500).send(err)}
 			else{
-				Projects.findByIdAndUpdate(req.body._id, {$push:{appliedTo: req.user._id}}, function(err, result) {
-					if (err) {
-						return res.status(500).send(err)}
+				Projects.findByIdAndUpdate(req.body.project_id, {$addToSet:{appliedTo: req.body.active_user_id}}, function(err, result) {
+					if (err) {return res.status(500).send(err)}
 					else{	
 						for (var admin in req.body.admins) {
-							Users.findByIdAndUpdate(req.body.admins[admin]._id, {$push:{messages: req.body.message}}, function(err, result) {
-								if (err) {
-									return res.status(500).send(err)}
+							Users.findByIdAndUpdate(req.body.admins[admin], {$push:{messages: {message:req.body.message, fromUser: req.body.active_user_id}}}, function(err, result) {
+								if (err) {return res.status(500).send(err)}
 								else{
 									res.json(result);
 								}
@@ -34,11 +36,26 @@ module.exports = {
 				})				
 			}
 		})
-
-
 	},
-	delete: function(req, res) {
-		Projects.findByIdAndRemove(req.params._id, function(err, result) {
+	
+	accept: function(req, res){
+			Projects.findByIdAndUpdate(req.body.project_id, {$push:{members: req.body.user_id}}, function(err, result) {
+			if (err) {
+				return res.status(500).send(err)}
+			else{
+				Projects.findByIdAndUpdate(req.body.project_id, {$pull:{appliedTo: req.body.user_id}}, function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+		})
+			}
+		})
+			
+	},
+	destroy: function(req, res) {
+		Projects.findByIdAndRemove(req.body._id, function(err, result) {
 			if (err) return res.status(500).send(err);
 				res.json(result);
 		});
@@ -50,6 +67,15 @@ module.exports = {
 					return res.status(500).send(err)}
 				else{
 					res.json(result);
+				}
+		})
+	},
+	find: function(req, res){
+		Projects.findById(req.params.id, function(err, found){
+			if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(found);
 				}
 		})
 	}
