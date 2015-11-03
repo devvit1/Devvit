@@ -1,14 +1,13 @@
 angular.module('devvit').service('basicInfoService', function($http){
 	var url = 'https://devvit.firebaseio.com';
 	
-	this.addProfile = function(data){
+	this.getProfile = function(active_user_id){
 		return $http({
-			method: 'POST',
-			url: url + '/profiles.json',
-			data: data
-		}).then(function(response){
-
-		})
+				method: 'GET',
+				url: '/active/' + active_user_id 
+			}).then(function(res){
+				return res.data
+			})
 	};
 	
 	
