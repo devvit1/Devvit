@@ -1,0 +1,28 @@
+<div class="filter">
+    Search: <input type="text" ng-model="projectFilter"/>
+</div></br>
+
+<!--<div class= "one" ng-repeat="person in people | filter:projectFilter">
+    ProjectName:{{person.Title | uppercase }}</br>
+    
+    CreatedBy:{{person.userCreated}}
+     
+<p>Location:{{person.Location}} </p>
+<p>{{ clock  | date:'medium'}} <button class="apply" ng-click="apply">Apply</button></p>
+
+    <time am-time-ago="time"></time>
+    <time>{{ time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}</time>
+    
+</div>-->
+
+<div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt'">
+    <h2><span></span>{{webProject.name}}</h2>
+    <h4><span>Description: </span>{{webProject.description}}</h4>
+    <div class="home_room_info">
+        <h4><span>Created At: </span>{{webProject.createdAt | date:'short'}}</h4>
+        <h4><span>By: </span>{{webProject.admins[0].basicInfo.firstName}}
+        {{webProject.admins[0].basicInfo.lastName}}</h4>
+    </div>
+    <!--<h4><span>Type: </span>{{webProject.type}}</h4>-->
+    <button class="apply" ng-click="apply">Apply</button>
+</div>

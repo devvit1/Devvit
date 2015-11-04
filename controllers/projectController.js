@@ -87,7 +87,7 @@ module.exports = {
 		});
 	},
 	findAll: function(req, res){
-		Projects.find({}).limit(25).exec(
+		Projects.find({'type': req.params.id }).limit(25).populate('admins').exec(
 			function(err, result) {
 				if (err) {
 					return res.status(500).send(err)}

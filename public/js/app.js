@@ -2,19 +2,25 @@ var app = angular.module('devvit', ['ui.router', 'angularMoment']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
-	$urlRouterProvider.otherwise('/home/projects')
+	$urlRouterProvider.otherwise('/home/web')
 
 	$stateProvider
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
-			controller: 'projectViewCtrl'
+			controller: 'homeCtrl'
 		})
-			.state('devvit.projects', {
-				url: '/projects',
-				templateUrl:'../templates/projectView.html',
-				controller: 'projectViewCtrl'
-		})
+			.state('devvit.web', {
+				url: '/web',
+				templateUrl:'../templates/webView.html',
+				controller: 'webViewCtrl'
+			})
+			
+			.state('devvit.mobile', {
+				url: '/mobile',
+				templateUrl:'../templates/mobileView.html',
+				controller: 'mobileViewCtrl'
+			})
 
 		.state('profile', {
 			url:'/profile',
