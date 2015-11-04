@@ -92,7 +92,8 @@ module.exports = {
 	find: function(req, res){
 		Projects.findById(req.params.id, function(err, found){
 			if (err) {
-					return res.status(500).send(err)}
+					return res.status(500).send(err)
+					}
 				else{
 					res.json(found);
 				}

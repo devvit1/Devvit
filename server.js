@@ -28,7 +28,7 @@ var ProjectController = require('./controllers/projectController');
 
 //ProjectController
 app.get(        '/projects/:id',   ProjectController.findAll);
-app.get(        '/projects/:id',   ProjectController.find);
+app.get(        '/project/:id',   ProjectController.find);
 app.post(       '/projects',       ProjectController.createProj);
 app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/projects',       ProjectController.destroy);

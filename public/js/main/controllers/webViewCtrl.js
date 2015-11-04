@@ -50,9 +50,8 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
     $scope.creator = {};
     projectService.getWebProjects('web').then(function(res) {
       $scope.webProjects = res;
-	  console.log($scope.webProjects);
+	  // console.log($scope.webProjects);
     })
-   
     
     $scope.custom = true;
     $scope.toggleMessage = function() {
@@ -65,7 +64,6 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
         active_user_id: $rootScope.profile._id,
         message: submittedMessage
       }
-      console.log($scope.applyInfo)
       projectService.applyToProject($scope.applyInfo).then(function(res){
         console.log("Success");
       })
