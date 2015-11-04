@@ -10,7 +10,7 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 	this.findProject = function(project_id){
 		return $http({
 			method:'get',
-			url: '/projects/' + project_id
+			url: '/project/' + project_id
 		})
 	}
 	

@@ -81,6 +81,7 @@ module.exports = {
 				res.json(result);
 		});
 	},
+	
 	findAll: function(req, res){
 		Projects.find({'type': req.params.id }).limit(25).populate('admins').exec(
 			function(err, result) {
@@ -91,6 +92,7 @@ module.exports = {
 				}
 		})
 	},
+	
 	find: function(req, res){
 		Projects.findById(req.params.id, function(err, found){
 			if (err) {
@@ -100,6 +102,7 @@ module.exports = {
 				}
 		})
 	},
+	
 	groupMessage: function(req, res){
 		
 	}
@@ -123,22 +126,18 @@ function sendMessageToAdmins(project, userId, message, res){
 	var index = 0;
 
 	project.admins.forEach(function(elem){
-		Users.findById(elem, function(err, admin){
-			
+		Users.findById(elem, function(err, admin){			
 			if (err) return res.status(500).send(err);
-			
 			else if (admin.messages.length > 0){		
 				admin.messages.forEach(function(elem){
 					existingId.push(elem.fromUser.toString())			
 				})
 				index = existingId.indexOf(userId)
-				
 				if(index !== -1){
 					admin.messages[index].messages.push({message:message})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
-
 				}
 				else {
 					admin.messages.push(
@@ -149,10 +148,8 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
-					
 				}
 			}
-			
 			else {
 					admin.messages.push(
 						{
@@ -162,7 +159,6 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
-
 				}
 		})
 	})
@@ -181,7 +177,6 @@ function addMessageToUser (project, user, message,res){
 			user.messages.forEach(function(obj){
 				existingMessages.push(obj.fromUser.toString())		
 			})
-
 		project.admins.forEach(function(admin){
 			index = existingMessages.indexOf(admin.toString())
 			if(index === -1){
@@ -191,7 +186,6 @@ function addMessageToUser (project, user, message,res){
 				user.messages[index].messages.push({message: message})
 			}
 		})
-			
 	}
 	else {
 		project.admins.forEach(function(admin){
