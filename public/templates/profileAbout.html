@@ -1,3 +1,10 @@
-{{profile.firstName}}
-{{profile.lastName}} <br>
-{{profile.email}} <br>
+ <section>
+ 	<button id="editorBtn" type="button" ng-click="toggleEditMode(); toggleView()" ng-show = '!save'>Edit Profile</button>
+ 	<button id="editorBtn" type="button" ng-show = 'save' ng-click="toggleEditMode(); toggleView(); updateProfile()" >Save</button>
+    <h2 class = 'profile-title'>First Name:</h2> <div class="editor" ng-model="first" ng-attr-contenteditable="{{ editmode }}">
+    </div>
+    <h2 class = 'profile-title'>Last Name:</h2> <div class ="editor" ng-model="last" ng-attr-contenteditable="{{ editmode }}"></div>
+	<h2 class = 'profile-title'>Email:</h2> <div class ="editor" ng-model="email" ng-attr-contenteditable="{{ editmode }}"></div>
+	<h2 class = 'profile-title'>Password:</h2> <div class = "editor" ng-model="password" ng-attr-contenteditable="{{ editmode }}"></div>
+  </section>
+
