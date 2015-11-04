@@ -55,4 +55,10 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 	// 	$scope.lastName = $scope.profile.lastName
 	// }
 	
+<<<<<<< HEAD
 });
+=======
+});
+
+
+>>>>>>> 9fdc2b29a85bfbd8b0ca03e886c174238bcf5315
