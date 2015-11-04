@@ -146,7 +146,7 @@ function sendMessageToAdmins(project, userId, projectId, message, res){
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
-					//send to user here
+					
 				}
 			}
 			
@@ -159,7 +159,7 @@ function sendMessageToAdmins(project, userId, projectId, message, res){
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
-					//send to user here
+
 				}
 		})
 	})
