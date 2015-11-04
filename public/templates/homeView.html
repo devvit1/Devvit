@@ -1,7 +1,7 @@
 <header>
 	<nav>
-		<a ng-click=""><div class="navTab webTab">WEB</div></a>
-		<a ng-click=""><div class = "navTab mobileTab">MOBILE</div></a>
+		<a ui-sref="devvit.web"><div ng-class="{activeNavTab: isActive('/home/web/')}" class="navTab webTab">WEB</div></a>
+		<a ui-sref="devvit.mobile"><div ng-class="{activeNavTab: isActive('/home/mobile/')}" class = "navTab mobileTab">MOBILE</div></a>
 	</nav>
 <div class="profileDirective">
 	<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp <!-- html spaces(will change once auth is set)-->

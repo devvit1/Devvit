@@ -1,3 +1,3 @@
-angular.module('devvit').controller('homeCtrl.js', function($scope){
+angular.module('devvit').controller('homeCtrl', function($scope){
 	
 })

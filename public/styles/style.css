@@ -16,24 +16,42 @@
 	color:white;
 }
 
-.one{
-    margin-left:20px;
-    margin-bottom:10px;
-    margin-top: 10px;
-    border: 2px solid gray;
-    padding-left:30px;
-    padding-bottom:10px;
-    padding-top:10px;
-    border-width: thin;
-    
-}
-.filter{
-    margin-top:20px;
-}
-.apply {
-    background-color: black;
-    color:white;
-    margin-left:750px;
-    margin-bottom: 30px;
+.home_room_project{
+    width: 95%;
+    margin: 0 auto;
+    border-top: 1px solid #b2b2b2;
+    margin-top: 20px;
+    padding-top: 35px;
 }
 
+.filter{
+    margin-top:20px;
+    margin-left: 2%;
+}
+.apply {
+    background-color: #2d2d2d;
+    color:white;
+    margin-left:70%;
+    margin-bottom: 15px;
+}
+
+.home_room_project h2 {
+	font-size: 22px;
+	font-family: 'Roboto', sans-serif;
+	padding-bottom: 20px;
+}
+
+.home_room_project h4 {
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.home_room_info {
+	width: 80%;
+	margin-top: 10px;
+}
+
+.home_room_info h4 {
+	display: inline-block;
+	margin-right: 200px;
+}

@@ -12,4 +12,6 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 	)
 	})($rootScope.profile._id)
 	
+
+	
 })
