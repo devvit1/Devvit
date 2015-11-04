@@ -36,7 +36,7 @@ module.exports = {
   // },
 
   userUpdate: function(req, res) {
-    Users.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, result) {
+    Users.findByIdAndUpdate(req.body.basicInfo._id, req.body, { new: true }, function(err, result) {
       if (err) return res.status(500).send(err);
       res.json(result);
     });

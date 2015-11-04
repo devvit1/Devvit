@@ -4,7 +4,11 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
     	$scope.editmode = $scope.editmode === false ? true: false;
     	
   }
-	
+  $scope.save = false;
+  $scope.toggleView = function() {
+  	$scope.save = !$scope.save;
+  }
+
 	// $scope.addProfile = function(data){
 	// 	basicInfoService.addProfile(data)
 	// }
@@ -30,10 +34,18 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 	($rootScope.profile._id)
 	
 
-	$scope.updateProfile = function(profile) {
-		
+	$scope.updateProfile = function() {
+		var profile = {
+			basicInfo: {
+			firstName: $scope.first,
+			lastName: $scope.last,
+			userName: $scope.userName,
+			email: $scope.email,
+			password: $scope.password,
+			_id: $rootScope.profile._id
+			}
+		}
 			
-		console.log(profile);
 		basicInfoService.updateProfile(profile).then(function(res) {
 			console.log('Updated Profile', res);
 		})
