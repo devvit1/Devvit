@@ -28,15 +28,15 @@ module.exports = {
     });
   },
   
-  readAll: function(req, res) {
-    Users.find({}).exec(function(err, result) {
-      if (err) return res.status(500).send(err);
-      res.json(result);
-    });
-  },
+  // readAll: function(req, res) {
+  //   Users.find({}).exec(function(err, result) {
+  //     if (err) return res.status(500).send(err);
+  //     res.json(result);
+  //   });
+  // },
 
   userUpdate: function(req, res) {
-    Users.findByIdAndUpdate(req.params.id, req.body, { new: true }, function(err, result) {
+    Users.findByIdAndUpdate(req.body.basicInfo._id, req.body, { new: true }, function(err, result) {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
@@ -48,10 +48,10 @@ module.exports = {
       res.json(result);
     });
   },
-  
+  //GO BACK
   getActive: function(req, res){
     Users.findById(req.params.id, function(err, result) {
-      if (err) return res.status(500).send("not dvfound");
+      if (err) return res.status(500).send("not found");
       res.json(result);
     })
   }
