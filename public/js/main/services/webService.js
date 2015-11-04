@@ -10,4 +10,14 @@ angular.module('devvit').service('projectService', function($http){
 		})
 	}
 	
+	this.applyToProject = function(info) {
+		return $http({
+			method: 'PUT',
+			url: '/projects',
+			data: info
+		}).then(function(res) {
+			console.log(res);
+		})
+	}
+	
 })

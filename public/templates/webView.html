@@ -23,6 +23,7 @@
         <h4><span>By: </span>{{webProject.admins[0].basicInfo.firstName}}
         {{webProject.admins[0].basicInfo.lastName}}</h4>
     </div>
-    <!--<h4><span>Type: </span>{{webProject.type}}</h4>-->
-    <button class="apply" ng-click="apply">Apply</button>
+    <button class="apply" ng-click="toggleMessage()">Submit A Message</button>
+    <input class="applyMessage" type="text" value="Message Here" ng-model="submittedMessage" ng-hide="custom"></input>
+    <button class="apply" ng-click="apply(webProject._id, submittedMessage)">Apply</button>
 </div>

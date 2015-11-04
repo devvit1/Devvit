@@ -1,4 +1,8 @@
-angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService){
+angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
+    
+      $scope.isActive = function(route) {
+      return route === $location.path();
+      };
     
 	// $scope.people = [
     //     {
@@ -48,5 +52,23 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       $scope.webProjects = res;
 	  console.log($scope.webProjects);
     })
+   
+    
+    $scope.custom = true;
+    $scope.toggleMessage = function() {
+      $scope.custom = $scope.custom === false ? true: false;
+    };
+    
+    $scope.apply = function(projectID, submittedMessage) {
+      $scope.applyInfo = {
+        project_id: projectID,
+        active_user_id: $rootScope.profile._id,
+        message: submittedMessage
+      }
+      console.log($scope.applyInfo)
+      projectService.applyToProject($scope.applyInfo).then(function(res){
+        console.log("Success");
+      })
+    }
     
 });
