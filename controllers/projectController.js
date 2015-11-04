@@ -31,7 +31,7 @@ module.exports = {
 			if(project.members.length == 0) {
 				project.members.push(req.body.active_user_id);
 				addProjectToUser(req.body.active_user_id, req.body.project_id, res, project);
-				project.save(function(err, succ) {
+				project.save(function(err) {
 					if (err) return res.status(500).send(err);	
 				});
 				if (req.body.message){
@@ -45,7 +45,7 @@ module.exports = {
 					} else {
 						project.members.push(req.body.active_user_id);
 						addProjectToUser(req.body.active_user_id, req.body.project_id, res, project);
-						project.save(function(err, succ) {
+						project.save(function(err) {
 							if (err) return res.status(500).send(err);	
 						});
 						if (req.body.message){
@@ -121,17 +121,21 @@ function sendMessageToAdmins(project, userId, projectId, message, res){
 
 	project.admins.forEach(function(elem){
 		Users.findById(elem, function(err, admin){
+			
 			if (err) return res.status(500).send(err);
+			
 			else if (admin.messages.length > 0){		
 				admin.messages.forEach(function(elem){
 					existingId.push(elem.fromUser.toString())			
 				})
 				index = existingId.indexOf(userId)
+				
 				if(index !== -1){
 					admin.messages[index].messages.push({message:message})
-					admin.save(function(err, succ){
+					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
+					//send to user here
 				}
 				else {
 					admin.messages.push(
@@ -139,20 +143,23 @@ function sendMessageToAdmins(project, userId, projectId, message, res){
 						messages:{message:message},
 						fromUser:userId
 						})
-					admin.save(function(err, succ){
+					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
+					
 				}
 			}
+			
 			else {
 					admin.messages.push(
 						{
 						messages:{message:message},
 						fromUser:userId
 						})
-					admin.save(function(err, succ){
+					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
+
 				}
 		})
 	})
