@@ -5,7 +5,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 	
 	
 	var user1 = {
-		_id: "5638e40b9b5407963d22709c",
+		_id: "563939ebbc845f481268be10",
 		basicInfo:{
 			name:{
 				first:"jacob",
@@ -19,7 +19,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 	};
 	
 	var user2 = {
-		_id: "5639279dc85c514c747ce7a9",
+		_id: "563939d8bc845f481268be0f",
 		basicInfo:{
 			name:{
 				first:"billy",
@@ -32,5 +32,5 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 		groups:[]
 	};
 	
-	$rootScope.profile = user2;
+	$rootScope.profile = user1;
 });
