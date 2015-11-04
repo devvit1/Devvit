@@ -55,3 +55,9 @@
 	display: inline-block;
 	margin-right: 200px;
 }
+
+.applyMessage {
+	margin-left: 70%;
+	width: 20%;
+	margin-bottom: 20px;
+}
