@@ -17,11 +17,14 @@ var UsersSchema = new mongoose.Schema({
 	inactiveGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	pastGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	messages: [
-		{ message: String,
+		{ messages: [{
+				message:{type:String},
+				time: {type: Date, default:Date.now()}
+				}],
 		  fromUser: {type: mongoose.Schema.Types.ObjectId},
-		  time: {}
+		  
 		}],
-	createdAt: {type: Date, default:Date.now}
+	createdAt: {type: Date, default:Date.now()}
 })
 
 UsersSchema.pre('save', true, function(next, done) {

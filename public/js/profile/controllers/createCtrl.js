@@ -10,11 +10,7 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 				"type":type
 		}
 		
-		createService.createProject(project).then(
-			function(res){
-				console.log('ctrl', res)
-			}
-		)
+		createService.createProject(project)
 
 	}
 	

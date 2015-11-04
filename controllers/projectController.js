@@ -27,41 +27,34 @@ module.exports = {
 
 	apply: function (req, res){
 		Projects.findById(req.body.project_id, function(err, project){
-			if (err){return res.status(500).send(err)}
+			if (err) return res.status(500).send(err);
+			if(project.members.length == 0) {
+				project.members.push(req.body.active_user_id);
+				addProjectToUser(req.body.active_user_id, req.body.project_id, res, project);
+				project.save(function(err, succ) {
+					if (err) return res.status(500).send(err);	
+				});
+				if (req.body.message){
+					sendMessageToAdmins(project, req.body.active_user_id, req.body.project_id, req.body.message, res)
+				}
+			} 
 			else {
-				if (project.appliedTo.indexOf(req.body.active_user_id) === -1 && project.members.indexOf(req.body.active_user_id)) {
-					Users.findByIdAndUpdate(
-						req.body.active_user_id, 
-						{$push:{pendingApprovals: req.body.project_id}},
-						{upsert:true}, 
-						function(err, result) {
-						if (err) {return res.status(500).send(err)}
-						else{
-							Projects.findByIdAndUpdate(
-								req.body.project_id, 
-								{$push:{appliedTo: req.body.active_user_id}}, 
-								{upsert:true}, 
-								function(err, result) {
-								if (err) {return res.status(500).send(err)}
-								else{	
-									for (var admin in req.body.admins) {
-										Users.findByIdAndUpdate(
-											req.body.admins[admin], 
-											{$push:{messages: {message:req.body.message, fromUser: req.body.active_user_id}}}, 
-											function(err, result) {
-											if (err) {return res.status(500).send(err)}
-											else{
-												res.json(result);
-											}
-									})}
-								}
-							})				
+				project.members.forEach(function(elem) {
+					if(elem._id.toString() === req.body.active_user_id) {
+						return res.json('User already exists');
+					} else {
+						project.members.push(req.body.active_user_id);
+						addProjectToUser(req.body.active_user_id, req.body.project_id, res, project);
+						project.save(function(err, succ) {
+							if (err) return res.status(500).send(err);	
+						});
+						if (req.body.message){
+							sendMessageToAdmins(project, req.body.active_user_id, req.body.project_id, req.body.message, res)
 						}
-					})
-				}//if not found
-				else{return res.send("user already exists")}
-			}//else
-		})//findfunction
+					}			
+				});	
+			}
+		})
 	},
 	
 	accept: function(req, res){
@@ -109,4 +102,64 @@ module.exports = {
 		
 	}
 	
+}
+
+function addProjectToUser(userId, projectId, res, project) {
+	Users.findByIdAndUpdate(
+	userId, 
+	{$push:{pendingApprovals: projectId}}, 
+	{multi:true},
+	function(err) {
+		if(err) return res.status(500).json(err);
+	}
+	);
+}
+
+function sendMessageToAdmins(project, userId, projectId, message, res){
+	var existingId = [];
+	var index = 0;
+
+	project.admins.forEach(function(elem){
+		Users.findById(elem, function(err, admin){
+			if (err) return res.status(500).send(err);
+			else if (admin.messages.length > 0){		
+				admin.messages.forEach(function(elem){
+					existingId.push(elem.fromUser.toString())			
+				})
+				index = existingId.indexOf(userId)
+				if(index !== -1){
+					admin.messages[index].messages.push({message:message})
+					admin.save(function(err, succ){
+						if (err) return res.status(500).send(err)
+					})
+				}
+				else {
+					admin.messages.push(
+						{
+						messages:{message:message},
+						fromUser:userId
+						})
+					admin.save(function(err, succ){
+						if (err) return res.status(500).send(err)
+					})
+				}
+			}
+			else {
+					admin.messages.push(
+						{
+						messages:{message:message},
+						fromUser:userId
+						})
+					admin.save(function(err, succ){
+						if (err) return res.status(500).send(err)
+					})
+				}
+		})
+	})
+}
+
+function save(obj, res){
+	obj.save(function(err, succ){
+		if (err) return res.status(500).send(err)
+	})
 }
