@@ -1,4 +1,4 @@
-// EXTERNAL MODULES //
+/// EXTERNAL MODULES //
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -28,7 +28,7 @@ var ProjectController = require('./controllers/projectController');
 
 //ProjectController
 app.get(        '/projects/:id',   ProjectController.findAll);
-app.get(        '/project/:id',   ProjectController.find);
+app.get(        '/project/:id',    ProjectController.find);
 app.post(       '/projects',       ProjectController.createProj);
 app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/projects',       ProjectController.destroy);
@@ -37,9 +37,9 @@ app.put(        '/accept',         ProjectController.accept);
 
 //UserController
 app.get(        '/user/:id',       UserController.read);
-app.get(        '/user',           UserController.readAll);
+// app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
-app.put(        '/user/:id',       UserController.userUpdate);
+app.put(        '/user',       UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
 app.get(        '/active/:id',     UserController.getActive)
 
