@@ -48,10 +48,10 @@ module.exports = {
       res.json(result);
     });
   },
-  
+  //GO BACK
   getActive: function(req, res){
     Users.findById(req.params.id, function(err, result) {
-      if (err) return res.status(500).send("not dvfound");
+      if (err) return res.status(500).send("not found");
       res.json(result);
     })
   }
