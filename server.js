@@ -1,4 +1,4 @@
-// EXTERNAL MODULES //
+/// EXTERNAL MODULES //
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');

@@ -9,6 +9,15 @@ angular.module('devvit').service('basicInfoService', function($http){
 				return res.data
 			})
 	};
+
+	this.updateProfile = function(profile) {
+		console.log(33, profile);
+		return $http({
+			method: 'PUT',
+			url: '/user/' + profile._id,
+			data: {basicInfo: profile.basicInfo}
+		})
+	}
 	
 	
 })
