@@ -67,3 +67,48 @@ nav{
 	width:100%;
 
 }
+
+.profile-title {
+	text-decoration: none;
+	padding: 0;
+	text-align: left;
+}
+
+button {
+  display: inline-block;
+  border-radius: 3px;
+  border: none;
+  font-size: 12px;
+  background: #0E455C;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  text-align: center;
+}
+
+button:hover, button:focus {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 1;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+section > div {
+  padding: 16px;
+  border-radius: 3px;
+  outline: none;
+  border: 2px solid transparent;
+}
+
+section > div[contenteditable='true']:hover{
+  background: #E6E6E6;
+}
+
+section > div:focus, section > div:focus:hover  {
+  background: #fff;
+  border-color: #0E455C;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.15) inset;
+}
