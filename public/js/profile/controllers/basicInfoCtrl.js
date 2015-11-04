@@ -4,9 +4,6 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 	// 	basicInfoService.addProfile(data)
 	// }
 	
-	// // once for firebase
-	// // $scope.addProfile($rootScope.profile)
-	
 	(function getProfile(active_user_id){
 		basicInfoService.getProfile(active_user_id).then(
 		function(res){
