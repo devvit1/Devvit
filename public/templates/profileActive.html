@@ -1,0 +1,14 @@
+<div class = 'cont'>
+	<div class = 'active-container' ng-repeat = 'groups in activeGroups'>
+		<div class = 'active-panel panel'>
+			<span class = 'active-name panel-name'>{{groups.name}}</span>
+			<label class = 'switch active-switch right'>
+				<input class = 'switch-input' type = 'checkbox'/>
+				<span class = 'switch-label' data-on='On' data-off='Off'></span>
+				<span class = 'switch-handle'></span>
+			</label>
+			<p class = 'active-description panel-description'>{{groups.description}}</p>
+			<span class = 'active-created panel-created'>{{groups.createdAt | date: 'short'}}</span>
+		</div>
+	</div>
+</div>

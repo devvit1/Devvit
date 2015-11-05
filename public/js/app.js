@@ -40,7 +40,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('profile.active', {
 				url:'/active/:user_id',
 				templateUrl:'../templates/profileActive.html',
-				controller: 'activeCtrl'
+				controller: 'activeCtrl',
+				resolve: {
+					activeUser: function(activeService, $rootScope) {
+						return activeService.getActive($rootScope.profile._id);
+					}
+				}
 			})
 			.state('profile.pending', {
 				url:'/pending/:user_id',
