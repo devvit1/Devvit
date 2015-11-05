@@ -29,7 +29,12 @@ module.exports = {
 		Projects.findById(req.body.project_id, function(err, project){
 			if (err) return res.status(500).send(err);
 			if(project.members.length == 0) {
-				project.members.push(req.body.active_user_id);
+				project.members.push({
+					member: req.body.active_user_id,
+					application: {
+						message: req.body.message
+					}
+					});
 				addProjectToUser(req.body.active_user_id, project, req.body.message, res);
 				project.save(function(err) {
 					if (err) return res.status(500).send(err);	
@@ -43,7 +48,12 @@ module.exports = {
 					if(elem._id.toString() === req.body.active_user_id) {
 						return res.json('User already exists');
 					} else {
-						project.members.push(req.body.active_user_id);
+						project.members.push({
+							member: req.body.active_user_id,
+							application: {
+								message: req.body.message
+							}
+						});
 						addProjectToUser(req.body.active_user_id, project, req.body.message, res);
 						project.save(function(err) {
 							if (err) return res.status(500).send(err);	

@@ -48,22 +48,27 @@ app.config(function($stateProvider, $urlRouterProvider){
 				}
 			})
 			.state('profile.pending', {
-				url:'/pending/:user_id',
+				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
 				controller: 'pendingCtrl'
 			})
 			.state('profile.groups', {
-				url:'/groups/:user_id',
+				url:'/groups',
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl'
 			})
+				.state('profile.groups.group', {
+					url:'/group',
+					templateUrl:'../templates/profileGroupsSub.html',
+					controller: 'groupsCtrl'
+				})
 			.state('profile.messages', {
-				url:'/messages/:user_id',
+				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl'
 			})
 			.state('profile.createProject', {
-				url:'/createProject/:user_id',
+				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
 				controller: 'createCtrl'
 			})
