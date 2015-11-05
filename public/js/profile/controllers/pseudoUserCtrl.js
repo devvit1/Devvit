@@ -20,6 +20,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 	
 	var user2 = {
 		_id: "563a81dcbe6ca97421646b95",
+
 		basicInfo:{
 			name:{
 				first:"billy",

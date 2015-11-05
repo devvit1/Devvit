@@ -50,7 +50,12 @@ module.exports = {
   },
   //GO BACK
   getActive: function(req, res){
-    Users.findById(req.params.id 
+    Users.findById(req.params.id)
+    .populate('activeGroups')
+    .exec(function(err, result) {
+      if (err) return res.status(500).send("not found");
+      res.json(result);
+    })
   }
   
 
