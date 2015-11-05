@@ -14,7 +14,6 @@ angular.module('devvit').service('pendingAppService', function($http){
 			method:'GET',
 			url: '/project/' + proj	
 		}).then(function(res){
-			console.log("projects", res);
 			return res;
 		})
 	}

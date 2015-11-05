@@ -6,6 +6,8 @@ angular.module('devvit').controller('mobileViewCtrl', function($scope, projectSe
 		$scope.mobileProjects = [];
 		projectService.getWebProjects('mobile').then(function(res) {
 		$scope.mobileProjects = res;
-		console.log($scope.mobileProjects);
+
     })
+	
+	
 })

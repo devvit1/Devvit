@@ -6,8 +6,8 @@ angular.module('devvit').controller('pendingCtrl', function($scope, pendingAppSe
 		res.pendingApprovals.forEach(function(proj) {
 			pendingAppService.getProjects(proj).then(function(res) {
 				$scope.pendingArr.push(res);
+							console.log($scope.pendingArr);
 			})
 		})
 	})
-	
 })

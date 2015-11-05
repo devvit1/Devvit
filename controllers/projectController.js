@@ -131,7 +131,7 @@ function sendMessageToAdmins(project, userId, message, res){
 			if (err) return res.status(500).send(err);
 			else if (admin.messages.length > 0){		
 				admin.messages.forEach(function(elem){
-					existingId.push(elem.fromUser.toString())			
+					existingId.push(elem.fromUser)			
 				})
 				index = existingId.indexOf(userId)
 				if(index !== -1){
@@ -176,10 +176,10 @@ function addMessageToUser (project, user, message,res){
 	var index = 0;
 	if (user.messages.length > 0) {
 			user.messages.forEach(function(obj){
-				existingMessages.push(obj.fromUser.toString())		
+				existingMessages.push(obj.fromUser)		
 			})
 		project.admins.forEach(function(admin){
-			index = existingMessages.indexOf(admin.toString())
+			index = existingMessages.indexOf(admin)
 			if(index === -1){
 				user.messages.push({fromUser:admin._id, messages:{message:message}})
 			}
