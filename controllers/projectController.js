@@ -29,7 +29,12 @@ module.exports = {
 		Projects.findById(req.body.project_id, function(err, project){
 			if (err) return res.status(500).send(err);
 			if(project.members.length == 0) {
-				project.members.push(req.body.active_user_id);
+				project.members.push({
+						application:{
+							message:req.body.message
+							},
+						member: req.body.active_user_id
+					});//add message to project app
 				addProjectToUser(req.body.active_user_id, project, req.body.message, res);
 				project.save(function(err) {
 					if (err) return res.status(500).send(err);	
@@ -60,37 +65,56 @@ module.exports = {
 	},
 	
 	accept: function(req, res){
-			Projects.findByIdAndUpdate(req.body.project_id, {$push:{members: req.body.user_id}}, function(err, result) {
-			if (err) {
-				return res.status(500).send(err)}
-			else{
-				Projects.findByIdAndUpdate(req.body.project_id, {$pull:{appliedTo: req.body.user_id}}, function(err, result) {
-				if (err) {
-					return res.status(500).send(err)}
+			var id = mongoose.Types.ObjectId(req.body.project_id);
+			Projects.findById(req.body.project_id,  function(err, project) {
+				if (err) {return res.status(500).send(err)}
 				else{
-					res.json(result);
+					project.members.forEach(function(member){
+						if (member.member.toString() === req.body.user_id){
+							member.application.pending = false;						
+						}
+					
+						//  else {res.send('no user found in project')}
+				
+					addProjectToUserGroups(req.body.project_id, req.body.user_id, res)
+					})
+					project.save(function(err) {
+								if (err) return res.status(500).send(err);	
+							})
 				}
-		})
-			}
-		})
-			
+			})
+
+			Users.findByIdAndUpdate(req.body.user_id, 
+				{$pull:{pendingApprovals:id}}, 
+				function(err, success) {
+					if (err) return res.status(500).send(err);
+					else res.send(success)
+				})
+				
 	},
+	
 	destroy: function(req, res) {
-		Projects.findByIdAndRemove(req.body._id, function(err, result) {
-			if (err) return res.status(500).send(err);
+		Projects.findByIdAndRemove(
+			req.body._id, 
+			function(err, result) {
+				if (err) return res.status(500).send(err);
 				res.json(result);
-		});
+			});
 	},
 	
 	findAll: function(req, res){
-		Projects.find({'type': req.params.id }).limit(25).populate('admins').exec(
+		Projects.find(
+			{'type': req.params.id })
+			.limit(25)
+			.populate('admins')
+			.exec(
 			function(err, result) {
 				if (err) {
 					return res.status(500).send(err)}
 				else{
 					res.json(result);
 				}
-		})
+			})
 	},
 	
 	find: function(req, res){
@@ -200,3 +224,17 @@ function addMessageToUser (project, user, message,res){
 		if (err) return res.status(500).send(err)
 	})
 }
+
+function addProjectToUserGroups(project, user, res){
+	var id = mongoose.Types.ObjectId(project);
+	Users.findByIdAndUpdate(user, 
+		{$push:{groups:id }}, 
+		{multi:true}, 
+		function(err, result) {
+			if (err) return res.status(500).send(err);
+		})
+	// user.groups.push(project._id);
+	// user.save(function(err){
+	// 	if (err) return res.status(500).send(err)
+	// })
+};
