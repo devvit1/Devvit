@@ -4,19 +4,28 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	
 	
 	
-	var user1 = {
-		_id: "563a816a5987e82d21d016ba"
-
-	};
-	
-	//billy
-	var user2 = {
-		_id: "563a81dcbe6ca97421646b95"
+		var user1 = {
+			//jacob
+			_id: "563abb2395fa9b14017c21d3"
+		};
 		
-	};
-	
+		//billy
+		var user2 = {
+			_id: "563abb3095fa9b14017c21d4"
+		};
+		
+		//me
+		var user3 = {
+			_id: "563abb3895fa9b14017c21d5"
+		}
+		
+		//squire
+		var user4 = {
+			_id: "563abb4195fa9b14017c21d6"
+		}
+		
 
- 	$rootScope.profile = user2;
+	$rootScope.profile = user4;
  
 	(function updateUser (who){
 		pseudoService.getProfile(who).then(function(res){
