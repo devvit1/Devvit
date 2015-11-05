@@ -6,7 +6,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		var user1 = {
 			//antonio
 			_id: "563bdf93f06dd090a073dc13"
-		};
+		}
 		
 		//jacob
 		var user2 = {
@@ -17,8 +17,6 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		var user3 = {
 			_id: "563bdfc8f06dd090a073dc15"
 		}
-		
-
 
 	$rootScope.profile = user2;
 
