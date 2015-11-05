@@ -129,9 +129,11 @@ function sendMessageToAdmins(project, userId, message, res){
 	project.admins.forEach(function(elem){//for each admin in array
 		Users.findById(elem, function(err, admin){		// go find admin's data	
 			if (err) return res.status(500).send(err);
+
 			else if (admin.messages.length > 0){		// if admin we found has messages
 				admin.messages.forEach(function(elem){ //go through each meassage
 					existingId.push(elem.fromUser.toString())//push the fromId of each message to existingis
+
 				})
 				index = existingId.indexOf(userId) //index = the instance of active user in array
 				if(index !== -1){
