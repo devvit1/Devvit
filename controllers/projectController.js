@@ -74,7 +74,7 @@ module.exports = {
 							member.application.pending = false;						
 						}
 					
-						//  else {res.send('no user found in project')}
+
 				
 					addProjectToUserGroups(req.body.project_id, req.body.user_id, res)
 					})
