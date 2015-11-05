@@ -13,8 +13,8 @@ var UsersSchema = new mongoose.Schema({
 		linkedinUrl: String
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
-	activeGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
-	inactiveGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
+	activePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
+	inactivePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	pastGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	messages: [
 		{ messages: [{
