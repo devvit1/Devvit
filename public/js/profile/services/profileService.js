@@ -6,7 +6,7 @@ angular.module('devvit').service('profileService', function($http){
 				method: 'GET',
 				url: '/active/' + active_user_id 
 			}).then(function(response){
-
+				console.log(response, 'active user data')
 			})
 	};
 })
