@@ -18,12 +18,14 @@
 <div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt'">
     <h2><span></span>{{webProject.name}}</h2>
     <h4><span>Description: </span>{{webProject.description}}</h4>
+    
     <div class="home_room_info">
         <h4><span>Created At: </span>{{webProject.createdAt | date:'short'}}</h4>
         <h4><span>By: </span>{{webProject.admins[0].basicInfo.firstName}}
         {{webProject.admins[0].basicInfo.lastName}}</h4>
     </div>
-    <button class="apply" ng-click="toggleMessage()">Submit A Message</button>
-    <input class="applyMessage" type="text" value="Message Here" ng-model="submittedMessage" ng-hide="custom"></input>
-    <button class="apply" ng-click="apply(webProject._id, submittedMessage)">Apply</button>
+
+    <button class="apply" ng-click="submit = !submit">Apply</button>
+    <input class="applyMessage" type="text" value="Message Here" ng-model="submittedMessage" ng-show="submit"></input>
+    <button class="apply" ng-click="apply(webProject._id, submittedMessage)" ng-show="submit">Submit</button>
 </div>
