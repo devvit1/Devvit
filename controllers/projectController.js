@@ -1,6 +1,6 @@
 var Projects = require('../models/projects')
 var Users = require('../models/users')
-
+var mongoose = require('mongoose')
 module.exports = {
 	createProj: function(req, res) {
 		Projects.create(req.body, function(err, project) {
@@ -140,10 +140,11 @@ function sendMessageToAdmins(project, userId, message, res){
 					})
 				}
 				else {
+					var id = mongoose.Types.ObjectId(userId);
 					admin.messages.push(
 						{
 						messages:{message:message},
-						fromUser:userId
+						fromUser:id
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -175,12 +176,12 @@ function addMessageToUser (project, user, message,res){
 	var index = 0;
 	if (user.messages.length > 0) {
 			user.messages.forEach(function(obj){
-				existingMessages.push(obj.fromUser.toString())		
+				existingMessages.push(obj.fromUser)		
 			})
 		project.admins.forEach(function(admin){
-			index = existingMessages.indexOf(admin.toString())
+			index = existingMessages.indexOf(admin)
 			if(index === -1){
-				user.messages.push({fromUser:admin._id, messages:{message:message}})
+				user.messages.push({fromUser:admin, messages:{message:message}})
 			}
 			else{
 				user.messages[index].messages.push({message: message})
