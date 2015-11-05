@@ -12,7 +12,7 @@ angular.module('devvit').service('messageService', function($http){
 			method:'get',
 			url: '/active/' + user	
 		}).then(function(res){
-			return res.data.basicInfo.firstName
+			return res.data.basicInfo
 		})
 		
 	}

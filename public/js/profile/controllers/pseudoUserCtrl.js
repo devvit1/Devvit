@@ -31,6 +31,13 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 		requests:[],
 		groups:[]
 	};
+	var user3 = {
+		_id: "563a928d9257ccc12ca31bd4",
+		basicInfo:{
+		
+			username:"user 3"
+		}
+	}
 	
 	$rootScope.profile = user1;
 
