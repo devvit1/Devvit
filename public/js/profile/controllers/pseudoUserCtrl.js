@@ -3,57 +3,24 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	// jacobs id"56380bb0090eed93c9b456a4"
 	
 	
-	
-<<<<<<< HEAD
-	var user1 = {
-		_id: "563bbea7cca522b5891ae46d"
-
-	};
-	
-	//billy
-	var user2 = {
-		_id: "563bbebacca522b5891ae46e"
-		
-	};
-	
-
-
-	//joe
-	var user3 = {
-		_id: "563adfc722941f294e2e34a4"
-	}
-	
-	//billy
-	var user4 = {
-		_id: "563adfba22941f294e2e34a3"
-	}
-	
-
-=======
 		var user1 = {
-			//jacob
-			_id: "563abb2395fa9b14017c21d3"
+			//antonio
+			_id: "563bdf93f06dd090a073dc13"
+		};
+		
+		//jacob
+		var user2 = {
+			_id: "563bdf9df06dd090a073dc14"
 		};
 		
 		//billy
-		var user2 = {
-			_id: "563abb3095fa9b14017c21d4"
-		};
-		
-		//me
 		var user3 = {
-			_id: "563abb3895fa9b14017c21d5"
+			_id: "563bdfc8f06dd090a073dc15"
 		}
 		
-		//squire
-		var user4 = {
-			_id: "563abb4195fa9b14017c21d6"
-		}
-		
->>>>>>> ec24e9a879142e2e2dacb16cc9ecc492b1357cc5
 
 
-	$rootScope.profile = user4;
+	$rootScope.profile = user2;
 
  
 	(function updateUser (who){
