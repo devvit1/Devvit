@@ -34,17 +34,17 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 		groups:[]
 	};
 	
-	//me
+	//james
 	var user3 = {
-		_id: "563abb3895fa9b14017c21d5"
+		_id: "563add8a0a264e2f4c072e15"
 	}
 	
-	//squire
+	//billy
 	var user4 = {
-		_id: "563abb4195fa9b14017c21d6"
+		_id: "563add7e0a264e2f4c072e14"
 	}
 	
-	$rootScope.profile = user4;
+	$rootScope.profile = user3;
 
 });
 
