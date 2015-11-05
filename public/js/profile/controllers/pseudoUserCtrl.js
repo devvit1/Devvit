@@ -45,7 +45,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) 
 	}
 	
 
-	$rootScope.profile = user4;
+	$rootScope.profile = user3;
 
 });
 
