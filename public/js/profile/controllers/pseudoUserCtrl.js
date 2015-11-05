@@ -1,55 +1,42 @@
-angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope) {
+angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, pseudoService) {
    // billies id:"56380ba0090eed93c9b456a3"
 	// jacobs id"56380bb0090eed93c9b456a4"
 	
 	
 	
 	var user1 = {
-		//jacob
-		_id: "563abb2395fa9b14017c21d3",
-		basicInfo:{
-			name:{
-				first:"jacob",
-				last:"talley",
-			},
-			username:"user 1"
-		},
-		pendingReq:[2],
-		requests:[],
-		groups:[]
+		_id: "563a816a5987e82d21d016ba"
+
 	};
 	
 	//billy
 	var user2 = {
-		_id: "563abb3095fa9b14017c21d4",
-		basicInfo:{
-			name:{
-				first:"billy",
-				last:"mech",
-			},
-			username:"user 2"
-		},
-		pendingReq:[2],
-		requests:[],
-		groups:[]
+		_id: "563a81dcbe6ca97421646b95"
+		
 	};
 	
-	//me
-	var user3 = {
-		_id: "563abb3895fa9b14017c21d5"
-	}
 	
-	//squire
-	var user4 = {
-		_id: "563abb4195fa9b14017c21d6"
-	}
-	
-<<<<<<< HEAD
-	$rootScope.profile = user3;
-// =======
-	// $rootScope.profile = user4;
->>>>>>> ccb275eb37f48f0020eb8226d3e43c70f7df5cc4
 
-});
+ $rootScope.profile = user2;
+ 
+	(function updateUser (who){
+		pseudoService.getProfile(who).then(function(res){
+			$rootScope.profile.username = res.basicInfo.userName; 
+		})
+		})($rootScope.profile._id)
+
+
+})
+
+.service('pseudoService', function ($http){
+	this.getProfile = function(active_user_id){
+		return $http({
+				method: 'GET',
+				url: '/active/' + active_user_id 
+			}).then(function(res){
+				return res.data
+			})
+	};
+})
 
 

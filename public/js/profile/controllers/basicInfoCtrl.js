@@ -17,7 +17,6 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 	// // $scope.addProfile($rootScope.profile)
 	
 	$scope.getProfile = function(active_user_id){
-		console.log(1, active_user_id);
 		basicInfoService.getProfile(active_user_id).then(
 		function(res){
 			$scope.first = res.basicInfo.firstName;
