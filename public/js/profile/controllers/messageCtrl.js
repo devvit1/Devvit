@@ -3,7 +3,10 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	(function getMessages(active_user_id){
 
 		messageService.getMessages(active_user_id).then(function(res){
+			console.log(res.messages)
 				res.messages.forEach(function(message){
+			
+					console.log(message.fromUser)
 					$scope.userMessages.push({
 						name: message.fromUser.basicInfo.firstName,
 						message: message.messages
