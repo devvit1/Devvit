@@ -27,12 +27,8 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		_id: "563adfba22941f294e2e34a3"
 	}
 	
-	$rootScope.profile = user3;
-
-
-
-
- 	$rootScope.profile = user2;
+	
+ 	$rootScope.profile = user3;
  
 	(function updateUser (who){
 		pseudoService.getProfile(who).then(function(res){
