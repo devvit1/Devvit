@@ -257,8 +257,7 @@ section > .editor:focus, section > .editor:focus:hover  {
 	box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
 }
  
-/* Transition
-========================== */
+/* Transition */
 .switch-label, .switch-handle {
 	transition: All 0.3s ease;
 	-webkit-transition: All 0.3s ease;
