@@ -117,7 +117,7 @@ function addProjectToUser(userId, project, message, res) {
 	{multi:true},
 	function(err, user) {
 		if(err) return res.status(500).json(err);
-		addMessageToUser(project, user, message, res)
+		addMessageToUser(project, user, message, res)//go down
 	}
 	);
 }
@@ -126,14 +126,16 @@ function sendMessageToAdmins(project, userId, message, res){
 	var existingId = [];
 	var index = 0;
 
-	project.admins.forEach(function(elem){
-		Users.findById(elem, function(err, admin){			
+	project.admins.forEach(function(elem){//for each admin in array
+		Users.findById(elem, function(err, admin){		// go find admin's data	
 			if (err) return res.status(500).send(err);
-			else if (admin.messages.length > 0){		
-				admin.messages.forEach(function(elem){
-					existingId.push(elem.fromUser)			
+
+			else if (admin.messages.length > 0){		// if admin we found has messages
+				admin.messages.forEach(function(elem){ //go through each meassage
+					existingId.push(elem.fromUser.toString())//push the fromId of each message to existingis
+
 				})
-				index = existingId.indexOf(userId)
+				index = existingId.indexOf(userId) //index = the instance of active user in array
 				if(index !== -1){
 					admin.messages[index].messages.push({message:message})
 					admin.save(function(err){
@@ -176,15 +178,15 @@ function addMessageToUser (project, user, message,res){
 	var existingMessages = [];
 	var index = 0;
 	if (user.messages.length > 0) {
-			user.messages.forEach(function(obj){
-				existingMessages.push(obj.fromUser)		
+			user.messages.forEach(function(obj){ //for each message =obj
+				existingMessages.push(obj.fromUser.toString())		 //push obj.fromUser to existing
 			})
-		project.admins.forEach(function(admin){
-			index = existingMessages.indexOf(admin)
-			if(index === -1){
+		project.admins.forEach(function(admin){// loop through the proects admins
+			index = existingMessages.indexOf(admin.toString())//for each admin check and see if there is an admin id in existing messages
+			if(index === -1){ //if not
 				user.messages.push({fromUser:admin, messages:{message:message}})
 			}
-			else{
+			else{ //if there is
 				user.messages[index].messages.push({message: message})
 			}
 		})
