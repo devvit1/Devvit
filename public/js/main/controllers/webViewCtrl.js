@@ -5,8 +5,7 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       };
         
       $scope.webProjects = [];
-      $scope.creator = {};
-      projectService.getWebProjects('web').then(function(res) {
+      projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
 
     })
@@ -18,7 +17,7 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
         message: submittedMessage
       }
       projectService.applyToProject($scope.applyInfo).then(function(res){
-        console.log("Success");
+        console.log("Success Web");
       })
     }
     

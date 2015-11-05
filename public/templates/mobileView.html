@@ -5,11 +5,14 @@
 <div class="home_room_project" ng-model="mobileProjects" ng-repeat="mobileProject in mobileProjects | filter: projectFilter | orderBy: 'createdAt'">
     <h2><span></span>{{mobileProject.name}}</h2>
     <h4><span>Description: </span>{{mobileProject.description}}</h4>
+    
     <div class="home_room_info">
         <h4><span>Created At: </span>{{mobileProject.createdAt | date:'short'}}</h4>
         <h4><span>By: </span>{{mobileProject.admins[0].basicInfo.firstName}}
         {{mobileProject.admins[0].basicInfo.lastName}}</h4>
     </div>
-    <!--<h4><span>Type: </span>{{mobileProject.type}}</h4>-->
-    <button class="apply" ng-click="apply">Apply</button>
+    
+    <button class="apply" ng-click="submit = !submit">Apply</button>
+    <input class="applyMessage" type="text" value="Message Here" ng-model="submittedMessage" ng-show="submit"></input>
+    <button class="apply" ng-click="applyMobile(mobileProject._id, submittedMessage)" ng-show="submit">Submit</button>
 </div>
