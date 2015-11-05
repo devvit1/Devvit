@@ -1,9 +1,9 @@
 <div class="prof_mess_aside">
-	<div ng-click="getMessageswithUser($index)" class="prof_aside_messages" ng-repeat="user in users" >
-		{{user.from}}
+	<div ng-click="getMessageswithUser($index)" class="prof_aside_messages" ng-repeat="user in userMessages" >
+		{{user.name}}
 		<br>
 	</div>
 </div>
 <div class="prof_mess_body">
-	<div class="pro_message_card" ng-repeat='message in messages'>{{message}}</div>
+	<div class="pro_message_card" ng-repeat='message in messages'>{{message.message}}</div>
 </div>

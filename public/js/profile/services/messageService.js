@@ -4,7 +4,7 @@ angular.module('devvit').service('messageService', function($http){
 			method:'get',
 			url: '/active/' + active_user	
 		}).then(function(res){
-			return res.data.messages
+			return res.data
 		})
 	}
 	this.getName = function(user){
