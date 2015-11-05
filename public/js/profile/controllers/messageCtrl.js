@@ -1,20 +1,25 @@
 angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, messageService){
+	$scope.userMessages = [];
 	(function getMessages(active_user_id){
-		var messages = [];
+
 		messageService.getMessages(active_user_id).then(function(res){
-			for (var message in res){
-				// var name =
-				messageService.getName(res[message].fromUser).then(
-					 function(name){
-					// 	console.log(res)
-						messages.push({
-							from: name,
-							message: res[message].message
-							})
-					 })
-				
-			}
-			$scope.messages = messages
+			console.log(res.messages)
+				res.messages.forEach(function(message){
+
+					var obj = {
+								messages: message.messages,
+								withUser: message.fromUser.basicInfo.firstName
+								}
+					$scope.userMessages.push(obj)
+
+				})
+		
 		})
 	})($rootScope.profile._id)
+	
+$scope.getMessageswithUser = function(user){
+	 $scope.messages = $scope.userMessages[user].messages;
+	 console.log($scope.userMessages[user].messages)
+}
+	
 })
