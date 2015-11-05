@@ -6,6 +6,18 @@ angular.module('devvit').controller('mobileViewCtrl', function($scope, projectSe
 		$scope.mobileProjects = [];
 		projectService.getWebProjects('mobile').then(function(res) {
 		$scope.mobileProjects = res;
-		console.log($scope.mobileProjects);
+
     })
+	
+		// $scope.apply = function(projectID, submittedMessage) {
+		// $scope.applyInfo = {
+		// 	project_id: projectID,
+		// 	active_user_id: $rootScope.profile._id,
+		// 	message: submittedMessage
+		// }
+		// projectService.applyToProject($scope.applyInfo).then(function(res){
+		// 	console.log("Success");
+		// })
+		// }
+	
 })
