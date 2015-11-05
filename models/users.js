@@ -14,8 +14,9 @@ var UsersSchema = new mongoose.Schema({
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	activePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
-	inactivePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
+	groups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	pastGroups: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
+	
 	messages: [
 		{ messages: [{
 				message:{type:String},
