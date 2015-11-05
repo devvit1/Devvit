@@ -1,7 +1,7 @@
 angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, activeService, activeUser){
 	$scope.activeUser = activeUser;
-	$scope.activeGroups = activeUser.activeGroups;
-	console.log(23, $scope.activeGroups);
+	$scope.activePosts = activeUser.activePosts;
+	console.log(23, $scope.activePosts);
 	console.log(16, $scope.activeUser)
 	
 	// $scope.getActiveGroups = function() {

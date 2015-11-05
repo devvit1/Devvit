@@ -12,7 +12,7 @@ module.exports = {
 						return res.status(500).send(err)}
 					else{
 						Users.findByIdAndUpdate(req.body.active_user_id, 
-						{$push:{activeGroups: project._id}}, 
+						{$push:{activePosts: project._id}}, 
 						function(err, result) {
 							if (err) {return res.status(500).send(err)}
 							else{
