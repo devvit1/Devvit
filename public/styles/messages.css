@@ -18,7 +18,7 @@ div {
 	height:100vh;
 	background: white;
 	font-family: 'Roboto', sans-serif;
-	color: #366699;
+	color: #336699;
 	font-weight: 600;
 	text-align: center;
 	padding-right: 2%;
@@ -51,5 +51,5 @@ div {
 #message_time {
 	font-size: 12px;
 	float: right;
-	color: #d3d3d3;
+	color: #BDC1C9;
 }
