@@ -1,8 +1,9 @@
 <div class="prof_group_aside">
-	<!--<div ng-repeat = "group in groups">{{group.name}}</div>-->
-	<a ui-sref="profile.groups.group">
-		<div class="prof_aside_messages">Group 1</div>
-	</a>
+	<div ng-click="getGroupswithInfo($index)" class="prof_aside_messages" ng-repeat = "group in groups">
+		<a ui-sref="profile.groups.group">
+			<div>{{group.name}}</div>
+		</a>
+	</div>
 </div>
 <div class="prof_group_body">
 	<ui-view></ui-view>

@@ -1,6 +1,6 @@
-<div class="filter">
+<!--<div class="filter">
     Search: <input type="text" ng-model="projectFilter"/>
-</div></br>
+</div></br>-->
 
 <div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt'">
     <h2><span></span>{{webProject.name}}</h2>

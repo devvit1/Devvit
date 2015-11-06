@@ -44,10 +44,13 @@ module.exports = {
 				}
 			} 
 			else {
+				var memberExists = false;
 				project.members.forEach(function(elem) {
-					if(elem._id.toString() === req.body.active_user_id) {
-						return res.json('User already exists');
-					} else {
+					if(elem.member.toString() === req.body.active_user_id) {
+						memberExists = true;
+					}
+				})		
+				if (!memberExists){			
 						project.members.push({
 							member: req.body.active_user_id,
 							application: {
@@ -61,8 +64,7 @@ module.exports = {
 						if (req.body.message){
 							sendMessageToAdmins(project, req.body.active_user_id, req.body.message, res)
 						}
-					}			
-				});	
+					}				
 			}
 			res.json(project)
 		})

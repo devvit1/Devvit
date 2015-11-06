@@ -1,4 +1,40 @@
-<header>
+<div class="header">
+	
+<div class="home_headerTop">
+	<div class= "home_slogan">
+	by developers. for developers.
+	</div>
+
+	<div class="home_loginreg">
+		not a member?
+		<a class = 'loginRegButton' ui-sref="profile.login-register">register/</a>
+		<a class = 'loginRegButton' href="">login</a>
+		<!--<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp 
+		<a  class="username">login/register</a>-->
+	</div>
+	
+</div>
+
+<div class="home_header2">
+	<div class="home_devvitLogo">developer{{profile.basingInfo.firstname}}</div>
+	<div class="nav">
+		<ul>
+			<li class = "navButtons"><a ui-sref="devvit.web">HOME</a></li>
+			<li class = "navButtons" class = 'webButton' ng-class="{activeNavTab: isActive('/profile/active/')}"><a  ui-sref="profile.active">ACTIVE</a></li>
+			<li class = "navButtons"  ><a ui-sref="profile.pending" ng-class="{activeNavTab: isActive('/profile/pending/')}">PENDING</a></li>
+			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/groups/')}"><a ui-sref="profile.groups">GROUPS</a></li>
+			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/messages/')}"><a ui-sref="profile.messages">MESSAGES</a></li>
+			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/createProject/')}"><a ui-sref='profile.createProject'>SUBMIT</a></li>
+			<!--<li class = "navButtons searchButton" ng-click = "slideInSearch()"><a href=""><i class="fa fa-search"></i></a></li>-->
+			
+			
+		</ul>
+	</div>
+</div>
+
+<ui-view></ui-view>
+
+<!--<header>
 	<nav>
 		<a ui-sref="profile.about"><div ng-class="{activeNavTab: isActive('/profile/about/')}" class="navTab aboutTab">PROFILE</div></a>
 		<a ui-sref="profile.active"><div ng-class="{activeNavTab: isActive('/profile/active/')}" class = "navTab activeTab">ACTIVE</div></a>
@@ -10,8 +46,6 @@
 	<div class="profileDirective">
 		<a ui-sref="profile" class="username">{{profile.username}}</a>
 	</div>
-	<!-- this is a random link just to navagate back to home page easier during development-->
-			<a ui-sref="devvit.web" class="username">home link</a>
 		
 	<a ui-sref='profile.createProject'>
 		<div class="createPostButton">
@@ -22,4 +56,4 @@
 	<div class="profileContentView">
 		<ui-view></ui-view>
 	</div>
-</div>
+</div>-->
