@@ -5,7 +5,7 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 		groupsService.getGroups($rootScope.profile._id).then(function(res){
 			console.log(100, res)
 			for (var group in res.activePosts){
-				groupsService.findProject(res.activePosts[group]).then(
+				groupsService.findProject(res.activePosts[group]._id).then(
 					function(res){
 						console.log(33, res);
 						$scope.groups.push(res.data)
@@ -14,5 +14,9 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 			}
 		})
 	})();
+	
+	$scope.getGroupswithInfo = function(group){
+		$scope.groupsInfo = $scope.groups[group];
+	}
 
 })
