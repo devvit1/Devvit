@@ -9,7 +9,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 					var obj = {
 								messages: message.messages,
 								withUser: message.fromUser.basicInfo.firstName,
-								withUserLast: message.fromUser.basicInfo.lastName,
+								withUserLast: message.fromUser.basicInfo.lastName
 								}
 					$scope.userMessages.push(obj)
 
