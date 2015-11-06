@@ -7,8 +7,11 @@ var ProjectsSchema = new mongoose.Schema({
 	subType: String,
 	// appliedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
 	admins: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
-	members: [{ 
-			pending: {type: Boolean, default: true},
+	members: [{
+			application: {
+				pending: { type: Boolean, default: true },
+				message: { type: String }
+			},
 			member: {type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
 		}],
 	messages: [{ type: String }],

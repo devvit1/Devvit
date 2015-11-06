@@ -4,19 +4,26 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	
 	
 	
+
+
+
 		var user1 = {
 			//jacob
-			_id: "563abb2395fa9b14017c21d3"
+			_id: "563bbebacca522b5891ae46e"
 		};
 		
 		//billy
 		var user2 = {
-			_id: "563abb3095fa9b14017c21d4"
+			_id: "563be4b7a6c5ed5699f7a682"
 		};
 		
 		//joe
 		var user3 = {
+<<<<<<< HEAD
 			_id: "563ba3defebcf2de09bb6184"
+=======
+			_id: "563be0f604b29b0099885563"
+>>>>>>> 744cbda427c314b7134448998006c3d2a4057e85
 		}
 		
 		//billy
@@ -26,7 +33,8 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 
 
-	$rootScope.profile = user4;
+
+	$rootScope.profile = user2;
 
 
  

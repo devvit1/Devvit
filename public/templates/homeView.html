@@ -1,18 +1,38 @@
-<header>
-	<nav>
-		<a ui-sref="devvit.web"><div ng-class="{activeNavTab: isActive('/home/web')}" class="navTab webTab">WEB</div></a>
-		<a ui-sref="devvit.mobile"><div ng-class="{activeNavTab: isActive('/home/mobile')}" class = "navTab mobileTab">MOBILE</div></a>
-	</nav>
-<div class="profileDirective">
-	<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp <!-- html spaces(will change once auth is set)-->
-	<a ui-sref="profile.login-register" class="username">login/register</a>
-</div>
-</header>
-<div class="mainBody">
-	<div class="mainASide">
-asdf
+<div class="header">
+	
+<div class="home_headerTop">
+	<div class= "home_slogan">
+	by developers. for developers.
 	</div>
-	<div class="mainProjectView">
-		<ui-view></ui-view>
+
+	<div class="home_loginreg">
+		not a member?
+		<a class = 'loginRegButton' ui-sref="profile.login-register">register/</a>
+		<a class = 'loginRegButton' href="">login</a>
+		<!--<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp 
+		<a  class="username">login/register</a>-->
+	</div>
+	
+</div>
+
+<div class="home_header2">
+	<div class="home_devvitLogo">DEVVIT</div>
+	<div class="nav">
+		<ul>
+			<li class = "navButtons"><a href="">HOME</a></li>
+			<li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}"><a  ui-sref="devvit.web">WEB</a></li>
+			<li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/mobile')}"><a ui-sref="devvit.mobile">MOBILE</a></li>
+			<li class = "navButtons"><a href="">DEVELOPERS</a></li>
+			<li class = "navButtons"><a href="">SUBMIT YOUR IDEA</a></li>
+			<li class = "navButtons searchButton" ng-click = "slideInSearch()"><a href=""><i class="fa fa-search"></i></a></li>
+			
+			
+		</ul>
 	</div>
 </div>
+	
+</div>
+<div id="slideInOut" class="home_searchTab">
+	<input type="text"  class = "home_searchBar">
+</div>
+<ui-view></ui-view>
