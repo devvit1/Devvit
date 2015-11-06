@@ -9,7 +9,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 		var user1 = {
 			//jacob
-			_id: "563bbebacca522b5891ae46e"
+			_id: "563bbea7cca522b5891ae46d"
 		};
 		
 		//billy
@@ -30,7 +30,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 
 
-	$rootScope.profile = user2;
+	$rootScope.profile = user1;
 
  
 	(function updateUser (who){
