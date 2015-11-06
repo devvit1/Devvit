@@ -13,20 +13,7 @@ nav{
 	flex-direction: row;
 	margin-left:15%;
 }
-.profileDirective{
-	display: flex;
-	position:absolute;
-	top:0;
-	right:0;
-	width:300px;
-	height:50px;
-	border-bottom: 1px solid gray;
-	border-left:1px solid gray;
-	border-bottom-left-radius: 8px;
-	/*justify-content: center;*/
-	align-items: center;
-	
-}
+
 .profileBody{
 	display:flex;
 	flex-direction: row;
@@ -303,4 +290,7 @@ section > .editor:focus, section > .editor:focus:hover  {
 }
 .switch-left-right .switch-input:checked ~ .switch-label {
 	background: inherit;
+}
+.activeNavTab{
+	color: #336699;
 }
