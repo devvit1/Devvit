@@ -2,13 +2,11 @@
 	
 <div class="home_headerTop">
 	<div class= "home_slogan">
-	by developers. for developers.
+	by YOU. for YOU.
 	</div>
 
 	<div class="home_loginreg">
-		not a member?
-		<a class = 'loginRegButton' ui-sref="profile.login-register">register/</a>
-		<a class = 'loginRegButton' href="">login</a>
+	
 		<!--<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp 
 		<a  class="username">login/register</a>-->
 	</div>
@@ -19,12 +17,12 @@
 	<div class="home_devvitLogo">developer{{profile.basingInfo.firstname}}</div>
 	<div class="nav">
 		<ul>
-			<li class = "navButtons"><a ui-sref="devvit.web">HOME</a></li>
-			<li class = "navButtons" class = 'webButton' ng-class="{activeNavTab: isActive('/profile/active/')}"><a  ui-sref="profile.active">ACTIVE</a></li>
-			<li class = "navButtons"  ><a ui-sref="profile.pending" ng-class="{activeNavTab: isActive('/profile/pending/')}">PENDING</a></li>
-			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/groups/')}"><a ui-sref="profile.groups">GROUPS</a></li>
-			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/messages/')}"><a ui-sref="profile.messages">MESSAGES</a></li>
-			<li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/createProject/')}"><a ui-sref='profile.createProject'>SUBMIT</a></li>
+			<a ui-sref="devvit.web"><li class = "navButtons">HOME</li></a>
+			<a  ui-sref="profile.active"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/profile/active/')}">ACTIVE</li></a>
+			<a ui-sref="profile.pending"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/pending/')}">PENDING</li></a>
+			<a ui-sref="profile.groups"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/groups/')}">GROUPS</li></a>
+			<a ui-sref="profile.messages"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/messages/')}">MESSAGES</li></a>
+			<a ui-sref='profile.createProject'><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/createProject/')}">SUBMIT</li></a>
 			<!--<li class = "navButtons searchButton" ng-click = "slideInSearch()"><a href=""><i class="fa fa-search"></i></a></li>-->
 			
 			
@@ -32,8 +30,9 @@
 	</div>
 </div>
 
+<div class="profile_body">
 <ui-view></ui-view>
-
+</div>
 <!--<header>
 	<nav>
 		<a ui-sref="profile.about"><div ng-class="{activeNavTab: isActive('/profile/about/')}" class="navTab aboutTab">PROFILE</div></a>
