@@ -14,32 +14,15 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 			_id: "563abb3095fa9b14017c21d4"
 		};
 		
-		//me
+		//joe
 		var user3 = {
-			_id: "563abb3895fa9b14017c21d5"
+			_id: "563ba3defebcf2de09bb6184"
 		}
 		
-		//squire
+		//billy
 		var user4 = {
-			_id: "563abb4195fa9b14017c21d6"
+			_id: "563ba3effebcf2de09bb6185"
 		}
-		
-
-	};
-	
-
-
-	//joe
-	var user3 = {
-		_id: "563adfc722941f294e2e34a4"
-	}
-	
-	//billy
-	var user4 = {
-		_id: "563adfba22941f294e2e34a3"
-	}
-	
-	
 
 
 

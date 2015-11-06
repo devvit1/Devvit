@@ -76,7 +76,7 @@ module.exports = {
 			
 	},
 	destroy: function(req, res) {
-		Projects.findByIdAndRemove(req.body._id, function(err, result) {
+		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
 				res.json(result);
 		});
@@ -85,6 +85,7 @@ module.exports = {
 	findAll: function(req, res){
 		Projects.find({'type': req.params.id }).limit(25).populate('admins').exec(
 			function(err, result) {
+				console.log(result);
 				if (err) {
 					return res.status(500).send(err)}
 				else{
@@ -106,6 +107,13 @@ module.exports = {
 	
 	groupMessage: function(req, res){
 		
+	},
+	
+	projectUpdate: function(req, res) {
+		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {
+			if (err) return res.status(500).send(err);
+			res.json(result);
+		});
 	}
 	
 }

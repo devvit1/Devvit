@@ -41,14 +41,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-button{
+/*button{
 	width:100px;
 	height:30px;
 	border-radius:5px;
 	background: #CEE3F8;
 	color:#336699;
 	cursor: pointer;
-}
+}*/
 button:focus {outline:0;}
 input:focus {outline:0;}
 a{
