@@ -101,10 +101,8 @@ module.exports = {
 	},
 	
 	destroy: function(req, res) {
-		Projects.findByIdAndRemove(
-			req.body._id, 
-			function(err, result) {
-				if (err) return res.status(500).send(err);
+		Projects.findByIdAndRemove(req.params.id, function(err, result) {
+			if (err) return res.status(500).send(err);
 				res.json(result);
 			});
 	},
@@ -116,6 +114,7 @@ module.exports = {
 			.populate('admins')
 			.exec(
 			function(err, result) {
+				console.log(result);
 				if (err) {
 					return res.status(500).send(err)}
 				else{
@@ -137,6 +136,13 @@ module.exports = {
 	
 	groupMessage: function(req, res){
 		
+	},
+	
+	projectUpdate: function(req, res) {
+		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {
+			if (err) return res.status(500).send(err);
+			res.json(result);
+		});
 	}
 	
 }
@@ -245,3 +251,4 @@ function addProjectToUserGroups(project, user, res){
 	// 	if (err) return res.status(500).send(err)
 	// })
 };
+

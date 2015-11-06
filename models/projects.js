@@ -15,8 +15,6 @@ var ProjectsSchema = new mongoose.Schema({
 			member: {type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
 		}],
 	messages: [{ type: String }],
-	activeWeb: Boolean,
-	activeMobile: Boolean,
 	createdAt: { type: Date, default:Date.now }
 })
 

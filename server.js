@@ -31,8 +31,9 @@ app.get(        '/projects/:id',   ProjectController.findAll);
 app.get(        '/project/:id',   ProjectController.find);
 
 app.post(       '/projects',       ProjectController.createProj);
+app.put (       '/project/:id',     ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
-app.delete(     '/projects',       ProjectController.destroy);
+app.delete(     '/project/:id',       ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 
 

@@ -5,7 +5,7 @@ angular.module('devvit').service('projectService', function($http){
 			method: 'GET',
 			url: '/projects/' + type
 		}).then(function(res) {
-			console.log(res);
+			console.log('service', res);
 			return res.data;
 		})
 	}
@@ -16,7 +16,7 @@ angular.module('devvit').service('projectService', function($http){
 			url: '/projects',
 			data: info
 		}).then(function(res) {
-			console.log(res);
+			// console.log(res);
 		})
 	}
 	
