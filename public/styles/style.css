@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Intro';
+    src:url('fonts/Intro.ttf.woff') format('woff'),
+        url('fonts/Intro.ttf.svg#Intro') format('svg'),
+        url('fonts/Intro.ttf.eot');
+        /*url('fonts/Intro.ttf.eot?#iefix') format('embedded-opentype'); */
+    font-weight: 100;
+    font-style: normal;
+}
+.MergeLight-Regular { 
+	font-family: MergeLight-Regular;
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 .navTab{
 	display:flex;
 	width:150px;
@@ -11,10 +27,7 @@
 	margin:0 3px;
 }
 
-.activeNavTab{
-	background: #149290;
-	color:white;
-}
+
 
 .home_room_project{
     width: 95%;
