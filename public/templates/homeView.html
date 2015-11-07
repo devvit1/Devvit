@@ -16,15 +16,15 @@
 </div>
 
 <div class="home_header2">
-	<div class="home_devvitLogo">DEVVIT</div>
+	<div class="home_devvitLogo">DEVVIT.</div>
 	<div class="nav">
 		<ul>
-			<li class = "navButtons"><a href="">HOME</a></li>
-			<li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}"><a  ui-sref="devvit.web">WEB</a></li>
-			<li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/mobile')}"><a ui-sref="devvit.mobile">MOBILE</a></li>
-			<li class = "navButtons"><a href="">DEVELOPERS</a></li>
-			<li class = "navButtons"><a href="">SUBMIT YOUR IDEA</a></li>
-			<li class = "navButtons searchButton" ng-click = "slideInSearch()"><a href=""><i class="fa fa-search"></i></a></li>
+			<a href=""><li class = "navButtons">HOME</li></a>
+			<a  ui-sref="devvit.web"><li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}">WEB</li></a>
+			<a ui-sref="devvit.mobile"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/mobile')}">MOBILE</li></a>
+			<a href=""><li class = "navButtons">DEVELOPERS</li></a>
+			<a ui-sref='profile.createProject'><li class = "navButtons">SUBMIT YOUR IDEA</li></a>
+			<a href=""><li class = "navButtons searchButton" ng-click = "slideInSearch()"><i class="fa fa-search"></i></li></a>
 			
 			
 		</ul>

@@ -296,4 +296,7 @@ section > .editor:focus, section > .editor:focus:hover  {
 }
 .profile_body{
 	min-height:80vh;
+	display:flex;
+	justify-content: center;
+	
 }
