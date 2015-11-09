@@ -22,12 +22,12 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 		})
 		
 		$scope.checkingIfMine = function() {
-			console.log('from user', $scope.messagesArr[0].messages[0].from);
-			console.log('current user', $rootScope.profile._id);
+			// console.log('from user', $scope.messagesArr[0].messages[0].from);
+			// console.log('current user', $rootScope.profile._id);
 			if($scope.messagesArr[0].messages[0].from == $rootScope.profile._id) {
 				return false;
 			} else {
-				console.log('doesnt match')
+				// console.log('doesnt match')
 				return true; //true changes color to gray
 			}
 		}
@@ -46,10 +46,6 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	$scope.selectedNameCheck = function(index) {
 		$scope.selectedName = index;
 	}
-	
-	// $scope.showSearch = function() {
-	// 	console.log($scope.searchValue)
-	// }
 	
 	$scope.searchForUser = function(user) {
 		messageService.getUser(user).then(function(res) {
