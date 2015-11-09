@@ -199,4 +199,6 @@ fieldset {
 .activeNavTab{
 	color: #336699;
 }
-
+.profile_body {
+	min-height:80vh;
+}
