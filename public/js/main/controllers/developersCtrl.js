@@ -5,7 +5,7 @@ angular.module('devvit').controller('developersCtrl', function($scope, projectSe
 		};
 	
 		$scope.searchForDev = function() {
-			console.log('poo')
+			
 		}
 		
 		

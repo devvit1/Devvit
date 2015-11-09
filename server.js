@@ -40,12 +40,13 @@ app.put(        '/accept',         ProjectController.accept);
 
 
 //UserController
-app.get(        '/user/:id',       UserController.read);
+app.get(        '/user',       UserController.read);
 // app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
 app.put(        '/user',           UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
 app.get(        '/active/:id',     UserController.getActive);
+app.get(        '/getusers/:id',    UserController.getUsers)
 
 app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
