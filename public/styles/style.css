@@ -74,3 +74,16 @@
 	width: 20%;
 	margin-bottom: 20px;
 }
+
+.fixed {
+	position: fixed; 
+	top: 0; 
+	height: 70px; 
+	z-index: 1;
+}
+
+footer{
+	height:400px;
+	width:100%;
+	background: #181818
+}

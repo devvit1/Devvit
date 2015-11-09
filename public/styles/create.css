@@ -1,0 +1,27 @@
+.submitMyContent{
+	width:1200px;
+	background: white;
+	display:flex;
+	margin:0 auto;
+	margin-top:50px;
+	
+	
+}
+.createLeft{
+	display:flex;
+	height:600px;
+	border-right: 1px solid #D2D6D5;
+	flex:1;
+	font-family: 'Intro';
+    color: #093561;
+	background: #9bd0c6;
+    font-size: 2em;
+	line-height:60px;
+
+	flex-direction: column;
+	
+	align-items: center;
+}
+.createRight{
+	flex:1;
+}

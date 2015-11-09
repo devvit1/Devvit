@@ -1,6 +1,4 @@
-<div class="filter">
-    Search: <input type="text" ng-model="projectFilter"/>
-</div></br>
+
 
 <div class="home_room_project" ng-model="mobileProjects" ng-repeat="mobileProject in mobileProjects | filter: projectFilter | orderBy: 'createdAt'">
     <h2><span></span>{{mobileProject.name}}</h2>

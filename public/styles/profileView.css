@@ -202,4 +202,7 @@ fieldset {
 
 .profile_body{
 	min-height:80vh;
+
+	justify-content: center;
+	
 }

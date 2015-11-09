@@ -51,7 +51,7 @@ module.exports = {
   //GO BACK
   getActive: function(req, res){
     Users.findById(req.params.id)
-    .populate('messages.fromUser')
+    .populate('messages.withUser')
     .populate('activePosts')
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
