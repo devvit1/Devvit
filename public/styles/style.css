@@ -14,22 +14,17 @@
 }
 
 
-.navTab{
-	display:flex;
-	width:150px;
-	height:30px;
-	background:#0e455c;
-	color:white;
-	justify-content: center;
-	align-items: center;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	margin:0 3px;
+/*******************
+ WEB VIEW
+ ******************/
+ 
+/*** TEMP BACKGROUND COLOR ***/
+
+body {
+	background: #e1e3e4;
 }
-
-
-
-.home_room_project{
+ 
+/*.home_room_project{
     width: 95%;
     margin: 0 auto;
     border-top: 1px solid #b2b2b2;
@@ -73,4 +68,183 @@
 	margin-left: 70%;
 	width: 20%;
 	margin-bottom: 20px;
+}*/
+.web_panel {
+	min-height: 120px;
+	height: 100%;
+	background: #fff;
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 1px rgba(0, 0, 0, 0.19);
+	border-radius: 2px;
+	/*border: 1px solid #0e455c;*/
+	margin: 20px auto 0 auto;
+	word-wrap: break-word;
+	
+	font-family: 'Dosis', sans-serif;
 }
+
+.panel_title {
+	font-size: 30px;
+	color: #0e455c;
+	padding-left: 10px;
+}
+
+.panel_description {
+	word-wrap: break-word;
+	font-family:dosis;
+	padding-left: 10px;
+}
+
+.panel_btn  {
+	height: 20px;
+	width: 100px;
+	border: none;
+	font-size: 12px;
+	background: #0E455C;
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
+	font-weight: bold;
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	cursor: pointer;
+	
+}
+
+.panel_date {
+	-webkit-font-smoothing: antialiased;
+	padding-top: 13px;	
+}
+
+.panel_creator {
+	padding-top: 13px;
+}
+
+.panel_btn.deletebtn {
+	background: #e84d3d;
+}
+
+.panel_btn-contain {
+	padding-right: 10px;
+	height: 100%;
+	width: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	padding-top: 13px;
+	
+}
+fieldset {
+	border: 1px solid;
+}
+
+.contain-desc {
+	display: flex;
+	justify-content: space-between;
+}
+
+.contain-members {
+	display: flex;
+	height: 40px;
+	padding-left: 10px;
+	
+}
+
+.members {
+	align-self: flex-end;
+	padding-bottom: 2px;
+}
+
+.web_panel-flex-contain {
+	display: flex;
+	justify-content: space-between;
+}
+
+.web_desc-contain {
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.ng-modal-overlay {
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0.8;
+}
+
+.ng-modal-dialog {
+	z-index: 10000;
+	position: absolute;
+	width: 50%;
+	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	background: #fff;
+	box-shadow: 4px 4px 80px #000;
+}
+
+.ng-modal-dialog-content {
+	padding: 10px;
+	text-align: left;
+}
+
+.ng-modal-close {
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	padding: 5px;
+	cursor: pointer;
+	font-size: 120%;
+	display: inline-block;
+	font-weight: bold;
+	font-family: 'Dosis', sans-serif;
+}
+
+.web_panel-flex-contain-apply {
+	padding-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.send-message-apply-contain {
+	display: flex;
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.message-apply-contain {
+	display: flex;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+textarea {
+    resize: none;
+	font-size: 16px;
+	font-family: 'Dosis', sans-serif;
+	border-radius: 2px;
+}
+
+.apply-message {
+	width: 500px;
+	height: 180px;
+}
+
+.submit-contain {
+	display: flex;
+	width: 518px;
+	justify-content: flex-end;
+	padding-top: 5px;
+}
+
+
+
+
+

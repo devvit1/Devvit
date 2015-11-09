@@ -17,7 +17,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		//joe
 		var user3 = {
 
-			_id: "563ba3defebcf2de09bb6184"
+			_id: "5641293b6c0c409d1ee863e9"
 
 		}
 		

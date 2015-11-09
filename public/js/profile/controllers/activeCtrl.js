@@ -4,14 +4,18 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 	console.log(23, $scope.activePosts);
 	console.log(16, $scope.activeUser);
 
-	$scope.collpase = 
+	if ($scope.activePosts.length < 1) {
+		$scope.noActive = true;
+		$scope.activePosts = { 
+			message: "You don't seem to have any active posts!"
+		}
+	}
 	
 	$scope.save = false;
   	$scope.toggleView = function() {
   		$scope.save = !$scope.save;
   }
-	
-	
+  	
 	$scope.removeProject = function(id) {
 		if (confirm("Are you sure you want to delete this post?")) {
 			activeService.deletePost(id).then(function(res) {	
@@ -31,5 +35,7 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 			})
 		})
 	}
+	
+	
 	
 })
