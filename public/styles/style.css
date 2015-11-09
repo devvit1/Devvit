@@ -81,3 +81,9 @@
 	height: 70px; 
 	z-index: 1;
 }
+
+footer{
+	height:400px;
+	width:100%;
+	background: #181818
+}

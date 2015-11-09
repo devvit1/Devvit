@@ -1,0 +1,28 @@
+.developerBody{
+	background: #272525;
+	/*min-height: 70vh;*/
+	color: #f4f4f4;
+	font-family: dosis;
+}
+
+.searchDevelopers{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	text-align:center;
+	font-size:3em;
+
+}
+
+.searchDevelopers > input {
+	margin-top:10px;
+	font-size: 40px;
+    border: none;
+    border-bottom: 2px solid #f4f4f4;
+    margin-bottom: 5px;
+	background: transparent;
+	color: white;
+}
+.developerMain {
+	min-height: 50vh;
+	background: #f4f4f4
+}

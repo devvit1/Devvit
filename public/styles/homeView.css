@@ -26,12 +26,11 @@
 .home_devvitLogo{
 	font-family: 'Intro';
 	color: #093561;
-	font-size:3em;
+	font-size:2em;
 	flex:1;
 	margin-left:50px;
-	height:100%;
-	vertical-align: middle;
-	padding-top:13px;
+
+
 }
 
 .home_loginreg {
@@ -48,18 +47,26 @@
 }
 .nav{
 	flex:5;
+	height:30px;
 }
 .nav > ul{
 	display:flex;
 	flex-direction: row;
 	font-family: dosis;
-	justify-content: flex-end
+	justify-content: flex-end;
+	height:30px;
+	line-height: 31px;
+
 }
 .navButtons {
-	padding:20px 30px;
+	padding-left:20px;
+	padding-right:20px;
 	font-size:1.5em;
 	color: #343434;
-	border-left: 2px solid #f4f4f4
+	border-left: 2px solid #f4f4f4;
+	vertical-align:middle;
+	height:30px;
+	/*padding:5px 15px;*/
 }
 .nav> ul >a:hover {
 	background: #f4f4f4;
@@ -103,3 +110,9 @@
 	font-family:dosis;
 	
 }
+
+/*#scroller {
+	    position: fixed;
+		top:0;
+
+}*/
