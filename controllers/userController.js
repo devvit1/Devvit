@@ -57,6 +57,16 @@ module.exports = {
       if (err) return res.status(500).send("not found");
       res.json(result);
     })
+  },
+  
+ getUsers: function(req, res){
+    Users.find({$or:[
+    {'basicInfo.firstName': { "$regex": req.params.id, "$options": "i" }},
+    {'basicInfo.lastName': { "$regex": req.params.id, "$options": "i" }}]}, 
+     function (err, result){
+      if (err) return res.status(500).send("not found");
+      res.json(result);
+    })
   }
   
 
