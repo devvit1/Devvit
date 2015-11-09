@@ -6,7 +6,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 
 		messageService.getMessages(active_user_id).then(function(res){
 			console.log(res)
-			console.log(res.messages)
+			console.log('res.mes', res.messages)
 			$scope.messagesArr = res.messages;
 				res.messages.forEach(function(message){
 
@@ -22,13 +22,13 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 		})
 		
 		$scope.checkingIfMine = function() {
-			if($scope.messagesArr[0].fromUser._id == $rootScope.profile._id) {
-				console.log("user current", $rootScope.profile._id)
-				console.log("from user", $scope.messagesArr[0].fromUser._id)
-				console.log('doesnt match')
+			console.log('from user', $scope.messagesArr[0].messages[0].from);
+			console.log('current user', $rootScope.profile._id);
+			if($scope.messagesArr[0].messages[0].from == $rootScope.profile._id) {
 				return false;
 			} else {
-				return false; //false changes color to blue
+				console.log('doesnt match')
+				return true; //true changes color to gray
 			}
 		}
 		
@@ -45,6 +45,16 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 
 	$scope.selectedNameCheck = function(index) {
 		$scope.selectedName = index;
+	}
+	
+	// $scope.showSearch = function() {
+	// 	console.log($scope.searchValue)
+	// }
+	
+	$scope.searchForUser = function(user) {
+		messageService.getUser(user).then(function(res) {
+			console.log(res);
+		})
 	}
 	
 })

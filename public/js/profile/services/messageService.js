@@ -7,6 +7,7 @@ angular.module('devvit').service('messageService', function($http){
 			return res.data
 		})
 	}
+	
 	this.getName = function(user){
 		return $http({
 			method:'get',
@@ -16,4 +17,14 @@ angular.module('devvit').service('messageService', function($http){
 		})
 		
 	}
+	
+	this.getUser = function(user) {
+		return $http({
+			method: 'GET',
+			url: '/user/' + user
+		}).then(function(res) {
+			return res.data;
+		})
+	}
+	
 })
