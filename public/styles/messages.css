@@ -1,11 +1,8 @@
-div {
-	/*border: 1px solid blue;*/
-}
-
 .messages_wrap {
 	background: #e1e3e4;
 	padding-top: 40px;
-	height: 80vh;
+	height: 72vh;
+	width: 100%;
 }
 
 .messages_wrap_content {
@@ -18,10 +15,8 @@ div {
 .prof_mess_aside {
 	width:15%;
 	height:100%;
-	/*margin-bottom: 40px;*/
 	background: white;
 	font-family: 'Roboto', sans-serif;
-	color: #336699;
 	font-weight: 600;
 	text-align: center;
 	padding-right: 2%;
@@ -47,9 +42,16 @@ div {
 	width: 90%;
 	margin: 0 auto;
 	font-family: 'Roboto', sans-serif;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	border-bottom: 1px solid #d2d6d5;
+	margin-top: 15px;
+	margin-left: 15px;
+	padding: 15px;
+	padding-bottom: 20px;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 0px solid #000000;
+	background-color: #cfedfb;
+	line-height: 140%;
 }
 
 #message_time {
@@ -58,6 +60,26 @@ div {
 	color: #BDC1C9;
 }
 
-/*.prof_aside_messages > span:hover {
-	
-}*/
+.message_name {
+	color: #424242;
+}
+
+.message_name_current {
+	color: #336699;
+}
+
+.prof_message_card_away {
+	background-color: #e1e3e4;
+	width: 90%;
+	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 15px;
+	margin-left: 15px;
+	padding: 15px;
+	padding-bottom: 20px;
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 0px solid #000000;
+	line-height: 140%;
+}

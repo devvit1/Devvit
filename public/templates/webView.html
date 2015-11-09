@@ -2,7 +2,7 @@
     Search: <input type="text" ng-model="projectFilter"/>
 </div></br>-->
 
-<div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt'">
+<div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt' track by $index">
     <h2><span></span>{{webProject.name}}</h2>
     <h4><span>Description: </span>{{webProject.description}}</h4>
     
@@ -10,6 +10,7 @@
         <h4><span>Created At: </span>{{webProject.createdAt | date:'short'}}</h4>
         <h4><span>By: </span>{{webProject.admins[0].basicInfo.firstName}}
         {{webProject.admins[0].basicInfo.lastName}}</h4>
+        {{webProjects[$index].members.length}}
     </div>
 
     <button class="apply" ng-click="submit = !submit">Apply</button>
