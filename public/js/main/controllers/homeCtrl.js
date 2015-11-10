@@ -6,7 +6,7 @@ angular.module('devvit').controller('homeCtrl', function($scope, $location){
 	$("#slideInOut").hide();
 	
 	$scope.slideInSearch = function(elem){
-		$("#slideInOut").slideToggle('slow');
+		$("#slideInOut").slideToggle('fast');
 	}
 // 	$(window).scroll(function () {
 //     if ($(window).scrollTop() > 50) {

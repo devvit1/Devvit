@@ -5,22 +5,32 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	
 		var user1 = {
 			//jacob
-			_id: "5640cefcc3cd6e9d1cfc38e2"
+			_id: "563d35c90e74db4d1e6c37b4"
 		};
 
 		
 		//jacob
 		var user2 = {
-			_id: "5640cf0bc3cd6e9d1cfc38e3"
+
+			_id: "563d360446a0f06b1ea87b84"
+
 		};
+
+		//joe
+		var user3 = {
+
+			_id: "56413a676364be6a2d682c05"
+
+		}
 		
 		//billy
-		var user3 = {
-			_id: "563beb1f895e1e97afd85eb2"
+		var user4 = {
+			_id: "56413a606364be6a2d682c04"
 		}
 
 
-	$rootScope.profile = user2;
+	$rootScope.profile = user3;
+
 
 
  
