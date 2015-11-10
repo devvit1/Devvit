@@ -1,5 +1,5 @@
 <div ng-repeat='message in messages track by $index'>
-		<div class="prof_message_card" ng-class="{'prof_message_card_away': checkingIfMine($index)}">
+		<div class="prof_message_card">
 			<div>{{message.message}}</div>
 			<span id="message_time">Sent at {{message.time | date:'MM/dd h:mma'}}</span>
 		</div>
@@ -8,3 +8,4 @@
 		<textarea name="" id="messageReply" cols="30" rows="3" ng-model="msg"></textarea>
 		<button id="submitReply" ng-click="replyToUser(msg)">SEND</button>
 </div>
+<!-- ng-class="{'prof_message_card_away': checkingIfMine($index)}"-->

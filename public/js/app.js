@@ -71,11 +71,23 @@ app.config(function($stateProvider, $urlRouterProvider){
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl'
+				// resolve: {
+				// 	getMessages: function(messageService, $rootScope) {
+				// 		return messageService.getMessages($rootScope.profile._id).then(function(resp) {
+				// 			return resp.data.messages;
+				// 		});
+				// 	}
+				// }
 			})
 			.state('profile.messages.current', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessagesCurrent.html',
-				controller: 'messageCtrl'
+				controller: 'messageCurrentCtrl'
+				// resolve: {
+				// 	currentIndex: function($stateParams) {
+				// 		return $stateParams.index;
+				// 	}
+				// }
 			})
 			.state('profile.messages.newmessage', {
 				url:'/messages',
