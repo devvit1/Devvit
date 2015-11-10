@@ -2,7 +2,7 @@
 
 <div class="submitMyContent">
 	<div class="createLeft">
-		<p>Submit an Idea</p>
+		<p>Submit an Idea.</p>
 		<p>Find your help.</p>
 		<p>change the world.</p>
 		<div class="profile_globe">
@@ -11,14 +11,31 @@
 	</div>
 	
 	<div class="createRight">
-		<input type="text" ng-model="name" placeholder = "title">
+		<div class="createDesc"><u>Select your category</u></div>
+		<div class="create_option">
+			<div class="create_web" ng-click = 'typeValue("web")' ng-class = "{optionSelected: selectedWeb}">WEB</div>
+			
+			<div class="create_mobile" ng-click = 'typeValue("mobile")'ng-class = "{optionSelected : selectedMobile}">MOBILE</div>
+		</div>
+		<div class="createDesc"><u>type?</u></div>
+		<div class="create_subOption">
+			<div ng-click = 'typeSubOption("personal")' ng-class = "{optionSelected: selectedpers}" class="subOption">PERSONAL</div>
+			<div ng-click = 'typeSubOption("professional")' ng-class = "{optionSelected: selectedprof}"class="subOption">PROFESSIONAL</div>
+			<div ng-click = 'typeSubOption("freelance")' ng-class = "{optionSelected: selectedfree}" class="subOption">FREELANCE</div>
+		</div>
 
-<select ng-model="type">
-	<option value="web" >web</option>
-	<option value="mobile">mobile</option>
-</select>
+		<div class = "inputWrapper">
+			<input ng-model="project.name" type="text" class="create_projectName" placeholder="title...">
+		</div>
+		<div class="createDesc"><u>Give us a short description to inspire people</u></div>
+		<div class="inputWrapper">
+			<textarea ng-model="project.description" class = "create_textarea"></textarea>
+		</div>
 
-<input type="text" ng-model="description"placeholder="description">
-<button ng-click="createProject(name, description, type)">submit</button>
-	</div>
+
+
+
+
+<button ng-click="createProject(project)">submit</button>
+
 </div>

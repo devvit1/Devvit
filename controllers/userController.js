@@ -64,8 +64,24 @@ module.exports = {
     {'basicInfo.firstName': { "$regex": req.params.id, "$options": "i" }},
     {'basicInfo.lastName': { "$regex": req.params.id, "$options": "i" }}]}, 
      function (err, result){
+      var users = [];
       if (err) return res.status(500).send("not found");
-      res.json(result);
+      result.forEach(function(user){
+        users.push({
+          _id: user._id,
+          basicInfo: {
+            first:user.basicInfo.firstName,
+            last:user.basicInfo.lastName,
+            userName: user.basicInfo.userName,
+            email: user.basicInfo.email,
+            location: user.basicInfo.location,
+            github:user.basicInfo.githubUrl,
+            linkedin:user.basicInfo.linkedinUrl
+          },
+        })
+      })
+      res.json(users)
+
     })
   }
   
