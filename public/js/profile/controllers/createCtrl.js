@@ -2,18 +2,49 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 	
 	
 	
-	$scope.createProject = function(name, description, type){
-		var project = {
+	$scope.project = {
 				"active_user_id":$rootScope.profile._id,
-				"name":name,
-				"description": description,
-				"type":type
+				"name":null,
+				"description": null,
+				"subType":null,
+				"type":null
 		}
-		
+	$scope.createProject = function(project){	
+		console.log(project)		
 		createService.createProject(project)
-
 	}
 	
+	$scope.typeValue = function(type){
+		if (type === "web"){
+			$scope.selectedWeb = true;
+			$scope.selectedMobile = false;
+		}
+		else{
+			$scope.selectedWeb = false;
+			$scope.selectedMobile = true;
+		}
+		$scope.project.type = type
+	}
+	
+	$scope.typeSubOption = function (type){
+		if (type === "personal"){
+			$scope.selectedpers = true;
+			$scope.selectedprof = false;
+			$scope.selectedfree = false;
+		}
+		else if (type === "professional"){
+			$scope.selectedpers = false;
+			$scope.selectedprof = true;
+			$scope.selectedfree = false;
+		}
+		else{
+			$scope.selectedpers = false;
+			$scope.selectedprof = false;
+			$scope.selectedfree = true;			
+		}
+		$scope.project.subType = type
+	}
 
+	
 	
 })

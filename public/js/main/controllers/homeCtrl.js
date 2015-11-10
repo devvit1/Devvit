@@ -8,5 +8,10 @@ angular.module('devvit').controller('homeCtrl', function($scope, $location){
 	$scope.slideInSearch = function(elem){
 		$("#slideInOut").slideToggle('fast');
 	}
-	
+// 	$(window).scroll(function () {
+//     if ($(window).scrollTop() > 50) {
+//         $('#scroller').css('top', $(window).scrollTop());
+//     }
+// }
+// )
 })

@@ -21,6 +21,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/mobileView.html',
 				controller: 'mobileViewCtrl'
 			})
+			.state('devvit.developers', {
+				url: '/developers',
+				templateUrl:'../templates/developersView.html',
+				controller: 'developersCtrl'
+			})
 
 		.state('profile', {
 			url:'/profile',

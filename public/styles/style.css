@@ -68,6 +68,7 @@ body {
 	margin-left: 70%;
 	width: 20%;
 	margin-bottom: 20px;
+
 }*/
 .web_panel {
 	min-height: 120px;
@@ -245,6 +246,16 @@ textarea {
 }
 
 
+.fixed {
+	position: fixed; 
+	top: 0; 
+	height: 70px; 
+	z-index: 1;
+}
 
-
+footer{
+	height:400px;
+	width:100%;
+	background: #181818
+}
 
