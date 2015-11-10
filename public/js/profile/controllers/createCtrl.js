@@ -7,7 +7,8 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 				"name":null,
 				"description": null,
 				"subType":null,
-				"type":null
+				"type":null,
+				"tags": null,
 		}
 	$scope.createProject = function(project){	
 		console.log(project)		
@@ -44,7 +45,18 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 		}
 		$scope.project.subType = type
 	}
-
+	$scope.tags = [];
+	var createTags = document.getElementById("createTags")
 	
+	$scope.createATag = function (theTag){
+		$scope.tags.push(theTag)
+		$scope.project.tags = $scope.tags
+	}
+	$scope.removeTag = function(item) { 
+
+ 		 var index = $scope.tags.indexOf(item);
+ 	 	$scope.tags.splice(index, 1);
+		$scope.project.tags = $scope.tags     
+	}
 	
 })

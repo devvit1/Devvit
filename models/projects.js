@@ -17,7 +17,8 @@ var ProjectsSchema = new mongoose.Schema({
 	messages: [{ type: String }],
 	activeWeb: Boolean,
 	activeMobile: Boolean,
-	createdAt: { type: Date, default:Date.now }
+	createdAt: { type: Date, default:Date.now },
+	tags:[{type:String}]
 })
 
 module.exports = mongoose.model('Projects', ProjectsSchema)
