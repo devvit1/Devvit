@@ -70,7 +70,7 @@ body {
 	margin-bottom: 20px;
 
 }*/
-.web_panel {
+.panel {
 	min-height: 120px;
 	height: 100%;
 	background: #fff;
@@ -82,6 +82,7 @@ body {
 	
 	font-family: 'Dosis', sans-serif;
 }
+
 
 .panel_title {
 	font-size: 30px;
@@ -139,10 +140,6 @@ fieldset {
 	border: 1px solid;
 }
 
-.contain-desc {
-	display: flex;
-	justify-content: space-between;
-}
 
 .contain-members {
 	display: flex;
@@ -156,12 +153,12 @@ fieldset {
 	padding-bottom: 2px;
 }
 
-.web_panel-flex-contain {
+.panel-flex-contain {
 	display: flex;
 	justify-content: space-between;
 }
 
-.web_desc-contain {
+.panel-desc-contain {
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -208,7 +205,7 @@ fieldset {
 	font-family: 'Dosis', sans-serif;
 }
 
-.web_panel-flex-contain-apply {
+.panel-flex-contain-apply {
 	padding-top: 20px;
 	display: flex;
 	justify-content: space-between;

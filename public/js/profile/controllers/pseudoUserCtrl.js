@@ -19,17 +19,17 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		//joe
 		var user3 = {
 
-			_id: "5641293b6c0c409d1ee863e9"
+			_id: "56413a676364be6a2d682c05"
 
 		}
 		
 		//billy
 		var user4 = {
-			_id: "563ba3effebcf2de09bb6185"
+			_id: "56413a606364be6a2d682c04"
 		}
 
 
-	$rootScope.profile = user2;
+	$rootScope.profile = user3;
 
 
 

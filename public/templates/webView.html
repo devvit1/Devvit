@@ -19,17 +19,17 @@
 
 <div class = 'cont'>
 	<div class = 'panel-container' ng-repeat = 'webProject in webProjects track by $index'>
-		<div class = 'web_panel'>
-			<div class = 'web_panel-flex-contain'>
+		<div class = 'panel web_panel'>
+			<div class = 'panel-flex-contain'>
 				<span class = 'panel_title web-title'>{{webProject.name}}</span>
 				<span class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</span>
 				<span class = 'panel_date web_date'>Created On: {{webProject.createdAt | date:' MMM dd'}}</span>
 				<div class = 'panel_btn-contain'>
 					<apply-modal width='700px' height='60%'>
-      					<div class = 'web_panel-flex-contain-apply'>
-							<span class = 'panel_title'>{{webProject.name}}</span>
-							<span class = 'panel_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</span>
-							<span class = 'panel_date created'>{{webProject.createdAt | date: 'MMM dd'}}</span>
+      					<div class = 'panel-flex-contain-apply'>
+							<span class = 'panel_title web_title'>{{webProject.name}}</span>
+							<span class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</span>
+							<span class = 'panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</span>
 						</div>
 					<hr>
 					<div class = 'message-apply-contain'>
@@ -43,8 +43,8 @@
 					
 				</div>
 			</div>
-			<div class = 'web_desc-contain'>
-				<p class = 'web_desc' dd-text-collapse dd-text-collapse-max-length="110" dd-text-collapse-text="{{webProject.description}}">
+			<div class = 'panel-desc-contain'>
+				<p class = 'panel_desc' dd-text-collapse dd-text-collapse-max-length="110" dd-text-collapse-text="{{webProject.description}}">
 			</div>
 			<div class = 'contain-members'>
 				<span class = 'members'>{{webProjects[$index].members.length}} Applied</span>

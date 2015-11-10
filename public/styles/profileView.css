@@ -139,17 +139,17 @@ ACTIVE TAB
 }
 
 
-.panel {
+/*.panel {
 	height: auto;
 	min-height: 150px;
 	background: #fff;
 	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 1px rgba(0, 0, 0, 0.19);
 	/*border-radius: 2px;*/
 	/*border: 1px solid #0e455c;*/
-	margin: 20px auto 0 auto;
+	/*margin: 20px auto 0 auto;
 	line-height: 1.5;
 	font-family: 'Dosis', sans-serif;
-}
+}*/
 
 .profile_active-flex-contain {
 	display: flex;
@@ -252,5 +252,6 @@ ACTIVE TAB
 	color: #e84d3d;
 	cursor: pointer;
 }
+
 
 
