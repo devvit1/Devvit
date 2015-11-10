@@ -1,22 +1,14 @@
 <div class="messages_wrap">
 	<div class="messages_wrap_content">
-		<div class="prof_mess_aside">
-			<button class="findUser" ng-click="searchValue = true">New Message</button>
-			<input type="text" placeholder="Search User..." ng-show="searchValue" ng-model="userSearch"></input>
-			<input type="submit" ng-show="searchValue" ng-click="searchForUser(userSearch)">
-			<div ng-click="getMessageswithUser($index); selectedNameCheck($index)" class="prof_aside_messages" ng-repeat="user in userMessages">
+		<button class="findUser" ng-click="searchValue = true" ui-sref="profile.messages.newmessage">New Message</button>
+		<div class="prof_mess_aside" ui-sref="profile.messages.current">
+			<div ng-click="getMessageswithUser($index); selectedNameCheck($index); getCurrentIndex($index)" class="prof_aside_messages" ng-repeat="user in userMessages">
 				<span class="message_name" ng-class="{'message_name_current': $index == selectedName}">{{user.withUser}} {{user.withUserLast}}</span>
 				<br>
 			</div>
 		</div>
 		<div class="prof_mess_body">
-			<div class="prof_message_card" ng-class="{'prof_message_card_away': checkingIfMine()}" ng-repeat='message in messages'>
-				<div>{{message.message}}</div>
-				<span id="message_time">Sent at {{message.time | date:'MM/dd h:mma'}}</span>
-			</div>
-			<div class="prof_message_reply">
-				<textarea name="" id="messageReply" cols="30" rows="5"></textarea>
-			</div>
+			<ui-view></ui-view>
 		</div>
 	</div>
 </div>

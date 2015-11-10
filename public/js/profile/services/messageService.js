@@ -1,4 +1,5 @@
 angular.module('devvit').service('messageService', function($http){
+	
 	this.getMessages = function(active_user){
 		return $http({
 			method:'get',
@@ -18,12 +19,22 @@ angular.module('devvit').service('messageService', function($http){
 		
 	}
 	
-	this.getUser = function(user) {
+	// this.getUser = function(user) {
+	// 	return $http({
+	// 		method: 'GET',
+	// 		url: '/user/' + user
+	// 	}).then(function(res) {
+	// 		return res.data;
+	// 	})
+	// }
+	
+	this.addMessage = function(data) {
 		return $http({
-			method: 'GET',
-			url: '/user/' + user
+			method: 'PUT',
+			url: '/addmessage',
+			data: data
 		}).then(function(res) {
-			return res.data;
+			return res;
 		})
 	}
 	

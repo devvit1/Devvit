@@ -21,7 +21,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		}
 
 
-	$rootScope.profile = user2;
+	$rootScope.profile = user1;
 
 
 

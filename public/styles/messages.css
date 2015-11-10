@@ -37,6 +37,7 @@
 	background: white;
 	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.19);
 	position: relative;
+	overflow-y: scroll;
 }
 
 .prof_message_card {
@@ -91,4 +92,25 @@
 	width: 80%;
 	display: block;
 	margin-left: 3%;
+	font-size: 13px;
+	resize: none;
+}
+
+#messageReply:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+#submitReply {
+	position: absolute;;
+	bottom: 40px;
+	right: 50px;
+	padding: 5px 10px;
+}
+
+.findUser {
+	height: 10%;
+	margin-right: 20px;
+	background-color: #222222;
+	color: white;
 }

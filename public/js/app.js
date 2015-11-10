@@ -72,6 +72,16 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl'
 			})
+			.state('profile.messages.current', {
+				url:'/messages',
+				templateUrl:'../templates/profileMessagesCurrent.html',
+				controller: 'messageCtrl'
+			})
+			.state('profile.messages.newmessage', {
+				url:'/messages',
+				templateUrl:'../templates/profileMessagesCompose.html',
+				controller: 'messageCtrl'
+			})
 			.state('profile.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
