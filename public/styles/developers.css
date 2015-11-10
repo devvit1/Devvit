@@ -13,6 +13,14 @@
 
 }
 
+.users{
+	width:60%;
+	margin:0 auto;
+	display:flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+}
 .searchDevelopers > input {
 	margin-top:10px;
 	font-size: 40px;
@@ -24,5 +32,29 @@
 }
 .developerMain {
 	min-height: 50vh;
-	background: #f4f4f4
+	background: #f4f4f4;
+	color:black;
+}
+
+.main_developerCard {
+	width:250px;
+	height:350px;
+	border-radius: 10px;	
+	margin:20px 35px;
+}
+
+.developerCard_upper{
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	height:60%;
+	width:100%;
+	background:gray;
+	border:1px solid gray;
+}
+
+.developerCard_lower{
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	height:40%;
+	background: white;
 }
