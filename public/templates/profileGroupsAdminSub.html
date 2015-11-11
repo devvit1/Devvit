@@ -1,6 +1,21 @@
 <a ui-sref = "profile.groups"><u> < back to groups</u></a>
 <div class="theGroupDisplay">
 	<div class="theGroupHeader">{{group.name}}</div>
+	<div class="adminAccept">
+			<div class="appliedUserCard" ng-repeat="applied in group.members">
+				<div class="appliedUserCard_upper">
+					<div class="appliedAccept"><i class="fa fa-check-circle"></i></div>
+					<div class="appliedDeny"><i class="fa fa-times-circle"></i></div>
+				</div>
+				<div class="appliedUserCard_lower">
+					{{applied.member.basicInfo.firstName}}
+					{{applied.member.basicInfo.lastName}}					
+				</div>
+				
+				
+
+			</div>
+		</div>
 	<div class="theGroupBody">
 		
 		<div class="theGroupInfo">

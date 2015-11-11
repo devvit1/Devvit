@@ -139,35 +139,30 @@ ACTIVE TAB
 }
 
 
-.panel {
-	height: 80px;
+/*.panel {
+	height: auto;
+	min-height: 150px;
 	background: #fff;
-	/*box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 1px rgba(0, 0, 0, 0.19);*/
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2), 0 1px 1px 1px rgba(0, 0, 0, 0.19);
 	/*border-radius: 2px;*/
 	/*border: 1px solid #0e455c;*/
-	margin: 20px auto 0 auto;
+	/*margin: 20px auto 0 auto;
 	line-height: 1.5;
 	font-family: 'Dosis', sans-serif;
-}
+}*/
 
-.profile_active-panel {
+.profile_active-flex-contain {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 }
 
-.profile_active-title {
+.profile_title.active-title {
 	font-size: 30px;
 	color: #0e455c;
 	padding-left: 10px;
 }
 
-.panel-description {
-	word-wrap: break-word;
-}
-
 .profile_btn  {
-	display: inline-block;
 	height: 20px;
 	width: 150px;
 	border: none;
@@ -180,8 +175,14 @@ ACTIVE TAB
 	padding-left: 0;
 	padding-right: 0;
 	cursor: pointer;
+	margin-top: 14px;
+	
 }
 
+.profile_date.active-date {
+	-webkit-font-smoothing: antialiased;
+	padding-top: 13px;	
+}
 
 .profile_btn.deletebtn {
 	background: #e84d3d;
@@ -189,20 +190,65 @@ ACTIVE TAB
 
 .profile_btn-contain {
 	padding-right: 10px;
+	width: 300px;
 	display: flex;
-}
-fieldset {
-	border: 1px solid;
+	justify-content: flex-end;	
 }
 
+.contain2 {
+	display: flex;
+	padding-top: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+
+.edit-desc {
+	width: 500px;
+	height: 75px;
+	
+}
 
 .activeNavTab{
 	color: #336699;
 }
 
-.profile_body{
-	min-height:80vh;
 
+.profile_body {
+	min-height:80vh;
+}
+
+.active-description {
+	word-break: break-all;
+}
+
+.noactive {
+	font-size: 30px;
+	font-family: 'Dosis', sans-serif;
+	align-self: center;
+	color: #0E455C;
+}
+
+.message-contain {
+	height: 400px;
+	display: flex;
+	align-self: center;
 	justify-content: center;
-	
+}
+
+.contain3 {
+	display: flex;
+	height: 100%;
+	padding-right: 10px;
+	padding-top: 60px;
+	justify-content: flex-end;
+}
+
+.type {
+	align-self: flex-end;
+}
+
+.collapse-text-toggle {
+	color: #e84d3d;
+	cursor: pointer;
 }

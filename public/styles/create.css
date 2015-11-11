@@ -1,10 +1,10 @@
 .submitMyContent{
 	width:1200px;
-	background: white;
+	background: #9BD0C6;;
 	display:flex;
 	margin:0 auto;
 	margin-top:50px;
-	
+	margin-bottom: 50px;
 	
 }
 .createLeft{
@@ -25,6 +25,9 @@
 .createRight{
 	flex:1;
 	text-align: center;
+	border: 2px solid #9BD0C6;
+	box-sizing: border-box;
+	background: white;
 }
 
 .create_option {
@@ -82,11 +85,47 @@
 
 }*/
 .createDesc {
-
 	display: inline-block;
-	color: #093561;
-	
+	color: #093561;	
 	text-align: center;
 	font-family: "intro";
 	margin-top:50px;
+}
+
+.displayTags{
+	display:flex;
+	flex-direction: row;
+	display: inline-block;
+}
+.displayedTag{
+	border-radius:5px;
+	padding:5px 5px;
+	display:inline-block;
+	background: #D1ECDD;
+	color:#093561;
+	border: 2ps solid gray;
+	margin:2px 3px;
+	font-family: "intro";
+}
+
+.displayedTag >a >i:hover{
+	color:red;
+}
+
+.createTags{
+	border:none;
+	border-bottom:2px solid #FF9326;
+	height:30px;
+	font-size: 1.5em;
+	width:200px;
+}
+
+.createButton{
+	border:none;
+	background:#FF9326;
+	font-family:'intro';
+	margin:40px 0;
+}
+.createButton:hover{
+	background: #F9AB5E
 }

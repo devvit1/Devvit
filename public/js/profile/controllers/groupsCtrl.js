@@ -1,22 +1,36 @@
-angular.module('devvit').controller('groupsCtrl', function($scope, groupsService, $rootScope){
+angular.module('devvit').controller('groupsCtrl', function($scope, groupsService, $state, $rootScope){
 	
 	(function getGroups(){
 		$scope.groups = []
 		groupsService.getGroups($rootScope.profile._id).then(function(res){
-			console.log(100, res)
-			for (var group in res.activePosts){
-				groupsService.findProject(res.activePosts[group]._id).then(
-					function(res){
-						console.log(33, res);
-						$scope.groups.push(res.data)
-					}
-				)
-			}
+			for (var group in res){
+				console.log(res[group])
+				$scope.groups.push(res[group])
+			}		
 		})
 	})();
 	
 	$scope.getGroupswithInfo = function(group){
 		$scope.groupsInfo = $scope.groups[group];
 	}
+	
+	$scope.goToGroup = function(group){
+		group.admins.forEach(function(admin){
+			if ($rootScope.profile._id === admin){
+				$state.go('profile.groupdisplayAdmin', {
+					group: group._id
+				})
+			}
+			else {
+				$state.go('profile.groupdisplay', {
+					group: group._id
+				})
+			}
+			
+		})
+		
+	}
+	
+	
 
 })

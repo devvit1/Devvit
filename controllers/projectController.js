@@ -15,6 +15,14 @@ module.exports = {
 						{$push:{activePosts: project._id}}, 
 						function(err, result) {
 							if (err) {return res.status(500).send(err)}
+							// else{
+							// 	res.json(result);
+							// }
+						});
+						Users.findByIdAndUpdate(req.body.active_user_id, 
+						{$push:{groups: project._id}}, 
+						function(err, result) {
+							if (err) {return res.status(500).send(err)}
 							else{
 								res.json(result);
 							}
@@ -96,8 +104,7 @@ module.exports = {
 				function(err, success) {
 					if (err) return res.status(500).send(err);
 					else res.send(success)
-				})
-				
+				})			
 	},
 	
 	destroy: function(req, res) {
@@ -112,9 +119,24 @@ module.exports = {
 			{'type': req.params.id })
 			.limit(25)
 			.populate('admins')
+			.populate('messages.sentBy')
 			.exec(
 			function(err, result) {
-				console.log(result);
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+			})
+	},
+	find: function(req, res){
+		Projects.find(
+			{'_id': req.params.id })
+			.populate({
+				path:'messages.sentBy admins members.member pendingApprovals',
+				select:'basicInfo.firstName basicInfo.lastName'})
+			.exec(
+			function(err, result) {
 				if (err) {
 					return res.status(500).send(err)}
 				else{
@@ -123,20 +145,31 @@ module.exports = {
 			})
 	},
 	
-	find: function(req, res){
-		Projects.findById(req.params.id, function(err, found){
-			if (err) {
-					return res.status(500).send(err)
-					}
+	groupMessage: function(req, res){
+		Projects.findByIdAndUpdate(req.body.project_id, 
+		{$push:{messages:{
+			message:req.body.message,
+			sentBy:mongoose.Types.ObjectId(req.body.active_user_id)//may cause issues with req.user
+		}}},
+		{new: true},
+		function(err, found){
+			if (err) {return res.status(500).send(err)}
+			else{
+				Projects.findById(found._id)
+				.populate({
+					path:'messages.sentBy'
+				})
+				.exec(function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
 				else{
-					res.json(found);
+					res.json(result);
 				}
+			})
+			}
 		})
 	},
-	
-	groupMessage: function(req, res){
-		
-	},
+
 	
 	projectUpdate: function(req, res) {
 		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {
