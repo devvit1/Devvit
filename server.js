@@ -31,7 +31,6 @@ var MessageController = require('./controllers/messageController');
 //ProjectController
 app.get(        '/projects/:id',   ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
-
 app.post(       '/projects',       ProjectController.createProj);
 app.put (       '/project/:id',    ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);

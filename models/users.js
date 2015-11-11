@@ -23,7 +23,7 @@ var UsersSchema = new mongoose.Schema({
 				time: {type: Date, default:Date.now()},
 				read: {type:Boolean, default:false},
 				from: {type: mongoose.Schema.Types.ObjectId}
-				}],
+		  }],
 		  withUser: {type: mongoose.Schema.Types.ObjectId},
 
 		}

@@ -119,6 +119,7 @@ module.exports = {
 			{'type': req.params.id })
 			.limit(25)
 			.populate('admins')
+			.populate('messages.sentBy')
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -131,10 +132,9 @@ module.exports = {
 	find: function(req, res){
 		Projects.find(
 			{'_id': req.params.id })
-			.populate('admins')
-			.populate('members')
-			.populate('pendingApprovals')
-			.populate('messages.sentBy')
+			.populate({
+				path:'messages.sentBy admins members.member pendingApprovals',
+				select:'basicInfo.firstName basicInfo.lastName'})
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -155,7 +155,17 @@ module.exports = {
 		function(err, found){
 			if (err) {return res.status(500).send(err)}
 			else{
-				res.json(found);
+				Projects.findById(found._id)
+				.populate({
+					path:'messages.sentBy'
+				})
+				.exec(function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+			})
 			}
 		})
 	},

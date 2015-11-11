@@ -1,4 +1,4 @@
-angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootScope, groupsService,groupInfo){
+angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo){
 	$scope.group = groupInfo;
 	$scope.groupMessages = groupInfo.messages;
 	

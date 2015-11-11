@@ -23,7 +23,7 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			url: '/groupmessage',
 			data: message
 		}).then(function(res){
-			console.log(res)
+			console.log(res.data.messages)
 			return res.data.messages
 		})
 	}

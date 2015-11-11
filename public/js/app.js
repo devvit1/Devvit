@@ -72,6 +72,16 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
+				.state('profile.groupdisplayAdmin', {
+					url:'/groupadmin/:group',
+					templateUrl:'../templates/profileGroupsAdminSub.html',
+					controller: 'groupDisplayAdminCtrl',
+					resolve: {
+						groupInfo: function ($stateParams, groupsService) {
+							 return groupsService.findProject($stateParams.group)
+						}
+					}
+				})
 			.state('profile.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
