@@ -3,13 +3,10 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 	(function getGroups(){
 		$scope.groups = []
 		groupsService.getGroups($rootScope.profile._id).then(function(res){
-			for (var group in res.activePosts){
-				groupsService.findProject(res.activePosts[group]._id).then(
-					function(res){
-						$scope.groups.push(res)
-					}
-				)
+			for (var group in res){
+				$scope.groups.push(res[group])
 			}
+			
 		})
 	})();
 	
@@ -18,9 +15,12 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 	}
 	
 	$scope.goToGroup = function(group){
+		console.log(group)
 		$state.go('profile.groupdisplay', {
-			group: group._id
+			group: group
 		})
 	}
+	
+	
 
 })

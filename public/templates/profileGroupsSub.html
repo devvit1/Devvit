@@ -14,19 +14,26 @@
 				</div>
 				<div class="groupDescription">{{group.description}}</div>
 			</div>
-			<div class="groupInfoMessage"></div>
+			<div class="groupInfoMessage">
+				<div class="groupInfoMessageDiv" ng-repeat = "message in groupMessages track by $index">
+					<div class="groupInfoMessagemess">{{message.message}}</div>
+					<div class="groupInfoMessageUser">{{message.sentBy}}</div>		
+				</div>
+
+				<input type="text"ng-model="groupmessagecontent"><button ng-click="sendGroupMessage(groupmessagecontent)">send</button>
+			</div>
 		</div>
 		
 		<div class="theGroupMembers">
 			<div class="membersAdmins">
 				<div class="groupAdminsRepeat"ng-repeat = "admin in group.admins">
-				{{admin}}
+				<div class="groupAdminUser">{{admin.basicInfo.firstName}} {{admin.basicInfo.lastName}}</div>
 					
 				</div>
 			</div>
 			<div class="membersMembers">
 				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
-					{{member}}
+					<div class="groupMemberUser">{{member.basicInfo.firstName}}{{member.basicInfo.lasttName}}</div>
 				</div>
 			</div>
 		</div>

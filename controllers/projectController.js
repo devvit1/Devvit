@@ -15,6 +15,14 @@ module.exports = {
 						{$push:{activePosts: project._id}}, 
 						function(err, result) {
 							if (err) {return res.status(500).send(err)}
+							// else{
+							// 	res.json(result);
+							// }
+						});
+						Users.findByIdAndUpdate(req.body.active_user_id, 
+						{$push:{groups: project._id}}, 
+						function(err, result) {
+							if (err) {return res.status(500).send(err)}
 							else{
 								res.json(result);
 							}
@@ -96,8 +104,7 @@ module.exports = {
 				function(err, success) {
 					if (err) return res.status(500).send(err);
 					else res.send(success)
-				})
-				
+				})			
 	},
 	
 	destroy: function(req, res) {
@@ -121,28 +128,34 @@ module.exports = {
 				}
 			})
 	},
-	
 	find: function(req, res){
-		Projects.findById(req.params.id, function(err, found){
-			if (err) {
-					return res.status(500).send(err)
-					}
+		Projects.find(
+			{'_id': req.params.id })
+			.populate('admins')
+			.populate('members')
+			.populate('pendingApprovals')
+			.populate('messages.sentBy')
+			.exec(
+			function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
 				else{
-					res.json(found);
+					res.json(result);
 				}
-		})
+			})
 	},
 	
 	groupMessage: function(req, res){
 		Projects.findByIdAndUpdate(req.body.project_id, 
 		{$push:{messages:{
 			message:req.body.message,
-			sentBy:req.body.active_user_id
+			sentBy:mongoose.Types.ObjectId(req.body.active_user_id)//may cause issues with req.user
 		}}},
+		{new: true},
 		function(err, found){
 			if (err) {return res.status(500).send(err)}
 			else{
-				res.json('message sent');
+				res.json(found);
 			}
 		})
 	},

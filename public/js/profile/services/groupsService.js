@@ -5,7 +5,7 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			method:'get',
 			url: '/active/'+ active_user_id
 		}).then(function(res){
-			return res.data
+			return res.data.groups
 			})
 	};
 	
@@ -14,8 +14,18 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			method:'get',
 			url: '/project/' + project_id
 		}).then(function(res){
-			return res.data
+			return res.data[0]
 			})
+	}
+	this.sendGroupMessage = function (message){
+		return $http({
+			method:'post',
+			url: '/groupmessage',
+			data: message
+		}).then(function(res){
+			console.log(res)
+			return res.data.messages
+		})
 	}
 	
 })
