@@ -1,4 +1,43 @@
-<header>
+<div class="header">
+	
+<div class="home_headerTop">
+	<div class= "home_slogan">
+	by YOU. for YOU.
+	</div>
+
+	<div class="home_loginreg">
+
+	
+
+	{{profile.username}}
+
+		<!--<a ui-sref="profile" class="username">Username</a>&nbsp&nbsp 
+		<a  class="username">login/register</a>-->
+	</div>
+	
+</div>
+
+<div class="home_header2">
+	<div class="home_devvitLogo">developer</div>
+	<div class="nav">
+		<ul>
+			<a ui-sref="devvit.web"><li class = "navButtons">HOME</li></a>
+			<a  ui-sref="profile.active"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/profile/active/')}">ACTIVE</li></a>
+			<a ui-sref="profile.pending"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/pending/')}">PENDING</li></a>
+			<a ui-sref="profile.groups"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/groups/')}">GROUPS</li></a>
+			<a ui-sref="profile.messages"><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/messages/')}">MESSAGES</li></a>
+			<a ui-sref='profile.createProject'><li class = "navButtons" ng-class="{activeNavTab: isActive('/profile/createProject/')}">SUBMIT</li></a>
+			<!--<li class = "navButtons searchButton" ng-click = "slideInSearch()"><a href=""><i class="fa fa-search"></i></a></li>-->
+			
+			
+		</ul>
+	</div>
+</div>
+
+<div class="profile_body">
+<ui-view></ui-view>
+</div>
+<!--<header>
 	<nav>
 		<a ui-sref="profile.about"><div ng-class="{activeNavTab: isActive('/profile/about/')}" class="navTab aboutTab">PROFILE</div></a>
 		<a ui-sref="profile.active"><div ng-class="{activeNavTab: isActive('/profile/active/')}" class = "navTab activeTab">ACTIVE</div></a>
@@ -10,8 +49,6 @@
 	<div class="profileDirective">
 		<a ui-sref="profile" class="username">{{profile.username}}</a>
 	</div>
-	<!-- this is a random link just to navagate back to home page easier during development-->
-			<a ui-sref="devvit.web" class="username">home link</a>
 		
 	<a ui-sref='profile.createProject'>
 		<div class="createPostButton">
@@ -22,4 +59,4 @@
 	<div class="profileContentView">
 		<ui-view></ui-view>
 	</div>
-</div>
+</div>-->

@@ -15,6 +15,14 @@ module.exports = {
 						{$push:{activePosts: project._id}}, 
 						function(err, result) {
 							if (err) {return res.status(500).send(err)}
+							// else{
+							// 	res.json(result);
+							// }
+						});
+						Users.findByIdAndUpdate(req.body.active_user_id, 
+						{$push:{groups: project._id}}, 
+						function(err, result) {
+							if (err) {return res.status(500).send(err)}
 							else{
 								res.json(result);
 							}
@@ -44,10 +52,13 @@ module.exports = {
 				}
 			} 
 			else {
+				var memberExists = false;
 				project.members.forEach(function(elem) {
-					if(elem._id.toString() === req.body.active_user_id) {
-						return res.json('User already exists');
-					} else {
+					if(elem.member.toString() === req.body.active_user_id) {
+						memberExists = true;
+					}
+				})		
+				if (!memberExists){			
 						project.members.push({
 							member: req.body.active_user_id,
 							application: {
@@ -61,8 +72,7 @@ module.exports = {
 						if (req.body.message){
 							sendMessageToAdmins(project, req.body.active_user_id, req.body.message, res)
 						}
-					}			
-				});	
+					}				
 			}
 			res.json(project)
 		})
@@ -94,15 +104,12 @@ module.exports = {
 				function(err, success) {
 					if (err) return res.status(500).send(err);
 					else res.send(success)
-				})
-				
+				})			
 	},
 	
 	destroy: function(req, res) {
-		Projects.findByIdAndRemove(
-			req.body._id, 
-			function(err, result) {
-				if (err) return res.status(500).send(err);
+		Projects.findByIdAndRemove(req.params.id, function(err, result) {
+			if (err) return res.status(500).send(err);
 				res.json(result);
 			});
 	},
@@ -121,20 +128,44 @@ module.exports = {
 				}
 			})
 	},
-	
 	find: function(req, res){
-		Projects.findById(req.params.id, function(err, found){
-			if (err) {
-					return res.status(500).send(err)
-					}
+		Projects.find(
+			{'_id': req.params.id })
+			.populate('admins')
+			.populate('members')
+			.populate('pendingApprovals')
+			.populate('messages.sentBy')
+			.exec(
+			function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
 				else{
-					res.json(found);
+					res.json(result);
 				}
-		})
+			})
 	},
 	
 	groupMessage: function(req, res){
-		
+		Projects.findByIdAndUpdate(req.body.project_id, 
+		{$push:{messages:{
+			message:req.body.message,
+			sentBy:mongoose.Types.ObjectId(req.body.active_user_id)//may cause issues with req.user
+		}}},
+		{new: true},
+		function(err, found){
+			if (err) {return res.status(500).send(err)}
+			else{
+				res.json(found);
+			}
+		})
+	},
+
+	
+	projectUpdate: function(req, res) {
+		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {
+			if (err) return res.status(500).send(err);
+			res.json(result);
+		});
 	}
 	
 }
@@ -154,29 +185,29 @@ function addProjectToUser(userId, project, message, res) {
 function sendMessageToAdmins(project, userId, message, res){
 	var existingId = [];
 	var index = 0;
-
+	var id = mongoose.Types.ObjectId(userId);
 	project.admins.forEach(function(elem){//for each admin in array
 		Users.findById(elem, function(err, admin){		// go find admin's data	
 			if (err) return res.status(500).send(err);
 
 			else if (admin.messages.length > 0){		// if admin we found has messages
 				admin.messages.forEach(function(elem){ //go through each meassage
-					existingId.push(elem.fromUser.toString())//push the fromId of each message to existingis
+					existingId.push(elem.withUser.toString())//push the fromId of each message to existingis
 
 				})
 				index = existingId.indexOf(userId) //index = the instance of active user in array
 				if(index !== -1){
-					admin.messages[index].messages.push({message:message})
+
+					admin.messages[index].messages.push({message:message, from: id })
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
 					})
 				}
 				else {
-					var id = mongoose.Types.ObjectId(userId);
 					admin.messages.push(
 						{
-						messages:{message:message},
-						fromUser:id
+						messages:{message:message, from: id},
+						withUser:userId
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -186,8 +217,8 @@ function sendMessageToAdmins(project, userId, message, res){
 			else {
 					admin.messages.push(
 						{
-						messages:{message:message},
-						fromUser:userId
+						messages:{message:message, from: id},
+						withUser:userId
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -206,23 +237,24 @@ function save(obj, res){
 function addMessageToUser (project, user, message,res){
 	var existingMessages = [];
 	var index = 0;
+	
 	if (user.messages.length > 0) {
 			user.messages.forEach(function(obj){ //for each message =obj
-				existingMessages.push(obj.fromUser.toString())		 //push obj.fromUser to existing
+				existingMessages.push(obj.withUser.toString())		 //push obj.fromUser to existing
 			})
 		project.admins.forEach(function(admin){// loop through the proects admins
 			index = existingMessages.indexOf(admin.toString())//for each admin check and see if there is an admin id in existing messages
 			if(index === -1){ //if not
-				user.messages.push({fromUser:admin, messages:{message:message}})
+				user.messages.push({withUser:admin, messages:{message:message, from:user._id}})
 			}
 			else{ //if there is
-				user.messages[index].messages.push({message: message})
+				user.messages[index].messages.push({message:message, from:user._id})
 			}
 		})
 	}
 	else {
 		project.admins.forEach(function(admin){
-			user.messages.push({fromUser:admin, messages:{message:message}})
+			user.messages.push({withUser:admin, messages:{message:message, from:user._id}})
 		})
 	}
 	user.save(function(err){
@@ -243,3 +275,4 @@ function addProjectToUserGroups(project, user, res){
 	// 	if (err) return res.status(500).send(err)
 	// })
 };
+

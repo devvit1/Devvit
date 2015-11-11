@@ -21,6 +21,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/mobileView.html',
 				controller: 'mobileViewCtrl'
 			})
+			.state('devvit.developers', {
+				url: '/developers',
+				templateUrl:'../templates/developersView.html',
+				controller: 'developersCtrl'
+			})
 
 		.state('profile', {
 			url:'/profile',
@@ -57,10 +62,15 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl'
 			})
-				.state('profile.groups.group', {
-					url:'/group',
+				.state('profile.groupdisplay', {
+					url:'/group/:group',
 					templateUrl:'../templates/profileGroupsSub.html',
-					controller: 'groupsCtrl'
+					controller: 'groupDisplayCtrl',
+					resolve: {
+						groupInfo: function ($stateParams, groupsService) {
+							 return groupsService.findProject($stateParams.group)
+						}
+					}
 				})
 			.state('profile.messages', {
 				url:'/messages',

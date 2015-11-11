@@ -7,8 +7,21 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       $scope.webProjects = [];
       projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
-
+      if ($scope.webProjects.members = 'undefined'){
+        
+      }
     })
+    
+    // $scope.modalShown = false;
+    // $scope.toggleModal = function() {
+    //   $scope.modalShown = !$scope.modalShown;
+    // }
+    
+    	$scope.save = false;
+  	   $scope.toggleView = function() {
+  		  $scope.save = !$scope.save;
+  }
+
     
     $scope.apply = function(projectID, submittedMessage) {
       $scope.applyInfo = {
