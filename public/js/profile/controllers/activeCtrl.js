@@ -1,8 +1,7 @@
 angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, activeService, activeUser){
 	$scope.activeUser = activeUser;
 	$scope.activePosts = activeUser.activePosts;
-	console.log(23, $scope.activePosts);
-	console.log(16, $scope.activeUser);
+
 
 	if ($scope.activePosts.length < 1) {
 		$scope.noActive = true;

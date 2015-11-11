@@ -11,9 +11,8 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
 			devService.findUsers(searchQuery).then(function(res){
 				res.forEach(function(user){
 					$scope.members.push(user)
-					console.log(user)
 				})
-				console.log($scope.developers)
+
 			})
 		};
 		

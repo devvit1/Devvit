@@ -20,8 +20,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	
 $scope.getMessageswithUser = function(user){
 	 $scope.messages = $scope.userMessages[user].messages;
-	 console.log($scope.userMessages[user].messages)
-	 console.log($scope.userMessages[user].messages[0].time)
+
 }
 	
 })

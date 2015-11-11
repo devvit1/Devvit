@@ -114,7 +114,6 @@ module.exports = {
 			.populate('admins')
 			.exec(
 			function(err, result) {
-				console.log(result);
 				if (err) {
 					return res.status(500).send(err)}
 				else{
@@ -135,8 +134,19 @@ module.exports = {
 	},
 	
 	groupMessage: function(req, res){
-		
+		Projects.findByIdAndUpdate(req.body.project_id, 
+		{$push:{messages:{
+			message:req.body.message,
+			sentBy:req.body.active_user_id
+		}}},
+		function(err, found){
+			if (err) {return res.status(500).send(err)}
+			else{
+				res.json('message sent');
+			}
+		})
 	},
+
 	
 	projectUpdate: function(req, res) {
 		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {

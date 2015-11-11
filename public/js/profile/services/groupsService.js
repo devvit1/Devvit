@@ -1,7 +1,6 @@
 angular.module('devvit').service('groupsService', function($http, $rootScope){
 
 	this.getGroups = function (active_user_id){
-		console.log(32, active_user_id);
 		return $http({
 			method:'get',
 			url: '/active/'+ active_user_id
@@ -14,7 +13,9 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 		return $http({
 			method:'get',
 			url: '/project/' + project_id
-		})
+		}).then(function(res){
+			return res.data
+			})
 	}
 	
 })

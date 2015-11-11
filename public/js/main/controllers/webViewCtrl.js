@@ -7,7 +7,6 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       $scope.webProjects = [];
       projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
-      console.log(12, $scope.webProjects);
       if ($scope.webProjects.members = 'undefined'){
         
       }

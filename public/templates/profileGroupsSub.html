@@ -1,3 +1,34 @@
-<div>{{groupsInfo.name}}</div>
-<div>{{groupsInfo.createdAt | date:'short'}}</div>
-<div>{{groupsInfo.description}}</div>
+<a ui-sref = "profile.groups"><u> < back to groups</u></a>
+<div class="theGroupDisplay">
+	<div class="theGroupHeader">{{group.name}}</div>
+	<div class="theGroupBody">
+		
+		<div class="theGroupInfo">
+			<div class="groupInfoTop">
+				
+				<div class="groupInfo">
+					<div class="groupType">category:{{group.type}}</div>
+					<div class="groupSubType">type:{{group.subType}}</div>
+					<div class="groupCreatedAt">created:{{group.createdAt}}</div>
+					<div class="groupCreatedBy">by:{{group.createdBy}}</div>
+				</div>
+				<div class="groupDescription">{{group.description}}</div>
+			</div>
+			<div class="groupInfoMessage"></div>
+		</div>
+		
+		<div class="theGroupMembers">
+			<div class="membersAdmins">
+				<div class="groupAdminsRepeat"ng-repeat = "admin in group.admins">
+				{{admin}}
+					
+				</div>
+			</div>
+			<div class="membersMembers">
+				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
+					{{member}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
