@@ -6,7 +6,8 @@
 			
 			<div ng-click="getMessageswithUser($index); selectedNameCheck($index); getCurrentIndex($index)" class="prof_aside_messages" ng-repeat="user in userMessages">
 				<div ng-click="newLocation(user._id)">
-					<span class="message_name" ng-class="{'message_name_current': $index == selectedName}">{{user.basicInfo.firstName}} {{user.basicInfo.lastName}}</span>
+					<span class="message_name" ng-class="{'message_name_current': $index == selectedName}">
+					{{user.basicInfo.firstName}} {{user.basicInfo.lastName}}</span>
 					<br>
 				</div>
 			</div>
