@@ -1,5 +1,6 @@
 var Users = require('../models/users');
 
+
 module.exports = {
 
   create: function(req, res) {
@@ -53,8 +54,11 @@ module.exports = {
     Users.findById(req.params.id)
     .populate('messages.withUser')
     .populate('activePosts')
+    .populate({path:'pendingApprovals',
+               populate:{path:'createdBy', model:'Users'}})
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
+      console.log(result);
       res.json(result);
     })
   },

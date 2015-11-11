@@ -6,6 +6,7 @@ var ProjectsSchema = new mongoose.Schema({
 	type: { type: String, required: true },
 	subType: String,
 	// appliedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
+	createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
 	admins: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
 	members: [{
 			application: {

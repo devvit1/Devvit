@@ -112,6 +112,7 @@ module.exports = {
 			{'type': req.params.id })
 			.limit(25)
 			.populate('admins')
+			.populate('createdBy')
 			.exec(
 			function(err, result) {
 				console.log(result);

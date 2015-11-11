@@ -55,7 +55,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('profile.pending', {
 				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
-				controller: 'pendingCtrl'
+				controller: 'pendingCtrl',
+				resolve: {
+					activeUser: function(activeService, $rootScope) {
+						return activeService.getActive($rootScope.profile._id);
+					}
+				}
 			})
 			.state('profile.groups', {
 				url:'/groups',

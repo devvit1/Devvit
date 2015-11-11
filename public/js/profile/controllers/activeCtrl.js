@@ -22,6 +22,12 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 				console.log('Message Deleted');
 				activeService.getActive(activeUser._id).then(function(res) {
 					$scope.activePosts = res.activePosts;
+						if ($scope.activePosts.length < 1) {
+							$scope.noActive = true;
+							$scope.activePosts = { 
+							message: "You don't seem to have any active posts!"
+							}
+						}
 				})
 			})
 		}
