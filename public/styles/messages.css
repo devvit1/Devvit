@@ -1,16 +1,55 @@
-.prof_mess_aside {
-	float:left;
-	width:20%;
-	height:100vh;
-	background: #ECE9E9;
+div {
+	/*border: 1px solid blue;*/
 }
+
+.messages_wrap {
+	background: #e1e3e4;
+	padding-top: 40px;
+}
+
+.messages_wrap_content {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.prof_mess_aside {
+	width:15%;
+	height:100vh;
+	background: white;
+	font-family: 'Roboto', sans-serif;
+	color: #336699;
+	font-weight: 600;
+	text-align: center;
+	padding-right: 2%;
+	padding-left: 2%;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.19);
+}
+
 .prof_aside_messages{
 	width:100%;
 	height:40px;
-	border-bottom:1px solid gray;
+	border-bottom:1px solid #d2d6d5;
 	cursor: pointer;
+	padding-top: 20px;
 }
 .prof_mess_body{
-	float:left;
-	width:80%;
+	width:50% !important;
+	background: white;
+	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.19);
+}
+
+.prof_message_card {
+	width: 90%;
+	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #d2d6d5;
+}
+
+#message_time {
+	font-size: 12px;
+	float: right;
+	color: #BDC1C9;
 }

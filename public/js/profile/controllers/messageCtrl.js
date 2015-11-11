@@ -8,7 +8,8 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 
 					var obj = {
 								messages: message.messages,
-								withUser: message.fromUser.basicInfo.firstName
+								withUser: message.withUser.basicInfo.firstName,
+								withUserLast: message.withUser.basicInfo.lastName,
 								}
 					$scope.userMessages.push(obj)
 
@@ -20,6 +21,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 $scope.getMessageswithUser = function(user){
 	 $scope.messages = $scope.userMessages[user].messages;
 	 console.log($scope.userMessages[user].messages)
+	 console.log($scope.userMessages[user].messages[0].time)
 }
 	
 })

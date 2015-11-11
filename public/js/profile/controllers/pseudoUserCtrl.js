@@ -3,62 +3,41 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	// jacobs id"56380bb0090eed93c9b456a4"
 	
 	
-	
-<<<<<<< HEAD
-	var user1 = {
-		_id: "563bbea7cca522b5891ae46d"
-
-	};
-	
-	//billy
-	var user2 = {
-		_id: "563bbebacca522b5891ae46e"
-		
-	};
-	
-
-
-	//joe
-	var user3 = {
-		_id: "563adfc722941f294e2e34a4"
-	}
-	
-	//billy
-	var user4 = {
-		_id: "563adfba22941f294e2e34a3"
-	}
-	
-
-=======
 		var user1 = {
-			//jacob
-			_id: "563abb2395fa9b14017c21d3"
+			//null
+			_id: "563d35c90e74db4d1e6c37b4"
 		};
+
 		
-		//billy
+		//null
 		var user2 = {
-			_id: "563abb3095fa9b14017c21d4"
+
+			_id: "563d360446a0f06b1ea87b84"
+
 		};
-		
-		//me
+
+		//Billy
 		var user3 = {
-			_id: "563abb3895fa9b14017c21d5"
+
+			_id: "5642691b5ba5c0f749058abd"
+
 		}
 		
-		//squire
+		//jacob
 		var user4 = {
-			_id: "563abb4195fa9b14017c21d6"
+			_id: "564269315ba5c0f749058abe"
 		}
-		
->>>>>>> ec24e9a879142e2e2dacb16cc9ecc492b1357cc5
 
 
 	$rootScope.profile = user4;
+
+
 
  
 	(function updateUser (who){
 		pseudoService.getProfile(who).then(function(res){
 			$rootScope.profile.username = res.basicInfo.userName; 
+			console.log(res)
 		})
 		})($rootScope.profile._id)
 

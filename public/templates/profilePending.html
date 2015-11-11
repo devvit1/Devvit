@@ -1,6 +1,21 @@
-<div ng-repeat="pending in pendingArr">
-	<p>{{pending.data.name}}</p>
-	<p>{{pending.data.type}}</p>	
-	<p>{{pending.data.description}}</p>
-	<hr>
+<div class = 'cont'>
+		<div class = 'message-contain' ng-show = 'noPending'>
+	<span class = 'noactive'>{{activePending.message}}</span>
+		</div>
+	<div class = 'panel-container' ng-show = '!noPending' ng-repeat = 'pending in activePending track by $index'>
+		<div class = 'panel pending_panel'>
+			<div class = 'panel-flex-contain'>
+				<span class = 'panel_title pending-title'>{{pending.name}}</span>
+				<span class = 'panel_creator pending_creator'>Created By: {{pending.createdBy.basicInfo.firstName}} {{pending.createdBy.basicInfo.lastName}}</span>
+				<span class = 'panel_date pending_date'>Created On: {{pending.createdAt | date:' MMM dd'}}</span>
+			</div>
+			<div class = 'panel-desc-contain'>
+				<p class = 'panel_desc' dd-text-collapse dd-text-collapse-max-length="110" dd-text-collapse-text="{{pending.description}}">
+			</div>
+			<div class = 'contain-members'>
+				<span class = 'members'>{{activePending[$index].members.length}} Applied</span>
+			</div>
+		</div>
+			
+	</div>
 </div>
