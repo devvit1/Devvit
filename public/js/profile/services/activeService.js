@@ -10,6 +10,16 @@ angular.module('devvit').service('activeService', function($http, $rootScope) {
 		})
 	};
 	
+	this.getCurrentUser = function() {
+		return $http({
+			method: 'GET',
+			url: '/user'
+		}).then(function(res) {
+			console.log(100, res)
+			return res.data;
+		})
+	}
+	
 	this.deletePost = function (id) {
 		return $http({
 			method: 'DELETE',
