@@ -80,6 +80,33 @@ module.exports = {
     })
   },
   
+   getActiveMessageInfo: function(req, res){
+    Users.findById(req.params.id)
+    .populate('messages.withUser', 'basicInfo.firstName basicInfo.lastName')
+    .exec(function(err, result) {
+      if (err) return res.status(500).send("not found");
+      res.json(result);
+    })
+  },
+  
+  getActiveUserMessages: function(req, res){
+    Users.findById(req.params.activeId)
+    .exec(function(err, result) {
+      if (err) return res.status(500).send("not found");
+      var messagesArr = result.messages;
+        var newArr = [];
+      for(var i = 0; i < messagesArr.length; i++) {
+        var obj = messagesArr[i]; 
+          if (obj.withUser == req.params.otherId) {
+            newArr = obj.messages;
+
+          }
+         }
+         console.log(newArr)
+       res.json(newArr);
+    })
+  },
+  
  getUsers: function(req, res){
     Users.find({$or:[
     {'basicInfo.firstName': { "$regex": req.params.id, "$options": "i" }},

@@ -223,7 +223,7 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.messages.push(
 						{
 						messages:{message:message, from: id},
-						withUser:userId
+						withUser:id
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -234,7 +234,7 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.messages.push(
 						{
 						messages:{message:message, from: id},
-						withUser:userId
+						withUser:id
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)

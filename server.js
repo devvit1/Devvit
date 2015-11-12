@@ -76,8 +76,13 @@ app.delete(     '/user/:id',       UserController.destroy);
 app.get(        '/active',     UserController.getActive);
 app.get(        '/getusers/:id',    UserController.getUsers)
 
-app.put(        '/newmessage',     MessageController.newMessage);
-app.put(        '/addmessage',     MessageController.addMessage)
+app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
+app.get(        '/activeMessages/:otherId/current/:activeId', UserController.getActiveUserMessages);
+app.get(        '/getusers/:id',                              UserController.getUsers)
+
+
+app.put(        '/newmessage',          MessageController.newMessage);
+app.put(        '/addmessage',          MessageController.addMessage)
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
 var port = 8080;

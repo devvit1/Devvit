@@ -80,6 +80,33 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('profile.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
+				controller: 'messageCtrl',
+				// resolve: {
+				// 	getMessages: function(messageService, $rootScope) {
+				// 		return messageService.getMessages($rootScope.profile._id).then(function(resp) {
+				// 			return resp.data.messages;
+				// 		});
+				// 	}
+				// }
+			})
+			.state('profile.messages.current', {
+				url:'/messages/:id',
+				templateUrl:'../templates/profileMessagesCurrent.html',
+				controller: 'messageCurrentCtrl',
+				resolve: {
+					currentIndex: function($stateParams, messageService, $rootScope) {
+						return messageService.getMessagesFromUser($stateParams.id, $rootScope.profile._id)
+					},
+					
+					fromId: function($stateParams) {
+						var newId = $stateParams.id.toString();
+						return newId;
+					}
+				}
+			})
+			.state('profile.messages.newmessage', {
+				url:'/messages',
+				templateUrl:'../templates/profileMessagesCompose.html',
 				controller: 'messageCtrl'
 			})
 			.state('profile.createProject', {

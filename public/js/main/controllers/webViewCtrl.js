@@ -7,9 +7,15 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       $scope.webProjects = [];
       projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
+
       if ($scope.webProjects.members = 'undefined'){
         
       }
+
+      console.log($scope.webProjects)
+      console.log("length", $scope.webProjects[1].members.length);
+
+
     })
     
     // $scope.modalShown = false;
