@@ -36,7 +36,8 @@ app.put (       '/project/:id',    ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
-app.post(       '/groupmessage',    ProjectController.groupMessage);
+app.put(        '/deny',           ProjectController.deny);
+app.post(       '/groupmessage',   ProjectController.groupMessage);
 
 
 //UserController

@@ -1,11 +1,11 @@
 <a ui-sref = "profile.groups"><u> < back to groups</u></a>
 <div class="theGroupDisplay">
-	<div class="theGroupHeader">{{group.name}}</div>
+	<div class="theGroupHeader">{{group.name}} admin</div>
 	<div class="adminAccept">
-			<div class="appliedUserCard" ng-repeat="applied in group.members">
+			<div class="appliedUserCard" ng-repeat="applied in pendingApp track by $index">
 				<div class="appliedUserCard_upper">
-					<div class="appliedAccept"><i class="fa fa-check-circle"></i></div>
-					<div class="appliedDeny"><i class="fa fa-times-circle"></i></div>
+					<div ng-click = "acceptUser(applied)" class="appliedAccept"><i class="fa fa-check-circle"></i></div>
+					<div ng-click = "denyUser(applied)"class="appliedDeny"><i class="fa fa-times-circle"></i></div>
 				</div>
 				<div class="appliedUserCard_lower">
 					{{applied.member.basicInfo.firstName}}
@@ -50,8 +50,8 @@
 				</div>
 			</div>
 			<div class="membersMembers">
-				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
-					<div class="groupMemberUser">{{member.basicInfo.firstName}}{{member.basicInfo.lasttName}}</div>
+				<div class="groupMembersRepeat"ng-repeat = "member in inGroupMembers">
+					<div class="groupMemberUser">{{member.member.basicInfo.firstName}}{{member.member.basicInfo.lastName}}</div>
 				</div>
 			</div>
 		</div>

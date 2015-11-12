@@ -149,9 +149,11 @@
 	font-size:25px;
 	color: seagreen;
 	cursor:pointer;
+	display:inline-block;
 }
 .appliedDeny{
 	font-size: 25px;
 	color: indianred;
+	display:inline-block;
 	cursor:pointer;
 }
