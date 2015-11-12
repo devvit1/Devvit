@@ -8,21 +8,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
-			controller: 'homeCtrl',
-			
+			controller: 'homeCtrl'
 		})
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
-				controller: 'webViewCtrl',
-				resolve: {
-					getActive: function(pseudoService, $rootScope) {
-						pseudoService.getProfile().then(function(res) {
-							console.log(100, res)
-							$rootScope.profile._id = res._id;
-						})
-					}
-				}
+				controller: 'webViewCtrl'
 			})
 			
 			.state('devvit.mobile', {
@@ -76,46 +67,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
-				.state('profile.groupdisplayAdmin', {
-					url:'/groupadmin/:group',
-					templateUrl:'../templates/profileGroupsAdminSub.html',
-					controller: 'groupDisplayAdminCtrl',
-					resolve: {
-						groupInfo: function ($stateParams, groupsService) {
-							 return groupsService.findProject($stateParams.group)
-						}
-					}
-				})
 			.state('profile.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
-				controller: 'messageCtrl',
-				// resolve: {
-				// 	getMessages: function(messageService, $rootScope) {
-				// 		return messageService.getMessages($rootScope.profile._id).then(function(resp) {
-				// 			return resp.data.messages;
-				// 		});
-				// 	}
-				// }
-			})
-			.state('profile.messages.current', {
-				url:'/messages/:id',
-				templateUrl:'../templates/profileMessagesCurrent.html',
-				controller: 'messageCurrentCtrl',
-				resolve: {
-					currentIndex: function($stateParams, messageService, $rootScope) {
-						return messageService.getMessagesFromUser($stateParams.id, $rootScope.profile._id)
-					},
-					
-					fromId: function($stateParams) {
-						var newId = $stateParams.id.toString();
-						return newId;
-					}
-				}
-			})
-			.state('profile.messages.newmessage', {
-				url:'/messages',
-				templateUrl:'../templates/profileMessagesCompose.html',
 				controller: 'messageCtrl'
 			})
 			.state('profile.createProject', {

@@ -1,4 +1,4 @@
-angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, $location, $rootScope){
+angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
     
       $scope.isActive = function(route) {
       return route === $location.path();
@@ -7,12 +7,9 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       $scope.webProjects = [];
       projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
-
-
-      console.log($scope.webProjects)
-
-
-
+      if ($scope.webProjects.members = 'undefined'){
+        
+      }
     })
     
     // $scope.modalShown = false;

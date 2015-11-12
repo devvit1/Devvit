@@ -1,22 +1,24 @@
+div {
+	/*border: 1px solid blue;*/
+}
+
 .messages_wrap {
 	background: #e1e3e4;
 	padding-top: 40px;
-	height: 72vh;
-	width: 100%;
 }
 
 .messages_wrap_content {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	height: 100%;
 }
 
 .prof_mess_aside {
 	width:15%;
-	height:100%;
+	height:100vh;
 	background: white;
 	font-family: 'Roboto', sans-serif;
+	color: #336699;
 	font-weight: 600;
 	text-align: center;
 	padding-right: 2%;
@@ -27,103 +29,27 @@
 .prof_aside_messages{
 	width:100%;
 	height:40px;
-	/*border-bottom:1px solid #d2d6d5;*/
-	cursor: pointer;
-	/*padding-top: 20px;*/
-}
-
-.prof_aside_messages > div {
-	padding-top: 20px;
-	padding-bottom: 20px;
 	border-bottom:1px solid #d2d6d5;
+	cursor: pointer;
+	padding-top: 20px;
 }
-
 .prof_mess_body{
 	width:50% !important;
-	height:100%;
 	background: white;
 	box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.19);
-	position: relative;
-}
-
-#messages-container {
-	overflow-y: scroll;
-	height: 85%;
 }
 
 .prof_message_card {
 	width: 90%;
 	margin: 0 auto;
 	font-family: 'Roboto', sans-serif;
-	margin-top: 13px;
-	margin-left: 15px;
-	padding: 15px;
-	padding-bottom: 17px;
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	border: 0px solid #000000;
-	background-color: #cfedfb;
-	line-height: 140%;
-	font-size: .9em;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #d2d6d5;
 }
 
 #message_time {
 	font-size: 12px;
 	float: right;
 	color: #BDC1C9;
-}
-
-.message_name {
-	color: #424242;
-}
-
-.message_name_current {
-	color: #336699;
-}
-
-.prof_message_card_away {
-	background-color: #e1e3e4;
-	width: 90%;
-	margin: 0 auto;
-	font-family: 'Roboto', sans-serif;
-	margin-top: 13px;
-	margin-left: 15px;
-	padding: 15px;
-	padding-bottom: 17px;
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	border: 0px solid #000000;
-	line-height: 140%;
-	font-size: .9em;
-}
-
-#messageReply {
-	position: absolute;
-	bottom: 20px;
-	width: 80%;
-	display: block;
-	margin-left: 3%;
-	font-size: 13px;
-	resize: none;
-}
-
-#messageReply:focus {
-  outline-color: transparent;
-  outline-style: none;
-}
-
-#submitReply {
-	position: absolute;;
-	bottom: 40px;
-	right: 50px;
-	padding: 5px 10px;
-}
-
-.findUser {
-	height: 10%;
-	margin-right: 20px;
-	background-color: #222222;
-	color: white;
 }

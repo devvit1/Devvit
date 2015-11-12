@@ -5,8 +5,6 @@ var ProjectsSchema = new mongoose.Schema({
 	description: { type: String, required: true },
 	type: { type: String, required: true },
 	subType: String,
-	// appliedTo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
-	createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
 	admins: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
 	members: [{
 			application: {
@@ -18,7 +16,7 @@ var ProjectsSchema = new mongoose.Schema({
 	messages: [{ 
 		message:{type:String},
 		time:{type:Date, default:Date.now},
-		sentBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
+		sentBy:{ type: mongoose.Schema.Types.ObjectId}
 	 }],
 	activeWeb: Boolean,
 	activeMobile: Boolean,

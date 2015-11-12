@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-
 var UsersSchema = new mongoose.Schema({
 	basicInfo: {
 		firstName: { type: String, required: true },
 		lastName: { type: String, required: true },
-		userName: { type: String, required: true, unique: true },
-		email: { type: String, required: true, unique: true, trim: true},
+		userName: { type: String, required: true },
+		email: { type: String, required: true },
 		password: {type: String, required: true },
 		location: String,
 		gitHubUrl: String,
@@ -24,7 +23,7 @@ var UsersSchema = new mongoose.Schema({
 				time: {type: Date, default:Date.now()},
 				read: {type:Boolean, default:false},
 				from: {type: mongoose.Schema.Types.ObjectId}
-		  }],
+				}],
 		  withUser: {type: mongoose.Schema.Types.ObjectId},
 
 		}
@@ -47,5 +46,4 @@ UsersSchema.methods.verifyPassword = function(reqBodyPassword) {
 	var user = this;
 	return bcrypt.compareSync(reqBodyPassword, user.basicInfo.password);
 };
-
 module.exports = mongoose.model('Users', UsersSchema)

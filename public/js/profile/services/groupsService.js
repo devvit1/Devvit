@@ -1,7 +1,6 @@
 angular.module('devvit').service('groupsService', function($http, $rootScope){
 
-	this.getGroups = function (active_user_id){
-
+	this.getGroups = function (){
 		return $http({
 			method:'get',
 			url: '/active'
@@ -24,28 +23,8 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			url: '/groupmessage',
 			data: message
 		}).then(function(res){
-			console.log(res.data.messages)
+			console.log(res)
 			return res.data.messages
-		})
-	}
-	this.acceptApplied = function (data){
-		return $http({
-			method: 'put',
-			url: '/accept',
-			data: data
-		}).then(function(res){
-			console.log(res)
-			return res.data.members
-		})
-	}
-	this.denyApplied = function (data){
-		return $http({
-			method: 'put',
-			url: '/deny',
-			data: data
-		}).then(function(res){
-			console.log(res)
-			return res.data.members
 		})
 	}
 	

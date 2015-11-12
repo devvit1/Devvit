@@ -66,7 +66,7 @@ function addMessageToActiveUser(req, res){
 				message:req.body.message,
 				from: req.body.active_user_id
 			})
-			user.save(function(err, msg) {
+			user.save(function(err) {
 					if (err) return res.status(500).send(err);	
 				});		
 		}

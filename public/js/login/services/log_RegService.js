@@ -3,6 +3,16 @@ angular.module('devvit').service('log_RegService', function($http){
   var currentUser = null;
   this.currentUser = function() {return currentUser};
 
+	this.getProfile = function(){
+		return $http({
+				method: 'GET',
+				url: '/active' 
+			}).then(function(res){
+				return res.data
+			})
+	};
+  
+
   this.login = function(email, password){
       return $http ({
         method: 'POST',
@@ -40,4 +50,7 @@ angular.module('devvit').service('log_RegService', function($http){
       console.log('Success');
     })
   }
-})
+  })
+
+
+

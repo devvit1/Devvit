@@ -107,12 +107,6 @@ module.exports = {
 				})			
 	},
 	
-	deny: function(req, res){
-		removeUserFromProject(req.body.user_id, req.body.project_id, res);
-		removeProjectFromUser(req.body.user_id, req.body.project_id, res);
-		res.send('user denied')
-	},
-	
 	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
@@ -125,7 +119,6 @@ module.exports = {
 			{'type': req.params.id })
 			.limit(25)
 			.populate('admins')
-			.populate('messages.sentBy')
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -138,9 +131,10 @@ module.exports = {
 	find: function(req, res){
 		Projects.find(
 			{'_id': req.params.id })
-			.populate({
-				path:'messages.sentBy admins members.member pendingApprovals',
-				select:'basicInfo.firstName basicInfo.lastName'})
+			.populate('admins')
+			.populate('members')
+			.populate('pendingApprovals')
+			.populate('messages.sentBy')
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -161,17 +155,7 @@ module.exports = {
 		function(err, found){
 			if (err) {return res.status(500).send(err)}
 			else{
-				Projects.findById(found._id)
-				.populate({
-					path:'messages.sentBy'
-				})
-				.exec(function(err, result) {
-				if (err) {
-					return res.status(500).send(err)}
-				else{
-					res.json(result);
-				}
-			})
+				res.json(found);
 			}
 		})
 	},
@@ -223,7 +207,7 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.messages.push(
 						{
 						messages:{message:message, from: id},
-						withUser:id
+						withUser:userId
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -234,7 +218,7 @@ function sendMessageToAdmins(project, userId, message, res){
 					admin.messages.push(
 						{
 						messages:{message:message, from: id},
-						withUser:id
+						withUser:userId
 						})
 					admin.save(function(err){
 						if (err) return res.status(500).send(err)
@@ -291,32 +275,4 @@ function addProjectToUserGroups(project, user, res){
 	// 	if (err) return res.status(500).send(err)
 	// })
 };
-
-function removeUserFromProject (user, project, res) {
-	Projects.findById(project, function(err, project){
-		if (err) return res.status(500).send(err);
-		project.members.forEach(function(theUser){
-			if (theUser.member.toString() === user){
-				project.members.splice(user, 1)
-				project.save(function(err){
-		 			if (err) return res.status(500).send(err)
-				})
-			}
-		})
-	})
-}
-
-function removeProjectFromUser (user, project, res){
-	Users.findById(user, function (err, user){
-		if (err) return res.status(500).send(err);
-		for (var pend in user.pendingApprovals){
-			if (user.pendingApprovals[pend].toString() === project){
-				user.pendingApprovals.splice(pend, 1)
-				user.save(function(err){
-		 			if (err) return res.status(500).send(err)
-				})
-			}
-		}
-	})
-}
 

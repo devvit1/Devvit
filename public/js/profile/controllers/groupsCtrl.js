@@ -4,9 +4,9 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 		$scope.groups = []
 		groupsService.getGroups($rootScope.profile._id).then(function(res){
 			for (var group in res){
-				console.log(res[group])
 				$scope.groups.push(res[group])
-			}		
+			}
+			
 		})
 	})();
 	
@@ -15,20 +15,10 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 	}
 	
 	$scope.goToGroup = function(group){
-		group.admins.forEach(function(admin){
-			if ($rootScope.profile._id === admin){
-				$state.go('profile.groupdisplayAdmin', {
-					group: group._id
-				})
-			}
-			else {
-				$state.go('profile.groupdisplay', {
-					group: group._id
-				})
-			}
-			
+		console.log(group)
+		$state.go('profile.groupdisplay', {
+			group: group
 		})
-		
 	}
 	
 	

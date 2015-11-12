@@ -2,22 +2,12 @@ angular.module('devvit').service('activeService', function($http, $rootScope) {
 	this.getActive = function (){
 	return $http({
 		method:'GET',
-		url: '/active',
+		url: '/active'
 	}).then(function(res) {
 
 		return res.data
 		})
 	};
-	
-	this.getCurrentUser = function() {
-		return $http({
-			method: 'GET',
-			url: '/user'
-		}).then(function(res) {
-			console.log(100, res)
-			return res.data;
-		})
-	}
 	
 	this.deletePost = function (id) {
 		return $http({

@@ -1,9 +1,9 @@
 angular.module('devvit').service('pendingAppService', function($http){
 	
-	this.getPending = function(active_user){
+	this.getPending = function(){
 		return $http({
 			method:'GET',
-			url: '/active/' + active_user	
+			url: '/active'
 		}).then(function(res){
 			return res.data;
 		})

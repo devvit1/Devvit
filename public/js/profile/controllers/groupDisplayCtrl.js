@@ -1,11 +1,10 @@
 angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootScope, groupsService,groupInfo){
 	$scope.group = groupInfo;
-	$scope.groupMessages = groupInfo.messages;
-	
+	$scope.groupMessages = groupInfo.messages
 	$scope.sendGroupMessage = function(message){
 		var data = {
 			message:message,
-			active_user_id:$rootScope.profile._id,
+			sentBy:$rootScope.profile._id,
 			project_id: groupInfo._id
 		}
 		groupsService.sendGroupMessage(data).then(function(res){
@@ -14,5 +13,4 @@ angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootSc
 			console.log($scope.groupMessages)
 		})
 	}
-	console.log($scope.group)
 })

@@ -1,6 +1,5 @@
 var Users = require('../models/users');
 
-
 module.exports = {
 
   create: function(req, res) {
@@ -12,31 +11,21 @@ module.exports = {
     //       return res.status(400).json({message: "User with this email already exists"});
     //     }
 
-  
-    var newUser = new Users(req.body);
-    newUser.save(function(err, user) {
-      if(err) return res.send(err);
-      user.password = null;
-       return res.send(user);
-    });
-        // var user = new Users(req.body);
-        // user.save(function(err, new_user) {
-        //   if(err) {
-        //     console.log("can't create user", err);
-        //   }
-        //   res.json(new_user);
-        // })
+
+        var user = new Users(req.body);
+        user.save(function(err, new_user) {
+          if(err) {
+            console.log("can't create user", err);
+          }
+          res.json(new_user);
+        })
   },
 
   read: function(req, res) {
-    if (!req.user) return res.send('Current user not defined');
-    req.user.password = null;
-    return res.json(req.user);
-    
-    // Users.find().exec(function(err, result) {
-    //   if (err) return res.status(500).send(err);
-    //   res.json(result);
-    // });
+    Users.find().exec(function(err, result) {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
   },
   
   // readAll: function(req, res) {
@@ -46,16 +35,11 @@ module.exports = {
   //   });
   // },
 
-  userUpdate: function(req, res, done) {
-    Users.findByIdAndUpdate(req.user._id, req.body, function(err, result) {
-      if (err) done(err);
-      res.sendStatus(200);
-    })
-   
-    // Users.findByIdAndUpdate(req.body.basicInfo._id, req.body, { new: true }, function(err, result) {
-    //   if (err) return res.status(500).send(err);
-    //   res.json(result);
-    // });
+  userUpdate: function(req, res) {
+    Users.findByIdAndUpdate(req.body.basicInfo._id, req.body, { new: true }, function(err, result) {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
   },
 
   destroy: function(req, res) {
@@ -66,7 +50,7 @@ module.exports = {
   },
   //GO BACK
   getActive: function(req, res){
-    console.log('TESTER@!!!!@', req.user._id)
+    console.log('TESTER@!!!!@', req.user)
     Users.findById(req.user._id)
     .populate('messages.withUser')
     .populate('activePosts')
@@ -77,33 +61,6 @@ module.exports = {
       if (err) return res.status(500).send("not found");
       console.log('POOOOO', result);
       res.json(result);
-    })
-  },
-  
-   getActiveMessageInfo: function(req, res){
-    Users.findById(req.params.id)
-    .populate('messages.withUser', 'basicInfo.firstName basicInfo.lastName')
-    .exec(function(err, result) {
-      if (err) return res.status(500).send("not found");
-      res.json(result);
-    })
-  },
-  
-  getActiveUserMessages: function(req, res){
-    Users.findById(req.params.activeId)
-    .exec(function(err, result) {
-      if (err) return res.status(500).send("not found");
-      var messagesArr = result.messages;
-        var newArr = [];
-      for(var i = 0; i < messagesArr.length; i++) {
-        var obj = messagesArr[i]; 
-          if (obj.withUser == req.params.otherId) {
-            newArr = obj.messages;
-
-          }
-         }
-         console.log(newArr)
-       res.json(newArr);
     })
   },
   
