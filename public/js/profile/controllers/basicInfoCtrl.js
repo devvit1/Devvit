@@ -25,7 +25,7 @@ angular.module('devvit').controller('basicInfoCtrl', function($scope, basicInfoS
 			$scope.email = res.basicInfo.email;
 			$scope.password = res.basicInfo.password;
 			$scope.profile = res;
-			console.log(11, $scope.profile)
+
 			
 		}
 	)

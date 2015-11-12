@@ -72,6 +72,7 @@ module.exports = {
     .populate('activePosts')
     .populate({path:'pendingApprovals',
                populate:{path:'createdBy', model:'Users'}})
+    .populate('groups')
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
       console.log('POOOOO', result);

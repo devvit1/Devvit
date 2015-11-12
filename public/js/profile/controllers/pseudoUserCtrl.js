@@ -1,15 +1,10 @@
 angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, pseudoService) {
-
-
-
-
  
 	(function updateUser (){
 		console.log('butt');
 		pseudoService.getProfile().then(function(res){
 			$rootScope.profile = res; 
 			console.log(145, res)
-		})
 		})()
 
 

@@ -1,3 +1,4 @@
+
 angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, activeService){
 	console.log('hi', $rootScope.profile)
 	// $scope.activePosts = activeUser.activePosts;
