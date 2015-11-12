@@ -9,6 +9,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 
  })
+})
 
 .service('pseudoService', function ($http){
 	this.getProfile = function(){

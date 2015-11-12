@@ -56,3 +56,6 @@ $scope.getMessageswithUser = function(user){
 
 	
 })
+		})
+	})
+})
