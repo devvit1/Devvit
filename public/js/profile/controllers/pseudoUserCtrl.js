@@ -3,7 +3,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	(function updateUser (){
 		console.log('butt');
 		pseudoService.getProfile().then(function(res){
-			$rootScope.profile = res; 
+			$rootScope.profile._id =  
 			console.log(145, res)
 		})()
 

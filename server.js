@@ -73,7 +73,7 @@ app.get(        '/user',       isAuthed, UserController.read);
 app.post(       '/user',           UserController.create);
 app.put(        '/user',           isAuthed, UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
-app.get(        '/active',     UserController.getActive);
+app.get(        '/active',         UserController.getActive);
 app.get(        '/getusers/:id',    UserController.getUsers)
 
 app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);

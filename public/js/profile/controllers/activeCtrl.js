@@ -1,6 +1,8 @@
 
-angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, activeService){
-	console.log('hi', $rootScope.profile)
+angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, pseudoService, activeService){
+	
+	console.log(22, $rootScope.profile);
+	
 	// $scope.activePosts = activeUser.activePosts;
 	// console.log(23, $scope.activePosts);
 	// console.log(16, $scope.activeUser);
@@ -11,7 +13,6 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 	// 		message: "You don't seem to have any active posts!"
 	// 	}
 	// }
-	
 	$scope.save = false;
   	$scope.toggleView = function() {
   		$scope.save = !$scope.save;
@@ -21,7 +22,7 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 		if (confirm("Are you sure you want to delete this post?")) {
 			activeService.deletePost(id).then(function(res) {	
 				console.log('Message Deleted');
-				activeService.getActive().then(function(res) {
+				pseudoService.getActive().then(function(res) {
 					$scope.activePosts = res.activePosts;
 						if ($scope.activePosts.length < 1) {
 							$scope.noActive = true;
@@ -37,14 +38,14 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 	$scope.updatePosts = function(id, title, description) {
 		activeService.updatePost(id, title, description).then(function(res) {
 			console.log('Project updated');
-			activeService.getActive(activeUser._id).then(function(res) {
+			pseudoService.getActive().then(function(res) {
 				$scope.activePosts = res.activePosts;
 			})
 		})
 	}
 	
-	$scope.updateUser = function(who) {
-		activeService.getProfile(who).then(function(res) {
+	$scope.updateUser = function() {
+		activeService.getProfile().then(function(res) {
 			$rootScope.profile = res;
 			$rootScope.profile.username = res.basicInfo.userName;
 			console.log(100, $rootScope.profile);

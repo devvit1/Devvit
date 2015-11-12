@@ -8,12 +8,21 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
-			controller: 'homeCtrl'
+			controller: 'homeCtrl',
+			
 		})
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
-				controller: 'webViewCtrl'
+				controller: 'webViewCtrl',
+				resolve: {
+					getActive: function(pseudoService, $rootScope) {
+						pseudoService.getProfile().then(function(res) {
+							console.log(100, res)
+							$rootScope.profile._id = res._id;
+						})
+					}
+				}
 			})
 			
 			.state('devvit.mobile', {

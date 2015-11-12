@@ -1,4 +1,4 @@
-angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
+angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, $location, $rootScope){
     
       $scope.isActive = function(route) {
       return route === $location.path();
@@ -8,12 +8,9 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       projectService.getProjects('web').then(function(res) {
       $scope.webProjects = res;
 
-      if ($scope.webProjects.members = 'undefined'){
-        
-      }
 
       console.log($scope.webProjects)
-      console.log("length", $scope.webProjects[1].members.length);
+
 
 
     })
