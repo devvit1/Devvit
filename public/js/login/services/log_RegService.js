@@ -22,7 +22,6 @@ angular.module('devvit').service('log_RegService', function($http){
           password: password
         }
       }).then(function(res) {
-        console.log(res);
         currentUser = res.data;
         return res;
       }, function(err){

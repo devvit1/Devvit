@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
-var moment = require('moment');
+// var moment = require('moment');
 
 var UserController = require('./controllers/userController');
 var ProjectController = require('./controllers/projectController');
@@ -39,9 +39,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.post('/login', passport.authenticate('local-login', { 
-  // failureRedirect: '/#/profile/login-register', 
-  // successRedirect: '/#/home', 
+app.post('/login', 
+  passport.authenticate('local-login', { 
+      successRedirect: '/#/home', 
+      failureRedirect: '/#/login-register', 
+
 }), function(req, res){
   res.send(req.user);
 });
@@ -65,21 +67,25 @@ app.get(        '/project/:id',    ProjectController.find);
 app.get(        '/ptsearch/:query',ProjectController.searchFor);
 app.post(       '/projects',       ProjectController.createProj);
 app.put (       '/project/:id',    ProjectController.projectUpdate);
-app.put(        '/projects',       isAuthed, ProjectController.apply);
+app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 app.post(       '/groupmessage',    ProjectController.groupMessage);
 
 
 //UserController
-app.get(        '/user',       UserController.read);
+app.get(        '/user',           UserController.read);
+// app.post(       '/fileUpload',     UserController.fileUpload)
 // app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
-app.put(        '/user',           isAuthed, UserController.userUpdate);
+app.put(        '/user',           UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
-app.get(        '/active',         isAuthed, UserController.getActive);
+app.get(        '/active',         UserController.getActive);
 app.get(        '/getusers/:id',    UserController.getUsers)
 
+
+app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
+app.get(        '/activeMessages/:otherId/current', UserController.getActiveUserMessages);
 app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
 

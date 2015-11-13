@@ -1,4 +1,4 @@
-#register {
+.register {
   text-align: center;
 padding: 20px;
 text-decoration: underline;
@@ -8,56 +8,61 @@ text-underline-color: black;
 }
 
 .log_RegPage{
-  height: 300px;}
-
+  display: flex;
+  justify-content: space-around;
+}
 .loginContainer{
-  float: right;
-margin: 10px;
-margin-right: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
-.registerContainer{width: 50%;
-align-self: center;
+.registerContainer {
+width: 500px;
 height: 100%;
+display: flex;
+justify-content: space-between;
 }
 
 .registerContainerWithButton{}
 
 .registerContentContainer{
-display: flex;
+	display: flex;
+	margin: 15px;
+	height: 80%;
+}
 
-/* justify-content: center; */
-margin: 15px;
-height: 80%;}
+.log_Reg input {
+	border:none;
+	border-bottom:2px solid #FF9326;
+	height:30px;
+	font-size: 1.5em;
+	width:200px;
+	background: #E1E3E4;
+}
 
 .log_RegfirstColumn{
 	margin: 0 auto;
 align-self: center;}
 
-.log_RegfirstName{
-	margin-left: 39px;}
+#first-mame{
+	margin-left: 39px;
+	}
 
-.log_Regusername{
+#username{
 	margin: 20px 0px;
 
-}
-
-.log_Regpassword{
-	margin-left: 3px;
 }
 
 .log_RegsecondColumn{
-	margin: 0 auto;
-align-self: center;}
+	
+}
 
-.log_ReglastName{
-	margin-left: 77px;}
 
-.log_Regemail{
+#email{
 	margin: 20px 0px;
-margin-left: 67px;}
+}
 
-.log_RegverifyPassword{
+#verify-password{
 
 }
 
@@ -68,11 +73,46 @@ margin-left: 67px;}
 }
 
 .log_RegButton{
-border-width: 1.5px;
-background-color: #E4E4E4;
-width: 75px;
-border-radius: 7px;
-border-bottom-color: lightgray;
-border-top-color: black;
-border-left-color: black;
+	border:none;
+	background:#FF9326;
+	font-family:'intro';
+	margin:5px 0;
+	width: 100px;
+    height: 30px;
+	border-bottom: 4px solid #FF6400;
+	cursor: pointer;
 }
+
+/*.log_RegPage {
+	display: flex;
+	justify-content: space-around;
+}
+
+.log_Reg input {
+	border:none;
+	border-bottom:2px solid #FF9326;
+	height:30px;
+	font-size: 1.5em;
+	width:200px;
+	background: #E1E3E4;
+}
+
+.registerContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.regFirstColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.regSecondColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.regSubmitContain {
+	display: flex;
+	flex-direction: column;
+}*/

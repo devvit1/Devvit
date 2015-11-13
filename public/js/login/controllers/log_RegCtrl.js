@@ -1,7 +1,8 @@
-angular.module('devvit').controller('log_RegCtrl', function($scope, log_RegService, $rootScope){
+angular.module('devvit').controller('log_RegCtrl', function($scope, $state, log_RegService, $rootScope){
 
   $scope.login = function(email, password){
     log_RegService.login(email, password).then(function(data) {
+      $state.go('devvit.profile');
       $scope.email = "";
       $scope.password = "";
       $scope.updateUser();
