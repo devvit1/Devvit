@@ -107,6 +107,12 @@ module.exports = {
 				})			
 	},
 	
+	deny: function(req, res){
+		removeUserFromProject(req.body.user_id, req.body.project_id, res);
+		removeProjectFromUser(req.body.user_id, req.body.project_id, res);
+		res.send('user denied')
+	},
+	
 	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
@@ -116,8 +122,8 @@ module.exports = {
 	
 	findAll: function(req, res){
 		Projects.find(
-			{'type': req.params.id })
-			.limit(25)
+			{})
+			.limit(50)
 			.populate('admins')
 			.populate('messages.sentBy')
 			.exec(
@@ -176,10 +182,31 @@ module.exports = {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
+	},
+	
+	searchFor: function(req, res){
+		Projects.find(
+			{$or:[
+			{'type': { "$regex": req.params.query, "$options": "i" }},
+    		{'name': { "$regex": req.params.query, "$options": "i" }},
+    		{'tags': { "$regex": req.params.query, "$options": "i" }}]}
+		)
+		.populate('admins')
+		.exec(function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+		})
 	}
+	
+	
 	
 }
 
+
+/***********************functions for project endpoints***************** */
 function addProjectToUser(userId, project, message, res) {
 	Users.findByIdAndUpdate(
 	userId, 
@@ -280,9 +307,34 @@ function addProjectToUserGroups(project, user, res){
 		function(err, result) {
 			if (err) return res.status(500).send(err);
 		})
-	// user.groups.push(project._id);
-	// user.save(function(err){
-	// 	if (err) return res.status(500).send(err)
-	// })
+
 };
+
+function removeUserFromProject (user, project, res) {
+	Projects.findById(project, function(err, project){
+		if (err) return res.status(500).send(err);
+		project.members.forEach(function(theUser){
+			if (theUser.member.toString() === user){
+				project.members.splice(user, 1)
+				project.save(function(err){
+		 			if (err) return res.status(500).send(err)
+				})
+			}
+		})
+	})
+}
+
+function removeProjectFromUser (user, project, res){
+	Users.findById(user, function (err, user){
+		if (err) return res.status(500).send(err);
+		for (var pend in user.pendingApprovals){
+			if (user.pendingApprovals[pend].toString() === project){
+				user.pendingApprovals.splice(pend, 1)
+				user.save(function(err){
+		 			if (err) return res.status(500).send(err)
+				})
+			}
+		}
+	})
+}
 

@@ -33,7 +33,7 @@ angular.module('devvit').controller('messageSearchCtrl', function($scope, $rootS
 				messageService.newMessage(obj).then(function(res) {
 					console.log(res.data);
 				})
-				$state.go('profile.messages.current', {id: $scope.members[$scope.indexChosen]._id})
+				$state.go('devvit.messages.current', {id: $scope.members[$scope.indexChosen]._id})
 		}
 		
 		$(document).ready(function(){

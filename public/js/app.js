@@ -10,6 +10,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			templateUrl: '../templates/homeView.html',
 			controller: 'homeCtrl'
 		})
+		.state('devvit.profile', {
+				url: '/profile',
+				templateUrl:'../templates/profileView.html',
+				controller: 'profileViewCtrl'
+			})
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
@@ -57,7 +62,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profilePending.html',
 				controller: 'pendingCtrl'
 			})
-			.state('profile.groups', {
+			.state('devvit.groups', {
 				url:'/groups',
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl'
@@ -82,7 +87,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
-			.state('profile.messages', {
+			.state('devvit.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl',
@@ -94,7 +99,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 				// 	}
 				// }
 			})
-			.state('profile.messages.current', {
+			.state('devvit.messages.current', {
 				url:'/messages/:id',
 				templateUrl:'../templates/profileMessagesCurrent.html',
 				controller: 'messageCurrentCtrl',
@@ -109,12 +114,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.messages.newmessage', {
+			.state('devvit.messages.newmessage', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessagesCompose.html',
 				controller: 'messageSearchCtrl'
 			})
-			.state('profile.createProject', {
+			.state('devvit.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
 				controller: 'createCtrl'

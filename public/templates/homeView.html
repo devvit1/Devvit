@@ -19,12 +19,13 @@
 	<!--<div class="home_devvitLogo">DEVVIT.</div>-->
 	<div class="nav">
 		<ul>
-			<a href=""><li class = "navButtons">HOME</li></a>
-			<a  ui-sref="devvit.web"><li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}">WEB</li></a>
-			<a ui-sref="devvit.mobile"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/mobile')}">MOBILE</li></a>
+			<a ui-sref="devvit.profile"><li class = "navButtons" ng-class="{activeNavTab: isActive('/home/profile')}">HOME</li></a>
+			<a ui-sref="devvit.web"><li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}">PROJECTS</li></a>
+			<a ui-sref="devvit.groups"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/groups')}">GROUPS</li></a>
 			<a ui-sref="devvit.developers"><li class = "navButtons" ng-class="{activeNavTab: isActive('/home/developers')}">DEVELOPERS</li></a>
-			<a ui-sref='profile.createProject'><li class = "navButtons">SUBMIT YOUR IDEA</li></a>
-			<a href=""><li class = "navButtons searchButton" ng-click = "slideInSearch()"><i class="fa fa-search"></i></li></a>
+			<a ui-sref="devvit.messages"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/messages')}">MESSAGES</li></a>			
+			<a ui-sref='devvit.createProject'><li class = "navButtons submitNavButt">SUBMIT YOUR IDEA</li></a>
+			<!--<a href=""><li class = "navButtons searchButton" ng-click = "slideInSearch()"><i class="fa fa-search"></i></li></a>-->
 			
 			
 		</ul>

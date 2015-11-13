@@ -1,4 +1,4 @@
-<a ui-sref = "profile.groups"><u> < back to groups</u></a>
+<a ui-sref = "devvit.groups"><u> < back to groups</u></a>
 <div class="theGroupDisplay">
 	<div class="theGroupHeader">{{group.name}}</div>
 	<div class="theGroupBody">
@@ -36,7 +36,7 @@
 			</div>
 			<div class="membersMembers">
 				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
-					<div class="groupMemberUser">{{member.basicInfo.firstName}}{{member.basicInfo.lasttName}}</div>
+					<div class="groupMemberUser">{{member.member.basicInfo.firstName}} {{member.member.basicInfo.lastName}}</div>
 				</div>
 			</div>
 		</div>

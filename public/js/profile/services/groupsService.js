@@ -27,5 +27,25 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			return res.data.messages
 		})
 	}
+	this.acceptApplied = function (data){
+		return $http({
+			method: 'put',
+			url: '/accept',
+			data: data
+		}).then(function(res){
+			console.log(res)
+			return res.data.members
+		})
+	}
+	this.denyApplied = function (data){
+		return $http({
+			method: 'put',
+			url: '/deny',
+			data: data
+		}).then(function(res){
+			console.log(res)
+			return res.data.members
+		})
+	}
 	
 })

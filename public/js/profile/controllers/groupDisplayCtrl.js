@@ -14,4 +14,5 @@ angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootSc
 			console.log($scope.groupMessages)
 		})
 	}
+	console.log($scope.group)
 })

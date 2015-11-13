@@ -45,7 +45,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	
 	$scope.newLocation = function (userId) {
 		console.log(userId)
-		$state.go('profile.messages.current', {id: userId})
+		$state.go('devvit.messages.current', {id: userId})
 		
 	}
 	

@@ -1,7 +1,7 @@
 <div class="messages_wrap">
 	<div class="messages_wrap_content">
 		<div class="prof_mess_aside">
-			<button class="findUser" ng-click="searchValue = true" ui-sref="profile.messages.newmessage">Compose</button>
+			<button class="findUser" ng-click="searchValue = true" ui-sref="devvit.messages.newmessage">Compose</button>
 			
 			<div ng-click="getMessageswithUser($index); selectedNameCheck($index); getCurrentIndex($index)" class="prof_aside_messages" ng-repeat="user in userMessages">
 				<div ng-class="{firstDiv:$first}" ng-click="newLocation(user.withUser._id)">
