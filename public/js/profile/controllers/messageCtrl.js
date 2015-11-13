@@ -1,19 +1,12 @@
-angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, messageService){
+angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, messageService, $state){
+	
 	$scope.userMessages = [];
-
 	$scope.previewMessages = [];
 	
 	($scope.getMessages = function(){
 
-
-					var obj = {
-								messages: message.messages,
-								withUser: message.withUser.basicInfo.firstName,
-								withUserLast: message.withUser.basicInfo.lastName,
-								}
-					$scope.userMessages.push(obj)
-
-
+		$scope.messagesArr = [];
+		$scope.currentIndex = "";
 
 		messageService.getMessages($rootScope.profile._id).then(function(res){
 			console.log(res)
@@ -31,10 +24,16 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 		})
 		
 	})();
-
 		
+	$scope.selectedName = null;
+	$scope.selectedNameCheck = function(index) {
+		$scope.selectedName = index;
+	}
+	
+	$scope.searchForUser = function(user) {
+		messageService.getUser(user).then(function(res) {
+			console.log(res);
 		})
-
 	}
 	
 	$scope.getCurrentIndex = function(index) {
