@@ -60,10 +60,10 @@ app.get('/isAuth', isAuthed, function(req, res) {
 
 
 //ProjectController
-app.get(        '/projects/:id',   ProjectController.findAll);
+app.get(        '/projects',      ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
-
-app.post(       '/projects',       isAuthed, ProjectController.createProj);
+app.get(        '/ptsearch/:query',ProjectController.searchFor);
+app.post(       '/projects',       ProjectController.createProj);
 app.put (       '/project/:id',    ProjectController.projectUpdate);
 app.put(        '/projects',       isAuthed, ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);

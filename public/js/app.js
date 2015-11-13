@@ -17,6 +17,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			// 		}
 			// }
 		})
+		.state('devvit.profile', {
+				url: '/profile',
+				templateUrl:'../templates/profileView.html',
+				controller: 'profileViewCtrl'
+			})
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
@@ -115,7 +120,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.groups', {
+			.state('devvit.groups', {
 				url:'/groups',
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl',
@@ -142,7 +147,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
-			.state('profile.messages', {
+			.state('devvit.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl',
@@ -154,7 +159,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.createProject', {
+			.state('devvit.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
 				controller: 'createCtrl',

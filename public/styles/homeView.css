@@ -81,9 +81,10 @@
 	color: #336699;
 }
 
-.searchButton{
+.submitNavButt{
 	background: #343434;
-	color: #e84d3d;
+	color: #ff9326
+	/*color: #e84d3d;*/
 }
 
 .fa-search{

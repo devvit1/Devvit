@@ -116,8 +116,8 @@ module.exports = {
 	
 	findAll: function(req, res){
 		Projects.find(
-			{'type': req.params.id })
-			.limit(25)
+			{})
+			.limit(50)
 			.populate('admins')
 			.exec(
 			function(err, result) {
@@ -166,10 +166,31 @@ module.exports = {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
+	},
+	
+	searchFor: function(req, res){
+		Projects.find(
+			{$or:[
+			{'type': { "$regex": req.params.query, "$options": "i" }},
+    		{'name': { "$regex": req.params.query, "$options": "i" }},
+    		{'tags': { "$regex": req.params.query, "$options": "i" }}]}
+		)
+		.populate('admins')
+		.exec(function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+		})
 	}
+	
+	
 	
 }
 
+
+/***********************functions for project endpoints***************** */
 function addProjectToUser(userId, project, message, res) {
 	Users.findByIdAndUpdate(
 	userId, 
@@ -270,9 +291,6 @@ function addProjectToUserGroups(project, user, res){
 		function(err, result) {
 			if (err) return res.status(500).send(err);
 		})
-	// user.groups.push(project._id);
-	// user.save(function(err){
-	// 	if (err) return res.status(500).send(err)
-	// })
+
 };
 

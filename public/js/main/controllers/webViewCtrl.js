@@ -1,26 +1,28 @@
 angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
     
+      $scope.subTypeFilter = ""
       $scope.isActive = function(route) {
       return route === $location.path();
       };
-        
+      $scope.orderThis = $scope.sortByOption;
       $scope.webProjects = [];
-      projectService.getProjects('web').then(function(res) {
-      $scope.webProjects = res;
-      if ($scope.webProjects.members = 'undefined'){
-        
+      projectService.getProjects().then(function(res) {
+            console.log(res)
+            $scope.webProjects = res;
+      })
+      $scope.findAll = function(){
+             projectService.getProjects().then(function(res) {
+              console.log(res)
+            $scope.webProjects = res;
+      })
       }
-    })
     
-    // $scope.modalShown = false;
-    // $scope.toggleModal = function() {
-    //   $scope.modalShown = !$scope.modalShown;
-    // }
+    
     
     	$scope.save = false;
   	   $scope.toggleView = function() {
   		  $scope.save = !$scope.save;
-  }
+      }
 
     
     $scope.apply = function(projectID, submittedMessage) {
@@ -33,5 +35,17 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
         console.log("Success Web");
       })
     }
+    
+    /*****************JACOBS QUERY CODE **************/
+    
+    $scope.searchProjects = function (query){
+
+          projectService.searchProjects(query).then(function(res){
+             $scope.webProjects = res;     
+             console.log(res)    
+          })
+    }
+    
+    
     
 });

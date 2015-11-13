@@ -1,9 +1,9 @@
 angular.module('devvit').service('projectService', function($http){
 
-	this.getProjects = function(type){
+	this.getProjects = function(){
 		return $http({
 			method: 'GET',
-			url: '/projects/' + type
+			url: '/projects' 
 		}).then(function(res) {
 
 			return res.data;
@@ -17,6 +17,15 @@ angular.module('devvit').service('projectService', function($http){
 			data: info
 		}).then(function(res) {
 
+		})
+	},
+	
+	this.searchProjects = function(query){
+		return $http({
+			method: 'GET',
+			url: '/ptsearch/'+query
+		}).then(function(res){
+			return res.data
 		})
 	}
 	

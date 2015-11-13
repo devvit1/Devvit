@@ -1,5 +1,30 @@
 angular.module('devvit').controller('createCtrl', function($scope, createService, $rootScope){
 	
+	$scope.popCat = [
+		"web",
+		"mobile",
+		"software",
+		"iot",
+		"robotics",
+		"javascript",
+		"angular",
+		"node",
+		"mongo",
+		"database",
+		"front-end",
+		"server"
+		
+	]
+	$scope.chooseCategory = function(cat){
+		$scope.project.type = cat;
+	}
+	
+	$scope.selectedCategory = function(selected){
+		if (selected === $scope.project.type){
+			return true;
+		}
+		else return false
+	}
 	
 	
 	$scope.project = {
@@ -11,7 +36,7 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 				"tags": null,
 		}
 	$scope.createProject = function(project){	
-		console.log(project)		
+		
 		createService.createProject(project)
 	}
 	
