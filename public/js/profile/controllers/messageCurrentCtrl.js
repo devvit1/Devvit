@@ -43,7 +43,13 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 			// });
 			
 			var $cont = $('#messages-container');
-			$cont[0].scrollTop = $cont[0].scrollHeight;
+			// $cont[0].scrollTop = $cont[0].scrollHeight;
+			// $cont.scrollTop($cont[0].scrollHeight - $cont[0].clientHeight);
+			// $("#messages-container").animate({ scrollTop: $("##messages-container")[0].scrollHeight }, 1000);
+			// window.onload=function () {
+			// 	var objDiv = document.getElementById("messages-container");
+			// 	objDiv.scrollTop = objDiv.scrollHeight;
+			// }
 			console.log($cont[0].scrollHeight)
 			
 			$('#messageReply').keyup(function(e) {
