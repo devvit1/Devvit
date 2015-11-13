@@ -10,9 +10,8 @@ angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootSc
 		}
 		groupsService.sendGroupMessage(data).then(function(res){
 			$scope.groupMessages = res
-			console.log(res)
+
 			console.log($scope.groupMessages)
 		})
 	}
-	console.log($scope.group)
 })

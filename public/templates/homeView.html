@@ -21,7 +21,14 @@
 		<ul>
 			<a ui-sref="devvit.profile"><li class = "navButtons" ng-class="{activeNavTab: isActive('/home/profile')}">HOME</li></a>
 			<a ui-sref="devvit.web"><li class = "navButtons" class = 'webButton'ng-class="{activeNavTab: isActive('/home/web')}">PROJECTS</li></a>
-			<a ui-sref="devvit.groups"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/groups')}">GROUPS</li></a>
+			<div class="groupsNavButton">
+			<a ><li class = "navButtons" ng-click = "slideInGroups()" ng-class="{activeNavTab: isActive('/home/groups')} ">GROUPS</li></a>
+			<div class="groupsSubMenu" id="groupSubMenu">
+				<div class="arrow-up"></div>
+				<div class="subMenu Active_nav" ui-sref="devvit.active" ng-click = "slideInGroups()">ACTIVE POSTS</div>
+				<div class="subMenu groups_subnav" ui-sref="devvit.groups" ng-click = "slideInGroups()">MY GROUPS</div>
+			</div>
+			</div>
 			<a ui-sref="devvit.developers"><li class = "navButtons" ng-class="{activeNavTab: isActive('/home/developers')}">DEVELOPERS</li></a>
 			<a ui-sref="devvit.messages"><li class = "navButtons"  ng-class="{activeNavTab: isActive('/home/messages')}">MESSAGES</li></a>			
 			<a ui-sref='devvit.createProject'><li class = "navButtons submitNavButt">SUBMIT YOUR IDEA</li></a>
@@ -33,7 +40,7 @@
 </div>
 	
 </div>
-<div id="slideInOut" class="home_searchTab">
+<!--<div id="slideInOut" class="home_searchTab">
 	<input type="text"  class = "home_searchBar">
-</div>
+</div>-->
 <ui-view></ui-view>
