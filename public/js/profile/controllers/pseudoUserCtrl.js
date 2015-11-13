@@ -1,6 +1,6 @@
 angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, pseudoService) {
-//    // billies id:"56380ba0090eed93c9b456a3"
-// 	// jacobs id"56380bb0090eed93c9b456a4"
+//    billies id:"56380ba0090eed93c9b456a3"
+// 	jacobs id"56380bb0090eed93c9b456a4"
 	
 	
 // 		var user1 = {
