@@ -5,12 +5,12 @@
 
 <div class="messageComposeWrap">
 	<div class="message_developerCard" ng-repeat = "user in members track by $index" ng-show="!clickedDev">
-		<div class="messageCard_upper"></div>
-		<div class="messageCard_lower" ng-click="newMessageWithUser($index)">
+		<div class="messageCard_upper"><i id="userIcon" class="fa fa-users"></i></div>
+		<div id="user_fullname_search" class="messageCard_lower" ng-click="newMessageWithUser($index)">
 			{{user.basicInfo.first}}
 			{{user.basicInfo.last}}
 		<br>
-		{{user.basicInfo.userName}}	
+		<h6 id="username_search">{{user.basicInfo.userName}}</h6>
 		</div>
 	</div>
 	<div class="composeNewMessage">
