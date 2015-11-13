@@ -1,16 +1,20 @@
 <div class="messages_wrap">
 	<div class="messages_wrap_content">
 		<div class="prof_mess_aside">
-			<div ng-click="getMessageswithUser($index)" class="prof_aside_messages" ng-repeat="user in userMessages" >
-				{{user.withUser}} {{user.withUserLast}}
-				<br>
+			<button class="findUser" ng-click="searchValue = true" ui-sref="devvit.messages.newmessage">Compose</button>
+			
+			<div ng-click="getMessageswithUser($index); selectedNameCheck($index); getCurrentIndex($index)" class="prof_aside_messages" ng-repeat="user in userMessages">
+				<div ng-class="{firstDiv:$first}" ng-click="newLocation(user.withUser._id)">
+					<span class="message_name" ng-class="{'message_name_current': $index == selectedName}">
+					{{user.withUser.basicInfo.firstName}} {{user.withUser.basicInfo.lastName}}</span>
+					<p id="previewMessage">{{user.preview.message}}</p>
+					<!--<br>-->
+				</div>
 			</div>
+			
 		</div>
 		<div class="prof_mess_body">
-			<div class="prof_message_card" ng-repeat='message in messages'>
-				<div>{{message.message}}</div>
-				<span id="message_time">Sent at {{message.time | date:'MM/dd h:mma'}}</span>
-			</div>
+			<ui-view></ui-view>
 		</div>
 	</div>
 </div>
