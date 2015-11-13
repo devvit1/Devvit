@@ -31,10 +31,11 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 
  
-	(function updateUser (){
-		pseudoService.getProfile().then(function(res){
-			console.log("user should be set", res._id)
+
+	(function updateUser (who){
+		pseudoService.getProfile(who).then(function(res){
 			$rootScope.profile = res;
+			console.log(res)
 			$rootScope.profile.username = res.basicInfo.userName; 
 			console.log("rootScope - ", $rootScope.profile )
 

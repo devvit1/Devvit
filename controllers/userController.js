@@ -47,7 +47,7 @@ module.exports = {
       res.json(result);
     });
   },
-  //GO BACK
+
   getActive: function(req, res){
     console.log('TESTER@!!!!@', req.user)
     Users.findById(req.user._id)

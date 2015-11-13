@@ -48,7 +48,7 @@
 				</div>
 				<div class="outPanel_right">
 
-					<div class="outPanelType">[{{webProject.type}}]</div>
+					<div class="outPanelType" ng-click = "searchProjects(webProject.type)">[{{webProject.type}}]</div>
 					<div class="outPanelBy"><i class="fa fa-user"></i> &nbsp{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
 				</div>
 				
@@ -65,7 +65,7 @@
 							<div class="panel_MC_left_upper">{{webProject.name}}</div>
 							<div class="panel_MC_left_lower">
 								<div class="panel_tags">
-									<div class="panel_tag"ng-repeat="tag in webProject.tags">{{tag}}</div>
+									<div class="panel_tag" ng-repeat="tag in webProject.tags"  ng-click="searchProjects(tag)">{{tag}}</div>
 								</div>
 								<div class="panel_createdBy">{{webProject.description | limitTo: 110 }}{{webProject.description.length > 110 ? '...' : '' }}</div>
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->

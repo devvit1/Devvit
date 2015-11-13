@@ -39,7 +39,7 @@
 			<textarea ng-model="project.description" class = "create_textarea"></textarea>
 		</div>
 		
-		<div class="displayTags" ng-repeat = "tag in tags">
+		<div class="displayTags" ng-repeat = "tag in tags track by $index">
 			<div class="displayedTag">
 			{{tag}}
 			<a ng-click="removeTag(tag)"><i  class="fa fa-times"></i></a>

@@ -96,7 +96,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.active', {
+			.state('devvit.active', {
 				url:'/active/:user_id',
 				templateUrl:'../templates/profileActive.html',
 				controller: 'activeCtrl',
@@ -108,7 +108,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.pending', {
+			.state('devvit.pending', {
 				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
 				controller: 'pendingCtrl',
@@ -132,7 +132,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-				.state('profile.groupdisplay', {
+				.state('devvit.groupdisplay', {
 					url:'/group/:group',
 					templateUrl:'../templates/profileGroupsSub.html',
 					controller: 'groupDisplayCtrl',
@@ -147,7 +147,18 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
-						.state('devvit.messages', {
+
+				.state('devvit.groupdisplayAdmin', {
+					url:'/groupadmin/:group',
+					templateUrl:'../templates/profileGroupsAdminSub.html',
+					controller: 'groupDisplayAdminCtrl',
+					resolve: {
+						groupInfo: function ($stateParams, groupsService) {
+							 return groupsService.findProject($stateParams.group)
+						}
+					}
+				})
+			.state('devvit.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl',
