@@ -9,53 +9,123 @@ app.config(function($stateProvider, $urlRouterProvider){
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
 			controller: 'homeCtrl'
+			// resolve: {
+			// 	isAuth: function(devService) {
+			// 		return devService.isAuth().then(function(res){
+			// 			return res;
+			// 			})
+			// 		}
+			// }
 		})
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
 				controller: 'webViewCtrl'
+				// resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
 			})
 			
 			.state('devvit.mobile', {
 				url: '/mobile',
 				templateUrl:'../templates/mobileView.html',
-				controller: 'mobileViewCtrl'
+				controller: 'mobileViewCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 			.state('devvit.developers', {
 				url: '/developers',
 				templateUrl:'../templates/developersView.html',
-				controller: 'developersCtrl'
+				controller: 'developersCtrl',
+				resolve: {
+					isAuth: function(devService) {
+						return devService.isAuth().then(function(res){
+							return res;
+						})
+					}
+				}
 			})
 
 		.state('profile', {
 			url:'/profile',
 			templateUrl:'../templates/profile.html',
 			controller: 'profileCtrl'
+			// resolve: {
+			// 	isAuth: function(devService) {
+			// 		return devService.isAuth().then(function(res){
+			// 			return res;
+			// 			})
+			// 		}
+			// 	}
 		})
 			.state('profile.login-register', {
 				url:'/login-register',
 				templateUrl: '../templates/log_Reg.html',
 				controller: 'log_RegCtrl'
+				// resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
 			})
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',
-				controller: 'basicInfoCtrl'
+				controller: 'basicInfoCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 			.state('profile.active', {
 				url:'/active/:user_id',
 				templateUrl:'../templates/profileActive.html',
-				controller: 'activeCtrl'
+				controller: 'activeCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 			.state('profile.pending', {
 				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
-				controller: 'pendingCtrl'
+				controller: 'pendingCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 			.state('profile.groups', {
 				url:'/groups',
 				templateUrl:'../templates/profileGroups.html',
-				controller: 'groupsCtrl'
+				controller: 'groupsCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 				.state('profile.groupdisplay', {
 					url:'/group/:group',
@@ -64,17 +134,36 @@ app.config(function($stateProvider, $urlRouterProvider){
 					resolve: {
 						groupInfo: function ($stateParams, groupsService) {
 							 return groupsService.findProject($stateParams.group)
+						},
+						isAuth: function(devService) {
+							return devService.isAuth().then(function(res){
+								return res;
+							})
 						}
 					}
 				})
 			.state('profile.messages', {
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
-				controller: 'messageCtrl'
+				controller: 'messageCtrl',
+				resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 			})
 			.state('profile.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
-				controller: 'createCtrl'
+				controller: 'createCtrl',
+				resolve: {
+					isAuth: function(createService) {
+						return createService.isAuth = function(res) {
+							return res;
+						}
+					}
+				}
 			})
 })

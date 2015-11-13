@@ -28,7 +28,6 @@ passport.use('local-login', new LocalStrategy({
 			return done(null, user);
 		} else {
 			console.log('wrong password!');
-			// return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
 			return done(null, false, {message: 'wrong password!'});
 		}
 	});

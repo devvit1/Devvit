@@ -12,13 +12,12 @@ module.exports = {
     //     }
 
 
-        var user = new Users(req.body);
-        user.save(function(err, new_user) {
-          if(err) {
-            console.log("can't create user", err);
-          }
-          res.json(new_user);
-        })
+    var newUser = new Users(req.body);
+    newUser.save(function(err, user) {
+      if(err) return res.send(err);
+      user.password = null;
+      return res.send(user);
+    });
   },
 
   read: function(req, res) {

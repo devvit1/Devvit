@@ -42,7 +42,6 @@ app.use(passport.session());
 app.post('/login', passport.authenticate('local-login', { 
   // failureRedirect: '/#/profile/login-register', 
   // successRedirect: '/#/home', 
-  failureFlash: true 
 }), function(req, res){
   res.send(req.user);
 });
@@ -54,15 +53,19 @@ app.get('/logout', function(req,res) {
   return res.send('logged out');
 })
 
+app.get('/isAuth', isAuthed, function(req, res) {
+	res.send(req.user);
+});
+
 
 
 //ProjectController
 app.get(        '/projects/:id',   ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
 
-app.post(       '/projects',       ProjectController.createProj);
+app.post(       '/projects',       isAuthed, ProjectController.createProj);
 app.put (       '/project/:id',    ProjectController.projectUpdate);
-app.put(        '/projects',       ProjectController.apply);
+app.put(        '/projects',       isAuthed, ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 app.post(       '/groupmessage',    ProjectController.groupMessage);
@@ -72,9 +75,9 @@ app.post(       '/groupmessage',    ProjectController.groupMessage);
 app.get(        '/user',       UserController.read);
 // app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
-app.put(        '/user',           UserController.userUpdate);
+app.put(        '/user',           isAuthed, UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
-app.get(        '/active',         UserController.getActive);
+app.get(        '/active',         isAuthed, UserController.getActive);
 app.get(        '/getusers/:id',    UserController.getUsers)
 
 app.put(        '/newmessage',     MessageController.newMessage);
