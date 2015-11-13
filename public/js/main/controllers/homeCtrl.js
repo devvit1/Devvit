@@ -3,10 +3,10 @@ angular.module('devvit').controller('homeCtrl', function($scope, $location){
 		return route === $location.path();
 	};
 	
-	$("#slideInOut").hide();
+	$("#groupSubMenu").hide();
 	
-	$scope.slideInSearch = function(elem){
-		$("#slideInOut").slideToggle('fast');
+	$scope.slideInGroups = function(elem){
+		$("#groupSubMenu").slideToggle('fast');
 	}
 // 	$(window).scroll(function () {
 //     if ($(window).scrollTop() > 50) {

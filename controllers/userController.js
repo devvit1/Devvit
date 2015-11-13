@@ -48,7 +48,7 @@ module.exports = {
       res.json(result);
     });
   },
-  //GO BACK
+
   getActive: function(req, res){
     Users.findById(req.params.id)
     .populate('messages.withUser')

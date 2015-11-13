@@ -47,7 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileAbout.html',
 				controller: 'basicInfoCtrl'
 			})
-			.state('profile.active', {
+			.state('devvit.active', {
 				url:'/active/:user_id',
 				templateUrl:'../templates/profileActive.html',
 				controller: 'activeCtrl',
@@ -57,7 +57,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
-			.state('profile.pending', {
+			.state('devvit.pending', {
 				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
 				controller: 'pendingCtrl'
@@ -67,7 +67,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl'
 			})
-				.state('profile.groupdisplay', {
+				.state('devvit.groupdisplay', {
 					url:'/group/:group',
 					templateUrl:'../templates/profileGroupsSub.html',
 					controller: 'groupDisplayCtrl',
@@ -77,7 +77,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 						}
 					}
 				})
-				.state('profile.groupdisplayAdmin', {
+				.state('devvit.groupdisplayAdmin', {
 					url:'/groupadmin/:group',
 					templateUrl:'../templates/profileGroupsAdminSub.html',
 					controller: 'groupDisplayAdminCtrl',

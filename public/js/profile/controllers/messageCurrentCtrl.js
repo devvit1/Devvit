@@ -6,13 +6,13 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 	console.log('$scope.messages', $scope.messages)
 	
 	
-	// $scope.checkingIfMine = function(index) {
-	// 	if($scope.messages[index].from == $rootScope.profile._id) {
-	// 		return false;
-	// 	} else {
-	// 		return true; //true changes color to gray
-	// 	}
-	// }
+	$scope.checkingIfMine = function(index) {
+		if($scope.messages[index].from == $rootScope.profile._id) {
+			return false;
+		} else {
+			return true; //true changes color to gray
+		}
+	}
 	
 	$scope.replyToUser = function(msg) {
 			$scope.replyObj = {

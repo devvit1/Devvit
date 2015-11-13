@@ -17,12 +17,12 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 	$scope.goToGroup = function(group){
 		group.admins.forEach(function(admin){
 			if ($rootScope.profile._id === admin){
-				$state.go('profile.groupdisplayAdmin', {
+				$state.go('devvit.groupdisplayAdmin', {
 					group: group._id
 				})
 			}
 			else {
-				$state.go('profile.groupdisplay', {
+				$state.go('devvit.groupdisplay', {
 					group: group._id
 				})
 			}
