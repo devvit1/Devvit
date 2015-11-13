@@ -18,6 +18,15 @@ angular.module('devvit').service('projectService', function($http){
 		}).then(function(res) {
 
 		})
+	},
+	
+	this.searchProjects = function(query){
+		return $http({
+			method: 'GET',
+			url: '/ptsearch/'+query
+		}).then(function(res){
+			return res.data
+		})
 	}
 	
 })

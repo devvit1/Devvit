@@ -3,14 +3,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 	$scope.groupMessages = groupInfo.messages;
 	$scope.pendingApp = [];
 	$scope.inGroupMembers = [];
-	var inGroupMembers =function (){
-		$scope.group.members.forEach(function(member){
+	var inGroupMembers =function (arr){
+		arr.forEach(function(member){
 			if (!member.application.pending){
 				$scope.inGroupMembers.push(member)
 			}
 		})
 	} 
-	inGroupMembers()
+	inGroupMembers($scope.group.members)
 	
 	
 	groupInfo.members.forEach(function(member){
@@ -38,10 +38,10 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			project_id: $scope.group._id,
 			user_id: applied.member._id
 		}
-		groupsService.acceptApplied(data).then(function(res){
-			inGroupMembers()			
+		groupsService.acceptApplied(data).then(function(res){			
 			removeFromArr(applied.member._id, $scope.pendingApp)
 			$scope.group.members = res
+			inGroupMembers(res)
 		})
 	}
 	$scope.denyUser = function(applied){
@@ -51,9 +51,9 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		}
 
 		groupsService.denyApplied(data).then(function(res){
-			inGroupMembers()
 			removeFromArr(applied.member._id, $scope.pendingApp)
 			$scope.group.members = res
+			inGroupMembers(res)
 		})
 	}
 	

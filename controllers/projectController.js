@@ -182,10 +182,29 @@ module.exports = {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
+	},
+	
+	searchFor: function(req, res){
+		Projects.find(
+			{$or:[
+    		{'name': { "$regex": req.params.query, "$options": "i" }},
+    		{'tags': { "$regex": req.params.query, "$options": "i" }}]}
+		)
+		.exec(function(err, result) {
+				if (err) {
+					return res.status(500).send(err)}
+				else{
+					res.json(result);
+				}
+		})
 	}
+	
+	
 	
 }
 
+
+/***********************functions for project endpoints***************** */
 function addProjectToUser(userId, project, message, res) {
 	Users.findByIdAndUpdate(
 	userId, 
@@ -286,10 +305,7 @@ function addProjectToUserGroups(project, user, res){
 		function(err, result) {
 			if (err) return res.status(500).send(err);
 		})
-	// user.groups.push(project._id);
-	// user.save(function(err){
-	// 	if (err) return res.status(500).send(err)
-	// })
+
 };
 
 function removeUserFromProject (user, project, res) {
