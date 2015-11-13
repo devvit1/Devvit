@@ -9,8 +9,8 @@ var UsersSchema = new mongoose.Schema({
 		email: { type: String, required: true },
 		password: {type: String, required: true },
 		location: String,
-		gitHubUrl: String,
-		linkedinUrl: String
+		gitHub: String,
+		linkedin: String
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	activePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
@@ -27,8 +27,9 @@ var UsersSchema = new mongoose.Schema({
 		  withUser: {type: mongoose.Schema.Types.ObjectId},
 
 		}
-		],
-		
+	],
+	skills: [{type:String}],
+	bio:{type:String},		
 	createdAt: {type: Date, default:Date.now()}
 })
 

@@ -35,10 +35,7 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 				"type":null,
 				"tags": null,
 		}
-	$scope.createProject = function(project){	
-		
-		createService.createProject(project)
-	}
+	
 	
 	$scope.typeValue = function(type){
 		if (type === "web"){
@@ -76,6 +73,7 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 	$scope.createATag = function (theTag){
 		$scope.tags.push(theTag)
 		$scope.project.tags = $scope.tags
+		$scope.projectTag = ""
 	}
 	$scope.removeTag = function(item) { 
 
@@ -83,5 +81,21 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
  	 	$scope.tags.splice(index, 1);
 		$scope.project.tags = $scope.tags     
 	}
+	$scope.createProject = function(project){	
+		createService.createProject(project).then(function(res){
+		$scope.project = {
+						"active_user_id":$rootScope.profile._id,
+						"name":null,
+						"description": null,
+						"subType":null,
+						"type":null,
+						"tags": null,
+		}
+		$scope.tags = [];	
+		$scope.selectedprof = false;
+		$scope.selectedfree = false;
+		$scope.selectedpers = false;
+		})
+		}
 	
 })

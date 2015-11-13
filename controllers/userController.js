@@ -36,7 +36,9 @@ module.exports = {
   // },
 
   userUpdate: function(req, res) {
-    Users.findByIdAndUpdate(req.body.basicInfo._id, req.body, { new: true }, function(err, result) {
+    Users.findByIdAndUpdate(req.body._id, req.body,
+     { new: true }, 
+     function(err, result) {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
@@ -54,6 +56,8 @@ module.exports = {
     .populate('messages.withUser')
     .populate('activePosts')
     .populate('groups')
+    .populate({path:'pendingApprovals',
+               populate:{path:'createdBy', model:'Users'}})
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
       res.json(result);
