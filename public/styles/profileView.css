@@ -359,6 +359,10 @@ ACTIVE TAB
 			color:#FF9329;
 			cursor:pointer;
 		}
+		.fa-plus{
+			color: #9BD0C6;
+			cursor:pointer;
+		}
 		.profile_skills_title{
 			align-self: center;
 		}
@@ -368,6 +372,12 @@ ACTIVE TAB
 			flex-direction: column;
 
 
+		}
+		.profile_addSkills{
+			 border: 2px solid #181818;
+   		 	background: transparent;
+    		height: 22px;
+			margin:5px auto;
 		}
 		.profile_bio{
 			flex:1;

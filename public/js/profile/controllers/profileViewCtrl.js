@@ -1,5 +1,9 @@
 angular.module('devvit').controller('profileViewCtrl', function($scope, profileViewService, $rootScope){
 	$scope.showEdit = false
+	$('#slideDown').hide();
+	$scope.toggleaddSkills = function(){
+		$('#slideDown').slideToggle('fast');
+	}
 	$scope.profileEditToggle = function(){
 		$scope.showEdit = !$scope.showEdit
 		return $scope.showEdit
@@ -8,12 +12,24 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 	$scope.updated.skills = $rootScope.profile.skills
 
 	$scope.addToNewSkills = function (skill){
-		console.log(skill)
-		$scope.updated.skills.push(skill)
+		$rootScope.profile.skills.push(skill)
+		profileViewService.updateUser($rootScope.profile).then(function(res){
+
+		})
 	}
+	$scope.addBio = function (bio){
+		$rootScope.profile.bio = bio
+		profileViewService.updateUser($rootScope.profile).then(function(res){
+
+		})
+	}
+	
 	$scope.removeSkill = function(skill){
-		 var index = $scope.updated.skills.indexOf(skill);
- 	 	$scope.updated.skills.splice(index, 1);
+		 var index = $rootScope.profile.skills.indexOf(skill);
+ 	 	$rootScope.profile.skills.splice(index, 1);
+		  profileViewService.updateUser($rootScope.profile).then(function(res){
+
+		})
 	}
 	$scope.updateUser = function (){
 		$rootScope.profile.skills = $scope.updated.skills;
