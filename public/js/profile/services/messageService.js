@@ -29,15 +29,6 @@ angular.module('devvit').service('messageService', function($http){
 		
 	}
 	
-	// this.getUser = function(user) {
-	// 	return $http({
-	// 		method: 'GET',
-	// 		url: '/user/' + user
-	// 	}).then(function(res) {
-	// 		return res.data;
-	// 	})
-	// }
-	
 	this.addMessage = function(data) {
 		return $http({
 			method: 'PUT',
@@ -47,5 +38,16 @@ angular.module('devvit').service('messageService', function($http){
 			return res;
 		})
 	}
+	
+	this.newMessage = function(data) {
+		return $http({
+			method: 'PUT',
+			url: '/newmessage',
+			data: data
+		}).then(function(res) {
+			return res;
+		})
+	}
+	
 	
 })

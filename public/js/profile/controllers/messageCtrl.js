@@ -1,6 +1,7 @@
 angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, messageService, $state){
 	
 	$scope.userMessages = [];
+	$scope.previewMessages = [];
 	
 	($scope.getMessages = function(){
 
@@ -10,7 +11,14 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 		messageService.getMessages($rootScope.profile._id).then(function(res){
 			console.log(res)
 			res.messages.forEach(function(name) {
-				$scope.userMessages.push(name.withUser)
+				var lengthOf = name.messages.length-1;
+				var obj = {
+					withUser: name.withUser,
+					preview: name.messages[lengthOf]
+				}
+				// $scope.userMessages.push(name.withUser)
+				// $scope.userMessages.push(name.messages[lengthOf])
+				$scope.userMessages.push(obj)
 			})
 			console.log($scope.userMessages)
 		})

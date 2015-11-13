@@ -24,10 +24,10 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 			messageService.addMessage($scope.replyObj).then(function(res) {
 				console.log(res)
 			})
-			$scope.msg = null;
 			messageService.getMessages($rootScope.profile._id).then(function(res) {
 				$scope.messages = res.messages[$scope.currentIndex].messages;
 			})
+			$scope.msg = "";
 		}
 		
 		

@@ -21,6 +21,7 @@
 	flex-direction: row;
 	justify-content: center;
 }
+
 .searchDevelopers > input {
 	margin-top:10px;
 	font-size: 40px;
