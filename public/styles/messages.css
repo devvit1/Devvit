@@ -149,6 +149,10 @@
 	margin-top: 10px;
 }
 
+ .iconWrap:hover{
+	 color: #FF9326;
+ }
+
 #searchUsers {
 	background: #E8E8E8;
 	padding:10px;
