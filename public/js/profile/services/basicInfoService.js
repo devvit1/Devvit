@@ -10,13 +10,7 @@ angular.module('devvit').service('basicInfoService', function($http){
 			})
 	};
 
-	this.updateProfile = function(profile) {
-		return $http({
-			method: 'PUT',
-			url: '/user',
-			data: profile
-		})
-	}
+	
 	
 	
 })

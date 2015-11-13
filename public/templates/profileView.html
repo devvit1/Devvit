@@ -12,6 +12,26 @@
 	</div>
 	
 	<div class="profile_body_right">
+			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div class="profile_userName">{{profile.basicInfo.userName}}</div></div>
+			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
+			<div class="" ng-show="!editShow">
+				<div class="profile_email">{{profile.basicInfo.email}} <span class="editSquare" ></div>
+				<div class="profile_linkedin">{{profile.basicInfo.linkedin}}<span class="editSquare" ></div>
+				<div class="profile_github">{{profile.basicInfo.github}}<span class="editSquare" ></div>
+			</div>
+			<div class="basicInfo_edit" ng-show="editShow">
+				<input class="profile_email" ng-model="profile.basicInfo.email" placeholder="(email)">
+				<input class="profile_linkedin" ng-model="profile.basicInfo.linkedin" placeholder="(linkedin)">
+				<input class="profile_github" ng-model="profile.basicInfo.github" placeholder="(github)">
+				<input class="profile_github" ng-model="profile.basicInfo.website" placeholder="(website)">
+				
+			</div>
+			<div class="profile_update" ><a  ng-show = "!editShow" ng-click = "editShow = !editShow">edit/update</a><a ng-click = "editShow = !editShow; updateUser()"ng-show="editShow" class = "submitChanges">submit Changes</a></div>
+			
+		</div>
+	</div>
+	
+	<div class="profile_body_right" >
 		<div class="profile_userProjects">
 			<div class="profile_pending">
 				PENDING 
@@ -27,6 +47,32 @@
 			<div class="profile_bio">
 				BIO
 				<div class="profile_bio_bio"></div>
+					<span><i class="fa fa-times"></i></span>{{pending.name}} <span>creator</span>
+				</div>
+			</div>
+			<div class="profile_SkillCont">
+				<div class="profile_skills_title">SKILLS &nbsp<i class="fa fa-plus" ng-click = "toggleaddSkills()"></i>
+				<span>
+					<form ng-submit="addToNewSkills(newSkill)">
+					<input class = 'profile_addSkills' ng-model="newSkill" id="slideDown">
+					</form>
+				</span>
+				</div>
+				<div class="profile_skills">
+					<div ng-repeat="skill in profile.skills track by $index" class="eachSkill"><span><i ng-click = "removeSkill(skill)" class="fa fa-times"></i></span>&nbsp{{skill}}</div>
+					</div>
+			</div>
+		</div>
+		
+		<div class="profile_otherUserInfo">
+			<div class="profile_bio">
+				BIO <i class="fa fa-pencil-square-o" ng-click="bioShow=!bioShow"><span ng-show= "bioShow" ng-click = "addBio(profile.bio)">submit</span></i>
+				<textarea ng-model="profile.bio" ng-show= "bioShow">
+					
+				</textarea>
+				<div class="profile_bio_bio" ng-show="!bioShow">
+					{{profile.bio}}
+				</div>
 			</div>
 			<div class="profile_right_location">
 				LOCATION
