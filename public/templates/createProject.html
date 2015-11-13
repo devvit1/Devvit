@@ -11,11 +11,18 @@
 	</div>
 	
 	<div class="createRight">
-		<div class="createDesc"><u>Select your category</u></div>
+		<div class="createDesc"><u>PICK FROM POPULAR CATEGORIES</u></div>
 		<div class="create_option">
-			<div class="create_web" ng-click = 'typeValue("web")' ng-class = "{optionSelected: selectedWeb}">WEB</div>
+			<div class="create_categories_wrapper">
+				<div class="create_categories"ng-repeat = "categ in popCat" ng-click = "chooseCategory(categ)" ng-class="{pickedCat: selectedCategory(categ)}">
+					{{categ.toUpperCase()}}
+				</div>
+			</div>
+			<!--<div class="create_web" ng-click = 'typeValue("web")' ng-class = "{optionSelected: selectedWeb}">WEB</div>
 			
-			<div class="create_mobile" ng-click = 'typeValue("mobile")'ng-class = "{optionSelected : selectedMobile}">MOBILE</div>
+			<div class="create_mobile" ng-click = 'typeValue("mobile")'ng-class = "{optionSelected : selectedMobile}">MOBILE</div>-->
+			<div class="createDesc"><u>OR MAKE YOUR OWN</u></div>
+			<input type="text" class = "create_cat" ng-model = "project.type"placeholder="Category...">
 		</div>
 		<div class="createDesc"><u>type?</u></div>
 		<div class="create_subOption">

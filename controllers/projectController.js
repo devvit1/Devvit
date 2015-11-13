@@ -122,8 +122,8 @@ module.exports = {
 	
 	findAll: function(req, res){
 		Projects.find(
-			{'type': req.params.id })
-			.limit(25)
+			{})
+			.limit(50)
 			.populate('admins')
 			.populate('messages.sentBy')
 			.exec(
@@ -187,9 +187,11 @@ module.exports = {
 	searchFor: function(req, res){
 		Projects.find(
 			{$or:[
+			{'type': { "$regex": req.params.query, "$options": "i" }},
     		{'name': { "$regex": req.params.query, "$options": "i" }},
     		{'tags': { "$regex": req.params.query, "$options": "i" }}]}
 		)
+		.populate('admins')
 		.exec(function(err, result) {
 				if (err) {
 					return res.status(500).send(err)}

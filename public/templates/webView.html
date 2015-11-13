@@ -1,4 +1,16 @@
 
+<div class="projects_nav">
+	<ul class = "projects_nav_list">
+		<li ng-click ="findAll()">ALL</li>
+		<li ng-click = "searchProjects('web')" >WEB</li>
+		<li ng-click = "searchProjects('mobile')" >MOBILE</li>
+		<li ng-click = "searchProjects('software')">SOFTWARE</li>
+		<li ng-click = "searchProjects('javascript')">JAVASCRIPT</li>
+		<li ng-click = "searchProjects('robotics')">ROBOTICS</li>
+		<LI ng-click = "searchProjects('angular')">ANGULAR</LI>
+	</ul>
+</div>
+
 <div class = 'cont_home'>
 	<div class="cont_left">
 		<form ng-submit = "searchProjects(searchQuery)">
@@ -7,9 +19,11 @@
 		<div class="sortBySubType">
 			I want to see...
 			<div class="sortSubTypeType">
-				<div class="sortSub sortSubFree">FREELANCE</div>
-				<div class="sortSub sortSubPers">PERSONAL</div>
-				<div class="sortSub sortSubProf">PROFESSIONAL</div>
+				<div ng-click = 'subTypeFilter = "freelance"' class="sortSub sortSubFree">FREELANCE</div>
+				<div ng-click = 'subTypeFilter = "personal"' class="sortSub sortSubPers">PERSONAL</div>
+				<div ng-click = 'subTypeFilter = "professional"'class="sortSub sortSubProf">PROFESSIONAL</div>
+				<div ng-click = 'subTypeFilter ="" 'class="sortSub sortSubProf">ALL</div>
+				
 			</div>
 		</div>
 		<div class="sortByDistance">
@@ -18,12 +32,29 @@
 				<input type="text" class="searchDistance"  placeholder="10...">Mile radius</input>
 			</form>
 		</div>
+		<div class="sortByOption">
+			sort by:<select class = "sortBySelect" ng-model = "sortByOption" >
+				<option value="members">least applied</option>
+				<option value="-members">most applied</option>
+			</select>
+		</div>
 	</div>
 	<div class="cont_right">
-		<div class="panel_wrapper"ng-repeat = 'webProject in webProjects track by $index'>
-			[{{webProject.type}}]
+		<div class="panel_wrapper"ng-repeat = 'webProject in webProjects | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
+			<div class="outPanel"> 
+				<div class="arrow-right "></div>
+				<div class="outPanel_left">
+					<div class="panelNumber">{{$index +1}}.</div>
+				</div>
+				<div class="outPanel_right">
+
+					<div class="outPanelType">[{{webProject.type}}]</div>
+					<div class="outPanelBy"><i class="fa fa-user"></i> &nbsp{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
+				</div>
+				
+			</div>
 			<div class="projectPanel">
-				<div class="panel_subTypeSquare {{webProject.subType}}">
+				<div class="panel_subTypeSquare {{webProject.subType}} ">
 					<div class="panel_applicants">
 						{{webProject.members.length}}&nbsp;<i class="fa fa-user-plus"></i>
 					</div>
@@ -36,7 +67,7 @@
 								<div class="panel_tags">
 									<div class="panel_tag"ng-repeat="tag in webProject.tags">{{tag}}</div>
 								</div>
-								<div class="panel_createdBy">by:{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
+								<div class="panel_createdBy">{{webProject.description}}</div>
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
 							</div>
 						</div>

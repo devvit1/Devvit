@@ -32,7 +32,7 @@
 
 .create_option {
 	display:flex;
-	flex-direction: row;
+	flex-direction: column;
 	font-family: 'Intro';
 	justify-content: center;
 	color: #9BD0C6;
@@ -71,6 +71,43 @@
 }
 .inputWrapper{
 	text-align:center;
+}
+.create_categories {
+	border-radius: 5px;
+    padding: 5px 5px;
+    display: inline-block;
+    background: #D1ECDD;
+    color: #093561;
+    border: 2ps solid gray;
+    margin: 2px 3px;
+    font-family: "intro";
+	cursor: pointer;
+	transition: .3s ease all;
+
+}
+.create_categories:hover{
+		transform: translateY(-2px)
+}
+.pickedCat{
+	color: #FF9326
+}
+.create_categories_wrapper{
+	width:80%;
+	margin:0 auto;
+	display:flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+}
+.create_cat{
+	width:20%;
+	border:none;
+	border-bottom:2px solid #FF9326;
+	height:30px;
+	font-size: 1.5em;
+	margin: 0 auto;
+}
+.each_cat{
+	display:inline-block;
 }
 
 .create_textarea{

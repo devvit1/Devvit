@@ -29,7 +29,7 @@ var MessageController = require('./controllers/messageController');
 
 
 //ProjectController
-app.get(        '/projects/:id',   ProjectController.findAll);
+app.get(        '/projects',      ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
 app.get(        '/ptsearch/:query',ProjectController.searchFor);
 app.post(       '/projects',       ProjectController.createProj);

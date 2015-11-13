@@ -1,17 +1,22 @@
 angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
     
+      $scope.subTypeFilter = ""
       $scope.isActive = function(route) {
       return route === $location.path();
       };
-        
+      $scope.orderThis = $scope.sortByOption;
       $scope.webProjects = [];
-      projectService.getProjects('web').then(function(res) {
-      $scope.webProjects = res;
-      console.log('first', res)
-      if ($scope.webProjects.members = 'undefined'){
-        
+      projectService.getProjects().then(function(res) {
+            console.log(res)
+            $scope.webProjects = res;
+      })
+      $scope.findAll = function(){
+             projectService.getProjects().then(function(res) {
+              console.log(res)
+            $scope.webProjects = res;
+      })
       }
-    })
+    
     
     
     	$scope.save = false;
