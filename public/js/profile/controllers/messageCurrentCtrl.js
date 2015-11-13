@@ -6,13 +6,13 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 	console.log('$scope.messages', $scope.messages)
 	
 	
-	// $scope.checkingIfMine = function(index) {
-	// 	if($scope.messages[index].from == $rootScope.profile._id) {
-	// 		return false;
-	// 	} else {
-	// 		return true; //true changes color to gray
-	// 	}
-	// }
+	$scope.checkingIfMine = function(index) {
+		if($scope.messages[index].from == $rootScope.profile._id) {
+			return false;
+		} else {
+			return true; //true changes color to gray
+		}
+	}
 	
 	$scope.replyToUser = function(msg) {
 			$scope.replyObj = {
@@ -43,7 +43,13 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 			// });
 			
 			var $cont = $('#messages-container');
-			$cont[0].scrollTop = $cont[0].scrollHeight;
+			// $cont[0].scrollTop = $cont[0].scrollHeight;
+			// $cont.scrollTop($cont[0].scrollHeight - $cont[0].clientHeight);
+			// $("#messages-container").animate({ scrollTop: $("##messages-container")[0].scrollHeight }, 1000);
+			// window.onload=function () {
+			// 	var objDiv = document.getElementById("messages-container");
+			// 	objDiv.scrollTop = objDiv.scrollHeight;
+			// }
 			console.log($cont[0].scrollHeight)
 			
 			$('#messageReply').keyup(function(e) {

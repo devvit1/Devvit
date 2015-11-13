@@ -39,7 +39,7 @@
 }
 
 .firstDiv {
-	margin-top: 0 !important;
+	margin-top: 20px !important;
 }
 
 .prof_mess_body{
@@ -51,7 +51,8 @@
 }
 
 #messages-container {
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
+	overflow: auto;
 	height: 80%;
 }
 
@@ -138,12 +139,14 @@
 	border-radius: 2px;
 }
 
-.findUser {
-	height: 30px;
+.iconWrap {
+	float: right;
+	cursor: pointer;
+}
+
+#composeIcon {
+	font-size: 1.4em;
 	margin-top: 10px;
-	background-color: #222222;
-	color: white;
-	border:0 none;
 }
 
 #searchUsers {
