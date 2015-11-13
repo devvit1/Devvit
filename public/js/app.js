@@ -151,6 +151,20 @@ app.config(function($stateProvider, $urlRouterProvider){
 				url:'/messages',
 				templateUrl:'../templates/profileMessages.html',
 				controller: 'messageCtrl',
+
+				// resolve: {
+				// 	getMessages: function(messageService, $rootScope) {
+				// 		return messageService.getMessages($rootScope.profile._id).then(function(resp) {
+				// 			return resp.data.messages;
+				// 		});
+				// 	}
+				// }
+			})
+			.state('devvit.messages.current', {
+				url:'/messages/:id',
+				templateUrl:'../templates/profileMessagesCurrent.html',
+				controller: 'messageCurrentCtrl',
+
 				resolve: {
 				isAuth: function(devService) {
 					return devService.isAuth().then(function(res){
@@ -159,6 +173,13 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 			})
+
+			.state('devvit.messages.newmessage', {
+				url:'/messages',
+				templateUrl:'../templates/profileMessagesCompose.html',
+				controller: 'messageSearchCtrl'
+			})
+
 			.state('devvit.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',

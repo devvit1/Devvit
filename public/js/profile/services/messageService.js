@@ -16,4 +16,28 @@ angular.module('devvit').service('messageService', function($http){
 		})
 		
 	}
+
+	
+	this.addMessage = function(data) {
+		return $http({
+			method: 'PUT',
+			url: '/addmessage',
+			data: data
+		}).then(function(res) {
+			return res;
+		})
+	}
+	
+	this.newMessage = function(data) {
+		return $http({
+			method: 'PUT',
+			url: '/newmessage',
+			data: data
+		}).then(function(res) {
+			return res;
+		})
+	}
+	
+	
+
 })

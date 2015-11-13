@@ -3,6 +3,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 // 	jacobs id"56380bb0090eed93c9b456a4"
 	
 	
+
 // 		var user1 = {
 // 			//jacob
 // 			_id: "56426fdc8a257ad890c0c06f"
@@ -27,6 +28,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 // 		var user4 = {
 // 			_id: "56413a606364be6a2d682c04"
 // 		}
+
 
  
 	(function updateUser (){

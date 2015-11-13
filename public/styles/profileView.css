@@ -213,6 +213,7 @@ ACTIVE TAB
 	color: #336699;
 }
 
+
 .profile_body {
 	min-height:80vh;
 }
@@ -233,7 +234,7 @@ ACTIVE TAB
 	display: flex;
 	align-self: center;
 	justify-content: center;
-	
+
 }
 
 .contain3 {
@@ -252,6 +253,3 @@ ACTIVE TAB
 	color: #e84d3d;
 	cursor: pointer;
 }
-
-
-
