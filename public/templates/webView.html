@@ -52,16 +52,16 @@
 		</div>
 	</div>
 	<div class="cont_right">
-		<div class="panel_wrapper"ng-repeat = 'webProject in webProjects | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
+		<div class="panel_wrapper"ng-repeat = 'webProject in webProjects | reverse | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
 			<div class="outPanel"> 
 				<div class="arrow-right "></div>
 				<div class="outPanel_left">
-					<div class="panelNumber">{{$index +1}}.</div>
 				</div>
 				<div class="outPanel_right">
+					<div class="panelNumber">{{$index +1}}.</div>
 
 					<div class="outPanelType" ng-click = "searchProjects(webProject.type)">[{{webProject.type}}]</div>
-					<div class="outPanelBy"><i class="fa fa-user"></i> &nbsp{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
+					<div class="outPanelBy"><i class="fa fa-user"></i>  <a ng-click="goToUser(webProject.admins[0]._id)" >{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
 				</div>
 				
 			</div>
@@ -72,14 +72,14 @@
 					</div>
 					{{webProject.subType}}
 				</div>
-				<div class="panel_mainContent">
+				<div class="panel_mainContent {{webProject.subType}}">
 					<div class="panel_mainContent_left">
 							<div class="panel_MC_left_upper">{{webProject.name}}</div>
 							<div class="panel_MC_left_lower">
 								<div class="panel_tags">
 									<div class="panel_tag" ng-repeat="tag in webProject.tags"  ng-click="searchProjects(tag)">{{tag}}</div>
 								</div>
-								<div class="panel_createdBy">{{webProject.description}}</div>
+								<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
 							</div>
 						</div>
@@ -88,16 +88,16 @@
 						
 						<apply-modal class = "panel_modal_button"width='700px' height='60%'>
 								<div class = 'panel-flex-contain-apply'>
-									<span class = 'panel_title web_title'>{{webProject.name}}</span>
-									<span class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</span>
-									<span class = 'panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</span>
+									<div class = 'panel_title web_title'>{{webProject.name}}</div>
+									<div class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
+									<div class = 'panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
 								</div>
 							<hr>
 							<div class = 'message-apply-contain'>
 								<textarea class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
 							</div>
 							<div class ='submit-contain'>
-								<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage)" >Submit</button>
+								<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()" >Submit</button>
 							</div>
 						
 					</apply-modal>

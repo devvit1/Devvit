@@ -1,0 +1,45 @@
+<div class="profile_body">
+	<div class="profile_body_left">
+		<div class="profile_picture"></div>
+		<div class="profile_basicInfo">
+			<div class="profile_name">{{foundUser.basicInfo.firstName}}&nbsp{{foundUser.basicInfo.lastName}} <div class="profile_userName">{{foundUser.basicInfo.userName}}</div></div>
+			<div class="" ng-show="!editShow">
+				<div class="profile_email">{{foundUser.basicInfo.email}} <span class="editSquare" ></div>
+				<div class="profile_linkedin">{{foundUser.basicInfo.linkedin}}<span class="editSquare" ></div>
+				<div class="profile_github">{{foundUser.basicInfo.github}}<span class="editSquare" ></div>
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	<div class="profile_body_right" >
+		<div class="profile_userProjects">
+			<div class="profile_pending">
+				PENDING 
+				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
+					<span><i class="fa fa-times"></i></span><span>creator</span>
+				</div>
+			</div>
+			<div class="profile_SkillCont">
+				<div class="profile_skills_title">SKILLS</div>
+				<div class="profile_skills">
+					<div ng-repeat="skill in foundUser.skills track by $index" class="eachSkill">{{skill}}</div>
+					</div>
+			</div>
+		</div>
+		
+		<div class="profile_otherUserInfo">
+			<div class="profile_bio">
+				BIO
+				<div class="profile_bio_bio">
+					{{foundUser.bio}}
+				</div>
+			</div>
+			<div class="profile_right_location">
+				LOCATION
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -43,7 +43,7 @@ app.post(       '/groupmessage',   ProjectController.groupMessage);
 
 //UserController
 app.get(        '/user',                                      UserController.read);
-// app.get(        '/user',                                     UserController.readAll);
+app.get(        '/users/:id',                                  UserController.findById);
 app.post(       '/user',                                      UserController.create);
 app.put(        '/user',                                      UserController.userUpdate);
 app.delete(     '/user/:id',                                  UserController.destroy);

@@ -1,5 +1,9 @@
 var app = angular.module('devvit', ['ui.router', 'angularMoment']);
-
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
 app.config(function($stateProvider, $urlRouterProvider){
 
 	$urlRouterProvider.otherwise('/home/web')
@@ -54,6 +58,16 @@ app.config(function($stateProvider, $urlRouterProvider){
 				resolve: {
 					activeUser: function(activeService, $rootScope) {
 						return activeService.getActive($rootScope.profile._id);
+					}
+				}
+			})
+			.state('devvit.users', {
+				url:'/users/:user',
+				templateUrl:'../templates/usersView.html',
+				controller: 'usersViewCtrl',
+				resolve: {
+					foundUser: function($stateParams, usersViewService) {
+						return usersViewService.findUser($stateParams.user);
 					}
 				}
 			})

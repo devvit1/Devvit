@@ -15,11 +15,14 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 
 		//billy
 		var user3 = {
-			_id: "56438978f88fd9f66020668d"
+			_id: "56479797cbff247c24ea3243"
+		}
+		//anton
+		var user4 = {
+			_id: "5647977ecbff247c24ea3242"
 		}
 
-
-	$rootScope.profile = user2;
+	$rootScope.profile = user4;
 
 
 
