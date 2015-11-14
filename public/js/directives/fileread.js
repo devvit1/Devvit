@@ -17,7 +17,7 @@ app.directive('fileread', function(imageService) {
                     var fileBody = reader.result;
                     
                     imageService.uploadImage(fileBody, file).then(function(response) {
-                        scope.images.push(response.data)
+                        console.log('image uploaded!');
                     })
                 }
                 

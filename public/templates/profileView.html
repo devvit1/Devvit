@@ -2,16 +2,7 @@
 	<div class="profile_body_left">
 		<div class="profile_picture"></div>
 		<div class="profile_basicInfo">
-			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}}</div>
-			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
-			<div class="profile_location">location</div>
-			<div class="profile_email">{{profile.basicInfo.email}}</div>
-			<div class="profile_linkedin">{{profile.basicInfo.linkedin}}</div>
-			<div class="profile_github">{{profile.basicInfo.github}}</div>
-		</div>
-	</div>
-	
-	<div class="profile_body_right">
+			<input fileread type = 'file'>
 			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div class="profile_userName">{{profile.basicInfo.userName}}</div></div>
 			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
 			<div class="" ng-show="!editShow">
@@ -36,17 +27,6 @@
 			<div class="profile_pending">
 				PENDING 
 				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
-					{{pending}}
-				</div>
-			</div>
-			<div class="profile_pastGroups">
-				SKILLS
-			</div>
-		</div>
-		<div class="profile_otherUserInfo">
-			<div class="profile_bio">
-				BIO
-				<div class="profile_bio_bio"></div>
 					<span><i class="fa fa-times"></i></span>{{pending.name}} <span>creator</span>
 				</div>
 			</div>
@@ -79,4 +59,5 @@
 			</div>
 		</div>
 	</div>
+​
 </div>

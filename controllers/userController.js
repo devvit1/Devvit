@@ -1,4 +1,5 @@
 var Users = require('../models/users');
+var AWS = require('../services/amazon')
 
 module.exports = {
 
@@ -117,6 +118,33 @@ module.exports = {
       })
       res.json(users)
 
+    })
+  },
+  
+  fileUpload: function(req, res) {
+    var buf = new Buffer(req.body.filebody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+    var fileObj = {
+        name: req.body.filename,
+        body: buf,
+        type: req.body.filetype
+    }
+    
+    AWS.uploadToS3(fileObj, function(err, data){
+        if (err) {
+            console.log(err)
+            res.status(500).send(err)
+        } else {
+            Users.findById(req.user._id, function(err, user) {
+              if (err) {
+                res.status(500).send(err)
+              } else {
+                user.basicInfo.image = data.Location
+                user.save()
+                res.send('it worked')
+              }
+            })
+        }
     })
   }
   

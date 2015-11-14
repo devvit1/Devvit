@@ -15,7 +15,7 @@ var MessageController = require('./controllers/messageController');
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
 
 
@@ -75,7 +75,7 @@ app.post(       '/groupmessage',    ProjectController.groupMessage);
 
 //UserController
 app.get(        '/user',           UserController.read);
-// app.post(       '/fileUpload',     UserController.fileUpload)
+app.post(       '/fileUpload',     UserController.fileUpload)
 // app.get(        '/user',           UserController.readAll);
 app.post(       '/user',           UserController.create);
 app.put(        '/user',           UserController.userUpdate);
