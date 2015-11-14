@@ -315,7 +315,6 @@ ACTIVE TAB
 		}
 .profile_body_right{
 	flex:4;
-	
 	display:flex;
 	flex-direction: column;
 	margin-top: 20px;

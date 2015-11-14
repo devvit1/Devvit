@@ -18,6 +18,7 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 			_id: "56456638652466734cf661ed"
 		};
 		
+		//kanye
 		var user4 = {
 			_id: "56456645652466734cf661ee"
 		};

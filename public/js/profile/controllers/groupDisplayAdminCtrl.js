@@ -1,8 +1,16 @@
 angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, $rootScope){
+	
 	$scope.group = groupInfo;
 	$scope.groupMessages = groupInfo.messages;
 	$scope.pendingApp = [];
 	$scope.inGroupMembers = [];
+	
+	$scope.save = false;
+	$scope.toggleView = function() {
+  		$scope.save = !$scope.save;
+		console.log($scope.save)
+  	}
+	
 	var inGroupMembers =function (arr){
 		arr.forEach(function(member){
 			if (!member.application.pending){
