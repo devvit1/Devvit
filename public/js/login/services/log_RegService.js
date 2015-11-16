@@ -1,7 +1,7 @@
-angular.module('devvit').service('log_RegService', function($http){
+angular.module('devvit').service('log_RegService', function($http, $rootScope){
 
-  var currentUser = null;
-  this.currentUser = function() {return currentUser};
+  // var currentUser = null;
+  // this.currentUser = function() {return currentUser};
 
 	this.getProfile = function(){
 		return $http({
@@ -22,7 +22,7 @@ angular.module('devvit').service('log_RegService', function($http){
           password: password
         }
       }).then(function(res) {
-        currentUser = res.data;
+        $rootScope.profile = res.data
         return res;
       }, function(err){
         console.log(err);
@@ -47,6 +47,9 @@ angular.module('devvit').service('log_RegService', function($http){
       data: User
     }).then(function(res) {
       console.log('Success');
+    }, function(err) {
+      console.log(err);
+      return err;
     })
   }
   })

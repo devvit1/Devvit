@@ -1,6 +1,6 @@
 angular.module('devvit').service('imageService', function($http) {
 	this.uploadImage = function(filebody, file) {
-		var data = {
+		var image = {
 			filename: file.name,
 			filebody: filebody,
 			filetype: file.type
@@ -8,9 +8,7 @@ angular.module('devvit').service('imageService', function($http) {
 		return $http({
 			method: 'POST',
 			url: '/fileUpload',
-			data: data
-		}).then(function(res) {
-			console.log('AMAZON!!', res);
+			data: image
 		})
 	}
 })

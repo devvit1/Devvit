@@ -52,20 +52,21 @@ module.exports = {
   },
 
   getActive: function(req, res){
-    console.log('TESTER@!!!!@', req.user)
-    Users.findById(req.user._id)
-    .populate('messages.withUser')
-    .populate('activePosts')
-    .populate({path:'pendingApprovals',
-               populate:{path:'createdBy', model:'Users'}})
-    .populate('groups')
-    .populate({path:'pendingApprovals',
-               populate:{path:'createdBy', model:'Users'}})
-    .exec(function(err, result) {
-      if (err) return res.status(500).send("not found");
-      console.log('POOOOO', result);
-      res.json(result);
-    })
+    if(req.user._id) {
+      Users.findById(req.user._id)
+      .populate('messages.withUser')
+      .populate('activePosts')
+      .populate({path:'pendingApprovals',
+                populate:{path:'createdBy', model:'Users'}})
+      .populate('groups')
+      .populate({path:'pendingApprovals',
+                populate:{path:'createdBy', model:'Users'}})
+      .exec(function(err, result) {
+        if (err) return res.status(500).send("not found");
+        console.log('POOOOO', result);
+        res.json(result);
+      })
+    }
   },
   
    getActiveMessageInfo: function(req, res){
@@ -140,8 +141,15 @@ module.exports = {
                 res.status(500).send(err)
               } else {
                 user.basicInfo.image = data.Location
-                user.save()
-                res.send('it worked')
+                user.save(function (err, data) {
+                   if (err) {
+                     res.status(500).send(err)
+                   } else {
+                     console.log('user', data)
+                     res.json(data);
+                   }
+                })
+                // res.send('it worked')
               }
             })
         }

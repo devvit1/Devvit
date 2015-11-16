@@ -1,5 +1,17 @@
 var app = angular.module('devvit', ['ui.router', 'angularMoment']);
 
+app.run(function($http, $rootScope) {
+	if(!$rootScope.profile) getCurrentUser();
+	function getCurrentUser() {
+		return $http({
+			method: 'GET',
+			url: 'active'
+		}).then(function(resp) {
+			$rootScope.profile = resp.data
+			});
+		};
+	})
+
 app.config(function($stateProvider, $urlRouterProvider){
 
 	$urlRouterProvider.otherwise('/home/web')
@@ -14,8 +26,13 @@ app.config(function($stateProvider, $urlRouterProvider){
 					return devService.isAuth().then(function(res){
 						return res;
 						})
+					},
+					ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
 					}
-			}
+				}
 		})
 		.state('devvit.profile', {
 				url: '/profile',
@@ -25,14 +42,20 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
-				controller: 'webViewCtrl'
-				// resolve: {
+				controller: 'webViewCtrl',
+				resolve: {
 				// isAuth: function(devService) {
 				// 	return devService.isAuth().then(function(res){
 				// 		return res;
 				// 		})
 				// 	}
 				// }
+				ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
+					}
+				}
 			})
 			
 			.state('devvit.mobile', {

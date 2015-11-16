@@ -5,6 +5,7 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			method:'get',
 			url: '/active'
 		}).then(function(res){
+			console.log(44, res)
 			return res.data.groups
 			})
 	};
