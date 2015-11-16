@@ -9,8 +9,9 @@ var UsersSchema = new mongoose.Schema({
 		email: { type: String, required: true },
 		password: {type: String, required: true },
 		location: String,
-		gitHub: String,
-		linkedin: String
+		github: String,
+		linkedin: String,
+		website: String
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	activePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],

@@ -1,61 +1,152 @@
 .developerBody{
-	background: #272525;
-	/*min-height: 70vh;*/
-	color: #f4f4f4;
-	font-family: dosis;
-}
-
-.searchDevelopers{
-	padding-top: 20px;
-	padding-bottom: 10px;
-	text-align:center;
-	font-size:3em;
-
-}
-
-.users{
-	width:60%;
-	margin:0 auto;
-	display:flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: center;
-}
-
-.searchDevelopers > input {
-	margin-top:10px;
-	font-size: 40px;
-    border: none;
-    border-bottom: 2px solid #f4f4f4;
-    margin-bottom: 5px;
-	background: transparent;
-	color: white;
-}
-.developerMain {
-	min-height: 50vh;
-	background: #f4f4f4;
-	color:black;
-}
-
-.main_developerCard {
-	width:250px;
-	height:350px;
-	border-radius: 10px;	
-	margin:20px 35px;
-}
-
-.developerCard_upper{
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	height:60%;
 	width:100%;
-	background:gray;
-	border:1px solid gray;
+	min-height: 90vh;
+	border-top: 1px solid lightgray;
+	display: flex;
+	flex-direction: row;
+	padding-top:10px;
 }
 
-.developerCard_lower{
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	height:40%;
-	background: white;
+.developerLeft{
+	flex:1;
+	border-right:1px solid lightgray;
+	display:flex;
+	flex-direction: column;
+	text-align: center;
+}
+.developerRight{
+	flex:3;
+}
+
+.searchDevs{
+	border: 2px solid #181818;
+    height: 20px;
+    background: transparent;
+}
+.main_developerCard{
+	font-family: 'Open Sans', sans-serif;
+	width:70%;
+	height:100px;
+	background:white;
+	margin:10px auto;
+	display: flex;
+	flex-direction: row;
+	padding:10px;
+}
+.devCard_location{
+	font-size: .8em;
+	
+}
+.devCard_otherdata{
+	width:90%;
+	display: flex;
+	flex-direction: column;
+
+}
+.devCard_upper{
+	height:70px;
+	width:96%;
+	display:flex;
+	flex-direction: row;
+	border-bottom: 1px solid lightgray;
+	margin: 0 auto;
+}
+.devCard_pic{
+	width:100px;
+	height:100px;
+	background:gray;
+
+}
+.devCard_info{
+	width:90%;
+	margin-left:10px;
+	display:flex;
+	flex-direction: row;
+
+}
+	.devCard_infoLeft{
+		flex:4;
+		display:flex;
+		flex-direction: row;
+	}
+		.devCard_basic{
+			flex:2
+		}
+		.devCard_contact{
+			flex:1;
+			display:flex;
+			flex-direction: row;
+			justify-content: space-around
+
+		}
+	.devCard_infoRight{
+		flex:1;
+		display:flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-end;
+		
+	}
+	.devCard_link{
+		 font-size: 1.5em;
+    	color: #093561;
+	}
+	.devCard_link:hover{
+		color: #FF9326;
+	}
+	.devCard_button{
+		display:flex;
+		width: 90px;
+		height: 25px;
+		background: #FF9326;
+		border-bottom: 3px solid #FF6400;
+		COLOR: #093561;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 1em;
+		border-radius: 2px;
+	}
+.devCard_lower{
+	font-family: 'Open Sans', sans-serif;
+	width:96%;
+	height:30px;
+	margin: 0 auto;
+	display:flex;
+	align-items: center;
+	 font-size: .9em;
+
+
+}
+
+.devCard_skills{
+	display:flex;
+	align-items: center;
+	height:100%;
+}
+/*.devCard_eachSkill{
+	height: 20px;
+    padding: 2px 3px;
+    background: #343434;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	margin:0 2px;
+	border-radius: 2px;
+}*/
+.devCard_name{
+	font-size:1.2em;
+	color:#343434;
+	font-family: 'Open Sans', sans-serif
+}
+.devCard_userName{
+	margin-top:2px;
+	font-size:.8em;
+	color:#343434;
+	font-family: 'Open Sans', sans-serif
+}
+.devCard_location{
+	margin-top:2px;
 }

@@ -8,6 +8,8 @@
 				<div class="profile_email">{{profile.basicInfo.email}} <span class="editSquare" ></div>
 				<div class="profile_linkedin">{{profile.basicInfo.linkedin}}<span class="editSquare" ></div>
 				<div class="profile_github">{{profile.basicInfo.github}}<span class="editSquare" ></div>
+				<div class="profile_github">{{profile.basicInfo.website}}<span class="editSquare" ></div>
+				
 			</div>
 			<div class="basicInfo_edit" ng-show="editShow">
 				<input class="profile_email" ng-model="profile.basicInfo.email" placeholder="(email)">
@@ -16,7 +18,10 @@
 				<input class="profile_github" ng-model="profile.basicInfo.website" placeholder="(website)">
 				
 			</div>
-			<div class="profile_update" ><a  ng-show = "!editShow" ng-click = "editShow = !editShow">edit/update</a><a ng-click = "editShow = !editShow; updateUser()"ng-show="editShow" class = "submitChanges">submit Changes</a></div>
+			<div class="profile_update" >
+				<a  ng-show = "!editShow" ng-click = "editShow = !editShow">edit/update</a>
+				<a ng-click = "editShow = !editShow; updateUser()"ng-show="editShow" class = "submitChanges">submit Changes</a>
+			</div>
 			
 		</div>
 	</div>

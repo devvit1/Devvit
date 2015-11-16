@@ -77,7 +77,7 @@
 							<div class="panel_MC_left_upper">{{webProject.name}}</div>
 							<div class="panel_MC_left_lower">
 								<div class="panel_tags">
-									<div class="panel_tag" ng-repeat="tag in webProject.tags"  ng-click="searchProjects(tag)">{{tag}}</div>
+									<div class="panel_tag" ng-repeat="tag in webProject.tags |limitTo:5"  ng-click="searchProjects(tag)">{{tag |limitTo:9}}</div>
 								</div>
 								<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->

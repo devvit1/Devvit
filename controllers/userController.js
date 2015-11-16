@@ -104,9 +104,11 @@ module.exports = {
             userName: user.basicInfo.userName,
             email: user.basicInfo.email,
             location: user.basicInfo.location,
-            github:user.basicInfo.githubUrl,
-            linkedin:user.basicInfo.linkedinUrl
+            github:user.basicInfo.github,
+            linkedin:user.basicInfo.linkedin,
+            website:user.basicInfo.website
           },
+          skills:user.skills
         })
       })
       res.json(users)

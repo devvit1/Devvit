@@ -1,5 +1,5 @@
 <div class="developerBody">
-	<div class="searchDevelopers" >
+	<!--<div class="searchDevelopers" >
 		Find your next coding buddy: <br>
 		<input ng-model="developerSearch"  type="text" id = "search"  placeholder="STEVE WOZ">
 	</div>
@@ -19,5 +19,65 @@
 			</div>
 			
 		</div>
+	</div>-->
+	<div class="developerLeft">
+		<div class="userSearch">
+				<form ng-submit = "searchForDev(developerSearch)">
+					<input type="text" class = "searchDevs" ng-model="developerSearch" placeholder="search Developers...">
+				</form>
+			</div>
 	</div>
+	<div class="developerRight">
+			<div class="developerMain">
+				<div class="users" >		
+					<div class="main_developerCard" ng-repeat = "user in members">
+							<div class="devCard_pic"></div>
+							<div class="devCard_otherdata">
+								<div class="devCard_upper">
+									<div class="devCard_info">
+										<div class="devCard_infoLeft">
+											<div class="devCard_basic">
+												<div class="devCard_name">
+														{{user.basicInfo.first}}
+														{{user.basicInfo.last}}
+													</div>
+													<div class="devCard_userName">
+														{{user.basicInfo.userName}}	
+													</div>	
+													<div class="devCard_location">
+														<i class="fa fa-map-marker"></i>Provo, Ut
+													</div>
+											</div>	
+											<div class="devCard_contact">
+												<a href="{{user.basicInfo.linkedin}}"><div class="devCard_link"><i ng-show = "user.basicInfo.linkedin" class="fa fa-linkedin-square"></i></div></a>
+												<a href="{{user.basicInfo.github}}"><div class="devCard_link"><i ng-show = "user.basicInfo.github"class="fa fa-github"></i></div></a>
+												<a href="{{user.basicInfo.website}}"><div class="devCard_link"><i  ng-show = "user.basicInfo.website"class="fa fa-television"></i></div></a>
+												<div class="devCard_link"></div>
+												
+											</div>
+										</div>
+										<div class="devCard_infoRight">
+											<div class="devCard_button">Message</div>
+											<div class="devCard_button">More Info</div>
+										</div>
+									</div>
+								</div>
+								<div class="devCard_lower">
+									Skills:&nbsp;
+									<div class="devCard_skills">
+										<user class="devCard_eachSkill" ng-repeat = "skill in user.skills">
+											{{skill}},&nbsp;
+										</user>
+									</div>
+								</div>
+							</div>
+						
+									
+					</div>
+					
+			
+				</div>
+			</div>
+	</div>
+		
 </div>
