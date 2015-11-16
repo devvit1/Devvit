@@ -5,6 +5,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home/web')
 
 	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: '../templates/landingPage.html'
+			// controller: 'log_RegCtrl'
+		})
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
@@ -37,11 +42,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 			templateUrl:'../templates/profile.html',
 			controller: 'profileCtrl'
 		})
-			.state('profile.login-register', {
-				url:'/login-register',
-				templateUrl: '../templates/log_Reg.html',
-				controller: 'log_RegCtrl'
-			})
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',

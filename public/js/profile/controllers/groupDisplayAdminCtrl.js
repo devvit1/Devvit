@@ -39,6 +39,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			console.log(res)
 			console.log($scope.groupMessages)
 		})
+		$scope.groupmessagecontent = "";
 	}
 	$scope.acceptUser = function(applied){
 		console.log()
@@ -73,4 +74,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		}
 
 	}
+	
+	$(document).ready(function(){
+	
+		$('#groupMessageInput').keyup(function(e) {
+			if (e.keyCode == 13) {
+				$('#sendGroupMsg').click();
+			}
+		})
+	});
+	
 })

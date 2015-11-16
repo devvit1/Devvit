@@ -20,11 +20,11 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 		
 		//kanye
 		var user4 = {
-			_id: "56456645652466734cf661ee"
+			_id: "5648fd369e3c2a6f8fa907a9"
 		};
 
 
-	$rootScope.profile = user4;
+	$rootScope.profile = user2;
 
 
 
