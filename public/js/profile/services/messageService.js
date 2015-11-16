@@ -1,9 +1,9 @@
 angular.module('devvit').service('messageService', function($http){
 	
-	this.getMessagesFromUser = function(other_user, active_user){
+	this.getMessagesFromUser = function(other_user){
 		return $http({
 			method:'get',
-			url: '/activeMessages/' + other_user + '/current/' + active_user	
+			url: '/activeMessages/' + other_user + '/current/'
 		}).then(function(res){
 			console.log(res);
 			return res.data;

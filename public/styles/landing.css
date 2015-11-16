@@ -20,6 +20,18 @@
     color: #093561;
 }
 
+#animatedFirst {
+	animation-delay: .1s;
+}
+
+#animatedSecond {
+	animation-delay: .7s;
+}
+
+#animatedThird {
+	animation-delay: 1.3s;
+}
+
 .landingPic{
 	margin-top: 10%;
 	display:flex;

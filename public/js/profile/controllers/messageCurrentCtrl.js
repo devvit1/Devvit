@@ -16,7 +16,7 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 	
 	$scope.replyToUser = function(msg) {
 			$scope.replyObj = {
-				active_user_id: $rootScope.profile._id,
+				// active_user_id: $rootScope.profile._id,
 				message: msg,
 				toUser: fromId
 			}
