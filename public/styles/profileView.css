@@ -341,7 +341,7 @@ ACTIVE TAB
 			border-right: 1px solid lightgray;
 			/*background:#093561;*/
 			color:#181818;
-			overflow: scroll;
+			/*overflow: scroll;*/
 		}
 		.profile_pendingReq{
 			width:50%;
@@ -448,6 +448,5 @@ ACTIVE TAB
     background: transparent;
 	height:20px;
 	margin-top:5px;
-	}
-	
+	}	
 	

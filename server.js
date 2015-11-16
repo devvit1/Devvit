@@ -6,26 +6,59 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
-var moment = require('moment');
-
-
-var app = express();
-app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
-app.use(cors());
-
-
-// app.use(session({
-//   secret: 'twajsdhwa-awdbajbdw-unaudnaks',
-//   saveUnitialized: true,
-//   resave: true
-// }))
-// app.use(passport.initialize());
-// app.use(passport.session());
+// var moment = require('moment');
 
 var UserController = require('./controllers/userController');
 var ProjectController = require('./controllers/projectController');
 var MessageController = require('./controllers/messageController');
+
+
+var app = express();
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(cors());
+
+
+/////////////////
+///Local Auth///
+///////////////
+
+var passport = require('./services/passport');
+
+var isAuthed = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.sendStatus(401);
+  return next();
+};
+
+app.use(session({
+  secret: 'twajsdhwa-awdbajbdw-unaudnaks',
+  saveUnitialized: true,
+  resave: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.post('/login', 
+  passport.authenticate('local-login', { 
+      successRedirect: '/#/home', 
+      failureRedirect: '/#/login-register', 
+
+}), function(req, res){
+  res.send(req.user);
+});
+
+
+app.get('/logout', function(req,res) {
+  req.logout();
+  res.redirect('/#/home');
+  return res.send('logged out');
+})
+
+app.get('/isAuth', isAuthed, function(req, res) {
+	res.send(req.user);
+});
+
 
 
 //ProjectController
@@ -38,10 +71,11 @@ app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 app.put(        '/deny',           ProjectController.deny);
-app.post(       '/groupmessage',   ProjectController.groupMessage);
+app.post(       '/groupmessage',    ProjectController.groupMessage);
 
 
 //UserController
+
 app.get(        '/user',                                      UserController.read);
 app.get(        '/users/:id',                                  UserController.findById);
 app.post(       '/user',                                      UserController.create);
@@ -52,8 +86,10 @@ app.get(        '/activeMessageInfo/:id',                     UserController.get
 app.get(        '/activeMessages/:otherId/current/:activeId', UserController.getActiveUserMessages);
 app.get(        '/getusers/:id',                              UserController.getUsers)
 
-app.put(        '/newmessage',          MessageController.newMessage);
-app.put(        '/addmessage',          MessageController.addMessage)
+
+
+app.put(        '/newmessage',     MessageController.newMessage);
+app.put(        '/addmessage',     MessageController.addMessage)
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
 var port = 8080;

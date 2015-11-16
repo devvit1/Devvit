@@ -26,25 +26,28 @@ angular.module('devvit').controller('pseudoCtrl', function ($scope, $rootScope, 
 	$rootScope.profile = user1;
 
 
+	(function updateUser (){
+		pseudoService.getProfile().then(function(res){
+
 
  
-	(function updateUser (who){
-		pseudoService.getProfile(who).then(function(res){
+
 			$rootScope.profile = res;
 			console.log(res)
 			$rootScope.profile.username = res.basicInfo.userName; 
+			console.log("rootScope - ", $rootScope.profile )
 
 		})
-		})($rootScope.profile._id)
+		})()
 
 
 })
 
 .service('pseudoService', function ($http){
-	this.getProfile = function(active_user_id){
+	this.getProfile = function(){
 		return $http({
 				method: 'GET',
-				url: '/active/' + active_user_id 
+				url: '/active' 
 			}).then(function(res){
 				return res.data
 			})

@@ -1,8 +1,10 @@
 var Users = require('../models/users');
+var AWS = require('../services/amazon')
 
 module.exports = {
 
   create: function(req, res) {
+
         var user = new Users(req.body);
         user.save(function(err, new_user) {
           if(err) {
@@ -49,16 +51,18 @@ module.exports = {
   },
 
   getActive: function(req, res){
-    Users.findById(req.params.id)
-    .populate('messages.withUser')
-    .populate('activePosts')
-    .populate('groups')
-    .populate({path:'pendingApprovals',
-               populate:{path:'createdBy', model:'Users'}})
-    .exec(function(err, result) {
-      if (err) return res.status(500).send("not found");
-      res.json(result);
-    })
+    if(req.user._id) {
+      Users.findById(req.user._id)
+      .populate('messages.withUser')
+      .populate('activePosts')
+      .populate('groups')
+      .populate({path:'pendingApprovals',
+                populate:{path:'createdBy', model:'Users'}})
+      .exec(function(err, result) {
+        if (err) return res.status(500).send("not found");
+        res.json(result);
+      })
+    }
   },
   
    getActiveMessageInfo: function(req, res){
@@ -71,7 +75,7 @@ module.exports = {
   },
   
   getActiveUserMessages: function(req, res){
-    Users.findById(req.params.activeId)
+    Users.findById(req.user._id)
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
       var messagesArr = result.messages;
@@ -113,6 +117,40 @@ module.exports = {
       })
       res.json(users)
 
+    })
+  },
+  
+  fileUpload: function(req, res) {
+    var buf = new Buffer(req.body.filebody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+    var fileObj = {
+        name: req.body.filename,
+        body: buf,
+        type: req.body.filetype
+    }
+    
+    AWS.uploadToS3(fileObj, function(err, data){
+        if (err) {
+            console.log(err)
+            res.status(500).send(err)
+        } else {
+            Users.findById(req.user._id, function(err, user) {
+              if (err) {
+                res.status(500).send(err)
+              } else {
+                user.basicInfo.image = data.Location
+                user.save(function (err, data) {
+                   if (err) {
+                     res.status(500).send(err)
+                   } else {
+                     console.log('user', data)
+                     res.json(data);
+                   }
+                })
+                // res.send('it worked')
+              }
+            })
+        }
     })
   }
   

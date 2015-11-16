@@ -16,7 +16,7 @@ var ProjectsSchema = new mongoose.Schema({
 	messages: [{ 
 		message:{type:String},
 		time:{type:Date, default:Date.now},
-		sentBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
+		sentBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'Users'}
 	 }],
 	activeWeb: Boolean,
 	activeMobile: Boolean,

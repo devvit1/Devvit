@@ -4,15 +4,47 @@ app.filter('reverse', function() {
     return items.slice().reverse();
   };
 });
+
+
+app.run(function($http, $rootScope) {
+	if(!$rootScope.profile) getCurrentUser();
+	function getCurrentUser() {
+		return $http({
+			method: 'GET',
+			url: 'active'
+		}).then(function(resp) {
+			$rootScope.profile = resp.data
+			});
+		};
+	})
+
+
 app.config(function($stateProvider, $urlRouterProvider){
 
 	$urlRouterProvider.otherwise('/home/web')
 
 	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: '../templates/landingPage.html'
+			// controller: 'log_RegCtrl'
+		})
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
-			controller: 'homeCtrl'
+			controller: 'homeCtrl',
+			resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					},
+					ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
+					}
+				}
 		})
 		.state('devvit.profile', {
 				url: '/profile',
@@ -22,30 +54,71 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('devvit.web', {
 				url: '/web',
 				templateUrl:'../templates/webView.html',
-				controller: 'webViewCtrl'
+				controller: 'webViewCtrl',
+				resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
+				ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
+					}
+				}
 			})
 			
 			.state('devvit.mobile', {
 				url: '/mobile',
 				templateUrl:'../templates/mobileView.html',
 				controller: 'mobileViewCtrl'
+				// resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
 			})
 			.state('devvit.developers', {
 				url: '/developers',
 				templateUrl:'../templates/developersView.html',
 				controller: 'developersCtrl'
+				// resolve: {
+				// 	isAuth: function(devService) {
+				// 		return devService.isAuth().then(function(res){
+				// 			return res;
+				// 		})
+				// 	}
+				// }
 			})
+		.state('login-register', {
+			url:'/login-register',
+			templateUrl: '../templates/log_Reg.html',
+			controller: 'log_RegCtrl'
+			// resolve: {
+			// isAuth: function(devService) {
+			// 	return devService.isAuth().then(function(res){
+			// 		return res;
+			// 		})
+			// 	}
+			// }
+		})
 
 		.state('profile', {
 			url:'/profile',
 			templateUrl:'../templates/profile.html',
-			controller: 'profileCtrl'
+			controller: 'profileCtrl',
+			resolve: {
+				isAuth: function(devService) {
+					return devService.isAuth().then(function(res){
+						return res;
+						})
+					}
+				}
 		})
-			.state('profile.login-register', {
-				url:'/login-register',
-				templateUrl: '../templates/log_Reg.html',
-				controller: 'log_RegCtrl'
-			})
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',
@@ -56,8 +129,15 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileActive.html',
 				controller: 'activeCtrl',
 				resolve: {
-					activeUser: function(activeService, $rootScope) {
-						return activeService.getActive($rootScope.profile._id);
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+					ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
 					}
 				}
 			})
@@ -75,11 +155,25 @@ app.config(function($stateProvider, $urlRouterProvider){
 				url:'/pending',
 				templateUrl:'../templates/profilePending.html',
 				controller: 'pendingCtrl'
+				// resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
 			})
 			.state('devvit.groups', {
 				url:'/groups',
 				templateUrl:'../templates/profileGroups.html',
 				controller: 'groupsCtrl'
+				// resolve: {
+				// isAuth: function(devService) {
+				// 	return devService.isAuth().then(function(res){
+				// 		return res;
+				// 		})
+				// 	}
+				// }
 			})
 				.state('devvit.groupdisplay', {
 					url:'/group/:group',
@@ -89,17 +183,24 @@ app.config(function($stateProvider, $urlRouterProvider){
 						groupInfo: function ($stateParams, groupsService) {
 							 return groupsService.findProject($stateParams.group)
 						}
+					// 	isAuth: function(devService) {
+					// 		return devService.isAuth().then(function(res){
+					// 			return res;
+					// 		})
+					// 	}
+					// }
 					}
 				})
+
 				.state('devvit.groupdisplayAdmin', {
 					url:'/groupadmin/:group',
 					templateUrl:'../templates/profileGroupsAdminSub.html',
-					controller: 'groupDisplayAdminCtrl',
-					resolve: {
-						groupInfo: function ($stateParams, groupsService) {
-							 return groupsService.findProject($stateParams.group)
-						}
-					}
+					controller: 'groupDisplayAdminCtrl'
+					// resolve: {
+					// 	groupInfo: function ($stateParams, groupsService) {
+					// 		 return groupsService.findProject($stateParams.group)
+					// 	}
+					// }
 				})
 			.state('devvit.messages', {
 				url:'/messages',
@@ -133,9 +234,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 				templateUrl:'../templates/profileMessagesCompose.html',
 				controller: 'messageSearchCtrl'
 			})
+
 			.state('devvit.createProject', {
 				url:'/createProject',
 				templateUrl:'../templates/createProject.html',
 				controller: 'createCtrl'
+				// resolve: {
+				// 	isAuth: function(createService) {
+				// 		return createService.isAuth = function(res) {
+				// 			return res;
+				// 		}
+				// 	}
+				// }
 			})
 })

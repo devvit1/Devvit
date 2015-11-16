@@ -1,16 +1,4 @@
 
-<!--<<<<<<< HEAD
-<div class="home_room_project" ng-model="webProjects" ng-repeat="webProject in webProjects | filter: projectFilter | orderBy: 'createdAt' track by $index">
-    <h2><span></span>{{webProject.name}}</h2>
-    <h4><span>Description: </span>{{webProject.description}}</h4>
-    
-    <div class="home_room_info">
-        <h4><span>Created At: </span>{{webProject.createdAt | date:'short'}}</h4>
-        <h4><span>By: </span>{{webProject.admins[0].basicInfo.firstName}}
-        {{webProject.admins[0].basicInfo.lastName}}</h4>
-        {{webProjects[$index].members.length}}
-    </div>
-=======-->
 <div class="projects_nav">
 	<ul class = "projects_nav_list">
 		<li ng-click ="findAll()">ALL</li>
@@ -80,6 +68,7 @@
 									<div class="panel_tag" ng-repeat="tag in webProject.tags |limitTo:5"  ng-click="searchProjects(tag)">{{tag |limitTo:9}}</div>
 								</div>
 								<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
+
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
 							</div>
 						</div>

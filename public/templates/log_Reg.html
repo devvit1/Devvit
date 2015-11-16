@@ -1,32 +1,62 @@
 <div class="log_RegPage">
 
         <div class="loginContainer">
-
-        Username:    <input type="text" value="" ng-model="user.loginUsername">
-        Password:    <input type="password" value="" ng-model="user.loginPassword">
-                     <input class="log_RegButton" type="button" value="Login" ng-click="login(user)">
+                <h2 class ='register'>Login</h2>
+            <div class = 'log_Reg'><input  id = 'log-email' type="email" value="" ng-model="email" placeholder = 'email'></div>
+            <div class = 'log_Reg'><input  id = 'log-password' type="password" value="" ng-model="password" placeholder = 'password'></div>
+            <input class="log_RegButton" type="button" value="Login" ng-click="login(email, password)">
 
         </div>
         <div class="registerContainer">
-          <h2 id="register">Register </h2>
+          <h2 class="register">Register</h2>
               <div class="registerContainerWithButton">
 
                 <div class="registerContentContainer">
                     <div class="log_RegfirstColumn">
-                        <div class="log_RegfirstName">First:<input type="text" tabindex=1 value="" ng-model="user.firstname"></div>
-                        <div class="log_Regusername">Username:  <input type="text" tabindex=3 value="" ng-model="user.username">{{}}</div>
-                        <div class="log_Regpassword">Password:  <input type="password" tabindex=5 value="" ng-model="user.password"></div>
+                        <div class="log_Reg" id = 'first-name'><input type="text" tabindex='1' value="" ng-model="user.firstname" placeholder = 'First Name'></div>
+                        <div class="log_Reg" id = 'username'> <input type="text" tabindex='3' value="" ng-model="user.username" placeholder = 'Username'>{{}}</div>
+                        <div class="log_Reg" id = 'password'><input type="password" tabindex='5' value="" ng-model="user.password" placeholder = 'Password'></div>
                     </div>
                     <div class="log_RegsecondColumn">
-                        <div class="log_ReglastName">Last: <input type="text" tabindex=2 value="" ng-model="user.lastname"> </div>
-                        <div class="log_Regemail">Email:  <input type="text" tabindex=4 value="" ng-model="user.email"></div>
-                        <div class="log_RegverifyPassword">Verify Password:  <input type="password" tabindex=6 value="" ng-model="user.verifyPassword"></div>
+                        <div class="log_Reg" id = 'last-name'><input type="text" tabindex='2' value="" ng-model="user.lastname" placeholder = 'Last Name'> </div>
+                        <div class="log_Reg" id = 'email'><input type="email" tabindex='4' value="" ng-model="user.email" placeholder = 'email'></div>
+                        <div class="log_Reg" id = 'verify-password'><input type="password" tabindex='6'value="" ng-model="user.verifyPassword" placeholder = 'Verify password'></div>
                     </div>
                 </div>
                     <div class="log_RegsubmitButton">
-                        <input class="log_RegButton" type="button" tabindex=1 value="submit" ng-click="createNewUser(user)">
+                        <button class="log_RegButton" tabindex='7' ng-click="createNewUser(user)">Register</button>
                     </div>
               </div>
 
         </div>
 </div>
+
+<!--<div class = 'log_RegPage'>
+        <div class = 'registerContainer'>
+                <div class = 'regFirstColumn'>
+                        <h2 class = 'registerText'>Register</h2>
+                        <div class = 'log_Reg'><input id = 'regFirstName' type = 'text' tabindex = '1' value = '' ng-model = 'user.firstname' placeholder = 'first name'></div>
+                        <div class = 'log_Reg'><input id = 'regUsername' type = 'text' tabindex= "3" value = '' ng-model = 'user.username' placeholder = 'username'></div>
+                        <div class = 'log_Reg'><input id = 'regPassword' type = 'password' tabindex="5" value = '' ng-model = 'user.password' placeholder = 'password'></div>
+                </div>
+                <div class = 'regSecondColumn'>
+                        <div class = 'log_Reg'><input id = 'regLastName' type = 'text' tabindex="2" value ='' ng-model = 'user.lastname' placeholder= 'last name'></div>
+                        <div class = 'log_Reg'><input id = 'regEmail' type = 'email' tabindex = "4" value = '' ng-model = 'user.email' placeholder= 'email'></div>
+                        <div class = 'log_Reg'><input id = 'regVerifyPw' type = 'password' tabindex = "6" value = '' ng-model = 'user.verifyPassword' placeholder= 'verify password'></div>
+                </div>
+             
+                <div class = 'regSubmitContain'>
+                        <button class = 'log_RegButton' tabindex="7" ng-click = 'createNewUser(user)'>Register</button>
+                </div>
+                
+        </div>
+        
+        <div class = 'loginContainer'>
+                <div class = 'logColumn'>
+                        <h2 class = 'loginText'>Login</h2>                       
+                        <div class = 'log_Reg'><input id = 'logEmail' type = 'email'  value = '' ng-model = 'email' placeholder = 'email'></div>
+                        <div class = 'log_Reg'><input id = 'logPassword' type = 'password'  value = '' ng-model = 'password' placeholder="password"></div>
+             
+                </div>
+        </div>
+</div>-->

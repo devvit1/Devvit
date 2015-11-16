@@ -5,9 +5,9 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 		$scope.groups = []
 		groupsService.getGroups($rootScope.profile._id).then(function(res){
 			for (var group in res){
-				console.log(res[group])
 				$scope.groups.push(res[group])
-			}		
+			}
+			
 		})
 	})();
 	
@@ -40,8 +40,8 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 				})
 			}
 			
+
 		})
-		
 	}
 	
 	

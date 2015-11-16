@@ -85,14 +85,85 @@
 	line-height:60px;
 }
 
+.theGroupBody{
+	display:flex;
+	flex-direction: row;
+}
+.theGroupMembers{
+	flex:1;
+	height:100%;
+	margin-top:30px;
+
+}
+.membersAdmins{
+	background: #f4f4f4;
+	height:200px;
+	margin-bottom:10px;
+	overflow:scroll;
+	border-top:2px solid #ff9326;
+	border-left:2px solid #ff9326;
+	border-bottom:2px solid #ff9326;
+	border-top-left-radius:5px;
+	border-bottom-left-radius: 5px;
+}
+.membersMembers{
+	background: #f4f4f4;
+	height:200px;
+	margin-bottom:10px;
+	overflow: scroll;
+	border-top:2px solid gray;
+	border-left:2px solid gray;
+	border-bottom:2px solid gray;
+	border-top-left-radius:5px;
+	border-bottom-left-radius: 5px;
+}
+
+.theGroupInfo{
+	flex:3;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+}
+.groupInfoTop{
+	width:95%;
+	margin: 0 auto;
+	margin-bottom:5px;	
+
+	height:100px;
+	display:flex;
+}
+.groupDescription {
+	flex:2;
+	margin:0 10px;
+	border:2px solid #093561;
+	border-radius:5px;
+}
+
+.groupInfo {
+	flex:1;
+	border:2px solid #093561;
+	border-radius:5px;
+	background:#f4f4f4;
+}
+.groupInfoMessage{
+	height:370px;
+	border-radius:5px;
+	width:95%;
+	margin:5px auto;
+	background: #093561;
+}
+
 .adminAccept {
 	margin:20px auto;
 	width:90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 .appliedUserCard{
 	width:200px;
 	height:250px;
-	border:2px solid yellow;;
+	border:2px solid yellow;
 }
 .appliedUserCard_upper{
 	height:150px;
@@ -247,6 +318,7 @@
 
 .groupInfoMessage {
 	overflow: scroll;
+	position: relative;
 }
 
 .groupInfoMessageUser {
@@ -266,6 +338,8 @@
 	width: 40%;
 	position: absolute;
 	bottom: 20px;
+	/*display: inline-block;
+    vertical-align: bottom;*/
 	margin-left: 20px;
 }
 
@@ -282,4 +356,5 @@
 
 #groupEditDesc:hover {
 	color: #093561;
+
 }

@@ -1,7 +1,9 @@
 <div class="profile_body">
 	<div class="profile_body_left">
-		<div class="profile_picture"></div>
+		<div class="profile_picture" ng-style = "{ background: 'url({{profile.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 		<div class="profile_basicInfo">
+			<!--<img ng-src="{{profile.basicInfo.image}}"/>-->
+			<input fileread type = 'file'>
 			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div class="profile_userName">{{profile.basicInfo.userName}}</div></div>
 			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
 			<div class="" ng-show="!editShow">
@@ -63,5 +65,5 @@
 			</div>
 		</div>
 	</div>
-
+​
 </div>

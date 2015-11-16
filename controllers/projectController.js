@@ -106,13 +106,11 @@ module.exports = {
 					else res.send(success)
 				})			
 	},
-	
-	deny: function(req, res){
+		deny: function(req, res){
 		removeUserFromProject(req.body.user_id, req.body.project_id, res);
 		removeProjectFromUser(req.body.user_id, req.body.project_id, res);
 		res.send('user denied')
 	},
-	
 	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
@@ -170,8 +168,8 @@ module.exports = {
 					return res.status(500).send(err)}
 				else{
 					res.json(result);
-				}
-			})
+			}
+		})
 			}
 		})
 	},
@@ -309,7 +307,6 @@ function addProjectToUserGroups(project, user, res){
 		})
 
 };
-
 function removeUserFromProject (user, project, res) {
 	Projects.findById(project, function(err, project){
 		if (err) return res.status(500).send(err);
