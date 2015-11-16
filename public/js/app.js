@@ -17,6 +17,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/home/web')
 
 	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: '../templates/landingPage.html'
+			// controller: 'log_RegCtrl'
+		})
 		.state('devvit', {
 			url: '/home',
 			templateUrl: '../templates/homeView.html',
@@ -107,7 +112,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 					}
 				}
 		})
-
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',

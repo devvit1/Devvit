@@ -1,5 +1,6 @@
 angular.module('devvit').controller('groupsCtrl', function($scope, groupsService, $state, $rootScope){
 	
+	
 	(function getGroups(){
 		$scope.groups = []
 		groupsService.getGroups($rootScope.profile._id).then(function(res){

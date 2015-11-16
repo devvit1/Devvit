@@ -137,11 +137,13 @@
 	color: white;
 	border: 0 none;
 	border-radius: 2px;
+	cursor: pointer;
 }
 
 .iconWrap {
 	float: right;
 	cursor: pointer;
+	color: #474747;
 }
 
 #composeIcon {
@@ -150,7 +152,7 @@
 }
 
  .iconWrap:hover{
-	 color: #FF9326;
+	 color: #222222;
  }
 
 #searchUsers {
@@ -168,6 +170,7 @@
 	padding:10px 20px;
 	border:0 none;
 	font-weight:bold;
+	cursor: pointer;
 }
 
 .searchWrap {
@@ -185,21 +188,46 @@
 }
 
 .message_developerCard {
-	width:250px;
-	height:350px;
+	width:300px;
+	height:70px;
 	margin:20px 35px;
+	box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.19);
+	cursor: pointer;
 }
 
 .messageCard_upper{
-	height:60%;
-	width:100%;
-	background:gray;
-	border:1px solid gray;
+	height: 90%;
+	width: 20%;
+	background: #FFF;
+	float: left;
+	border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user_fullname_search {
+	font-size: 1.3em;
+	font-family: 'Roboto', sans-serif;
+	padding-left: 30px;
+	color: #3a3a3a;
+	padding-top: 15px;
+}
+
+#username_search {
+	font-size: .7em;
+}
+
+#userIcon {
+	font-size: 2em;
+	color: #093561;
 }
 
 .messageCard_lower{
-	height:40%;
+	height:70%;
+	width: 70%;
 	background: white;
+	float: left;
 }
 
 .composeNewMessage {
@@ -230,4 +258,14 @@
 	border:0 none;
 	font-weight:bold;
 	text-transform: uppercase;
+}
+
+#chosen-name {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+@media (max-width: 1851px) {
+	.prof_aside_messages > div {
+		margin-top: 30px;
+	}
 }

@@ -1,8 +1,16 @@
 angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, $rootScope){
+	
 	$scope.group = groupInfo;
 	$scope.groupMessages = groupInfo.messages;
 	$scope.pendingApp = [];
 	$scope.inGroupMembers = [];
+	
+	$scope.save = false;
+	$scope.toggleView = function() {
+  		$scope.save = !$scope.save;
+		console.log($scope.save)
+  	}
+	
 	var inGroupMembers =function (arr){
 		arr.forEach(function(member){
 			if (!member.application.pending){
@@ -31,6 +39,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			console.log(res)
 			console.log($scope.groupMessages)
 		})
+		$scope.groupmessagecontent = "";
 	}
 	$scope.acceptUser = function(applied){
 		console.log()
@@ -65,4 +74,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		}
 
 	}
+	
+	$(document).ready(function(){
+	
+		$('#groupMessageInput').keyup(function(e) {
+			if (e.keyCode == 13) {
+				$('#sendGroupMsg').click();
+			}
+		})
+	});
+	
 })

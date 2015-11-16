@@ -22,36 +22,50 @@
 			<div class="groupInfoTop">
 				
 				<div class="groupInfo">
-					<div class="groupType">category:{{group.type}}</div>
-					<div class="groupSubType">type:{{group.subType}}</div>
-					<div class="groupCreatedAt">created:{{group.createdAt}}</div>
-					<div class="groupCreatedBy">by:{{group.createdBy}}</div>
+					<div class="group_titles">Group Info</div>
+					<div class="groupType">[{{group.type}}]</div>
+					<div class="groupSubType">Type: {{group.subType}}</div>
+					<div class="groupCreatedAt">Date Created: {{group.createdAt | date:"MMMM d, y"}}</div>
+					<div class="groupCreatedBy">By: {{group.createdBy}}</div>
 				</div>
-				<div class="groupDescription">{{group.description}}</div>
+				<div class="groupDescription">
+					<div class="group_titles">Description <span ng-click="toggleView()" id="groupEditDesc"><i class="fa fa-pencil-square-o"></i></span></div>
+					<div class="groupDescriptionText" ng-show="!save">{{group.description}}</div>
+					<span ng-show='save'>Description:<br><textarea ng-model="group.description" class='edit-desc1' ng-model='groups.description'></textarea>
+				</div>
+				<div class="groupLast"></div>
 			</div>
 			<div class="groupInfoMessage">
 				<div class="groupInfoMessageDiv" ng-repeat = "message in groupMessages track by $index">
-					<div class="groupInfoMessagemess">{{message.message}}</div>
 					<div class="groupInfoMessageUser">
 						{{message.sentBy.basicInfo.firstName}}
 						{{message.sentBy.basicInfo.lastName}}
-						</div>		
+					</div>
+					<div class="groupInfoMessagemess">{{message.message}}</div>	
 				</div>
-
-				<input type="text"ng-model="groupmessagecontent"><button ng-click="sendGroupMessage(groupmessagecontent)">send</button>
+				<div class="groupSendMessage">
+					<textarea id="groupMessageInput" cols="30" rows="3" ng-model="groupmessagecontent"></textarea>
+					<button id="sendGroupMsg" ng-click="sendGroupMessage(groupmessagecontent)">send</button>
+				</div>
 			</div>
 		</div>
 		
 		<div class="theGroupMembers">
 			<div class="membersAdmins">
+				<div class="group_titles">Admins</div>
 				<div class="groupAdminsRepeat"ng-repeat = "admin in group.admins">
-				<div class="groupAdminUser">{{admin.basicInfo.firstName}} {{admin.basicInfo.lastName}}</div>
+				<div class="groupAdminUser">{{admin.basicInfo.firstName}} {{admin.basicInfo.lastName}}
+				</div>
 					
 				</div>
 			</div>
 			<div class="membersMembers">
+				<div class="group_titles">Members</div>
 				<div class="groupMembersRepeat"ng-repeat = "member in inGroupMembers">
-					<div class="groupMemberUser">{{member.member.basicInfo.firstName}}{{member.member.basicInfo.lastName}}</div>
+					<div class="groupMemberUser">{{member.member.basicInfo.firstName}} 
+						{{member.member.basicInfo.lastName}}
+						<div id="groupMemberRemove"><i class="fa fa-times"></i></div>
+					</div>
 				</div>
 			</div>
 		</div>

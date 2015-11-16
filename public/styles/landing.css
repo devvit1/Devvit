@@ -1,16 +1,127 @@
-.landingbody{
-	width:100%;
-	height:100vh;
-	background:green;
+.logoName {
+	font-family: 'Intro';
+	color: #093561;
+	font-size:1.8em;
+	padding-right: 40px;
+}	
+
+.landingWrap {
+	height: 100vh;
+	width: 100%;
+	background: #9bd0c6;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	overflow: hidden;
 }
 
-.landing_card{
-	width:800px;
-	height:800px;
-	background: black;
+#welcomeDevvit {
+	font-family: 'Intro';
+    color: #093561;
 }
-.landing_card_top{
-	background: #4f5762;
-	width:100%;
-	height:500px;
+
+.landingPic{
+	margin-top: 10%;
+	display:flex;
+	height: 100%;
+	flex: 1;
+	font-family: 'Intro';
+    color: #093561;
+	background: #9bd0c6;
+    font-size: 2em;
+	line-height:60px;
+	flex-direction: column;
+	align-items: center;
+}
+
+.createAcct {
+	/*flex: 1;*/
+	margin-left: 5%;
+	margin-top: 12%;
+}
+
+.lineSep {
+	height: 50vh;
+	width: 1px;
+	background: lightgray;
+	margin-top: 11%;
+}
+
+@media (max-width: 1400px) {
+	.landingPic {
+		margin-top: 2%;
+	}
+	
+	.createAcct {
+		margin-top: 6%;
+	}
+	
+	.lineSep {
+		height: 75vh;
+		margin-top: 5%;
+	}
+}
+
+.landingRight {
+	flex: 2;
+	background: #FFF;
+	font-family: 'Open Sans', sans-serif;
+	color: #5a5656;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+#welcome {
+	font-size: 1em; 
+}
+
+.loginInput {
+	margin-bottom: 10px;
+}
+
+#submitLogin {
+	margin-top: 20px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+#login {
+	width: 300px;
+	margin-bottom: 5%;
+	margin-right: 5%;
+	margin-top: 20%;
+}
+
+form fieldset {
+	border: 0 none;
+}
+
+form fieldset input[type="text"], input[type="password"] {
+	background: #e5e5e5;
+	border: none;
+	border-radius: 3px;
+	color: #5a5656;
+	font-family: inherit;
+	font-size: 14px;
+	height: 50px;
+	outline: none;
+	padding: 0px 10px;
+	width: 280px;
+  -webkit-appearance:none;
+}
+
+form fieldset input[type="submit"] {
+	background-color: #093561;
+	border: none;
+	border-radius: 3px;
+	color: #f4f4f4;
+	cursor: pointer;
+	font-family: inherit;
+	height: 50px;
+	text-transform: uppercase;
+	width: 300px;
+  -webkit-appearance:none;
 }
