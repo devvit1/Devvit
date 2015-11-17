@@ -195,12 +195,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 				.state('devvit.groupdisplayAdmin', {
 					url:'/groupadmin/:group',
 					templateUrl:'../templates/profileGroupsAdminSub.html',
-					controller: 'groupDisplayAdminCtrl'
-					// resolve: {
-					// 	groupInfo: function ($stateParams, groupsService) {
-					// 		 return groupsService.findProject($stateParams.group)
-					// 	}
-					// }
+					controller: 'groupDisplayAdminCtrl',
+					resolve: {
+						groupInfo: function ($stateParams, groupsService) {
+							 return groupsService.findProject($stateParams.group)
+						}
+					}
 				})
 			.state('devvit.messages', {
 				url:'/messages',

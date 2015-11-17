@@ -77,13 +77,14 @@ app.post(       '/groupmessage',    ProjectController.groupMessage);
 //UserController
 
 app.get(        '/user',                                      UserController.read);
-app.get(        '/users/:id',                                  UserController.findById);
+app.post(       '/fileUpload',                                UserController.fileUpload)
+app.get(        '/users/:id',                                 UserController.findById);
 app.post(       '/user',                                      UserController.create);
 app.put(        '/user',                                      UserController.userUpdate);
 app.delete(     '/user/:id',                                  UserController.destroy);
-app.get(        '/active/:id',                                UserController.getActive);
+app.get(        '/active',                                    UserController.getActive);
 app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
-app.get(        '/activeMessages/:otherId/current/:activeId', UserController.getActiveUserMessages);
+app.get(        '/activeMessages/:otherId/current',           UserController.getActiveUserMessages);
 app.get(        '/getusers/:id',                              UserController.getUsers)
 
 
