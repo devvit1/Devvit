@@ -34,7 +34,7 @@
 			<div class="profile_pending">
 				PENDING 
 				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
-					<span><i class="fa fa-times"></i></span>{{pending.name}} <span>creator</span>
+					<span><a ng-click="removePending(pending)"><i class="fa fa-times"></a></i></span>{{pending.name}} <span>creator</span>
 				</div>
 			</div>
 			<div class="profile_SkillCont">

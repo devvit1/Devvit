@@ -31,10 +31,32 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 
 		})
 	}
+	$scope.removePending = function (pendingGroup){
+				for (var i = 0; i < $rootScope.profile.pendingApprovals.length; i++){
+					if (pendingGroup._id === $rootScope.profile.pendingApprovals[i]._id){
+						$rootScope.profile.pendingApprovals.splice(i,1)
+						profileViewService.updateUser($rootScope.profile).then(function(res){
+							console.log(res)
+						})
+					}
+				}
+		for(var i = 0; i < pendingGroup.members.length; i++){
+			if(pendingGroup.members[i]._id === $rootScope.profile._id){
+				pendingGroup.members[i].splice(i, 1);
+				profileViewService.updateProject(pendingGroup).then(function(res){
+					console.log(res, 'project')
+				})
+			}
+		}
+			
+		profileViewService.updateUser($rootScope.profile).then(function(res){
+			console.log('removePending', res)
+		})
+	}
 	$scope.updateUser = function (){
 		$rootScope.profile.skills = $scope.updated.skills;
 		profileViewService.updateUser($rootScope.profile).then(function(res){
-			console.log('cont', res)
+			console.log( res)
 		})
 	}
 })

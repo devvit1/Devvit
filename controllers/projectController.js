@@ -176,7 +176,7 @@ module.exports = {
 
 	
 	projectUpdate: function(req, res) {
-		Projects.findByIdAndUpdate(req.params.id, req.body, {new: true }, function(err, result) {
+		Projects.findByIdAndUpdate(req.body.project_id, {new: true }, function(err, result) {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
@@ -197,7 +197,7 @@ module.exports = {
 					res.json(result);
 				}
 		})
-	}
+	},
 	
 	
 	
