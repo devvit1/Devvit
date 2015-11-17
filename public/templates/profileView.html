@@ -1,82 +1,74 @@
 <div class="profile_body">
 	<div class="profile_body_left">
-		<div class="profile_picture"></div>
+		<div class="profile_picture" ng-style = "{ background: 'url({{profile.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 		<div class="profile_basicInfo">
+			<!--<img ng-src="{{profile.basicInfo.image}}"/>-->
+			<input fileread type = 'file'>
 			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div class="profile_userName">{{profile.basicInfo.userName}}</div></div>
 			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
 			<div class="" ng-show="!editShow">
 				<div class="profile_email">{{profile.basicInfo.email}} <span class="editSquare" ></div>
 				<div class="profile_linkedin">{{profile.basicInfo.linkedin}}<span class="editSquare" ></div>
 				<div class="profile_github">{{profile.basicInfo.github}}<span class="editSquare" ></div>
+				<div class="profile_github">{{profile.basicInfo.website}}<span class="editSquare" ></div>
+				<div ng-show="profile.basicInfo.location.city" class="profile_github">{{profile.basicInfo.location.city}}, {{profile.basicInfo.location.state}}<span class="editSquare" ></div>
+				
+				
 			</div>
 			<div class="basicInfo_edit" ng-show="editShow">
 				<input class="profile_email" ng-model="profile.basicInfo.email" placeholder="(email)">
 				<input class="profile_linkedin" ng-model="profile.basicInfo.linkedin" placeholder="(linkedin)">
 				<input class="profile_github" ng-model="profile.basicInfo.github" placeholder="(github)">
 				<input class="profile_github" ng-model="profile.basicInfo.website" placeholder="(website)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.city" placeholder="(city)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.state" placeholder="(state)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.country" placeholder="(country)">
+				
+				
 				
 			</div>
-			<div class="profile_update" ><a  ng-show = "!editShow" ng-click = "editShow = !editShow">edit/update</a><a ng-click = "editShow = !editShow; updateUser()"ng-show="editShow" class = "submitChanges">submit Changes</a></div>
+			<div class="profile_update" >
+				<a  ng-show = "!editShow" ng-click = "editShow = !editShow">edit/update</a>
+				<a ng-click = "editShow = !editShow; updateUser()"ng-show="editShow" class = "submitChanges">submit Changes</a>
+				<a   href = 'http://localhost:8080/logout'><div class="logout">logout</div></a>
+			</div>
 			
 		</div>
 	</div>
 	
-	<div class="profile_body_right" ng-show = "!editShow">
+	<div class="profile_body_right" >
 		<div class="profile_userProjects">
 			<div class="profile_pending">
 				PENDING 
 				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
-					<span><i class="fa fa-times"></i></span>{{pending.name}} <span>creator</span>
+					<span><a ng-click="removePending(pending)"><i class="fa fa-times"></a></i></span>{{pending.name}} <span>creator</span>
 				</div>
 			</div>
 			<div class="profile_SkillCont">
-				<div class="profile_skills_title">SKILLS </div>
+				<div class="profile_skills_title">SKILLS &nbsp<i class="fa fa-plus" ng-click = "toggleaddSkills()"></i>
+				<span>
+					<form ng-submit="addToNewSkills(newSkill); newSkill = ''">
+					<input class = 'profile_addSkills' ng-model="newSkill" id="slideDown">
+					</form>
+				</span>
+				</div>
 				<div class="profile_skills">
-					<div ng-repeat="skill in profile.skills" class="eachSkill"><span><i class="fa fa-times"></i></span>&nbsp{{skill}}</div>
+					<div ng-repeat="skill in profile.skills track by $index" class="eachSkill"><span><i ng-click = "removeSkill(skill)" class="fa fa-times"></i></span>&nbsp{{skill}}</div>
 					</div>
 			</div>
 		</div>
+		
 		<div class="profile_otherUserInfo">
 			<div class="profile_bio">
-				BIO 
-				<div class="profile_bio_bio">
+				BIO <i class="fa fa-pencil-square-o" ng-click="bioShow=!bioShow"><span ng-show= "bioShow" ng-click = "addBio(profile.bio)">submit</span></i>
+				<textarea ng-model="profile.bio" ng-show= "bioShow">
+					
+				</textarea>
+				<div class="profile_bio_bio" ng-show="!bioShow">
 					{{profile.bio}}
 				</div>
 			</div>
-			<div class="profile_right_location">
-				LOCATION
-			</div>
 		</div>
 	</div>
-	
-		<div class="profile_body_right" ng-show = "editShow">
-		<div class="profile_userProjects">
-			<div class="profile_pending">
-				PENDING
-				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
-					{{pending.name}}
-				</div>
-			</div>
-			<div class="profile_SkillCont">
-				<form ng-submit="addToNewSkills(addedSkill)">
-					<input type="text" class="profile_addSkill" ng-model="addedSkill"placeholder="add new skills">
-				</form>
-				<div class="profile_skills">
-					<div ng-repeat="skill in updated.skills" class="eachEditSkill" ng-click = "removeSkill(skill)">[{{skill}}]</div>
-					</div>
-			</div>
-		</div>
-		<div class="profile_otherUserInfo">
-			<div class="profile_bio">
-				BIO <span class="editSquare" ng-show = "showEdit"><i class="fa fa-pencil-square-o fa-2x"></i></span>
-				<br>
-				<textarea ng-model="profile.bio">
-					
-				</textarea>
-			</div>
-			<div class="profile_right_location">
-				LOCATION
-			</div>
-		</div>
-	</div>
+​
 </div>

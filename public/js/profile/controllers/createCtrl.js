@@ -85,6 +85,7 @@ angular.module('devvit').controller('createCtrl', function($scope, createService
 		createService.createProject(project).then(function(res){
 		$scope.project = {
 						"active_user_id":$rootScope.profile._id,
+						"createdBy":$rootScope.profile._id,
 						"name":null,
 						"description": null,
 						"subType":null,

@@ -8,7 +8,6 @@
 	float:left;
 	width:80%;
 }
-
 */
 .chooseGroup {
 	margin: 0 auto;
@@ -60,11 +59,14 @@
 .adminAccept {
 	margin:20px auto;
 	width:90%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 .appliedUserCard{
 	width:200px;
 	height:250px;
-	border:2px solid yellow;;
+	border:2px solid yellow;
 }
 .appliedUserCard_upper{
 	height:150px;
@@ -219,6 +221,7 @@
 
 .groupInfoMessage {
 	overflow: scroll;
+	position: relative;
 }
 
 .groupInfoMessageUser {
@@ -238,6 +241,8 @@
 	width: 40%;
 	position: absolute;
 	bottom: 20px;
+	/*display: inline-block;
+    vertical-align: bottom;*/
 	margin-left: 20px;
 }
 

@@ -6,23 +6,20 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
 		
 		$scope.members = []
 	
-		var searchForDev = function(searchQuery) {
+		$scope.searchForDev = function(searchQuery) {
 			$scope.members = [];
 			devService.findUsers(searchQuery).then(function(res){
 				res.forEach(function(user){
+					console.log(user)			
 					$scope.members.push(user)
 				})
 
 			})
 		};
 		
-		var search = document.getElementById("search");
+
 		
-		search.addEventListener("keydown", function (dev) {
-			if (dev.keyCode === 13) {
-				searchForDev($scope.developerSearch);
-			}
-		});
+		
 
 	
 		

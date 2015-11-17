@@ -1,8 +1,33 @@
-angular.module('devvit').service('log_RegService', function($http){
+angular.module('devvit').service('log_RegService', function($http, $rootScope){
 
+  // var currentUser = null;
+  // this.currentUser = function() {return currentUser};
 
-  this.login = function(user){
-      
+	this.getProfile = function(){
+		return $http({
+				method: 'GET',
+				url: '/active' 
+			}).then(function(res){
+				return res.data
+			})
+	};
+  
+
+  this.login = function(email, password){
+      return $http ({
+        method: 'POST',
+        url: '/login',
+        data: {
+          email: email,
+          password: password
+        }
+      }).then(function(res) {
+        $rootScope.profile = res.data
+        return res;
+      }, function(err){
+        console.log(err);
+        return err;
+      })
   }
 
   this.createNewUser = function(newUser){
@@ -22,6 +47,12 @@ angular.module('devvit').service('log_RegService', function($http){
       data: User
     }).then(function(res) {
       console.log('Success');
+    }, function(err) {
+      console.log(err);
+      return err;
     })
   }
-})
+  })
+
+
+

@@ -1,8 +1,8 @@
 angular.module('devvit').service('activeService', function($http, $rootScope) {
-	this.getActive = function (active_user_id){
+	this.getActive = function (){
 	return $http({
 		method:'GET',
-		url: '/active/'+ active_user_id
+		url: '/active'
 	}).then(function(res) {
 
 		return res.data

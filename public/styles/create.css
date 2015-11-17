@@ -1,5 +1,5 @@
 .submitMyContent{
-	width:1200px;
+	width:1000px;
 	background: #9BD0C6;;
 	display:flex;
 	margin:0 auto;
@@ -57,17 +57,20 @@
 
 }
 .subOption{
-	font-size:1.5em;
+	font-size:1.3em;
 	margin:10px 15px;
 	cursor:pointer;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 }
 
 .create_projectName {
 	width:40%;
 	border:none;
-	border-bottom:2px solid #FF9326;
+	border-bottom:2px solid #093561;
 	height:30px;
-	font-size: 1.5em;
+	font-size: 1.2em;
+	font-family: 'Open-Sans', sans-serif;
 }
 .inputWrapper{
 	text-align:center;
@@ -80,7 +83,9 @@
     color: #093561;
     border: 2ps solid gray;
     margin: 2px 3px;
-    font-family: "intro";
+    /*font-family: "intro";*/
+	font-family: 'Open Sans', sans-serif; 
+	font-weight: 600;
 	cursor: pointer;
 	transition: .3s ease all;
 
@@ -97,14 +102,17 @@
 	display:flex;
 	flex-direction: row;
 	flex-wrap:wrap;
+	justify-content: center;
+	font-size: .8em;
 }
 .create_cat{
 	width:20%;
 	border:none;
-	border-bottom:2px solid #FF9326;
+	border-bottom:2px solid #093561;
 	height:30px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin: 0 auto;
+	font-family: 'Open-Sans', sans-serif;
 }
 .each_cat{
 	display:inline-block;
@@ -127,6 +135,8 @@
 	text-align: center;
 	font-family: "intro";
 	margin-top:50px;
+	padding-bottom: 20px;
+	font-size: 1.2em;
 }
 
 .displayTags{
@@ -143,6 +153,7 @@
 	border: 2ps solid gray;
 	margin:2px 3px;
 	font-family: "intro";
+	font-size: .8em;
 }
 
 .displayedTag >a >i:hover{
@@ -151,7 +162,7 @@
 
 .createTags{
 	border:none;
-	border-bottom:2px solid #FF9326;
+	border-bottom:2px solid #093561;
 	height:30px;
 	font-size: 1.5em;
 	width:200px;

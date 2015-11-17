@@ -1,4 +1,4 @@
-angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, projectService, basicInfoService, $location, $rootScope){
+angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$state, projectService, basicInfoService, $location, $rootScope){
     
       $scope.subTypeFilter = ""
       $scope.isActive = function(route) {
@@ -17,7 +17,11 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
       })
       }
     
-    
+    $scope.goToUser = function (user){
+          $state.go('devvit.users', {
+                user: user
+          })
+    }
     
     	$scope.save = false;
   	   $scope.toggleView = function() {
@@ -38,9 +42,8 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout, pr
     
     /*****************JACOBS QUERY CODE **************/
     
-    $scope.searchProjects = function (query){
-
-          projectService.searchProjects(query).then(function(res){
+    $scope.searchProjects = function (query, distance){
+          projectService.searchProjects(query, distance).then(function(res){
              $scope.webProjects = res;     
              console.log(res)    
           })

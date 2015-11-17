@@ -1,16 +1,9 @@
 var Users = require('../models/users');
+var AWS = require('../services/amazon')
 
 module.exports = {
 
   create: function(req, res) {
-    // Users.findOne({ 'basicInfo.email': req.body.basicInfo.email })
-    //   .exec()
-    //   .then(function(user) {
-    //     console.log(user);
-    //     if(user) {
-    //       return res.status(400).json({message: "User with this email already exists"});
-    //     }
-
 
         var user = new Users(req.body);
         user.save(function(err, new_user) {
@@ -23,6 +16,12 @@ module.exports = {
 
   read: function(req, res) {
     Users.find().exec(function(err, result) {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
+  },
+  findById: function(req, res) {
+    Users.findById(req.params.id).exec(function(err, result) {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
@@ -52,16 +51,18 @@ module.exports = {
   },
 
   getActive: function(req, res){
-    Users.findById(req.params.id)
-    .populate('messages.withUser')
-    .populate('activePosts')
-    .populate('groups')
-    .populate({path:'pendingApprovals',
-               populate:{path:'createdBy', model:'Users'}})
-    .exec(function(err, result) {
-      if (err) return res.status(500).send("not found");
-      res.json(result);
-    })
+    if(req.user._id) {
+      Users.findById(req.user._id)
+      .populate('messages.withUser')
+      .populate('activePosts')
+      .populate('groups')
+      .populate({path:'pendingApprovals',
+                populate:{path:'createdBy', model:'Users'}})
+      .exec(function(err, result) {
+        if (err) return res.status(500).send("not found");
+        res.json(result);
+      })
+    }
   },
   
    getActiveMessageInfo: function(req, res){
@@ -74,7 +75,7 @@ module.exports = {
   },
   
   getActiveUserMessages: function(req, res){
-    Users.findById(req.params.activeId)
+    Users.findById(req.user._id)
     .exec(function(err, result) {
       if (err) return res.status(500).send("not found");
       var messagesArr = result.messages;
@@ -106,14 +107,54 @@ module.exports = {
             last:user.basicInfo.lastName,
             userName: user.basicInfo.userName,
             email: user.basicInfo.email,
-            location: user.basicInfo.location,
-            github:user.basicInfo.githubUrl,
-            linkedin:user.basicInfo.linkedinUrl
+            github:user.basicInfo.github,
+            linkedin:user.basicInfo.linkedin,
+            website:user.basicInfo.website,
+            location:{
+              city:user.basicInfo.location.city,
+              state:user.basicInfo.location.state
+              
+            }
           },
+          skills:user.skills
         })
       })
       res.json(users)
 
+    })
+  },
+  
+  fileUpload: function(req, res) {
+    var buf = new Buffer(req.body.filebody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+    var fileObj = {
+        name: req.body.filename,
+        body: buf,
+        type: req.body.filetype
+    }
+    
+    AWS.uploadToS3(fileObj, function(err, data){
+        if (err) {
+            console.log(err)
+            res.status(500).send(err)
+        } else {
+            Users.findById(req.user._id, function(err, user) {
+              if (err) {
+                res.status(500).send(err)
+              } else {
+                user.basicInfo.image = data.Location
+                user.save(function (err, data) {
+                   if (err) {
+                     res.status(500).send(err)
+                   } else {
+                     console.log('user', data)
+                     res.json(data);
+                   }
+                })
+                // res.send('it worked')
+              }
+            })
+        }
     })
   }
   

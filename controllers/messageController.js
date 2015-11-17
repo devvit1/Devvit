@@ -18,12 +18,12 @@ module.exports = {
 }
 
 function sendMessageToActiveUser(req, res){
-	Users.findByIdAndUpdate(req.body.active_user_id, 
+	Users.findByIdAndUpdate(req.user._id, 
 	{$push:{
 		messages:{
 			messages:{
 				message:req.body.message,
-				from: req.body.active_user_id
+				from: req.user._id
 			},
 			withUser: req.body.toUser,		
 		}
@@ -39,9 +39,9 @@ function sendMessageToUser(req, res){
 		messages:{
 			messages:{
 				message:req.body.message,
-				from: req.body.active_user_id
+				from: req.user._id
 			},
-			withUser: req.body.active_user_id,		
+			withUser: req.user._id		
 		}
 	}},
 	function (err){
@@ -50,7 +50,7 @@ function sendMessageToUser(req, res){
 }
 
 function addMessageToActiveUser(req, res){
-	Users.findById(req.body.active_user_id,
+	Users.findById(req.user._id,
 	function(err, user){
 		if (err) return res.status(500).send(err)
 		var existingMessages = [];
@@ -64,7 +64,7 @@ function addMessageToActiveUser(req, res){
 		else{
 			user.messages[index].messages.push({
 				message:req.body.message,
-				from: req.body.active_user_id
+				from: req.user._id
 			})
 			user.save(function(err, msg) {
 					if (err) return res.status(500).send(err);	
@@ -81,14 +81,14 @@ function addMessageToUser(req, res){
 		user.messages.forEach(function(message){
 			existingMessages.push(message.withUser.toString())		
 		})
-		var index = existingMessages.indexOf(req.body.active_user_id);
+		var index = existingMessages.indexOf(req.user_id);
 		if (index === -1){
 			res.status(500)
 		}
 		else{
 			user.messages[index].messages.push({
 				message:req.body.message,
-				from: req.body.active_user_id
+				from: req.user._id
 			})
 			user.save(function(err) {
 					if (err) return res.status(500).send(err);	
