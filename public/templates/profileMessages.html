@@ -13,10 +13,8 @@
 			</div>
 		</div>
 		<div class="prof_mess_body">
-			<div class="prof_message_card" ng-repeat='message in messages'>
-				<div>{{message.message}}</div>
-				<span id="message_time">Sent at {{message.time | date:'MM/dd h:mma'}}</span>
-			</div>
+						<ui-view></ui-view>
+
 		</div>
 	</div>
 </div>

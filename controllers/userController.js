@@ -4,25 +4,24 @@ var AWS = require('../services/amazon')
 module.exports = {
 
   create: function(req, res) {
-    // Users.findOne({ 'basicInfo.email': req.body.basicInfo.email })
-    //   .exec()
-    //   .then(function(user) {
-    //     console.log(user);
-    //     if(user) {
-    //       return res.status(400).json({message: "User with this email already exists"});
-    //     }
 
-
-    var newUser = new Users(req.body);
-    newUser.save(function(err, user) {
-      if(err) return res.send(err);
-      user.password = null;
-      return res.send(user);
-    });
+        var user = new Users(req.body);
+        user.save(function(err, new_user) {
+          if(err) {
+            console.log("can't create user", err);
+          }
+          res.json(new_user);
+        })
   },
 
   read: function(req, res) {
     Users.find().exec(function(err, result) {
+      if (err) return res.status(500).send(err);
+      res.json(result);
+    });
+  },
+  findById: function(req, res) {
+    Users.findById(req.params.id).exec(function(err, result) {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
@@ -56,14 +55,11 @@ module.exports = {
       Users.findById(req.user._id)
       .populate('messages.withUser')
       .populate('activePosts')
-      .populate({path:'pendingApprovals',
-                populate:{path:'createdBy', model:'Users'}})
       .populate('groups')
       .populate({path:'pendingApprovals',
                 populate:{path:'createdBy', model:'Users'}})
       .exec(function(err, result) {
         if (err) return res.status(500).send("not found");
-        console.log('POOOOO', result);
         res.json(result);
       })
     }
@@ -112,9 +108,11 @@ module.exports = {
             userName: user.basicInfo.userName,
             email: user.basicInfo.email,
             location: user.basicInfo.location,
-            github:user.basicInfo.githubUrl,
-            linkedin:user.basicInfo.linkedinUrl
+            github:user.basicInfo.github,
+            linkedin:user.basicInfo.linkedin,
+            website:user.basicInfo.website
           },
+          skills:user.skills
         })
       })
       res.json(users)

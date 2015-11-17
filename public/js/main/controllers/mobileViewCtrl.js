@@ -1,5 +1,5 @@
 angular.module('devvit').controller('mobileViewCtrl', function($scope, projectService, $location, $rootScope){
-		console.log("rootScope on mobileViewCtrl Working", $rootScope.profile)
+
 		$scope.isActive = function(route) {
 			return route === $location.path();
 		};

@@ -1,4 +1,10 @@
 var app = angular.module('devvit', ['ui.router', 'angularMoment']);
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
 
 app.run(function($http, $rootScope) {
 	if(!$rootScope.profile) getCurrentUser();
@@ -11,6 +17,7 @@ app.run(function($http, $rootScope) {
 			});
 		};
 	})
+
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -115,7 +122,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 			.state('profile.about', {
 				url:'/about/:user_id',
 				templateUrl:'../templates/profileAbout.html',
-				controller: 'basicInfoCtrl',
+				controller: 'basicInfoCtrl'
 			})
 			.state('devvit.active', {
 				url:'/active/:user_id',
@@ -131,6 +138,16 @@ app.config(function($stateProvider, $urlRouterProvider){
 						return activeService.getActive().then(function(res) {
 							$rootScope.profile = res;
 						})
+					}
+				}
+			})
+			.state('devvit.users', {
+				url:'/users/:user',
+				templateUrl:'../templates/usersView.html',
+				controller: 'usersViewCtrl',
+				resolve: {
+					foundUser: function($stateParams, usersViewService) {
+						return usersViewService.findUser($stateParams.user);
 					}
 				}
 			})
@@ -178,12 +195,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 				.state('devvit.groupdisplayAdmin', {
 					url:'/groupadmin/:group',
 					templateUrl:'../templates/profileGroupsAdminSub.html',
-					controller: 'groupDisplayAdminCtrl'
-					// resolve: {
-					// 	groupInfo: function ($stateParams, groupsService) {
-					// 		 return groupsService.findProject($stateParams.group)
-					// 	}
-					// }
+					controller: 'groupDisplayAdminCtrl',
+					resolve: {
+						groupInfo: function ($stateParams, groupsService) {
+							 return groupsService.findProject($stateParams.group)
+						}
+					}
 				})
 			.state('devvit.messages', {
 				url:'/messages',

@@ -11,8 +11,20 @@ angular.module('devvit').controller('groupsCtrl', function($scope, groupsService
 		})
 	})();
 	
+	
+	
 	$scope.getGroupswithInfo = function(group){
 		$scope.groupsInfo = $scope.groups[group];
+	}
+	
+	$scope.isAdmin = function(user, arr){
+		var toggle = false;
+		arr.forEach(function(item){
+			if (user === item){
+				toggle =true;
+			}
+		})
+		return toggle;
 	}
 	
 	$scope.goToGroup = function(group){

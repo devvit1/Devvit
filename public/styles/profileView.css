@@ -216,6 +216,7 @@ ACTIVE TAB
 
 .profile_body {
 	min-height:80vh;
+	border-top:1px solid lightgray;
 }
 
 .active-description {

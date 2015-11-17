@@ -4,7 +4,7 @@ angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootSc
 	$scope.sendGroupMessage = function(message){
 		var data = {
 			message:message,
-			sentBy:$rootScope.profile._id,
+			active_user_id:$rootScope.profile._id, //check for active user switch up
 			project_id: groupInfo._id
 		}
 		groupsService.sendGroupMessage(data).then(function(res){

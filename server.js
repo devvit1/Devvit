@@ -70,23 +70,25 @@ app.put (       '/project/:id',    ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
+app.put(        '/deny',           ProjectController.deny);
 app.post(       '/groupmessage',    ProjectController.groupMessage);
 
 
 //UserController
-app.get(        '/user',           UserController.read);
-app.post(       '/fileUpload',     UserController.fileUpload)
-// app.get(        '/user',           UserController.readAll);
-app.post(       '/fileupload',    UserController.fileUpload);
-app.post(       '/user',           UserController.create);
-app.put(        '/user',           UserController.userUpdate);
-app.delete(     '/user/:id',       UserController.destroy);
-app.get(        '/active',         UserController.getActive);
-app.get(        '/getusers/:id',    UserController.getUsers)
 
-
+app.get(        '/user',                                      UserController.read);
+app.post(       '/fileUpload',                                UserController.fileUpload)
+app.get(        '/users/:id',                                 UserController.findById);
+app.post(       '/user',                                      UserController.create);
+app.put(        '/user',                                      UserController.userUpdate);
+app.delete(     '/user/:id',                                  UserController.destroy);
+app.get(        '/active',                                    UserController.getActive);
 app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
-app.get(        '/activeMessages/:otherId/current', UserController.getActiveUserMessages);
+app.get(        '/activeMessages/:otherId/current',           UserController.getActiveUserMessages);
+app.get(        '/getusers/:id',                              UserController.getUsers)
+
+
+
 app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
 
