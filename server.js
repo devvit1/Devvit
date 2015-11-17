@@ -77,6 +77,7 @@ app.post(       '/groupmessage',    ProjectController.groupMessage);
 app.get(        '/user',           UserController.read);
 app.post(       '/fileUpload',     UserController.fileUpload)
 // app.get(        '/user',           UserController.readAll);
+app.post(       '/fileupload',    UserController.fileUpload);
 app.post(       '/user',           UserController.create);
 app.put(        '/user',           UserController.userUpdate);
 app.delete(     '/user/:id',       UserController.destroy);
