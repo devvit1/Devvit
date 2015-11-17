@@ -26,8 +26,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('login', {
 			url: '/login',
-			templateUrl: '../templates/landingPage.html'
-			// controller: 'log_RegCtrl'
+			templateUrl: '../templates/landingPage.html',
+			controller: 'log_RegCtrl'
 		})
 		.state('devvit', {
 			url: '/home',
@@ -94,19 +94,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 				// 	}
 				// }
 			})
-		.state('login-register', {
-			url:'/login-register',
-			templateUrl: '../templates/log_Reg.html',
-			controller: 'log_RegCtrl'
-			// resolve: {
-			// isAuth: function(devService) {
-			// 	return devService.isAuth().then(function(res){
-			// 		return res;
-			// 		})
-			// 	}
-			// }
-		})
-
 		.state('profile', {
 			url:'/profile',
 			templateUrl:'../templates/profile.html',

@@ -18,7 +18,8 @@ angular.module('devvit').service('devService', function($http, $state){
 			return success;
 		}, function(err) {
 			if (err.status === 401) {
-				$state.go('login-register')
+				// $state.go('login-register')
+				$state.go('login')
 			console.log('Not AUTHENTICATED!!1!')
 			}
 		})
