@@ -344,10 +344,11 @@ ACTIVE TAB
 			/*overflow: scroll;*/
 		}
 		.profile_pendingReq{
+			border-radius:3px;
 			width:50%;
-			height:40px;
-			margin:8px auto;
-			background: #343434;
+			height:25px;
+			margin:4px auto;
+			background: #093561;
 			color:#f4f4f4;
 			display:flex;
 			align-items: center;
@@ -360,7 +361,7 @@ ACTIVE TAB
 			cursor:pointer;
 		}
 		.fa-plus{
-			color: #9BD0C6;
+			color: #093561;
 			cursor:pointer;
 		}
 		.profile_skills_title{
@@ -418,7 +419,8 @@ ACTIVE TAB
 			margin:2px 3px;
 			height:20px;
 			padding:2px 3px;
-			background: #343434;
+			background: #093561;
+			border-radius: 2px;
 			color:#f4f4f4;
 			display:flex;
 			align-items: center;
@@ -449,4 +451,7 @@ ACTIVE TAB
 	height:20px;
 	margin-top:5px;
 	}	
+#map{
+	height:100%;
+}
 	

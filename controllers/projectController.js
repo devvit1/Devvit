@@ -7,7 +7,13 @@ module.exports = {
 			if (err) {
 				return res.status(500).send(err)}
 			else{
-				Projects.findByIdAndUpdate(project._id, {$push:{admins: req.body.active_user_id}}, function(err, result) {
+				Projects.findByIdAndUpdate(project._id, {createdBy: mongoose.Types.ObjectId(req.body.active_user_id)}, function(err, res){
+					if (err) return res.status(500).send(err);		
+				})
+				Projects.findByIdAndUpdate(project._id, 
+				{$push:{
+					admins: req.body.active_user_id}}, 
+				function(err, result) {
 					if (err) {
 						return res.status(500).send(err)}
 					else{
@@ -15,9 +21,6 @@ module.exports = {
 						{$push:{activePosts: project._id}}, 
 						function(err, result) {
 							if (err) {return res.status(500).send(err)}
-							// else{
-							// 	res.json(result);
-							// }
 						});
 						Users.findByIdAndUpdate(req.body.active_user_id, 
 						{$push:{groups: project._id}}, 
@@ -124,6 +127,7 @@ module.exports = {
 			.limit(50)
 			.populate('admins')
 			.populate('messages.sentBy')
+			.populate('createdBy')		
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -138,7 +142,7 @@ module.exports = {
 			{'_id': req.params.id })
 			.populate({
 				path:'messages.sentBy admins members.member pendingApprovals',
-				select:'basicInfo.firstName basicInfo.lastName'})
+				select:'basicInfo'})
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -183,18 +187,49 @@ module.exports = {
 	},
 	
 	searchFor: function(req, res){
+		console.log(req.params, req.query)
 		Projects.find(
 			{$or:[
-			{'type': { "$regex": req.params.query, "$options": "i" }},
-    		{'name': { "$regex": req.params.query, "$options": "i" }},
-    		{'tags': { "$regex": req.params.query, "$options": "i" }}]}
+			{'type': { "$regex": req.query.query, "$options": "i" }},
+    		{'name': { "$regex": req.query.query, "$options": "i" }},
+    		{'tags': { "$regex": req.query.query, "$options": "i" }}]}
 		)
-		.populate('admins')
-		.exec(function(err, result) {
+		.populate('createdBy')	
+		.exec(function(err, projects) {
+				console.log(projects)
 				if (err) {
 					return res.status(500).send(err)}
 				else{
-					res.json(result);
+					if (req.query.dis > 0){
+						var finalProjArr = []
+						function distance(lat1, lon1, lat2, lon2, unit) {
+							var radlat1 = Math.PI * lat1/180
+							var radlat2 = Math.PI * lat2/180
+							var radlon1 = Math.PI * lon1/180
+							var radlon2 = Math.PI * lon2/180
+							var theta = lon1-lon2
+							var radtheta = Math.PI * theta/180
+							var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+							dist = Math.acos(dist)
+							dist = dist * 180/Math.PI
+							dist = dist * 60 * 1.1515
+							if (unit=="K") { dist = dist * 1.609344 }
+							if (unit=="N") { dist = dist * 0.8684 }
+							return dist
+						}
+						projects.forEach(function(project){
+							var dist = distance(req.user.basicInfo.location.lat, req.user.basicInfo.location.lon, project.createdBy.basicInfo.location.lat, project.createdBy.basicInfo.location.lon, 'M');
+							if (dist <= req.query.dis){
+								finalProjArr.push(project)
+							}
+						})
+						res.json(finalProjArr)	
+					}
+					else {
+				console.log(projects)						
+						res.json(projects)
+						}		
+			
 				}
 		})
 	},

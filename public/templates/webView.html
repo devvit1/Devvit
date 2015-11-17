@@ -13,7 +13,7 @@
 
 <div class = 'cont_home'>
 	<div class="cont_left">
-		<form ng-submit = "searchProjects(searchQuery)">
+		<form ng-submit = "searchProjects(searchQuery, distance)">
 		<input ng-model="searchQuery" type="text" class="searchType" placeholder="Seach projects...">
 		</form>
 		<div class="sortBySubType">
@@ -29,7 +29,7 @@
 		<div class="sortByDistance">
 			Within a...
 			<form >
-				<input type="text" class="searchDistance"  placeholder="10...">Mile radius</input>
+				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Mile radius</input>
 			</form>
 		</div>
 		<div class="sortByOption">
@@ -49,9 +49,9 @@
 					<div class="panelNumber">{{$index +1}}.</div>
 
 					<div class="outPanelType" ng-click = "searchProjects(webProject.type)">[{{webProject.type}}]</div>
-					<div class="outPanelBy"><i class="fa fa-user"></i>  <a ng-click="goToUser(webProject.admins[0]._id)" >{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
-				</div>
-				
+					<div class="outPanelBy"><i class="fa fa-user"></i>  <a ng-click="goToUser(webProject.createdBy._id)" >{{webProject.createdBy.basicInfo.firstName}} {{webProject.createdBy.basicInfo.lastName}}</a></div>
+					<div class="panel_location" ng-show="webProject.createdBy.basicInfo.location.city"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{{webProject.createdBy.basicInfo.location.city}}, {{webProject.createdBy.basicInfo.location.state}}</div>
+				</div>	
 			</div>
 			<div class="projectPanel">
 				<div class="panel_subTypeSquare {{webProject.subType}} ">
@@ -68,7 +68,6 @@
 									<div class="panel_tag" ng-repeat="tag in webProject.tags |limitTo:5"  ng-click="searchProjects(tag)">{{tag |limitTo:9}}</div>
 								</div>
 								<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
-
 								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
 							</div>
 						</div>

@@ -1,4 +1,4 @@
-angular.module('devvit').controller('profileViewCtrl', function($scope, profileViewService, $rootScope){
+angular.module('devvit').controller('profileViewCtrl', function($scope, profileViewService, $rootScope, $q){
 	$scope.showEdit = false
 	$('#slideDown').hide();
 	$scope.toggleaddSkills = function(){
@@ -53,10 +53,41 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 			console.log('removePending', res)
 		})
 	}
-	$scope.updateUser = function (){
+			
+	$scope.updateUser = function (callback){
 		$rootScope.profile.skills = $scope.updated.skills;
-		profileViewService.updateUser($rootScope.profile).then(function(res){
-			console.log( res)
-		})
+			$scope.userLocation(
+				$rootScope.profile.basicInfo.location.city,
+				$rootScope.profile.basicInfo.location.state,
+				$rootScope.profile.basicInfo.location.country)
+			
+		// preUpdateUser().then(function(res){
+		// 	profileViewService.updateUser($rootScope.profile).then(function(res){
+		// 		console.log(res)
+		// 	})
+		// })
 	}
+	
+	$scope.userLocation =function(city, state, country){
+            var geocoder =  new google.maps.Geocoder();
+    		geocoder.geocode( { 'address': city +', '+state+', '+country}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            $rootScope.profile.basicInfo.location.lat= results[0].geometry.location.lat() 
+			 $rootScope.profile.basicInfo.location.lon=results[0].geometry.location.lng();
+			 profileViewService.updateUser($rootScope.profile).then(function(res){
+				console.log(res)
+			})
+			// $scope.disfrom = distance($scope.lat, $scope.long, 40.2988, -111.6965, "M")
+          } else {
+            alert("Something got wrong " + status);
+			profileViewService.updateUser($rootScope.profile).then(function(res){
+				console.log(res)
+			})
+          }
+        });
+	}
+	
+	
+
+	
 })

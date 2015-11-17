@@ -11,6 +11,8 @@
 				<div class="profile_linkedin">{{profile.basicInfo.linkedin}}<span class="editSquare" ></div>
 				<div class="profile_github">{{profile.basicInfo.github}}<span class="editSquare" ></div>
 				<div class="profile_github">{{profile.basicInfo.website}}<span class="editSquare" ></div>
+				<div ng-show="profile.basicInfo.location.city" class="profile_github">{{profile.basicInfo.location.city}}, {{profile.basicInfo.location.state}}<span class="editSquare" ></div>
+				
 				
 			</div>
 			<div class="basicInfo_edit" ng-show="editShow">
@@ -18,6 +20,11 @@
 				<input class="profile_linkedin" ng-model="profile.basicInfo.linkedin" placeholder="(linkedin)">
 				<input class="profile_github" ng-model="profile.basicInfo.github" placeholder="(github)">
 				<input class="profile_github" ng-model="profile.basicInfo.website" placeholder="(website)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.city" placeholder="(city)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.state" placeholder="(state)">
+				<input class="profile_github" ng-model="profile.basicInfo.location.country" placeholder="(country)">
+				
+				
 				
 			</div>
 			<div class="profile_update" >
@@ -40,7 +47,7 @@
 			<div class="profile_SkillCont">
 				<div class="profile_skills_title">SKILLS &nbsp<i class="fa fa-plus" ng-click = "toggleaddSkills()"></i>
 				<span>
-					<form ng-submit="addToNewSkills(newSkill)">
+					<form ng-submit="addToNewSkills(newSkill); newSkill = ''">
 					<input class = 'profile_addSkills' ng-model="newSkill" id="slideDown">
 					</form>
 				</span>
@@ -60,9 +67,6 @@
 				<div class="profile_bio_bio" ng-show="!bioShow">
 					{{profile.bio}}
 				</div>
-			</div>
-			<div class="profile_right_location">
-				LOCATION
 			</div>
 		</div>
 	</div>

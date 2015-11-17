@@ -527,9 +527,10 @@ footer{
 	display:flex;
 	width: 90px;
     height: 25px;
-	background: #FF9326;
-	border-bottom:3px solid #FF6400;
-	COLOR:#093561;
+	background: #093561;
+	border-bottom:3px solid #426E9A;
+	COLOR:#f4f4f4;
+	border-radius: 2px;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
@@ -540,6 +541,9 @@ footer{
 	
 }
 .panel_apply_button:hover{
-	background: #F9AB5E
+	background: #1E5994
 }
 
+.panel_location{
+	font-size:.8em;
+}

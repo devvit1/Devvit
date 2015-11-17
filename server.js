@@ -64,9 +64,9 @@ app.get('/isAuth', isAuthed, function(req, res) {
 //ProjectController
 app.get(        '/projects',      ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
-app.get(        '/ptsearch/:query',ProjectController.searchFor);
+app.get(        '/ptsearch/',ProjectController.searchFor);
 app.post(       '/projects',       ProjectController.createProj);
-app.put (       '/project',    ProjectController.projectUpdate);
+app.put (       '/project',        ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
 app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);

@@ -10,7 +10,7 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
 			$scope.members = [];
 			devService.findUsers(searchQuery).then(function(res){
 				res.forEach(function(user){
-			console.log(user)			
+					console.log(user)			
 					$scope.members.push(user)
 				})
 
