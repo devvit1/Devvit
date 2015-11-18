@@ -25,7 +25,7 @@
 	<span class = 'noactive'>{{activePosts.message}}</span>
 		</div>
 	<div class = 'active-container' ng-show = '!noActive' ng-repeat = 'groups in activePosts'>
-		<div class = 'profile_active-panel panel'>
+		<div class = 'profile_active-panel panel {{groups.subType}}'>
 			<div class = 'profile_active-flex-contain'>
 			<span class = 'profile_title active-title' ng-show = '!save'>{{groups.name}}</span>
 			<span ng-show = 'save'>Title:<input type = 'text' ng-model = 'groups.name'></span>
@@ -35,6 +35,9 @@
 			<button class="profile_btn savebtn" type="button" ng-show = 'save' ng-click="toggleView(); updatePosts(groups._id, groups.name, groups.description)">Save</button>
 			<button class="profile_btn deletebtn" ng-click = 'removeProject(groups._id)' type="button">Delete Post</button>
 			</div>
+			</div>
+			<div class="activeTagWrap" ng-repeat="tag in groups.tags | limitTo:5">
+				<div class="activeTags panel_tag">{{tag}}</div>
 			</div>
 			<div class = 'contain2'>
 			<p class = 'profile_description active-description' dd-text-collapse dd-text-collapse-max-length="110" dd-text-collapse-text="{{groups.description}}" ng-show = '!save'></p>
