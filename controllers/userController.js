@@ -137,24 +137,6 @@ module.exports = {
 			   			users.push(user)
 						}
 					})
-          // users.push({
-          //   _id: user._id,
-          //   basicInfo: {
-          //     first:user.basicInfo.firstName,
-          //     last:user.basicInfo.lastName,
-          //     userName: user.basicInfo.userName,
-          //     email: user.basicInfo.email,
-          //     github:user.basicInfo.github,
-          //     linkedin:user.basicInfo.linkedin,
-          //     website:user.basicInfo.website,
-          //     location:{
-          //       city:user.basicInfo.location.city,
-          //       state:user.basicInfo.location.state
-                
-          //     }
-          //   },
-          //   skills:user.skills
-          // })
         }
         else users = result;
         }
