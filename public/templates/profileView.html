@@ -68,7 +68,19 @@
 					{{profile.bio}}
 				</div>
 			</div>
+			<div class="profile_filteredTypes">
+			<div class="filteredTitle">Subscribed Categories</div>
+			<ul class = "profile_filteredList">
+				<li class = "profile_filteredType" ng-repeat="filtered in categories" ng-class ="isSubbed(filtered)" ng-click = "toggleFilteredType(filtered)" >{{filtered}}</li>
+			</ul>
+			<ul class="otherFilteredList">
+				<li class="profile_otherFiltered">
+					
+				</li>
+			</ul>
 		</div>
+		</div>
+		
 	</div>
 ​
 </div>

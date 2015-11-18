@@ -8,15 +8,15 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$st
       return route === $location.path();
       };
       $scope.orderThis = $scope.sortByOption;
-      $scope.webProjects = [];
-      projectService.getProjects().then(function(res) {
-            console.log(res)
-            $scope.webProjects = res;
+      $scope.currentSearchType = null
+      $scope.filtered='all'
+      projectService.userFilteredProjects().then(function(res) {
+            $scope.Projects = res;
       })
       $scope.findAll = function(){
              projectService.getProjects().then(function(res) {
-              console.log(res)
-            $scope.webProjects = res;
+             $scope.currentSearchType = 'all'
+            $scope.Projects = res;
       })
       }
     
@@ -72,12 +72,9 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$st
     /*****************JACOBS QUERY CODE **************/
     
     $scope.searchProjects = function (query, distance){
-          if(query){
-               
-          }
           projectService.searchProjects(query, distance).then(function(res){
-             $scope.webProjects = res;     
-             console.log(res)    
+             $scope.Projects = res;     
+             $scope.currentSearchType = query;   
           })
     }
     

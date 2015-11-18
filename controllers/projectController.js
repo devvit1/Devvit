@@ -117,8 +117,20 @@ module.exports = {
 	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
-				res.json(result);
+			res.json(result);
 			});
+	},
+	
+	findUserPref: function(req, res){
+		Projects.find({type: {$in: req.user.filteredGroups}})
+		.limit(50)
+		.populate('admins')
+		.populate('messages.sentBy')
+		.populate('createdBy')
+		.exec(function(err, result) {
+			if (err) return res.status(500).send(err);
+			res.json(result);
+		})
 	},
 	
 	findAll: function(req, res){
@@ -150,6 +162,20 @@ module.exports = {
 					res.json(result);
 				}
 			})
+	},
+	
+	getcat: function (req, res){
+		Projects.find({})
+		.exec(function(err, projects){
+			var categories = [];
+			projects.forEach(function(project){
+				 var index = categories.indexOf(project.type)
+				 if (index === -1){
+					categories.push(project.type)
+				 }
+			})
+			res.json(categories)
+		})
 	},
 	
 	groupMessage: function(req, res){

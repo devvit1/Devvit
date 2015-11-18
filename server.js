@@ -72,6 +72,8 @@ app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 app.put(        '/deny',           ProjectController.deny);
 app.post(       '/groupmessage',    ProjectController.groupMessage);
+app.get(        '/getcat',          ProjectController.getcat);
+app.get(        '/userfiltered',   ProjectController.findUserPref)
 
 
 //UserController
@@ -85,7 +87,7 @@ app.delete(     '/user/:id',                                  UserController.des
 app.get(        '/active',                                    UserController.getActive);
 app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
 app.get(        '/activeMessages/:otherId/current',           UserController.getActiveUserMessages);
-app.get(        '/getusers/:id',                              UserController.getUsers)
+app.get(        '/getusers',                                  UserController.getUsers)
 
 
 

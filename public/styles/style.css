@@ -146,6 +146,10 @@ body {
 select:focus{
 	border:none;
 }
+
+.selectedType{
+	color: #FF9326;
+}
 /*******************
  Out panel
  ******************/

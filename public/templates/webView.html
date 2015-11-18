@@ -1,13 +1,8 @@
 
 <div class="projects_nav">
 	<ul class = "projects_nav_list">
-		<li ng-click ="findAll()">ALL</li>
-		<li ng-click = "searchProjects('web')" >WEB</li>
-		<li ng-click = "searchProjects('mobile')" >MOBILE</li>
-		<li ng-click = "searchProjects('software')">SOFTWARE</li>
-		<li ng-click = "searchProjects('javascript')">JAVASCRIPT</li>
-		<li ng-click = "searchProjects('robotics')">ROBOTICS</li>
-		<LI ng-click = "searchProjects('angular')">ANGULAR</LI>
+		<li ng-class="{'selectedType' : currentSearchType == filtered}" ng-click ="findAll();">all</li>
+		<li ng-class="{'selectedType' : currentSearchType == filtered}"ng-repeat="filtered in profile.filteredGroups" ng-click = "searchProjects(filtered)" >{{filtered}}</li>
 	</ul>
 </div>
 
@@ -43,7 +38,7 @@
 		</div>
 	</div>
 	<div class="cont_right">
-		<div class="panel_wrapper"ng-repeat = 'webProject in webProjects | reverse | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
+		<div class="panel_wrapper" ng-repeat = 'webProject in Projects | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
 			<div class="outPanel"> 
 				<div class="arrow-right "></div>
 				<div class="outPanel_left">

@@ -439,12 +439,56 @@ ACTIVE TAB
 		display:flex;
 		flex-direction: column;
 	}
+	.profile_filteredTypes{
+		flex:1;
+		display:flex;
+		flex-direction: column;
+		text-align: center;
+	}
+		.filteredTitle{
+			margin-top:10px;
+		}
+		.profile_filteredList{
+			display:flex;
+			flex-direction: row;
+			
+			align-self: center;
+		}
+		.profile_filteredType{
+			    margin: 2px 3px;
+				height: 20px;
+				padding: 2px 3px;
+				background: rgba(9, 53, 97, 0.5);
+				border-radius: 2px;
+				color: #f4f4f4;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				cursor: pointer;
+				transition:80ms all ease;
+				}
+		.profile_filteredType:hover{
+			transform: translateY(-2px)
+		}
+		.selectedCat {
+	 		margin: 2px 3px;
+				height: 20px;
+				padding: 2px 3px;
+				background: #093561;
+				border-radius: 2px;
+				color: #f4f4f4;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				cursor: pointer;
+			}
 	.profile_addSkill{
 		    border: 2px solid #181818;
    		 	background: transparent;
     		height: 22px;
 			margin:0 auto;
 	}
+		
 	.basicInfo_edit > input{
 	 border: 2px solid #181818;
     background: transparent;
@@ -454,4 +498,6 @@ ACTIVE TAB
 #map{
 	height:100%;
 }
+
+	
 	

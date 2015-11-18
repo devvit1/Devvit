@@ -27,6 +27,15 @@ angular.module('devvit').service('projectService', function($http){
 		}).then(function(res){
 			return res.data
 		})
+	},
+	
+	this.userFilteredProjects = function(){
+		return $http({
+			method: 'GET',
+			url: '/userfiltered'
+		}).then(function(res){
+			return res.data
+		})
 	}
 	
 })

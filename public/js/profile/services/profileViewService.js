@@ -16,5 +16,13 @@ angular.module('devvit').service('profileViewService', function($http){
 		}).then(function(res){
 			
 		})
+	};
+	this.getAllCat = function(){
+		return $http({
+			method:'get',
+			url: '/getcat'
+		}).then(function(res){
+			return res.data
+		})
 	}
 })
