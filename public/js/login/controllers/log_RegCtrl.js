@@ -14,11 +14,8 @@ angular.module('devvit').controller('log_RegCtrl', function($scope, $state, log_
   
   	$scope.updateUser = function  (){
 		log_RegService.getProfile().then(function(res){
-			console.log("user should be set", res._id)
 			$rootScope.profile = res;
 			$rootScope.profile.username = res.basicInfo.userName; 
-			console.log("rootScope - ", $rootScope.profile )
-
 		})
 		}
 

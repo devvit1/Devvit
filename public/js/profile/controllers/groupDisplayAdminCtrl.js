@@ -11,7 +11,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		console.log($scope.save)
   	}
 	
-	var inGroupMembers =function (arr){
+	var inGroupMembers = function (arr){
 		arr.forEach(function(member){
 			if (!member.application.pending){
 				$scope.inGroupMembers.push(member)

@@ -42,9 +42,8 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$st
     
     /*****************JACOBS QUERY CODE **************/
     
-    $scope.searchProjects = function (query){
-
-          projectService.searchProjects(query).then(function(res){
+    $scope.searchProjects = function (query, distance){
+          projectService.searchProjects(query, distance).then(function(res){
              $scope.webProjects = res;     
              console.log(res)    
           })

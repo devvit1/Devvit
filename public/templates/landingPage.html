@@ -20,9 +20,9 @@
 			<h1 id="welcome"><strong>Welcome.</strong> Please login.</h1>
 			<form action="javascript:void(0);" method="get">
 			<fieldset>
-				<p class="loginInput"><input type="text" required value="Email" onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' "></p>
-				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
-				<p id="submitLogin"><input type="submit" value="Login"></p>
+				<p class="loginInput"><input type="text" required value="Email" onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' " placeholder="Email" ng-model="email"></p>
+				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' " placeholder="Password" ng-model="password"></p>
+				<p id="submitLogin"><input type="submit" value="Login" ng-click="login(email, password)"></p>
 			</fieldset>
 			</form>
 		</div>
@@ -31,13 +31,13 @@
 			<strong>Create</strong> An Account
 			<form action="javascript:void(0);" method="get">
 			<fieldset>
-				<p class="loginInput"><input type="text" required value="First Name" onBlur="if(this.value=='')this.value='First Name'" onFocus="if(this.value=='First Name')this.value='' "></p>
-				<p class="loginInput"><input type="text" required value="Last Name" onBlur="if(this.value=='')this.value='Last Name'" onFocus="if(this.value=='Last Name')this.value='' "></p>
-				<p class="loginInput"><input type="text" required value="Email" onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' "></p>
-				<p class="loginInput"><input type="text" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
-				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
-				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
-				<p id="submitLogin"><input type="submit" value="Create"></p>
+				<p class="loginInput"><input type="text" required value="First Name" onBlur="if(this.value=='')this.value='First Name'" onFocus="if(this.value=='First Name')this.value='' " placeholder="First Name" ng-model="user.firstname"></p>
+				<p class="loginInput"><input type="text" required value="Last Name" onBlur="if(this.value=='')this.value='Last Name'" onFocus="if(this.value=='Last Name')this.value='' " placeholder="Last Name" ng-model="user.lastname"></p>
+				<p class="loginInput"><input type="text" required value="Email" onBlur="if(this.value=='')this.value='Email'" onFocus="if(this.value=='Email')this.value='' " placeholder="Email" ng-model="user.email"></p>
+				<p class="loginInput"><input type="text" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' " placeholder="Username" ng-model="user.username"></p>
+				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' " placeholder="Password" ng-model="user.password"></p>
+				<p class="loginInput"><input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' " placeholder="Verify Password" ng-model="user.verifyPassword"></p>
+				<p id="submitLogin"><input type="submit" value="Create" ng-click="createNewUser(user)"></p>
 			</fieldset>
 			</form>
 		</div>

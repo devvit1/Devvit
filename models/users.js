@@ -9,10 +9,16 @@ var UsersSchema = new mongoose.Schema({
 		email: { type: String, required: true, unique: true },
 		image: String,
 		password: {type: String, required: true },
-		location: String,
 		github: String,
 		linkedin: String,
-		website: String
+		website: String,
+		location:{
+			city: {type:String},
+			state: {type:String},
+			country:{type:String},
+			lat: {type: Number},
+			lon: {type: Number}
+		}
 	},
 	pendingApprovals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],
 	activePosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Projects' }],

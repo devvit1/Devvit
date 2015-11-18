@@ -16,15 +16,15 @@ angular.module('devvit').service('projectService', function($http){
 			url: '/projects',
 			data: info
 		}).then(function(res) {
-
 		})
 	},
 	
-	this.searchProjects = function(query){
+	this.searchProjects = function(query, distance){
 		return $http({
 			method: 'GET',
-			url: '/ptsearch/'+query
+			url: '/ptsearch/?query='+query +'&dis='+distance
 		}).then(function(res){
+			console.log(res)
 			return res.data
 		})
 	}

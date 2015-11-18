@@ -19,6 +19,7 @@ var ProjectsSchema = new mongoose.Schema({
 		sentBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'Users'}
 	 }],
 	activeWeb: Boolean,
+	createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Users'},
 	activeMobile: Boolean,
 	createdAt: {type: Date, default:Date.now },
 	tags:[{type:String}]
