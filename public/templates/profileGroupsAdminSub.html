@@ -3,7 +3,7 @@
 	<div class="theGroupHeader">{{group.name}} admin</div>
 	<div class="adminAccept">
 			<div class="appliedUserCard" ng-repeat="applied in pendingApp track by $index">
-				<div class="appliedUserCard_upper">
+				<div class="appliedUserCard_upper"  ng-style = "{ background: 'url({{applied.member.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}">
 					<div ng-click = "acceptUser(applied)" class="appliedAccept"><i class="fa fa-check-circle"></i></div>
 					<div ng-click = "denyUser(applied)"class="appliedDeny"><i class="fa fa-times-circle"></i></div>
 				</div>

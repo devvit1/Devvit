@@ -138,7 +138,7 @@ module.exports = {
 			{'_id': req.params.id })
 			.populate({
 				path:'messages.sentBy admins members.member pendingApprovals',
-				select:'basicInfo.firstName basicInfo.lastName'})
+				select:'basicInfo.firstName basicInfo.lastName basicInfo.image'})
 			.exec(
 			function(err, result) {
 				if (err) {

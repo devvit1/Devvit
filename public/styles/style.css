@@ -327,13 +327,11 @@ select:focus{
 	.panel_apply_button:active{
 		transform: translateY(3px)
 	}
-	.panel_modal_button{
-		
-	}
 .panel_title {
 	font-size: 30px;
 	color: #343434;
 	padding-left: 10px;
+	padding-top: 10px;
 }
 
 .panel_description {
@@ -420,10 +418,10 @@ fieldset {
 	padding-bottom: 2px;
 }
 
-.panel-flex-contain {
+/*.panel-flex-contain {
 	display: flex;
 	justify-content: space-between;
-}
+}*/
 
 .panel-desc-contain {
 	padding-top: 20px;
@@ -455,13 +453,12 @@ fieldset {
 }
 
 .ng-modal-dialog-content {
-	padding: 10px;
 	text-align: left;
 }
 
 .ng-modal-close {
 	position: absolute;
-	top: 3px;
+	top: 7px;
 	right: 5px;
 	padding: 5px;
 	cursor: pointer;

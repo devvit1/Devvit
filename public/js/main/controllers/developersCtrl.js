@@ -12,6 +12,7 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
 				res.forEach(function(user){
 			console.log(user)			
 					$scope.members.push(user)
+					console.log(1, $scope.members);
 				})
 
 			})

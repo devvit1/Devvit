@@ -75,19 +75,20 @@
 					<div class="panel_mainContent_right">
 						<!--<div class="panel_location"><i class="fa fa-map-marker fa-1x"></i></div>-->
 						
-						<apply-modal class = "panel_modal_button"width='700px' height='60%'>
+						<apply-modal class = "panel_modal_button" width='700px' height='60%'>
+							<div class = 'wrapper'>
 								<div class = 'panel-flex-contain-apply'>
-									<div class = 'panel_title web_title'>{{webProject.name}}</div>
-									<div class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
+									<div class = 'panel_title web_title {{webProject.subType}}'>{{webProject.name}}</div>
+									<div class = 'panel_creator web_creator'><i class="fa fa-user"></i> <a ng-click="goToUser(webProject.admins[0]._id)" >{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
 									<div class = 'panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
 								</div>
-							<hr>
 							<div class = 'message-apply-contain'>
 								<textarea class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
 							</div>
 							<div class ='submit-contain'>
 								<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()" >Submit</button>
 							</div>
+						</div>
 						
 					</apply-modal>
 					</div>

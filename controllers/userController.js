@@ -107,6 +107,7 @@ module.exports = {
             last:user.basicInfo.lastName,
             userName: user.basicInfo.userName,
             email: user.basicInfo.email,
+            image: user.basicInfo.image,
             location: user.basicInfo.location,
             github:user.basicInfo.github,
             linkedin:user.basicInfo.linkedin,
