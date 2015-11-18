@@ -1,4 +1,4 @@
-angular.module('devvit').controller('developersCtrl', function($scope, devService, $location, $rootScope){
+angular.module('devvit').controller('developersCtrl', function($scope, devService, $location, $state, $rootScope){
 		
 		$scope.isActive = function(route) {
 			return route === $location.path();
@@ -16,6 +16,11 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
 
 			})
 		};
+		$scope.goToUser = function (user){
+          $state.go('devvit.users', {
+                user: user
+          })
+    	}
 		
 
 		

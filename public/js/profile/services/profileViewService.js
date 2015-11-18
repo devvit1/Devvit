@@ -11,7 +11,7 @@ angular.module('devvit').service('profileViewService', function($http){
 	this.updateProject = function(project) {
 		return $http({
 			method: 'PUT',
-			url: '/user',
+			url: '/project',
 			data: project
 		}).then(function(res){
 			

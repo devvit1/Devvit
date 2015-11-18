@@ -82,10 +82,10 @@
 								</div>
 							<hr>
 							<div class = 'message-apply-contain'>
-								<textarea class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
+								<textarea ng-model ="message"class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
 							</div>
 							<div class ='submit-contain'>
-								<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()" >Submit</button>
+								<button class="panel_btn submit" ng-click="apply(webProject._id, message); toggleModal()" >Submit</button>
 							</div>
 						
 					</apply-modal>

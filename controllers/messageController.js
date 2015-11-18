@@ -81,7 +81,7 @@ function addMessageToUser(req, res){
 		user.messages.forEach(function(message){
 			existingMessages.push(message.withUser.toString())		
 		})
-		var index = existingMessages.indexOf(req.user_id);
+		var index = existingMessages.indexOf(req.user._id.toString());
 		if (index === -1){
 			res.status(500)
 		}

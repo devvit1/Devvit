@@ -16,6 +16,7 @@ angular.module('devvit').service('projectService', function($http){
 			url: '/projects',
 			data: info
 		}).then(function(res) {
+
 		})
 	},
 	
@@ -24,7 +25,6 @@ angular.module('devvit').service('projectService', function($http){
 			method: 'GET',
 			url: '/ptsearch/?query='+query +'&dis='+distance
 		}).then(function(res){
-			console.log(res)
 			return res.data
 		})
 	}

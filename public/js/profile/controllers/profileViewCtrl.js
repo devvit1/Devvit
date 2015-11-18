@@ -41,8 +41,8 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 					}
 				}
 		for(var i = 0; i < pendingGroup.members.length; i++){
-			if(pendingGroup.members[i]._id === $rootScope.profile._id){
-				pendingGroup.members[i].splice(i, 1);
+			if(pendingGroup.members[i].member === $rootScope.profile._id){
+				pendingGroup.members.splice(i, 1);
 				profileViewService.updateProject(pendingGroup).then(function(res){
 					console.log(res, 'project')
 				})

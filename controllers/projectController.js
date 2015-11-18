@@ -180,7 +180,7 @@ module.exports = {
 
 	
 	projectUpdate: function(req, res) {
-		Projects.findByIdAndUpdate(req.body.project_id, {new: true }, function(err, result) {
+		Projects.findByIdAndUpdate(req.body._id, req.body, {new: true}, function(err, result) {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
@@ -287,7 +287,7 @@ function sendMessageToAdmins(project, userId, message, res){
 			else {
 					admin.messages.push(
 						{
-						messages:{message:message, from: id},
+						messages:[{message:message, from: id}],
 						withUser:id
 						})
 					admin.save(function(err){
@@ -369,4 +369,5 @@ function removeProjectFromUser (user, project, res){
 		}
 	})
 }
+
 
