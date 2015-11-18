@@ -42,7 +42,7 @@ app.use(passport.session());
 app.post('/login', 
   passport.authenticate('local-login', { 
       successRedirect: '/#/home', 
-      failureRedirect: '/#/login-register', 
+      failureRedirect: '/#/login', 
 
 }), function(req, res){
   res.send(req.user);
@@ -51,7 +51,7 @@ app.post('/login',
 
 app.get('/logout', function(req,res) {
   req.logout();
-  res.redirect('/#/home');
+  res.redirect('/#/login');
   return res.send('logged out');
 })
 
