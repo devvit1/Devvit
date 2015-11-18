@@ -1,4 +1,6 @@
-<a ui-sref = "devvit.groups"><u> < back to groups</u></a>
+<a ui-sref = "devvit.groups"><u> < back to groups</u></a><br>
+<a ng-click="removeSelf(profile)"ui-sref = "devvit.groups" style="color:red"><u>Leave Group</u></a>
+
 <div class="theGroupDisplay">
 	<div class="theGroupHeader">{{group.name}}</div>
 	<div class="theGroupBody">

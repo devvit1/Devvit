@@ -16,21 +16,24 @@
 		<form ng-submit = "searchProjects(searchQuery, distance)">
 		<input ng-model="searchQuery" type="text" class="searchType" placeholder="Seach projects...">
 		</form>
+			
+		
 		<div class="sortBySubType">
 			I want to see...
 			<div class="sortSubTypeType">
-				<div ng-click = 'subTypeFilter = "freelance"' class="sortSub sortSubFree">FREELANCE</div>
-				<div ng-click = 'subTypeFilter = "personal"' class="sortSub sortSubPers">PERSONAL</div>
-				<div ng-click = 'subTypeFilter = "professional"'class="sortSub sortSubProf">PROFESSIONAL</div>
-				<div ng-click = 'subTypeFilter ="" 'class="sortSub sortSubProf">ALL</div>
+				<div ng-click = 'subTypeFilter = "freelance"; toggleSubFilter("fre")' ng-class = "{subTypeSelect:subTypefre}" class="sortSub sortSubFree">FREELANCE</div>
+				<div ng-click = 'subTypeFilter = "personal"; toggleSubFilter("per")' ng-class = "{subTypeSelect:subTypeper}"class="sortSub sortSubPers">PERSONAL</div>
+				<div ng-click = 'subTypeFilter = "professional"; toggleSubFilter("pro")'ng-class = "{subTypeSelect:subTypepro}"class="sortSub sortSubProf">PROFESSIONAL</div>
+				<div ng-click = 'subTypeFilter =""; toggleSubFilter("all") 'ng-class = "{subTypeSelect:subTypeall}"class="sortSub sortSubProf">ALL</div>
 				
 			</div>
 		</div>
 		<div class="sortByDistance">
-			Within a...
-			<form >
-				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Mile radius</input>
+			<form ng-submit = "searchProjects(searchQuery, distance)" >
+			Within
+				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Miles</input>
 			</form>
+			<div  ng-click = "searchProjects(searchQuery, distance)" class="SearchButton">Go</div>
 		</div>
 		<div class="sortByOption">
 			sort by:<select class = "sortBySelect" ng-model = "sortByOption" >

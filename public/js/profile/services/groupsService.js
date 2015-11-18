@@ -44,6 +44,26 @@ angular.module('devvit').service('groupsService', function($http, $rootScope){
 			console.log(res)
 			return res.data.members
 		})
+	};
+	this.updateGroup = function (data){
+		return $http({
+			method: 'put',
+			url: '/project',
+			data: data
+		}).then(function(res){
+			console.log(res)
+			return res.data
+		})
+	};
+	this.updateUser = function (data){
+		return $http({
+			method: 'put',
+			url: '/user',
+			data: data
+		}).then(function(res){
+			return res.data
+		})
 	}
+	
 	
 })

@@ -62,9 +62,9 @@ app.get('/isAuth', isAuthed, function(req, res) {
 
 
 //ProjectController
-app.get(        '/projects',      ProjectController.findAll);
+app.get(        '/projects',       ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
-app.get(        '/ptsearch/',ProjectController.searchFor);
+app.get(        '/ptsearch/',      ProjectController.searchFor);
 app.post(       '/projects',       ProjectController.createProj);
 app.put (       '/project',        ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
@@ -92,11 +92,11 @@ app.get(        '/getusers/:id',                              UserController.get
 app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
 
-// var mongoURI = 'mongodb://localhost:27017/devvit';
-// var port = 8080;
+var mongoURI = 'mongodb://localhost:27017/devvit';
+var port = 8080;
 
-var mongoURI = process.env.MONGOLAB_URI;
-var port = process.env.PORT || 9999;
+// var mongoURI = process.env.MONGOLAB_URI;
+// var port = process.env.PORT || 9999;
 
 mongoose.set('debug', true);
 mongoose.connect(mongoURI);

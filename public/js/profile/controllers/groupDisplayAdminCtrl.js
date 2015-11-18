@@ -1,6 +1,8 @@
 angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, $rootScope){
 	
 	$scope.group = groupInfo;
+	console.log($scope.group)		
+	
 	$scope.groupMessages = groupInfo.messages;
 	$scope.pendingApp = [];
 	$scope.inGroupMembers = [];
@@ -11,14 +13,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		console.log($scope.save)
   	}
 	
-	var inGroupMembers = function (arr){
-		arr.forEach(function(member){
-			if (!member.application.pending){
-				$scope.inGroupMembers.push(member)
-			}
-		})
-	} 
-	inGroupMembers($scope.group.members)
+	// var inGroupMembers = function (arr){
+	// 	arr.forEach(function(member){
+	// 		if (!member.application.pending){
+	// 			$scope.inGroupMembers.push(member)
+	// 		}
+	// 	})
+	// } 
+	// inGroupMembers($scope.group.members)
 	
 	
 	groupInfo.members.forEach(function(member){
@@ -26,7 +28,6 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			$scope.pendingApp.push(member)
 		}
 	})
-		console.log($scope.pendingApp)
 	
 	$scope.sendGroupMessage = function(message){
 		var data = {
@@ -41,8 +42,8 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		})
 		$scope.groupmessagecontent = "";
 	}
+	
 	$scope.acceptUser = function(applied){
-		console.log()
 		var data = {
 			project_id: $scope.group._id,
 			user_id: applied.member._id
@@ -53,6 +54,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			inGroupMembers(res)
 		})
 	}
+	
 	$scope.denyUser = function(applied){
 		var data = {
 			project_id: $scope.group._id,
@@ -66,12 +68,29 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		})
 	}
 	
+	$scope.removeUser = function(user){
+		var users = [];
+		$scope.group.members.forEach(function(member){
+			users.push(member._id)
+		})
+		var index = users.indexOf(user._id)
+		$scope.group.members.splice(index, 1);
+		groupsService.updateGroup($scope.group).then(function(res){
+		})
+		user.groups.splice(user.groups.indexOf(user._id, 1))
+		groupsService.updateUser(user).then(function(res){
+			console.log(res)
+		})
+
+	}
+	
 	function removeFromArr(item, arr){
 		for (var thing in arr){
 			if (arr[thing].member._id === item){
 				arr.splice(thing, 1)
 			}
 		}
+		
 
 	}
 	

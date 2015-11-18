@@ -38,7 +38,8 @@ var UsersSchema = new mongoose.Schema({
 	],
 	skills: [{type:String}],
 	bio:{type:String},		
-	createdAt: {type: Date, default:Date.now()}
+	createdAt: {type: Date, default:Date.now()},
+	filteredGroups:[{type:String}]
 })
 
 
