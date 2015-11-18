@@ -42,7 +42,7 @@ app.use(passport.session());
 app.post('/login', 
   passport.authenticate('local-login', { 
       successRedirect: '/#/home', 
-      failureRedirect: '/#/login-register', 
+      failureRedirect: '/#/login', 
 
 }), function(req, res){
   res.send(req.user);
@@ -51,8 +51,8 @@ app.post('/login',
 
 app.get('/logout', function(req,res) {
   req.logout();
-  res.redirect('/#/home');
-  return res.send('logged out');
+  res.redirect('/');
+  res.send('logged out');
 })
 
 app.get('/isAuth', isAuthed, function(req, res) {
@@ -95,10 +95,8 @@ app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
-var port = 8080;
 
-// var mongoURI = process.env.MONGOLAB_URI;
-// var port = process.env.PORT || 9999;
+var port = process.env.PORT || 8080;
 
 mongoose.set('debug', true);
 mongoose.connect(mongoURI);

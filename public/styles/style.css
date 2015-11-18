@@ -262,24 +262,23 @@ select:focus{
 	border-bottom-left-radius: 6px;
 	
 }
+
 .personal{
-	/*color:#FF9326;*/
 	border-top:5px solid #FF9326;
 	box-sizing: border-box;
 }
+
 .professional{
-	/*color: #9BD0C6;
-	background:#343434;*/
 	border-top:5px solid #9BD0C6;
-	/*border-left:5px solid #9BD0C6;*/
-	
 	box-sizing: border-box;
 }
+
 .freelance{
 	border-top:5px solid #336699;
 	box-sizing: border-box;
 
 }
+
 .panel_applicants{
 	top:0;
 	left:0;
