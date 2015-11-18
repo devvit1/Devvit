@@ -51,7 +51,7 @@ app.post('/login',
 
 app.get('/logout', function(req,res) {
   req.logout();
-  res.redirect('/#/login');
+  res.redirect('/');
   return res.send('logged out');
 })
 
