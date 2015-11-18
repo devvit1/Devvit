@@ -36,7 +36,8 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$st
         message: submittedMessage
       }
       projectService.applyToProject($scope.applyInfo).then(function(res){
-        console.log("Success Web");
+        console.log("Success Web", res);
+        window.location.reload(true);
       })
     }
     

@@ -60,6 +60,7 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 				$rootScope.profile.basicInfo.location.city,
 				$rootScope.profile.basicInfo.location.state,
 				$rootScope.profile.basicInfo.location.country)
+				window.location.reload(true);
 			
 		// preUpdateUser().then(function(res){
 		// 	profileViewService.updateUser($rootScope.profile).then(function(res){

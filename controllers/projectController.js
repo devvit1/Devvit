@@ -59,6 +59,8 @@ module.exports = {
 				project.members.forEach(function(elem) {
 					if(elem.member.toString() === req.body.active_user_id) {
 						memberExists = true;
+						
+						
 					}
 				})		
 				if (!memberExists){			

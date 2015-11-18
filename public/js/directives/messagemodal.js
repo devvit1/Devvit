@@ -1,4 +1,4 @@
-app.directive('applyModal', function() {
+app.directive('messageModal', function() {
   return {
     restrict: 'E',
     scope: {
@@ -22,6 +22,6 @@ app.directive('applyModal', function() {
         scope.modalShow = false;
       };
     },
-    templateUrl: 'templates/applyModalView.html'
+    templateUrl: 'templates/msgModalView.html'
   };
 });

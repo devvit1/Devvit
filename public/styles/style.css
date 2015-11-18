@@ -329,8 +329,8 @@ select:focus{
 .panel_title {
 	font-size: 30px;
 	color: #343434;
-	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 2px;
+	padding-bottom: 10px;
 }
 
 .panel_description {
@@ -351,7 +351,7 @@ select:focus{
     background: #FF9326;
     border-bottom: 3px solid #FF6400;
     COLOR: #093561;
-    justify-content: center;
+    margin-top: 10px;
 	
 }
 .panel_btn:hover{
@@ -378,11 +378,13 @@ select:focus{
 
 .panel_date {
 	-webkit-font-smoothing: antialiased;
-	padding-top: 13px;	
+	padding-top: 10px;	
+	padding-right: 50px;
 }
 
 .panel_creator {
-	padding-top: 13px;
+	padding-top: 10px;
+	
 }
 
 .panel_btn.deletebtn {
@@ -417,10 +419,10 @@ fieldset {
 	padding-bottom: 2px;
 }
 
-/*.panel-flex-contain {
+.panel-flex-contain {
 	display: flex;
 	justify-content: space-between;
-}*/
+}
 
 .panel-desc-contain {
 	padding-top: 20px;
@@ -471,6 +473,8 @@ fieldset {
 	padding-top: 20px;
 	display: flex;
 	justify-content: space-between;
+	box-sizing: border-box;
+	padding-bottom: 15px;
 }
 
 .send-message-apply-contain {
@@ -482,13 +486,12 @@ fieldset {
 .message-apply-contain {
 	display: flex;
 	padding-top: 10px;
-	padding-left: 10px;
+	flex-direction: column;
 }
 
 textarea {
     resize: none;
 	font-size: 16px;
-	font-family: 'Dosis', sans-serif;
 	border-radius: 2px;
 }
 
@@ -497,13 +500,7 @@ textarea {
 	height: 180px;
 	margin:0 auto;
 	background: transparent;
-}
-
-.submit-contain {
-	display: flex;
-	width: 518px;
-	justify-content: flex-end;
-	padding-top: 5px;
+	border: 2px solid #E4E4E4;
 }
 
 
@@ -542,4 +539,60 @@ footer{
 
 .panel_location{
 	font-size:.8em;
+}
+
+.leftSideWrapper {
+	display: flex;
+	justify-content: inherit;
+	flex: 1;
+	border-bottom: 2px solid #E4E4E4;
+	margin-left: 20px
+}
+
+.rightSideWrapper {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+}
+
+.des-message-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.desc-wrapper {
+	width: 50%;
+	margin-left: 60px;
+}
+
+.submit {
+	width: 90px;
+    height: 25px;
+	background: #093561;
+	border-bottom:4px solid #426E9A;
+	COLOR:#f4f4f4;
+	border-radius: 2px;
+	cursor: pointer;
+	font-size:1em;
+	margin-top: 10px;
+}
+
+.submit:hover {
+	background: #1E5994
+}
+
+.apply-number {
+	color: white;
+	height:30px;
+	padding:1px 3px;
+	background:rgba(24, 24, 24, 0.8);
+	border-radius:15px;
+	margin-top:4px;
+	margin-left:4px;
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
