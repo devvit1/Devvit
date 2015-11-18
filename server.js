@@ -92,8 +92,11 @@ app.get(        '/getusers/:id',                              UserController.get
 app.put(        '/newmessage',     MessageController.newMessage);
 app.put(        '/addmessage',     MessageController.addMessage)
 
-var mongoURI = 'mongodb://localhost:27017/devvit';
-var port = 8080;
+// var mongoURI = 'mongodb://localhost:27017/devvit';
+// var port = 8080;
+
+var mongoURI = process.env.MONGOLAB_URI;
+var port = process.env.PORT || 9999;
 
 mongoose.set('debug', true);
 mongoose.connect(mongoURI);
