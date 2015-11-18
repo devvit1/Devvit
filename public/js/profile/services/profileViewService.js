@@ -1,4 +1,4 @@
-angular.module('devvit').service('profileViewService', function($http){
+ angular.module('devvit').service('profileViewService', function($http){
 	this.updateUser = function(user) {
 		return $http({
 			method: 'PUT',

@@ -2,6 +2,24 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 	$scope.activePosts = $rootScope.profile.activePosts;
 	console.log('active posts', $scope.activePosts);
 
+	$scope.addTag = true;
+
+	$scope.toggleAddTag = function() {
+		if($scope.addTag === false) {
+			$scope.addTag = true;
+		}
+		else if($scope.addTag === true) {
+			$scope.addTag = false;
+		}
+	}
+	
+	
+	$scope.addToNewTag = function(index, tag) {
+		$scope.newTags = $scope.activePosts[index].tags;
+		$scope.newTags.push(tag);
+		$scope.activePosts[index].tags = $scope.newTags;
+	}
+
 
 	if ($scope.activePosts.length < 1) {
 		$scope.noActive = true;
@@ -10,9 +28,14 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 		}
 	}
 	
+	
 	$scope.save = false;
   	$scope.toggleView = function() {
   		$scope.save = !$scope.save;
+  }
+  
+  	$scope.toggleView = function(context) {
+  		context.save = !context.save;
   }
   	
 	$scope.removeProject = function(id) {
@@ -35,8 +58,9 @@ angular.module('devvit').controller('activeCtrl', function($scope, $rootScope, a
 		}
 	}
 	
-	$scope.updatePosts = function(id, title, description) {
-		activeService.updatePost(id, title, description).then(function(res) {
+	$scope.updatePosts = function(group) {
+		
+		activeService.updatePost(group).then(function(res) {
 			console.log('Project updated');
 			activeService.getActive().then(function(res) {
 				$scope.activePosts = res.activePosts;

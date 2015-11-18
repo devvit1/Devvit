@@ -60,6 +60,7 @@ module.exports = {
 					if(elem.member.toString() === req.body.active_user_id) {
 						memberExists = true;
 					}
+
 				})		
 				if (!memberExists){			
 						project.members.push({
@@ -75,7 +76,7 @@ module.exports = {
 						if (req.body.message){
 							sendMessageToAdmins(project, req.body.active_user_id, req.body.message, res)
 						}
-					}				
+					}
 			}
 			res.json(project)
 		})
@@ -180,7 +181,8 @@ module.exports = {
 
 	
 	projectUpdate: function(req, res) {
-		Projects.findByIdAndUpdate(req.body.project_id, {new: true }, function(err, result) {
+		console.log(req.body)
+		Projects.findByIdAndUpdate(req.body._id, req.body, {new: true }, function(err, result) {
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
