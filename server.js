@@ -52,7 +52,7 @@ app.post('/login',
 app.get('/logout', function(req,res) {
   req.logout();
   res.redirect('/');
-  return res.send('logged out');
+  res.send('logged out');
 })
 
 app.get('/isAuth', isAuthed, function(req, res) {
