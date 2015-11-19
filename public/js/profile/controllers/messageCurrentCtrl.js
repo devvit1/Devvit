@@ -3,7 +3,6 @@ angular.module('devvit').controller('messageCurrentCtrl', function($scope, $root
 	console.log('current', currentIndex)
 	console.log('fromId', fromId)
 	$scope.messages = currentIndex;
-	console.log('$scope.messages', $scope.messages)
 	
 	
 	$scope.checkingIfMine = function(index) {

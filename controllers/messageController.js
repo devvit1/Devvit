@@ -18,7 +18,18 @@ module.exports = {
 	markAsRead: function (req, res){
 		Users.findById(req.user._id)
 		.exec(function(err, user){
-			user.messages.mes
+			if (err) return res.status(500).send(err);	
+			user.messages.forEach(function(message){
+				if (message.withUser.toString() === req.body.user){
+					message.messages.forEach(function(obj){
+						obj.read = true;
+					})
+				}
+			})
+		user.save(function(err, msg) {
+					if (err) return res.status(500).send(err);	
+		});
+		res.send('read')
 		})
 	}
 	

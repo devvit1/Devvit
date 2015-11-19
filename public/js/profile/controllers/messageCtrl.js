@@ -67,8 +67,10 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	}
 	
 	$scope.newLocation = function (userId) {
-		messageService.markAsRead(userId)
+		messageService.markAsRead(userId).then(function(res){
 		$state.go('devvit.messages.current', {id: userId})
+			
+		})
 		
 	}
 	

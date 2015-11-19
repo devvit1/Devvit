@@ -39,8 +39,10 @@ module.exports = {
     .exec(function(err, user){
      if (err) return res.status(500).send(err);    
      var unreadMess = 0;
-     user.messages.forEach(function(convo){   
-       if(!convo.messages.read) unreadMess++
+     user.messages.forEach(function(convo){
+       convo.messages.forEach(function(mess){
+       if(!mess.read) unreadMess++ 
+       })
      })
      res.json(unreadMess)
     })
