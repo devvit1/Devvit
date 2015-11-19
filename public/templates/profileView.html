@@ -2,10 +2,12 @@
 	<div class="profile_body_left">
 		<div class="profile_picture" ng-style = "{ background: 'url({{profile.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 		<div class="profile_basicInfo">
-			<input fileread type = 'file' ng-show = 'editShow'>
-			<div class="profile_name">{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div class="profile_userName">{{profile.basicInfo.userName}}</div></div>
-			<div class="profile_messages"> 0 <i class="fa fa-envelope"></i></div>
-			<div class="" ng-show="!editShow">
+			<input class="inputPic" fileread type = 'file' ng-show = 'editShow'>
+			<div>{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div>{{profile.basicInfo.userName}}</div></div>
+			<div ui-sref="devvit.messages"class="profile_messages"> {{unreadMess}} <i class="fa fa-envelope"></i></div>
+			<div  ng-show="!editShow">
+
+				
 				<div class="profile_email">{{profile.basicInfo.email}} <span class="editSquare" ></div>
 				<div class="profile_linkedin">{{profile.basicInfo.linkedin}}<span class="editSquare" ></div>
 				<div class="profile_github">{{profile.basicInfo.github}}<span class="editSquare" ></div>
@@ -40,7 +42,7 @@
 			<div class="profile_pending">
 				PENDING 
 				<div class="profile_pendingReq" ng-repeat="pending in profile.pendingApprovals">
-					<span><a ng-click="removePending(pending)"><i class="fa fa-times"></a></i></span>{{pending.name}} <span>creator</span>
+					<span><a ng-click="removePending(pending)"><i class="fa fa-times"></a></i></span>{{pending.name}} <span></span>
 				</div>
 			</div>
 			<div class="profile_SkillCont">

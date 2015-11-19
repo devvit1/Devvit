@@ -86,7 +86,7 @@
 									<div class='panel_creator web_creator'><i class="fa fa-user"></i> <a ng-click="goToUser(webProject.admins[0]._id)">{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
 								</div>
 								<div class='rightSideWrapper'>
-									<div class='panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
+									<div class='panel_date web_date'>Posted:{{webProject.createdAt | date: 'MMM dd'}}</div>
 								</div>
 <!--<<<<<<< HEAD
 							<hr>
@@ -101,8 +101,8 @@
 								<div class='desc-wrapper'>
 									<div class='panel_desc web_desc'>{{webProject.description}}</div>
 									<div class='message-apply-contain'>
-										<textarea class='apply-message' placeholder='Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
-										<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()">Submit</button>
+										<textarea ng-model ="message" class='apply-message' placeholder='Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
+										<button class="panel_btn submit" ng-click="apply(webProject._id, message); toggleModal()">Submit</button>
 									</div>
 								</div>
 

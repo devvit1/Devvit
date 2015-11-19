@@ -34,6 +34,17 @@ module.exports = {
       res.json(result);
     });
   },
+  countMessages: function(req, res){
+    Users.findById(req.user._id)
+    .exec(function(err, user){
+     if (err) return res.status(500).send(err);    
+     var unreadMess = 0;
+     user.messages.forEach(function(convo){   
+       if(!convo.messages.read) unreadMess++
+     })
+     res.json(unreadMess)
+    })
+  },
   findById: function(req, res) {
     Users.findById(req.params.id).exec(function(err, result) {
       if (err) return res.status(500).send(err);

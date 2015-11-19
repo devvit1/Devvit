@@ -168,6 +168,18 @@ ACTIVE TAB
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
 }
+.inputPic{
+	margin:10px 0;
+}
+.profile_messages{
+	margin:5px 0;
+	padding:5px 0;
+	border-top:1px solid lightgray;
+	border-bottom:1px solid lightgray;
+	cursor:pointer;
+	
+	
+}
 
 .profile_btn  {
 	height: 20px;

@@ -24,5 +24,13 @@
 		}).then(function(res){
 			return res.data
 		})
+	};
+	this.unreadMess = function(){
+		return $http({
+			method:'get',
+			url: '/unreadMessages'
+		}).then(function(res){
+			return res.data
+		})
 	}
 })

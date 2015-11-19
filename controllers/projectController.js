@@ -217,7 +217,6 @@ module.exports = {
 	},
 	
 	searchFor: function(req, res){
-		console.log(req.params, req.query)
 		Projects.find(
 			{$or:[
 			{'type': { "$regex": req.query.query, "$options": "i" }},

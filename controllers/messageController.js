@@ -13,6 +13,13 @@ module.exports = {
 		addMessageToActiveUser(req, res);
 		addMessageToUser(req, res);
 		res.send('message added')
+	},
+	
+	markAsRead: function (req, res){
+		Users.findById(req.user._id)
+		.exec(function(err, user){
+			user.messages.mes
+		})
 	}
 	
 }

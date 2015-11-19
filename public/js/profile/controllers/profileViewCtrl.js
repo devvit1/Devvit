@@ -9,6 +9,12 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 		})
 		
 	})();
+	(function unreadMess(){
+		profileViewService.unreadMess().then(function(res){
+			$scope.unreadMess = res
+			console.log(res)
+		})
+	})();
 	
 	$scope.isSubbed = function (cat){
 		var selectedClass = 'selectedCat';
