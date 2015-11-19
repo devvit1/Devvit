@@ -64,7 +64,12 @@
 											</div>
 										</div>
 										<div class="devCard_infoRight">
-											<message-modal class="panel_modal_button" width='700px' height='60%'></message-modal>
+											<message-modal class="panel_modal_button" width='700px' height='60%'>
+												<div class = 'msgContainer'>
+												<textarea class ='msgArea' ng-model = 'msg'></textarea>
+												<div class="devCard_button msgSend" ng-click = 'sendNewMessage(msg, user._id)'>Send</div>
+												</div>
+												</message-modal>
 											<div class="devCard_button">More Info</div>
 										</div>
 									</div>

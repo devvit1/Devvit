@@ -50,6 +50,15 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 		$scope.showEdit = !$scope.showEdit
 		return $scope.showEdit
 	}
+	
+	$scope.imageEditToggle = function(){
+		$scope.imageEdit = !$scope.imageEdit
+		return $scope.imageEdit
+	}
+	
+	$scope.updateImage = function(){
+		 window.location.reload(true);
+	}
 	$scope.updated={};
 	$scope.updated.skills = $rootScope.profile.skills
 
@@ -102,7 +111,7 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 				$rootScope.profile.basicInfo.location.city,
 				$rootScope.profile.basicInfo.location.state,
 				$rootScope.profile.basicInfo.location.country)
-				window.location.reload(true);
+				// window.location.reload(true);
 			
 		// preUpdateUser().then(function(res){
 		// 	profileViewService.updateUser($rootScope.profile).then(function(res){

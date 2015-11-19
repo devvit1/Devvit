@@ -1,6 +1,6 @@
 <div class="profile_body">
 	<div class="profile_body_left">
-		<div class="profile_picture"></div>
+		<div class="profile_picture" ng-style = "{ background: 'url({{profile.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 		<div class="profile_basicInfo">
 			<div class="profile_name">{{foundUser.basicInfo.firstName}}&nbsp{{foundUser.basicInfo.lastName}} <div class="profile_userName">{{foundUser.basicInfo.userName}}</div></div>
 			<div class="" ng-show="!editShow">

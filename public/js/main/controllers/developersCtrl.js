@@ -1,4 +1,4 @@
-angular.module('devvit').controller('developersCtrl', function($scope, devService, $location, $state, $rootScope){
+angular.module('devvit').controller('developersCtrl', function($scope, devService, $location, $state, $rootScope, messageService){
 		
 		$scope.isActive = function(route) {
 			return route === $location.path();
@@ -20,6 +20,18 @@ angular.module('devvit').controller('developersCtrl', function($scope, devServic
                 user: user
           })
     	}
+		
+		$scope.sendNewMessage = function(msg, toUser) {
+            var obj = {
+                message: msg,
+                active_user_id: $rootScope.profile._id,
+                toUser:    toUser
+                }
+                console.log(obj)
+                messageService.newMessage(obj).then(function(res) {
+                    console.log(res.data);
+                })
+        }
 		
 
 		

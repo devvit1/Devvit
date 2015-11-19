@@ -2,7 +2,9 @@
 	<div class="profile_body_left">
 		<div class="profile_picture" ng-style = "{ background: 'url({{profile.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 		<div class="profile_basicInfo">
-			<input class="inputPic" fileread type = 'file' ng-show = 'editShow'>
+			<input class="inputPic" fileread type = 'file' ng-show = 'imageEdit'>
+			<i class="fa fa-camera" ng-click = 'imageEditToggle(); imageToggle = !imageToggle' ng-show = '!imageToggle'></i>
+			<a ng-click = 'updateImage()' ng-show = 'imageToggle' style = 'color: red; font-size: .8em; margin: 5px 0'> Submit Image</a>
 			<div>{{profile.basicInfo.firstName}}&nbsp{{profile.basicInfo.lastName}} <div>{{profile.basicInfo.userName}}</div></div>
 			<div ui-sref="devvit.messages"class="profile_messages"> {{unreadMess}} <i class="fa fa-envelope"></i></div>
 			<div  ng-show="!editShow">

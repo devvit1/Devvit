@@ -49,7 +49,15 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('devvit.profile', {
 				url: '/profile',
 				templateUrl:'../templates/profileView.html',
-				controller: 'profileViewCtrl'
+				controller: 'profileViewCtrl',
+				resolve: {
+					ActiveUser: function(activeService, $rootScope) {
+						return activeService.getActive().then(function(res) {
+							$rootScope.profile = res;
+						})
+					}
+				}
+				
 			})
 			.state('devvit.web', {
 				url: '/web',
