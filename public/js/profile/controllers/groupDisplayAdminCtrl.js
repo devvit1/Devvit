@@ -69,6 +69,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		activeService.updatePost($scope.group).then(function(res) {
 			// console.log(res);
 		})
+	}
 
 	$scope.removeUser = function(user){
 		var users = [];
