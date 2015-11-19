@@ -5,7 +5,6 @@ angular.module('devvit').service('devService', function($http, $state){
 			method: 'GET',
 			url: '/getusers/?query='+query +'&dis='+ distance
 		}).then(function(res) {
-			console.log(2, res.data);
 			return res.data;
 		})
 	}
