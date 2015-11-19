@@ -22,16 +22,23 @@
 	</div>-->
 	<div class="developerLeft">
 		<div class="userSearch">
-				<form ng-submit = "searchForDev(developerSearch)">
+				<form ng-submit = "searchForDev(developerSearch, distance)">
 					<input type="text" class = "searchDevs" ng-model="developerSearch" placeholder="search Developers...">
 				</form>
-			</div>
+		</div>
+		<div class="sortByDistance">
+			<form ng-submit = "searchForDev(developerSearch, distance)" >
+			Within
+				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Miles</input>
+			</form>
+			<div  ng-click = "searchForDev(developerSearch, distance)" class="SearchButton">Go</div>
+		</div>
 	</div>
 	<div class="developerRight">
 			<div class="developerMain">
 				<div class="users" >		
 					<div class="main_developerCard" ng-repeat = "user in members">
-							<div class="devCard_pic"></div>
+							<div class="devCard_pic"  ng-style = "{ background: 'url({{user.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}"></div>
 							<div class="devCard_otherdata">
 								<div class="devCard_upper">
 									<div class="devCard_info">
@@ -44,7 +51,7 @@
 													<div class="devCard_userName">
 														{{user.basicInfo.userName}}	
 													</div>	
-													<div class="devCard_location">
+													<div class="devCard_location" ng-show="user.basicInfo.location.city">
 														<i class="fa fa-map-marker"></i> {{user.basicInfo.location.city}}, {{user.basicInfo.location.state}}
 													</div>
 											</div>	
@@ -57,7 +64,7 @@
 											</div>
 										</div>
 										<div class="devCard_infoRight">
-											<div class="devCard_button">Message</div>
+											<message-modal class="panel_modal_button" width='700px' height='60%'></message-modal>
 											<div class="devCard_button">More Info</div>
 										</div>
 									</div>

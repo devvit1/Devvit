@@ -2,7 +2,7 @@
 <div class="theGroupDisplay">
 	<div class="adminAccept">
 			<div class="appliedUserCard" ng-repeat="applied in pendingApp track by $index">
-				<div class="appliedUserCard_upper">
+				<div class="appliedUserCard_upper"  ng-style = "{ background: 'url({{applied.member.basicInfo.image}}) no-repeat', 'background-size': 'cover', 'background-position': 'center center'}">
 					<div ng-click = "acceptUser(applied)" class="appliedAccept"><i class="fa fa-check-circle"></i></div>
 					<div ng-click = "denyUser(applied)"class="appliedDeny"><i class="fa fa-times-circle"></i></div>
 				</div>
@@ -63,10 +63,10 @@
 			</div>
 			<div class="membersMembers">
 				<div class="group_titles">Members</div>
-				<div class="groupMembersRepeat"ng-repeat = "member in inGroupMembers">
+				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
 					<div class="groupMemberUser">{{member.member.basicInfo.firstName}} 
 						{{member.member.basicInfo.lastName}}
-						<div id="groupMemberRemove"><i class="fa fa-times"></i></div>
+						<div id="groupMemberRemove" ng-click = 'removeUser(member.member)'><i class="fa fa-times"></i></div>
 					</div>
 				</div>
 			</div>

@@ -1,10 +1,11 @@
 angular.module('devvit').service('devService', function($http, $state){
 
-	this.findUsers = function(search){
+	this.findUsers = function(query, distance){
 		return $http({
 			method: 'GET',
-			url: '/getusers/' + search
+			url: '/getusers/?query='+query +'&dis='+ distance
 		}).then(function(res) {
+			console.log(2, res.data);
 			return res.data;
 		})
 	}

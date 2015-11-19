@@ -62,9 +62,9 @@ app.get('/isAuth', isAuthed, function(req, res) {
 
 
 //ProjectController
-app.get(        '/projects',      ProjectController.findAll);
+app.get(        '/projects',       ProjectController.findAll);
 app.get(        '/project/:id',    ProjectController.find);
-app.get(        '/ptsearch/',ProjectController.searchFor);
+app.get(        '/ptsearch/',      ProjectController.searchFor);
 app.post(       '/projects',       ProjectController.createProj);
 app.put (       '/project',        ProjectController.projectUpdate);
 app.put(        '/projects',       ProjectController.apply);
@@ -72,6 +72,8 @@ app.delete(     '/project/:id',    ProjectController.destroy);
 app.put(        '/accept',         ProjectController.accept);
 app.put(        '/deny',           ProjectController.deny);
 app.post(       '/groupmessage',    ProjectController.groupMessage);
+app.get(        '/getcat',          ProjectController.getcat);
+app.get(        '/userfiltered',   ProjectController.findUserPref)
 
 
 //UserController
@@ -85,21 +87,19 @@ app.delete(     '/user/:id',                                  UserController.des
 app.get(        '/active',                                    UserController.getActive);
 app.get(        '/activeMessageInfo/:id',                     UserController.getActiveMessageInfo);
 app.get(        '/activeMessages/:otherId/current',           UserController.getActiveUserMessages);
-app.get(        '/getusers/:id',                              UserController.getUsers)
+app.get(        '/getusers',                                  UserController.getUsers);
+app.get(        '/unreadMessages',                              UserController.countMessages)
 
 
 
 app.put(        '/newmessage',     MessageController.newMessage);
-app.put(        '/addmessage',     MessageController.addMessage)
+app.put(        '/addmessage',     MessageController.addMessage);
+app.put(        '/rm',  MessageController.markAsRead);
+
 
 var mongoURI = 'mongodb://localhost:27017/devvit';
-// var port = 8080;
 
-// var mongoURI = process.env.MONGOLAB_URI;
 var port = process.env.PORT || 8080;
-
-// var mongoURI = process.env.MONGOLAB_URI;
-// var port = process.env.PORT || 9999;
 
 mongoose.set('debug', true);
 mongoose.connect(mongoURI);

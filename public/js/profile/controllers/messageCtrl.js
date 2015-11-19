@@ -2,6 +2,21 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	
 	$scope.userMessages = [];
 	$scope.previewMessages = [];
+	$scope.userUnread = function(user){
+		var read = {}
+		console.log(user)
+		user.messages.forEach(function(message){
+			if (!message.read){
+				read[user._id] = true
+			}
+			else{
+			read[user._id] = false;
+		}
+		})
+		console.log(read)
+		return read[user._id]
+		
+	};
 	
 	($scope.getMessages = function(){
 
@@ -10,11 +25,18 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 
 		messageService.getMessages($rootScope.profile._id).then(function(res){
 			console.log(res)
-			res.messages.forEach(function(name) {
-				var lengthOf = name.messages.length-1;
+			
+			res.messages.forEach(function(message){
+				var anyNotRead = false;
+				message.messages.forEach(function(message){
+					if(!message.read){
+						anyNotRead = true
+					}
+				})
 				var obj = {
-					withUser: name.withUser,
-					preview: name.messages[lengthOf]
+					withUser: message.withUser,
+					preview: message.messages[message.messages.length-1],
+					anyNotRead: anyNotRead
 				}
 				// $scope.userMessages.push(name.withUser)
 				// $scope.userMessages.push(name.messages[lengthOf])
@@ -26,6 +48,7 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	})();
 		
 	$scope.selectedName = null;
+	
 	$scope.selectedNameCheck = function(index) {
 		$scope.selectedName = index;
 	}
@@ -44,8 +67,10 @@ angular.module('devvit').controller('messageCtrl', function($scope, $rootScope, 
 	}
 	
 	$scope.newLocation = function (userId) {
-		console.log(userId)
+		messageService.markAsRead(userId).then(function(res){
 		$state.go('devvit.messages.current', {id: userId})
+			
+		})
 		
 	}
 	

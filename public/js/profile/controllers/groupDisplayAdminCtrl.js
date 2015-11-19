@@ -1,6 +1,8 @@
 angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, activeService, $rootScope){
 	
 	$scope.group = groupInfo;
+	console.log($scope.group)		
+	
 	$scope.groupMessages = groupInfo.messages;
 	$scope.pendingApp = [];
 	$scope.inGroupMembers = [];
@@ -10,14 +12,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
   		$scope.save = !$scope.save;
   	}
 	
-	var inGroupMembers = function (arr){
-		arr.forEach(function(member){
-			if (!member.application.pending){
-				$scope.inGroupMembers.push(member)
-			}
-		})
-	} 
-	inGroupMembers($scope.group.members)
+	// var inGroupMembers = function (arr){
+	// 	arr.forEach(function(member){
+	// 		if (!member.application.pending){
+	// 			$scope.inGroupMembers.push(member)
+	// 		}
+	// 	})
+	// } 
+	// inGroupMembers($scope.group.members)
 	
 	
 	groupInfo.members.forEach(function(member){
@@ -25,7 +27,6 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			$scope.pendingApp.push(member)
 		}
 	})
-
 	
 	$scope.sendGroupMessage = function(message){
 		var data = {
@@ -39,7 +40,6 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		$scope.groupmessagecontent = "";
 	}
 	
-	
 	$scope.acceptUser = function(applied){
 		var data = {
 			project_id: $scope.group._id,
@@ -51,7 +51,6 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			inGroupMembers(res)
 		})
 	}
-	
 	
 	$scope.denyUser = function(applied){
 		var data = {
@@ -70,6 +69,21 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		activeService.updatePost($scope.group).then(function(res) {
 			// console.log(res);
 		})
+
+	$scope.removeUser = function(user){
+		var users = [];
+		$scope.group.members.forEach(function(member){
+			users.push(member._id)
+		})
+		var index = users.indexOf(user._id)
+		$scope.group.members.splice(index, 1);
+		groupsService.updateGroup($scope.group).then(function(res){
+		})
+		user.groups.splice(user.groups.indexOf(user._id, 1))
+		groupsService.updateUser(user).then(function(res){
+			console.log(res)
+		})
+
 	}
 	
 	function removeFromArr(item, arr){
@@ -78,6 +92,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 				arr.splice(thing, 1)
 			}
 		}
+		
 
 	}
 	

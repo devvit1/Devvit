@@ -1,4 +1,4 @@
-angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootScope, groupsService,groupInfo){
+angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootScope, groupsService, groupInfo){
 	$scope.group = groupInfo;
 	$scope.groupMessages = groupInfo.messages
 	// $scope.sendGroupMessage = function(message){
@@ -24,6 +24,21 @@ angular.module('devvit').controller('groupDisplayCtrl', function($scope, $rootSc
 			$scope.groupMessages = res.messages;
 		})
 		$scope.groupmessagecontent = "";
+	}
+	
+	$scope.removeSelf = function(user){
+		var users = [];
+		$scope.group.members.forEach(function(member){
+			users.push(member._id)
+		})
+		var index = users.indexOf(user._id)
+		$scope.group.members.splice(index, 1);
+		groupsService.updateGroup($scope.group).then(function(res){
+		})
+		user.groups.splice(user.groups.indexOf(user._id, 1))
+		groupsService.updateUser(user).then(function(res){
+		})
+
 	}
 	
 	$(document).ready(function(){

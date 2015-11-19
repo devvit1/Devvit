@@ -13,6 +13,24 @@ module.exports = {
 		addMessageToActiveUser(req, res);
 		addMessageToUser(req, res);
 		res.send('message added')
+	},
+	
+	markAsRead: function (req, res){
+		Users.findById(req.user._id)
+		.exec(function(err, user){
+			if (err) return res.status(500).send(err);	
+			user.messages.forEach(function(message){
+				if (message.withUser.toString() === req.body.user){
+					message.messages.forEach(function(obj){
+						obj.read = true;
+					})
+				}
+			})
+		user.save(function(err, msg) {
+					if (err) return res.status(500).send(err);	
+		});
+		res.send('read')
+		})
 	}
 	
 }
@@ -81,7 +99,7 @@ function addMessageToUser(req, res){
 		user.messages.forEach(function(message){
 			existingMessages.push(message.withUser.toString())		
 		})
-		var index = existingMessages.indexOf(req.user_id);
+		var index = existingMessages.indexOf(req.user._id.toString());
 		if (index === -1){
 			res.status(500)
 		}

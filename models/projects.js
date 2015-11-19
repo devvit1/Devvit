@@ -9,7 +9,8 @@ var ProjectsSchema = new mongoose.Schema({
 	members: [{
 			application: {
 				pending: { type: Boolean, default: true },
-				message: { type: String }
+				message: { type: String },
+				date: {type:Date, default:Date.now}
 			},
 			member: {type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
 		}],

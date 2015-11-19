@@ -48,6 +48,15 @@ angular.module('devvit').service('messageService', function($http){
 			return res;
 		})
 	}
-	
+	this.markAsRead = function(user){
+		console.log(user)
+		return $http({
+			method: 'PUT',
+			url: '/rm',
+			data:{'user':user}
+		}).then(function(res) {
+			return res;
+		})
+	}
 	
 })

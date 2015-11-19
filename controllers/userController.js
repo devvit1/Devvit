@@ -10,7 +10,21 @@ module.exports = {
           if(err) {
             console.log("can't create user", err);
           }
-          res.json(new_user);
+          else{
+            Users.findByIdAndUpdate(new_user._id,
+            {filteredGroups:[
+              "web",
+              "angular",
+              "javascript",
+            ]},
+            function(err, result) {
+              if (err) return res.status(500).send(err);
+                 res.json(new_user);
+              }
+            )
+          }
+          
+          
         })
   },
 
@@ -19,6 +33,19 @@ module.exports = {
       if (err) return res.status(500).send(err);
       res.json(result);
     });
+  },
+  countMessages: function(req, res){
+    Users.findById(req.user._id)
+    .exec(function(err, user){
+     if (err) return res.status(500).send(err);    
+     var unreadMess = 0;
+     user.messages.forEach(function(convo){
+       convo.messages.forEach(function(mess){
+       if(!mess.read) unreadMess++ 
+       })
+     })
+     res.json(unreadMess)
+    })
   },
   findById: function(req, res) {
     Users.findById(req.params.id).exec(function(err, result) {
@@ -94,34 +121,43 @@ module.exports = {
   
  getUsers: function(req, res){
     Users.find({$or:[
-    {'basicInfo.firstName': { "$regex": req.params.id, "$options": "i" }},
-    {'basicInfo.lastName': { "$regex": req.params.id, "$options": "i" }}]}, 
+    {'basicInfo.firstName': { "$regex": req.query.query, "$options": "i" }},
+    {'basicInfo.lastName': { "$regex": req.query.query, "$options": "i" }}]})
+    .exec( 
      function (err, result){
       var users = [];
+      function distance(lat1, lon1, lat2, lon2, unit) {
+							var radlat1 = Math.PI * lat1/180
+							var radlat2 = Math.PI * lat2/180
+							var radlon1 = Math.PI * lon1/180
+							var radlon2 = Math.PI * lon2/180
+							var theta = lon1-lon2
+							var radtheta = Math.PI * theta/180
+							var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+							dist = Math.acos(dist)
+							dist = dist * 180/Math.PI
+							dist = dist * 60 * 1.1515
+							if (unit=="K") { dist = dist * 1.609344 }
+							if (unit=="N") { dist = dist * 0.8684 }
+							return dist
+						}
       if (err) return res.status(500).send("not found");
-      result.forEach(function(user){
-        users.push({
-          _id: user._id,
-          basicInfo: {
-            first:user.basicInfo.firstName,
-            last:user.basicInfo.lastName,
-            userName: user.basicInfo.userName,
-            email: user.basicInfo.email,
-            github:user.basicInfo.github,
-            linkedin:user.basicInfo.linkedin,
-            website:user.basicInfo.website,
-            location:{
-              city:user.basicInfo.location.city,
-              state:user.basicInfo.location.state
-              
-            }
-          },
-          skills:user.skills
-        })
-      })
-      res.json(users)
+      else {
+        if(req.query.dis !== "undefined"){
+        result.forEach(function(user){
+						var dist = distance(req.user.basicInfo.location.lat, req.user.basicInfo.location.lon, user.basicInfo.location.lat, user.basicInfo.location.lon, 'M');
+						if (dist <= req.query.dis){
+			   			users.push(user)
+						}
+					})
+        }
+        else users = result;
+        }
+        res.json(users)       
+        
+      }
 
-    })
+    )
   },
   
   fileUpload: function(req, res) {

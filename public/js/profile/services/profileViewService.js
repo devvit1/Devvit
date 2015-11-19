@@ -11,10 +11,26 @@
 	this.updateProject = function(project) {
 		return $http({
 			method: 'PUT',
-			url: '/user',
+			url: '/project',
 			data: project
 		}).then(function(res){
 			
+		})
+	};
+	this.getAllCat = function(){
+		return $http({
+			method:'get',
+			url: '/getcat'
+		}).then(function(res){
+			return res.data
+		})
+	};
+	this.unreadMess = function(){
+		return $http({
+			method:'get',
+			url: '/unreadMessages'
+		}).then(function(res){
+			return res.data
 		})
 	}
 })

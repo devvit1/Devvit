@@ -13,4 +13,24 @@ angular.module('devvit').controller('homeCtrl', function($scope, $location){
 //     }
 // }
 // )
+
+$(document).ready(function() {
+var stickyNavTop = $('.home_header2').offset().top;
+ 
+var stickyNav = function(){
+var scrollTop = $(window).scrollTop();
+      
+if (scrollTop > stickyNavTop) { 
+    $('.home_header2').addClass('sticky');
+} else {
+    $('.home_header2').removeClass('sticky'); 
+}
+};
+ 
+stickyNav();
+ 
+$(window).scroll(function() {
+    stickyNav();
+});
+});
 })
