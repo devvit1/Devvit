@@ -1,18 +1,9 @@
-/*.prof_group_aside {
-	float:left;
-	width:20%;
-	height:100vh;
-	background: #E1E3E4;
-}
-.prof_mess_body{
-	float:left;
-	width:80%;
-}
-*/
+/*-----------------ALL GROUPS PAGE----------------*/
+
 .chooseGroup {
 	margin: 0 auto;
 	background: #E1E3E4;
-	width:300px;
+	width:800px;
 	margin-top:30px;
 	height:400px;
 	font-family: 'intro'
@@ -40,6 +31,10 @@
 	cursor:pointer;
 }
 
+
+/*------------------GROUP PAGE--------------------*/
+
+
 .theGroupDisplay{
 	width:95%;
 	min-height:80vh;
@@ -49,11 +44,28 @@
 }
 
 .theGroupHeader{
-	text-align: center;
-	font-size:3em;
-	color:#181818;
-	font-family: 'intro';
-	line-height:60px;
+	font-size: 16px;
+	text-transform: uppercase;
+	color:#FFF;
+	font-family: 'Dosis';
+	height: 18px;
+	width: 100%;
+	background: #343434;
+	border-top: 1px solid lightgray;
+	padding: 2px 10px;
+	padding-top: 4px;
+	align-self: center;
+}
+
+.theGroupHeader > span {
+	color: #FF9326;
+	padding-left: 30px;
+	border-left: 1px solid white;
+}
+
+.theGroupHeader > a {
+	padding-right: 30px;
+	padding-left: 30px;
 }
 
 .adminAccept {
@@ -133,8 +145,17 @@
 		width: 30%;
 		padding-left: 10px;
 		padding-right: 10px;
-		border-right: 1px solid lightgray;
+		/*border-right: 1px solid lightgray;*/
 		overflow: scroll;
+	}
+	
+	#save_desc_btn {
+		padding: 5px 10px;
+		margin-left: 20px;
+		border: 0 none;
+		border-radius: 2px;
+		background: #d15555;
+		color: white;
 	}
 	
 	.groupLast {
@@ -147,9 +168,9 @@
 	margin: 0 auto;
 	margin-top: 20px;
 	width: 97%;
-	height: 400px;
+	height: 85%;
 	border: 1px solid lightgray;
-	flex: 4;
+	flex: 3;
 }
 
 .theGroupMembers {
@@ -166,38 +187,44 @@
 }
 
 .groupAdminUser {
-	width:50%;
-	height:20px;
-	margin-top:8px;
-	margin-top:8px;
-	background: #343434;
+	border-radius: 3px;
+	width: 50%;
+	height: 25px;
+	margin: 4px auto;
+	background: #093561;
 	color:#f4f4f4;
 	display:flex;
-	justify-content: space-between;
-	padding:10px 20px;
+	align-items: center;
+	justify-content: center;
+	padding: 0px 20px;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .groupMemberUser {
-	width:50%;
-	height:20px;
-	margin-top:8px;
-	margin-top:8px;
-	background: #343434;
-	color:#f4f4f4;
-	display:flex;
-	justify-content: space-between;
-	padding:10px 20px;
+	border-radius: 3px;
+	width: 50%;
+	height: 25px;
+	margin: 4px auto;
+	background: #093561;
+	color: #f4f4f4;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 0px 20px;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #groupMemberRemove {
+	float: right;
+}
+
+/*#groupMemberRemove {
 	opacity: 0;
 }
 
 	.groupMemberUser:hover > #groupMemberRemove {
 		opacity: 1;
-	}
+	}*/
 	
 .groupMembersRepeat {
 	overflow: scroll;
@@ -219,8 +246,13 @@
 	padding-top: 20px;
 }
 
-.groupInfoMessage {
+.groupInfoMessage > div {
+	height: 65%;
 	overflow: scroll;
+	margin-bottom: 15px;
+}
+
+.groupInfoMessage {
 	position: relative;
 }
 
@@ -235,20 +267,30 @@
 	padding-bottom: 12px;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: .9em;
+	padding-left: 10px;
 }
 
 .groupSendMessage {
-	width: 40%;
-	position: absolute;
-	bottom: 20px;
-	/*display: inline-block;
-    vertical-align: bottom;*/
+	width: 90%;
 	margin-left: 20px;
 }
 
 #groupMessageInput {
-	width: 100%;
+	width: 90%;
 	border: 0 none;
+	font-family: 'Open Sans', sans-serif;
+	resize: true;
+}
+
+#sendGroupMsg {
+	float: right;
+	margin-top: 20px;
+	background: #063A5D;
+	padding: 5px 10px;
+	border: 0 none;
+	border-radius: 2px;
+	color: #FFF;
+	text-transform: uppercase;
 }
 
 #groupEditDesc {
@@ -259,4 +301,12 @@
 
 #groupEditDesc:hover {
 	color: #093561;
+}
+
+.edit-desc1 {
+	width: 80%;
+	resize: true;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	height: 40%;
 }

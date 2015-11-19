@@ -1,4 +1,4 @@
-angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, $rootScope){
+angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, groupInfo, groupsService, activeService, $rootScope){
 	
 	$scope.group = groupInfo;
 	console.log($scope.group)		
@@ -10,7 +10,6 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 	$scope.save = false;
 	$scope.toggleView = function() {
   		$scope.save = !$scope.save;
-		console.log($scope.save)
   	}
 	
 	// var inGroupMembers = function (arr){
@@ -36,9 +35,7 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 			project_id: groupInfo._id
 		}
 		groupsService.sendGroupMessage(data).then(function(res){
-			$scope.groupMessages = res
-			console.log(res)
-			console.log($scope.groupMessages)
+			$scope.groupMessages = res.messages;
 		})
 		$scope.groupmessagecontent = "";
 	}
@@ -68,6 +65,14 @@ angular.module('devvit').controller('groupDisplayAdminCtrl', function($scope, gr
 		})
 	}
 	
+
+	$scope.updateGroup = function() {
+		activeService.updatePost($scope.group).then(function(res) {
+			// console.log(res);
+		})
+	}
+
+
 	$scope.removeUser = function(user){
 		var users = [];
 		$scope.group.members.forEach(function(member){
