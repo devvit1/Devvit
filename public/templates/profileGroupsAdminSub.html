@@ -1,6 +1,5 @@
-<a ui-sref = "devvit.groups"><u> < back to groups</u></a>
+<div class="theGroupHeader"><a ui-sref = "devvit.groups"><u><i class="fa fa-long-arrow-left"></i> Back to Groups</u></a><span>Admin</span> of {{group.name}}</div>
 <div class="theGroupDisplay">
-	<div class="theGroupHeader">{{group.name}} admin</div>
 	<div class="adminAccept">
 			<div class="appliedUserCard" ng-repeat="applied in pendingApp track by $index">
 				<div class="appliedUserCard_upper">
@@ -23,25 +22,28 @@
 				
 				<div class="groupInfo">
 					<div class="group_titles">Group Info</div>
+					<div class="group_name">Name: {{group.name}}</div>
 					<div class="groupType">[{{group.type}}]</div>
 					<div class="groupSubType">Type: {{group.subType}}</div>
 					<div class="groupCreatedAt">Date Created: {{group.createdAt | date:"MMMM d, y"}}</div>
 					<div class="groupCreatedBy">By: {{group.createdBy}}</div>
 				</div>
 				<div class="groupDescription">
-					<div class="group_titles">Description <span ng-click="toggleView()" id="groupEditDesc"><i class="fa fa-pencil-square-o"></i></span></div>
+					<div class="group_titles">Description <span ng-click="toggleView()" id="groupEditDesc"><i class="fa fa-pencil-square-o"></i><button id="save_desc_btn" ng-show="save" ng-click="updateGroup()">Save</button></span></div>
 					<div class="groupDescriptionText" ng-show="!save">{{group.description}}</div>
-					<span ng-show='save'>Description:<br><textarea ng-model="group.description" class='edit-desc1' ng-model='groups.description'></textarea>
+					<span ng-show='save'>Description:<br><textarea rows="3" ng-model="group.description" class='edit-desc1'></textarea>
 				</div>
-				<div class="groupLast"></div>
+				<!--<div class="groupLast"></div>-->
 			</div>
 			<div class="groupInfoMessage">
-				<div class="groupInfoMessageDiv" ng-repeat = "message in groupMessages track by $index">
-					<div class="groupInfoMessageUser">
-						{{message.sentBy.basicInfo.firstName}}
-						{{message.sentBy.basicInfo.lastName}}
+				<div>
+					<div class="groupInfoMessageDiv" ng-repeat = "message in groupMessages track by $index">
+						<div class="groupInfoMessageUser">
+							{{message.sentBy.basicInfo.firstName}}
+							{{message.sentBy.basicInfo.lastName}}
+						</div>
+						<div class="groupInfoMessagemess">{{message.message}}</div>	
 					</div>
-					<div class="groupInfoMessagemess">{{message.message}}</div>	
 				</div>
 				<div class="groupSendMessage">
 					<textarea id="groupMessageInput" cols="30" rows="3" ng-model="groupmessagecontent"></textarea>

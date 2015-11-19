@@ -212,6 +212,7 @@ ACTIVE TAB
 	display:flex;
 	justify-content:center;
 	align-items: center;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .active_tags_wrap {
@@ -230,6 +231,7 @@ ACTIVE TAB
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 80%;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .edit-desc {
