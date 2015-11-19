@@ -1,15 +1,15 @@
-
 <div class="projects_nav">
+
 	<ul class = "projects_nav_list">
 		<li ng-class="{'selectedType' : currentSearchType == filtered}" ng-click ="findAll();">all</li>
 		<li ng-class="{'selectedType' : currentSearchType == filtered}"ng-repeat="filtered in profile.filteredGroups" ng-click = "searchProjects(filtered)" >{{filtered}}</li>
 	</ul>
 </div>
 
-<div class = 'cont_home'>
+<div class='cont_home'>
 	<div class="cont_left">
-		<form ng-submit = "searchProjects(searchQuery, distance)">
-		<input ng-model="searchQuery" type="text" class="searchType" placeholder="Seach projects...">
+		<form ng-submit="searchProjects(searchQuery, distance)">
+			<input ng-model="searchQuery" type="text" class="searchType" placeholder="Seach projects...">
 		</form>
 			
 		
@@ -31,25 +31,28 @@
 			<div  ng-click = "searchProjects(searchQuery, distance)" class="SearchButton">Go</div>
 		</div>
 		<div class="sortByOption">
-			sort by:<select class = "sortBySelect" ng-model = "sortByOption" >
+			sort by:
+			<select class="sortBySelect" ng-model="sortByOption">
 				<option value="members">least applied</option>
 				<option value="-members">most applied</option>
 			</select>
 		</div>
 	</div>
 	<div class="cont_right">
+
 		<div class="panel_wrapper" ng-repeat = 'webProject in Projects | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
 			<div class="outPanel"> 
+
 				<div class="arrow-right "></div>
 				<div class="outPanel_left">
 				</div>
 				<div class="outPanel_right">
 					<div class="panelNumber">{{$index +1}}.</div>
 
-					<div class="outPanelType" ng-click = "searchProjects(webProject.type)">[{{webProject.type}}]</div>
-					<div class="outPanelBy"><i class="fa fa-user"></i>  <a ng-click="goToUser(webProject.createdBy._id)" >{{webProject.createdBy.basicInfo.firstName}} {{webProject.createdBy.basicInfo.lastName}}</a></div>
+					<div class="outPanelType" ng-click="searchProjects(webProject.type)">[{{webProject.type}}]</div>
+					<div class="outPanelBy"><i class="fa fa-user"></i> <a ng-click="goToUser(webProject.createdBy._id)">{{webProject.createdBy.basicInfo.firstName}} {{webProject.createdBy.basicInfo.lastName}}</a></div>
 					<div class="panel_location" ng-show="webProject.createdBy.basicInfo.location.city"><i class="fa fa-map-marker fa-1x"></i>&nbsp;{{webProject.createdBy.basicInfo.location.city}}, {{webProject.createdBy.basicInfo.location.state}}</div>
-				</div>	
+				</div>
 			</div>
 			<div class="projectPanel">
 				<div class="panel_subTypeSquare {{webProject.subType}} ">
@@ -60,39 +63,56 @@
 				</div>
 				<div class="panel_mainContent {{webProject.subType}}">
 					<div class="panel_mainContent_left">
-							<div class="panel_MC_left_upper">{{webProject.name}}</div>
-							<div class="panel_MC_left_lower">
-								<div class="panel_tags">
-									<div class="panel_tag" ng-repeat="tag in webProject.tags |limitTo:5"  ng-click="searchProjects(tag)">{{tag |limitTo:9}}</div>
-								</div>
-								<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
-								<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
+						<div class="panel_MC_left_upper">{{webProject.name}}</div>
+						<div class="panel_MC_left_lower">
+							<div class="panel_tags">
+								<div class="panel_tag" ng-repeat="tag in webProject.tags |limitTo:5" ng-click="searchProjects(tag)">{{tag |limitTo:9}}</div>
 							</div>
+							<div class="panel_createdBy">{{webProject.description | limitTo: 43}}{{webProject.description.length > 43 ? '...' : ''}}</div>
+							<!--<div class="panel_createdOn"><i class="fa fa-calendar-o"></i> {{webProject.createdAt | date:' MMM dd'}}</div>-->
 						</div>
+					</div>
 					<div class="panel_mainContent_right">
 						<!--<div class="panel_location"><i class="fa fa-map-marker fa-1x"></i></div>-->
-						
-						<apply-modal class = "panel_modal_button"width='700px' height='60%'>
-								<div class = 'panel-flex-contain-apply'>
-									<div class = 'panel_title web_title'>{{webProject.name}}</div>
-									<div class = 'panel_creator web_creator'>Created By: {{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</div>
-									<div class = 'panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
+
+						<apply-modal class="panel_modal_button" width='700px' height='60%'>
+							<div class='panel-flex-contain-apply {{webProject.subType}}'>
+								<div class="apply-number">
+						{{webProject.members.length}}&nbsp;<i class="fa fa-user-plus"></i>
+					</div>
+								<div class='leftSideWrapper'>
+									
+									<div class='panel_title web_title '>{{webProject.name}}</div>
+									<div class='panel_creator web_creator'><i class="fa fa-user"></i> <a ng-click="goToUser(webProject.admins[0]._id)">{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
 								</div>
+								<div class='rightSideWrapper'>
+									<div class='panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
+								</div>
+<!--<<<<<<< HEAD
 							<hr>
 							<div class = 'message-apply-contain'>
 								<textarea ng-model ="message"class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
 							</div>
 							<div class ='submit-contain'>
 								<button class="panel_btn submit" ng-click="apply(webProject._id, message); toggleModal()" >Submit</button>
+=======-->
 							</div>
-						
-					</apply-modal>
+							<div class='des-message-wrapper'>
+								<div class='desc-wrapper'>
+									<div class='panel_desc web_desc'>{{webProject.description}}</div>
+									<div class='message-apply-contain'>
+										<textarea class='apply-message' placeholder='Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
+										<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()">Submit</button>
+									</div>
+								</div>
+
+							</div>
+						</apply-modal>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-</div>
 
+
+</div>

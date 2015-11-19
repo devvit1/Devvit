@@ -40,6 +40,17 @@
 	margin-right:30px;
 }
 
+.sticky {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-top: 0;
+	background:#e1e3e4;
+	border-bottom: 1px solid #d2d6d5;
+}
+
 .home_header2{
 	display:flex;
 	width:100%;

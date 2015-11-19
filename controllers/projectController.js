@@ -59,6 +59,8 @@ module.exports = {
 				project.members.forEach(function(elem) {
 					if(elem.member.toString() === req.body.active_user_id) {
 						memberExists = true;
+						
+						
 					}
 
 				})		
@@ -155,6 +157,7 @@ module.exports = {
 			{'_id': req.params.id })
 			.populate({
 				path:'messages.sentBy admins members.member pendingApprovals'})
+
 			.exec(
 			function(err, result) {
 				if (err) {
