@@ -18,7 +18,7 @@ passport.use('local-login', new LocalStrategy({
 	Users.findOne( {'basicInfo.email': email} )
 	.exec(function(err, user) {
 		if (err) {
-			console.log(err);
+			console.log('IM PISSED', err);
 			done(err);
 		} else if (!user) {
 			console.log('user not found by email');

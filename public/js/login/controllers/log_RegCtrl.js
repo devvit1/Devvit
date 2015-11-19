@@ -6,8 +6,8 @@ angular.module('devvit').controller('log_RegCtrl', function($scope, $state, log_
       $scope.email = "";
       $scope.password = "";
       $scope.updateUser();
-    }, function(err){
-      console.log('log ctrl err: ', err);
+    }).catch(function(err) {
+      console.log('HEY')
     })
 
   }

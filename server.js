@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var LocalStrategy  = require('passport-local').Strategy;
+
 // var moment = require('moment');
 
 var UserController = require('./controllers/userController');
@@ -17,6 +18,7 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
+
 
 
 /////////////////

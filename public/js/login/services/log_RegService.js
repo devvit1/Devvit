@@ -23,10 +23,7 @@ angular.module('devvit').service('log_RegService', function($http, $rootScope){
         }
       }).then(function(res) {
         $rootScope.profile = res.data
-        return res;
-      }, function(err){
-        console.log(err);
-        return err;
+        // return res;
       })
   }
 

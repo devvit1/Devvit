@@ -39,11 +39,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 						return res;
 						})
 					},
-					ActiveUser: function(activeService, $rootScope) {
-						return activeService.getActive().then(function(res) {
-							$rootScope.profile = res;
-						})
-					}
+					// ActiveUser: function(activeService, $rootScope) {
+					// 	return activeService.getActive().then(function(res) {
+					// 		$rootScope.profile = res;
+					// 	})
+					// }
 				}
 		})
 		.state('devvit.profile', {
