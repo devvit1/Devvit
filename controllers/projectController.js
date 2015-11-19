@@ -62,6 +62,7 @@ module.exports = {
 						
 						
 					}
+
 				})		
 				if (!memberExists){			
 						project.members.push({
@@ -77,7 +78,7 @@ module.exports = {
 						if (req.body.message){
 							sendMessageToAdmins(project, req.body.active_user_id, req.body.message, res)
 						}
-					}				
+					}
 			}
 			res.json(project)
 		})
@@ -119,8 +120,20 @@ module.exports = {
 	destroy: function(req, res) {
 		Projects.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return res.status(500).send(err);
-				res.json(result);
+			res.json(result);
 			});
+	},
+	
+	findUserPref: function(req, res){
+		Projects.find({type: {$in: req.user.filteredGroups}})
+		.limit(50)
+		.populate('admins')
+		.populate('messages.sentBy')
+		.populate('createdBy')
+		.exec(function(err, result) {
+			if (err) return res.status(500).send(err);
+			res.json(result);
+		})
 	},
 	
 	findAll: function(req, res){
@@ -143,8 +156,8 @@ module.exports = {
 		Projects.find(
 			{'_id': req.params.id })
 			.populate({
-				path:'messages.sentBy admins members.member pendingApprovals',
-				select:'basicInfo.firstName basicInfo.lastName basicInfo.image'})
+				path:'messages.sentBy admins members.member pendingApprovals'})
+
 			.exec(
 			function(err, result) {
 				if (err) {
@@ -153,6 +166,20 @@ module.exports = {
 					res.json(result);
 				}
 			})
+	},
+	
+	getcat: function (req, res){
+		Projects.find({})
+		.exec(function(err, projects){
+			var categories = [];
+			projects.forEach(function(project){
+				 var index = categories.indexOf(project.type)
+				 if (index === -1){
+					categories.push(project.type)
+				 }
+			})
+			res.json(categories)
+		})
 	},
 	
 	groupMessage: function(req, res){
@@ -182,14 +209,14 @@ module.exports = {
 
 	
 	projectUpdate: function(req, res) {
-		Projects.findByIdAndUpdate(req.body.project_id, {new: true }, function(err, result) {
+		Projects.findByIdAndUpdate(req.body._id, req.body, {new: true}, function(err, result) {
+
 			if (err) return res.status(500).send(err);
 			res.json(result);
 		});
 	},
 	
 	searchFor: function(req, res){
-		console.log(req.params, req.query)
 		Projects.find(
 			{$or:[
 			{'type': { "$regex": req.query.query, "$options": "i" }},
@@ -289,7 +316,7 @@ function sendMessageToAdmins(project, userId, message, res){
 			else {
 					admin.messages.push(
 						{
-						messages:{message:message, from: id},
+						messages:[{message:message, from: id}],
 						withUser:id
 						})
 					admin.save(function(err){
@@ -371,4 +398,5 @@ function removeProjectFromUser (user, project, res){
 		}
 	})
 }
+
 

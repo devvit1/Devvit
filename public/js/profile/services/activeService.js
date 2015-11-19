@@ -16,23 +16,12 @@ angular.module('devvit').service('activeService', function($http, $rootScope) {
 		})
 	}
 	
-	
-	
-	// this.findProject = function(project_id){
-	// 	return $http({
-	// 		method:'get',
-	// 		url: '/projects/' + project_id
-	// 	})
-	// }
-	
-	this.updatePost = function(id, name, description) {
+	this.updatePost = function(group) {
 		return $http({
 			method: 'PUT',
-			url: '/project/' + id,
-			data: {
-				name: name,
-				description: description
-			}
+			url: '/project',
+			data: group
 		})
 	}
+	
 })

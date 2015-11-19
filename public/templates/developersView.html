@@ -22,10 +22,17 @@
 	</div>-->
 	<div class="developerLeft">
 		<div class="userSearch">
-				<form ng-submit = "searchForDev(developerSearch)">
+				<form ng-submit = "searchForDev(developerSearch, distance)">
 					<input type="text" class = "searchDevs" ng-model="developerSearch" placeholder="search Developers...">
 				</form>
-			</div>
+		</div>
+		<div class="sortByDistance">
+			<form ng-submit = "searchForDev(developerSearch, distance)" >
+			Within
+				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Miles</input>
+			</form>
+			<div  ng-click = "searchForDev(developerSearch, distance)" class="SearchButton">Go</div>
+		</div>
 	</div>
 	<div class="developerRight">
 			<div class="developerMain">
@@ -44,7 +51,7 @@
 													<div class="devCard_userName">
 														{{user.basicInfo.userName}}	
 													</div>	
-													<div class="devCard_location">
+													<div class="devCard_location" ng-show="user.basicInfo.location.city">
 														<i class="fa fa-map-marker"></i> {{user.basicInfo.location.city}}, {{user.basicInfo.location.state}}
 													</div>
 											</div>	

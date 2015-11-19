@@ -1,19 +1,22 @@
 angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$state, projectService, basicInfoService, $location, $rootScope){
     
       $scope.subTypeFilter = ""
+      $scope.getProjectTypes = function (){
+            
+      }
       $scope.isActive = function(route) {
       return route === $location.path();
       };
       $scope.orderThis = $scope.sortByOption;
-      $scope.webProjects = [];
-      projectService.getProjects().then(function(res) {
-            console.log(res)
-            $scope.webProjects = res;
+      $scope.currentSearchType = null
+      $scope.filtered='all'
+      projectService.userFilteredProjects().then(function(res) {
+            $scope.Projects = res;
       })
       $scope.findAll = function(){
              projectService.getProjects().then(function(res) {
-              console.log(res)
-            $scope.webProjects = res;
+             $scope.currentSearchType = 'all'
+            $scope.Projects = res;
       })
       }
     
@@ -40,13 +43,39 @@ angular.module('devvit').controller('webViewCtrl', function($scope, $timeout,$st
         window.location.reload(true);
       })
     }
-    
+    $scope.subTypeall = true
+    $scope.toggleSubFilter= function(type){
+          if (type === "fre"){
+                $scope.subTypefre = true;
+                $scope.subTypeper = false;
+                $scope.subTypepro = false;
+                $scope.subTypeall = false;
+          }
+          else if (type === "per"){
+                $scope.subTypefre = false;
+                $scope.subTypeper = true;
+                $scope.subTypepro = false;
+                $scope.subTypeall = false;
+          }
+          else if (type === "pro"){
+                $scope.subTypefre = false;
+                $scope.subTypeper = false;
+                $scope.subTypepro = true;
+                $scope.subTypeall = false;
+          }
+          else if (type === "all"){
+                $scope.subTypefre = false;
+                $scope.subTypeper = false;
+                $scope.subTypepro = false;
+                $scope.subTypeall = true;
+          }                              
+    }
     /*****************JACOBS QUERY CODE **************/
     
     $scope.searchProjects = function (query, distance){
           projectService.searchProjects(query, distance).then(function(res){
-             $scope.webProjects = res;     
-             console.log(res)    
+             $scope.Projects = res;     
+             $scope.currentSearchType = query;   
           })
     }
     

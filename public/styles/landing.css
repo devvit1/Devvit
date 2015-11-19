@@ -22,14 +22,17 @@
 
 #animatedFirst {
 	animation-delay: .1s;
+	text-align: center;
 }
 
 #animatedSecond {
 	animation-delay: 1s;
+	text-align: center;
 }
 
 #animatedThird {
 	animation-delay: 2s;
+	text-align: center;
 }
 
 .landingPic{

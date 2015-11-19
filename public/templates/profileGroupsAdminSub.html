@@ -61,10 +61,10 @@
 			</div>
 			<div class="membersMembers">
 				<div class="group_titles">Members</div>
-				<div class="groupMembersRepeat"ng-repeat = "member in inGroupMembers">
+				<div class="groupMembersRepeat"ng-repeat = "member in group.members">
 					<div class="groupMemberUser">{{member.member.basicInfo.firstName}} 
 						{{member.member.basicInfo.lastName}}
-						<div id="groupMemberRemove"><i class="fa fa-times"></i></div>
+						<div id="groupMemberRemove" ng-click = 'removeUser(member.member)'><i class="fa fa-times"></i></div>
 					</div>
 				</div>
 			</div>

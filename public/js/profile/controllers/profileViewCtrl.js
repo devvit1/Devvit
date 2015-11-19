@@ -1,6 +1,48 @@
 angular.module('devvit').controller('profileViewCtrl', function($scope, profileViewService, $rootScope, $q){
 	$scope.showEdit = false
 	$('#slideDown').hide();
+	
+	(function getGroups(){
+		profileViewService.getAllCat().then(function(res){
+			$scope.categories = res
+			
+		})
+		
+	})();
+	(function unreadMess(){
+		profileViewService.unreadMess().then(function(res){
+			$scope.unreadMess = res
+			console.log(res)
+		})
+	})();
+	
+	$scope.isSubbed = function (cat){
+		var selectedClass = 'selectedCat';
+		var isIn=false
+		$rootScope.profile.filteredGroups.forEach(function(group){	
+			if (cat === group){
+				 isIn = true;
+			}
+		})
+		if (isIn) return selectedClass
+	}
+	$scope.toggleFilteredType = function(type){
+		var index = $rootScope.profile.filteredGroups.indexOf(type);
+		if(index !== -1 ){
+				$rootScope.profile.filteredGroups.splice(index, 1);
+				profileViewService.updateUser($rootScope.profile).then(function(res){
+					console.log(res)
+			})
+		}
+		else{
+			$rootScope.profile.filteredGroups.push(type);
+			profileViewService.updateUser($rootScope.profile).then(function(res){
+					console.log(res)
+				
+			})
+		}
+	}
+	
 	$scope.toggleaddSkills = function(){
 		$('#slideDown').slideToggle('fast');
 	}
@@ -41,8 +83,8 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 					}
 				}
 		for(var i = 0; i < pendingGroup.members.length; i++){
-			if(pendingGroup.members[i]._id === $rootScope.profile._id){
-				pendingGroup.members[i].splice(i, 1);
+			if(pendingGroup.members[i].member === $rootScope.profile._id){
+				pendingGroup.members.splice(i, 1);
 				profileViewService.updateProject(pendingGroup).then(function(res){
 					console.log(res, 'project')
 				})
@@ -68,6 +110,13 @@ angular.module('devvit').controller('profileViewCtrl', function($scope, profileV
 		// 	})
 		// })
 	}
+	
+	$scope.removeFilteredType = function(type){
+		$rootScope.profile.filteredGroups.splice($rootScope.profile.filteredGroups.indexOf(type), 1)
+		profileViewService.updateUser($rootScope.profile).then(function(res){
+		})
+	}
+	
 	
 	$scope.userLocation =function(city, state, country){
             var geocoder =  new google.maps.Geocoder();

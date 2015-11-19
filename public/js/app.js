@@ -1,9 +1,9 @@
 var app = angular.module('devvit', ['ui.router', 'angularMoment']);
-app.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
+// app.filter('reverse', function() {
+//   return function(items) {
+//     return items.slice().reverse();
+//   };
+// });
 
 
 app.run(function($http, $rootScope) {

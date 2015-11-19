@@ -1,12 +1,8 @@
 <div class="projects_nav">
-	<ul class="projects_nav_list">
-		<li ng-click="findAll()">ALL</li>
-		<li ng-click="searchProjects('web')">WEB</li>
-		<li ng-click="searchProjects('mobile')">MOBILE</li>
-		<li ng-click="searchProjects('software')">SOFTWARE</li>
-		<li ng-click="searchProjects('javascript')">JAVASCRIPT</li>
-		<li ng-click="searchProjects('robotics')">ROBOTICS</li>
-		<LI ng-click="searchProjects('angular')">ANGULAR</LI>
+
+	<ul class = "projects_nav_list">
+		<li ng-class="{'selectedType' : currentSearchType == filtered}" ng-click ="findAll();">all</li>
+		<li ng-class="{'selectedType' : currentSearchType == filtered}"ng-repeat="filtered in profile.filteredGroups" ng-click = "searchProjects(filtered)" >{{filtered}}</li>
 	</ul>
 </div>
 
@@ -15,21 +11,24 @@
 		<form ng-submit="searchProjects(searchQuery, distance)">
 			<input ng-model="searchQuery" type="text" class="searchType" placeholder="Seach projects...">
 		</form>
+			
+		
 		<div class="sortBySubType">
 			I want to see...
 			<div class="sortSubTypeType">
-				<div ng-click='subTypeFilter = "freelance"' class="sortSub sortSubFree">FREELANCE</div>
-				<div ng-click='subTypeFilter = "personal"' class="sortSub sortSubPers">PERSONAL</div>
-				<div ng-click='subTypeFilter = "professional"' class="sortSub sortSubProf">PROFESSIONAL</div>
-				<div ng-click='subTypeFilter ="" ' class="sortSub sortSubProf">ALL</div>
-
+				<div ng-click = 'subTypeFilter = "freelance"; toggleSubFilter("fre")' ng-class = "{subTypeSelect:subTypefre}" class="sortSub sortSubFree">FREELANCE</div>
+				<div ng-click = 'subTypeFilter = "personal"; toggleSubFilter("per")' ng-class = "{subTypeSelect:subTypeper}"class="sortSub sortSubPers">PERSONAL</div>
+				<div ng-click = 'subTypeFilter = "professional"; toggleSubFilter("pro")'ng-class = "{subTypeSelect:subTypepro}"class="sortSub sortSubProf">PROFESSIONAL</div>
+				<div ng-click = 'subTypeFilter =""; toggleSubFilter("all") 'ng-class = "{subTypeSelect:subTypeall}"class="sortSub sortSubProf">ALL</div>
+				
 			</div>
 		</div>
 		<div class="sortByDistance">
-			Within a...
-			<form>
-				<input type="text" class="searchDistance" ng-model="distance" placeholder="10...">Mile radius</input>
+			<form ng-submit = "searchProjects(searchQuery, distance)" >
+			Within
+				<input type="text" class="searchDistance"  ng-model="distance" placeholder="10...">Miles</input>
 			</form>
+			<div  ng-click = "searchProjects(searchQuery, distance)" class="SearchButton">Go</div>
 		</div>
 		<div class="sortByOption">
 			sort by:
@@ -40,8 +39,10 @@
 		</div>
 	</div>
 	<div class="cont_right">
-		<div class="panel_wrapper" ng-repeat='webProject in webProjects | reverse | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
-			<div class="outPanel">
+
+		<div class="panel_wrapper" ng-repeat = 'webProject in Projects | filter:{ subType: subTypeFilter}| orderBy: sortByOption track by $index'>
+			<div class="outPanel"> 
+
 				<div class="arrow-right "></div>
 				<div class="outPanel_left">
 				</div>
@@ -85,17 +86,26 @@
 									<div class='panel_creator web_creator'><i class="fa fa-user"></i> <a ng-click="goToUser(webProject.admins[0]._id)">{{webProject.admins[0].basicInfo.firstName}} {{webProject.admins[0].basicInfo.lastName}}</a></div>
 								</div>
 								<div class='rightSideWrapper'>
-									<div class='panel_date web_date'>{{webProject.createdAt | date: 'MMM dd'}}</div>
+									<div class='panel_date web_date'>Posted:{{webProject.createdAt | date: 'MMM dd'}}</div>
 								</div>
+<!--<<<<<<< HEAD
+							<hr>
+							<div class = 'message-apply-contain'>
+								<textarea ng-model ="message"class = 'apply-message' placeholder = 'Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
+							</div>
+							<div class ='submit-contain'>
+								<button class="panel_btn submit" ng-click="apply(webProject._id, message); toggleModal()" >Submit</button>
+=======-->
 							</div>
 							<div class='des-message-wrapper'>
 								<div class='desc-wrapper'>
 									<div class='panel_desc web_desc'>{{webProject.description}}</div>
 									<div class='message-apply-contain'>
-										<textarea class='apply-message' placeholder='Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
-										<button class="panel_btn submit" ng-click="apply(webProject._id, submittedMessage); toggleModal()">Submit</button>
+										<textarea ng-model ="message" class='apply-message' placeholder='Send {{webProject.admins[0].basicInfo.firstName}} a message letting them know why you would be a good fit for their project.'></textarea>
+										<button class="panel_btn submit" ng-click="apply(webProject._id, message); toggleModal()">Submit</button>
 									</div>
 								</div>
+
 							</div>
 						</apply-modal>
 					</div>
